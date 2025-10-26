@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BHD SPORT SHOES</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="loginandsign.css" />
+  </head>
+  <body>
+    <!--------Header-------->
+    <div class="menuHeader">
+      <div class="header">
+        <div class="container">
+          <div class="navbar">
+            <div class="logo">
+              <img
+                src="img/BHD_SportShoes_Logo_WhiteBackground_1-removebg-preview.png"
+                alt="logo"
+                width="100px"
+              />
+            </div>
+            <nav>
+              <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="index.html">Sản phẩm</a></li>
+                <li><a href="index.html">Liên hệ</a></li>
+                <li>
+                  <a href="index.html">Tài khoản</a>
+                  <ul class="user"></ul>
+                </li>
+              </ul>
+            </nav>
+            <img
+              src="img/shopping_bag_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"
+              width="30px"
+              height="30px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <main>
+      <section>
+        <div class="containers">
+          <div class="wrap-background" id="login-view">
+            <div class="heading-bar">
+              <h1>Đăng nhập tài khoản</h1>
+              <p>
+                Bạn chưa có tài khoản ?
+                <a class="as" href="#">Đăng ký tại đây</a>
+              </p>
+            </div>
+            <div class="rows">
+              <div class="cols">
+                <form class="page-auth" id="login">
+                  <fieldset class="form-auth">
+                    <label>Số điện thoại</label>
+                    <input
+                      type="text"
+                      id="phone"
+                      placeholder="Số điện thoại"
+                      required
+                      autocomplete="tel"
+                    />
+                  </fieldset>
+                  <fieldset class="form-auth">
+                    <label>Mật khẩu</label>
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Mật khẩu"
+                      required
+                      autocomplete="current-password"
+                    />
+                    <small
+                      >Quên mật khẩu ? <a class="as" href="#"> Nhấn vào đây</a>
+                    </small>
+                  </fieldset>
+                  <div>
+                    <button type="submit">Đăng nhập</button>
+                  </div>
+                </form>
+                <div class="social-auth">
+                  <p>Hoặc đăng nhập bằng</p>
+                  <div class="wrap-social-auth">
+                    <button type="button" aria-label="Đăng nhập bằng Google">
+                      <div class="btn-google">
+                        <i class="fa-brands fa-google"></i>
+                      </div>
+                      <div>Đăng nhập Google</div>
+                    </button>
+                    <button type="button" aria-label="Đăng nhập bằng Facebook">
+                      <div class="btn-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                      </div>
+                      <div>Đăng nhập Facebook</div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
