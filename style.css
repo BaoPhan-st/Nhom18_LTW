@@ -1,3 +1,6 @@
+html{
+    overflow-y: scroll;
+}
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +11,8 @@
 .navbar{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     padding: 20px;
 }
 nav{
@@ -15,8 +20,10 @@ nav{
     text-align: right;
 }
 nav ul{
-    display:inline-block;
-    list-style-type: none;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
 }
 nav ul li{
     display: inline-block;
@@ -25,8 +32,24 @@ nav ul li{
     font-weight: bold;
 }
 a{
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 5px;
     text-decoration: none;
+    text-align: center;
     color: #555;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s case;   
+
+}
+a:hover{
+    background-color: #db434b;
+    transform: translateY(-2px);
+}
+nav ul li a.active{
+    color:#f77763;
+    border-bottom: 3px solid #f77763;
 }
 p{
     color:#555;

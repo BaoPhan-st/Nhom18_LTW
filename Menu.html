@@ -17,10 +17,10 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="index.html">Trang chủ</a></li>
-                        <li><a href="index.html">Sản phẩm</a></li>
-                        <li><a href="index.html">Liên hệ</a></li>
-                        <li><a href="index.html">Tài khoản</a></li>
+                        <li><a href="trangchu.html" class="active">Trang chủ</a></li>
+                        <li><a href="sanpham.html">Sản phẩm</a></li>
+                        <li><a href="lienhe.html">Liên hệ</a></li>
+                        <li><a href="taikhoan.html">Tài khoản</a></li>
                     </ul>
                 </nav>
                 <img src="img/shopping_bag_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" width="30px" height="30px" >
@@ -79,8 +79,16 @@
             </div>
         </div>
 
-
     </div>
     </div>
 </body>
+<script>
+    const links = document.querySelectorAll("nav ul li a");
+    const currentPage = window.location.pathname.split("/").pop();
+    links.forEach(link =>{
+        if (link.getAttribute("href") === currentPage){
+            link.classList.add("active");
+        }
+    });
+</script>
 </html>
