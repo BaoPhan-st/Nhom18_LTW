@@ -37,6 +37,7 @@ p{
     padding-left: 25px;
     padding-right: 25px;
 }
+/*----------Main Menu Header------*/
 .row{
     display: flex;
     flex-wrap: wrap;
@@ -68,7 +69,7 @@ p{
 .btn:hover{
     background: #563434;
 }
-.header{
+.menuHeader{
     background: radial-gradient(#ffffff, #b3e5fc);
 }
 /*---------------------footer------------*/
