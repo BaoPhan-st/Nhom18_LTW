@@ -1,161 +1,161 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
 .navbar {
-  display: flex;
-  align-items: center;
-  padding: 20px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
 }
 nav {
-  flex: 1;
-  text-align: right;
+    flex: 1;
+    text-align: right;
 }
 nav ul {
-  display: inline-block;
-  list-style-type: none;
+    display: inline-block;
+    list-style-type: none;
 }
 nav ul li {
-  display: inline-block;
-  margin-right: 20px;
-  font-size: 20px;
-  font-weight: bold;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
 a {
-  text-decoration: none;
-  color: #555;
+    text-decoration: none;
+    color: #555;
 }
 p {
-  color: #555;
+    color: #555;
 }
 .container {
-  max-width: 1200px;
-  margin: auto;
-  padding-left: 25px;
-  padding-right: 25px;
+    max-width: 1200px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 /*----------Main Menu Header------*/
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
 }
 .col2 {
-  flex-basis: 50%;
-  min-width: 300px;
+    flex-basis: 50%;
+    min-width: 300px;
 }
 .col2 img {
-  max-width: 100%;
-  padding: 60px 0;
+    max-width: 100%;
+    padding: 60px 0;
 }
 .col2 h1 {
-  font-size: 50px;
-  line-height: 60px;
-  margin: 25px 0;
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
 }
 .btn {
-  display: inline-block;
-  background: #ff523b;
-  color: #fff;
-  padding: 8px 30px;
-  margin: 30px 0;
-  border-radius: 30px;
-  transition: background 0.5s;
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
 }
 .btn:hover {
-  background: #563434;
+    background: #563434;
 }
 .menuHeader {
-  background: radial-gradient(#ffffff, #b3e5fc);
+    background: radial-gradient(#ffffff, #b3e5fc);
 }
 /*body chinh sach bao mat*/
 .policy-content p {
-  margin: 20px 0;
-  font-size: 22px;
-  line-height: 1.6;
-  font-family: "Times New Roman", Times, serif;
-  text-align: justify;
+    margin: 20px 0;
+    font-size: 22px;
+    line-height: 1.6;
+    font-family: "Times New Roman", Times, serif;
+    text-align: justify;
 }
 .policy-content ol {
-  margin: 20px 0 20px 30px;
-  font-size: 18px;
-  line-height: 1.6;
+    margin: 20px 0 20px 30px;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 .policy-content ol li {
-  padding-left: 5px;
-  font-family: "Times New Roman", Times, serif;
-  text-align: justify;
-  list-style: decimal;
+    padding-left: 5px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: justify;
+    list-style: decimal;
 }
 .policy-content p {
-  color: #0f172a;
+    color: #0f172a;
 }
 .row {
-  padding: 34px;
+    padding: 34px;
 }
 /*---------------------footer------------*/
 .footer {
-  background: #0f172a;
-  color: #e5e7eb;
-  padding: 60px 8% 40px;
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 60px 8% 40px;
 }
 
 .containerF {
-  max-width: 1200px;
-  margin: auto;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .footer .row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
 }
 
 .footer .col-1 img {
-  width: 120px;
-  height: auto;
+    width: 120px;
+    height: auto;
 }
 
 .footer .col-1 p {
-  color: #d1d5db;
-  font-size: 15px;
-  line-height: 26px;
-  margin-top: 18px;
-  max-width: 330px;
+    color: #d1d5db;
+    font-size: 15px;
+    line-height: 26px;
+    margin-top: 18px;
+    max-width: 330px;
 }
 
 .footer h4 {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  position: relative;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 .footer ul {
-  padding-left: 0;
+    padding-left: 0;
 }
 
 .footer ul li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .footer ul li a {
-  color: #cbd5e1;
-  font-size: 15px;
-  transition: all 0.3s ease;
+    color: #cbd5e1;
+    font-size: 15px;
+    transition: all 0.3s ease;
 }
 .footer ul li a:hover {
-  color: #ffb324;
-  padding-left: 4px;
+    color: #ffb324;
+    padding-left: 4px;
 }
 
 .footer .row > div:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding-right: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 20px;
 }

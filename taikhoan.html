@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BHD SPORT SHOES - Sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #ffffff;
+            color: #e4e4e4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: -100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .login-box{
+            background-color: #997676;
+            padding: 40px 30px;
+            border-radius: 10px;
+            width: 400px;
+            max-width: 90%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            white-space: nowrap;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .login-box .logo-login{
+            font-size: 50px;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .login-box .form-login{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .login-box input{
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+        .login-box input:focus{
+            box-shadow: 0 0 5px #ff523b;
+        }
+        .login-box .login-btn{
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .login-box .login-btn:first-of-type{
+            background-color: #ff523b;
+            color: #fff;
+        }
+        .login-box .login-btn:first-of-type:hover{
+            background-color: #e04b2b;
+        }
+        .login-box .login-btn:last-of-type{
+            background-color: #fff;
+            color: #997676;
+        }
+        .login-box .login-btn:last-of-type:hover{
+            background-color: #f2f2f2;
+        }
+        .login-box .forgot{
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .login-box .forgot:hover{
+            text-decoration: underline;
+        }
+        .login-box .divider{
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="img/BHD_SportShoes_Logo_WhiteBackground_1-removebg-preview.png" alt="logo" width="100px" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html">Trang chủ</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="lienhe.html">Liên hệ</a></li>
+                    <li><a href="taikhoan.html" class="active">Tài khoản</a></li>
+                </ul>
+            </nav>
+            <img src="img/shopping_bag_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" width="30px" height="30px" >
+        </div>
+    </div>
+</div>
+<div class="login-box">
+    <div class="logo-login">BHD Sport Shoes</div>
+    <div class="form-login">
+        <input type="text" placeholder="Email hoặc số điện thoại">
+        <input type="password" placeholder="Mật khẩu">            
+        <button class="loggin-btn">Đăng nhập</button>
+        <a href="#" class="forgot">Quên mật khẩu?</a>
+        <div class="divider"></div>
+        <button class="loggin-btn">Tạo tài khoản mới</button>
+    </div>
+</div>
+</body>
+</html>
