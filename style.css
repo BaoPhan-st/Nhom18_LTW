@@ -25,8 +25,23 @@ nav ul li {
     font-weight: bold;
 }
 a {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 5px;
     text-decoration: none;
+    text-align: center;
     color: #555;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+a:hover{
+    background-color: #db434b;
+    transform: translateY(-2px);
+}
+a.active{
+    color: #f77763;
+    border-bottom: 3px solid #f77763;
 }
 p {
     color: #555;
