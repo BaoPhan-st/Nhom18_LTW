@@ -1155,3 +1155,47 @@ a.footer-link:is(:hover, :focus) {
     gap: 50px;
   }
 }
+/*-----------------------------------*\
+ * #ChinhsachBaoMat
+\*-----------------------------------*/
+.ChinhSachBaoMat {
+    font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
+    padding: 60px 0;
+    line-height: 1.8;
+
+}
+
+.ChinhSachBaoMat .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.ChinhSachBaoMat h2 {
+    margin-bottom: 25px;
+}
+
+.ChinhSachBaoMat p {
+    margin-bottom: 16px;
+}
+
+.ChinhSachBaoMat ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.ChinhSachBaoMat ul li {
+    margin-bottom: 10px;
+    padding-left: 1em;
+    position: relative;
+}
+.ChinhSachBaoMat ul li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+}
+#TextPageHeader{
+    background: var(--cultured);
+}
+
