@@ -2,13 +2,6 @@
  * #style.css
 \*-----------------------------------*/
 
-/**
- * copyright 2022 codewithsadee
- */
-
-/*-----------------------------------*\
- * #CUSTOM PROPERTY
-\*-----------------------------------*/
 
 :root {
   /**
@@ -33,8 +26,8 @@
    * typography
    */
 
-  --ff-roboto: "Roboto", sans-serif;
-  --ff-josefin-sans: "Josefin Sans", sans-serif;
+  --ff-roboto: "Roboto";
+  --ff-josefin-sans: "Josefin Sans";
 
   --fs-1: 3rem;
   --fs-2: 2.6rem;
@@ -92,7 +85,7 @@ span,
 table,
 tbody,
 button,
-ion-icon {
+.ion-icon {
   display: block;
 }
 
@@ -117,7 +110,7 @@ address {
 }
 
 html {
-  font-family: var(--ff-josefin-sans);
+  font-family: var(--ff-josefin-sans),sans-serif;
   font-size: 10px;
   scroll-behavior: smooth;
 }
@@ -267,7 +260,7 @@ body {
   background: var(--bittersweet);
   color: var(--white);
   padding: 5px 15px;
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   font-size: var(--fs-7);
   border-radius: 25px;
 }
@@ -319,7 +312,7 @@ body {
   width: max-content;
   background: var(--black_90);
   color: var(--white);
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   font-size: var(--fs-7);
   padding: 4px 8px;
   border-radius: 4px;
@@ -338,7 +331,7 @@ body {
 }
 
 .card-cat {
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   color: var(--onyx);
   font-size: var(--fs-7);
   margin-bottom: 12px;
@@ -369,7 +362,7 @@ body {
 
 .card-price {
   color: var(--bittersweet);
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   font-weight: var(--fw-600);
 }
 
@@ -384,7 +377,7 @@ body {
   padding: 0;
   margin-inline: auto;
   max-width: max-content;
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   font-size: var(--fs-6);
   font-weight: var(--fw-500);
   padding-bottom: 6px;
@@ -444,7 +437,7 @@ body {
   max-width: 270px;
   height: 100%;
   border-right: 3px solid var(--rich-black-fogra-29);
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   overflow-y: auto;
   overscroll-behavior: contain;
   z-index: 2;
@@ -588,7 +581,7 @@ body {
 
 .hero-text {
   color: var(--onyx);
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   font-size: var(--fs-8);
   line-height: 1.8;
   max-width: 46ch;
@@ -632,7 +625,7 @@ body {
 .filter-btn {
   color: var(--onyx);
   padding: 10px 16px;
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
   font-size: var(--fs-7);
   font-weight: var(--fw-500);
   border: 1px solid var(--gainsboro);
@@ -650,166 +643,13 @@ body {
   gap: 50px 25px;
 }
 
-/*-----------------------------------*\
- * #CTA
-\*-----------------------------------*/
-
-.cta-list {
-  display: grid;
-  gap: 40px;
-}
-
-.cta-card {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  color: var(--white);
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.cta-card .card-subtitle {
-  font-size: var(--fs-5);
-  margin-bottom: 15px;
-}
-
-.cta-card .card-title {
-  color: inherit;
-  line-height: 1.3;
-  margin-bottom: 20px;
-}
-
-/*-----------------------------------*\
- * #SPECIAL
-\*-----------------------------------*/
-
-.special-banner {
-  height: 500px;
-  background-color: var(--smoky-black);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  padding: 50px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.special-banner .banner-title {
-  color: var(--white);
-  font-weight: var(--fw-600);
-}
-
-.special .section-title {
-  margin-block: 40px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.special .section-title .text {
-  min-width: max-content;
-}
-
-.special .section-title .line {
-  width: 100%;
-  height: 1px;
-  background: var(--gainsboro);
-}
-
-/*-----------------------------------*\
- * #SERVICE
-\*-----------------------------------*/
-
-.service-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  padding-inline: 30px;
-}
-
-.service-item {
-  width: 220px;
-}
-
-.service-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.service-card .card-icon {
-  background: var(--bittersweet);
-  min-width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-}
-
-.service-card .card-icon img {
-  filter: brightness(0) invert(1);
-  width: 60%;
-  height: auto;
-}
-
-.service-card .card-title {
-  font-size: var(--fs-6);
-  margin-bottom: 8px;
-}
-
-.service-card .card-text {
-  color: var(--onyx);
-  font-family: var(--ff-roboto);
-  font-size: var(--fs-7);
-}
-
-.service-card .card-text span {
-  display: inline-block;
-  color: var(--bittersweet);
-}
-
-/*-----------------------------------*\
- * #INSTA POST
-\*-----------------------------------*/
-
-.insta-post-list {
-  gap: 0;
-}
-
-.insta-post-list .insta-post-item {
-  position: relative;
-  min-width: 33.33%;
-  aspect-ratio: 1 / 1;
-}
-
-.insta-post-link {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: var(--oxford-blue_60);
-  opacity: 0;
-  transition: var(--transition-1);
-}
-
-.insta-post-link ion-icon {
-  color: var(--white);
-  font-size: 40px;
-}
-
-.insta-post-link:is(:hover, :focus) {
-  opacity: 1;
-}
 
 /*-----------------------------------*\
  * #FOOTER
 \*-----------------------------------*/
 
 .footer {
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto),sans-serif;
 }
 
 .footer-top {
@@ -848,7 +688,7 @@ body {
 .footer-list-title {
   position: relative;
   color: var(--rich-black-fogra-29);
-  font-family: var(--ff-josefin-sans);
+  font-family: var(--ff-josefin-sans),sans-serif;
   font-size: var(--fs-3);
   font-weight: var(--fw-700);
   margin-bottom: 25px;
@@ -927,7 +767,7 @@ a.footer-link:is(:hover, :focus) {
   top: 0;
   bottom: 0;
   right: 0;
-  font-family: var(--ff-josefin-sans);
+  font-family: var(--ff-josefin-sans),sans-serif;
   font-size: var(--fs-6);
   font-weight: var(--fw-600);
   padding-inline: 20px;
@@ -1026,30 +866,6 @@ a.footer-link:is(:hover, :focus) {
 
   .product-list {
     grid-template-columns: 1fr 1fr;
-  }
-
-  /**
-   * CTA
-   */
-
-  .cta-card {
-    text-align: left;
-  }
-
-  .cta-card .card-title {
-    max-width: 14ch;
-  }
-
-  .cta-card .btn-link {
-    margin-inline: 0;
-  }
-
-  /**
-   * INSTA POST
-   */
-
-  .insta-post-list .insta-post-item {
-    min-width: 25%;
   }
 
   /**
@@ -1224,7 +1040,7 @@ a.footer-link:is(:hover, :focus) {
   }
 
   .navbar-link {
-    font-family: var(--ff-roboto);
+    font-family: var(--ff-roboto),sans-serif;
     font-weight: var(--fw-500);
   }
 

@@ -18,7 +18,6 @@ for (let i = 0; i < navElems.length; i++) {
   });
 }
 
-dad;
 
 /**
  * header & go top btn active on page scroll
