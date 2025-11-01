@@ -1164,7 +1164,6 @@ a.footer-link:is(:hover, :focus) {
     line-height: 1.8;
 
 }
-
 .ChinhSachBaoMat .container {
     max-width: 900px;
     margin: 0 auto;
@@ -1198,4 +1197,17 @@ a.footer-link:is(:hover, :focus) {
 #TextPageHeader{
     background: var(--cultured);
 }
+/*-----------------------------------*\
+ * #Chinhsachbaohanh
+\*-----------------------------------*/
+.ChinhSachBaoHanh {
+    font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
+    padding: 60px 0;
+    line-height: 1.8;
 
+}
+.ChinhSachBaoHanh .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
