@@ -31,82 +31,164 @@
     <!--
     - #HEADER
   -->
-   <header class="header">
-  <div class="container">
-    <div class="overlay"></div>
+    <header class="header">
+      <div class="container">
+        <div class="overlay"></div>
 
-    <a href="/Menu.html" class="logo">
-      <img
-        src="./assets/images/BHD%20LOGO.png"
-        width="100"
-        height="50"
-        alt="BHD logo"
-      />
-    </a>
+        <a href="/Menu.html" class="logo">
+          <img
+            src="./assets/images/BHD%20LOGO.png"
+            width="100"
+            height="50"
+            alt="BHD logo"
+          />
+        </a>
 
-    <!-- Nút mở menu -->
-    <button class="nav-open-btn">
-      <ion-icon name="menu-outline"></ion-icon>
-    </button>
+        <!-- Nút mở menu -->
+        <button class="nav-open-btn">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
 
-    <nav class="navbar">
-      <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
-        <ion-icon name="close-outline"></ion-icon>
-      </button>
-
-      <a href="/Menu.html" class="logo">
-        <img
-          src="./assets/images/BHD%20LOGO.png"
-          width="140"
-          height="50"
-          alt="BHD logo"
-        />
-      </a>
-
-      <ul class="navbar-list">
-        <li class="navbar-item">
-          <a href="/Menu.html" class="navbar-link">Trang chủ</a>
-        </li>
-        <li class="navbar-item">
-          <a href="#" class="navbar-link">Giới thiệu</a>
-        </li>
-        <li class="navbar-item">
-          <a href="#" class="navbar-link">Sản phẩm</a>
-        </li>
-        <li class="navbar-item">
-          <a href="/lienhe.html" class="navbar-link">Liên hệ</a>
-        </li>
-      </ul>
-
-      <ul class="nav-action-list">
-        <li>
-          <button class="nav-action-btn">
-            <ion-icon name="search-outline"></ion-icon>
-            <span class="nav-action-text">Tìm kiếm</span>
+        <nav class="navbar">
+          <button
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
+          >
+            <ion-icon name="close-outline"></ion-icon>
           </button>
-        </li>
-        <li>
-          <a href="/login.html" class="nav-action-btn">
-            <ion-icon name="person-outline"></ion-icon>
-            <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+
+          <a href="/Menu.html" class="logo">
+            <img
+              src="./assets/images/BHD%20LOGO.png"
+              width="140"
+              height="50"
+              alt="BHD logo"
+            />
           </a>
-        </li>
-        <li>
-          <button class="nav-action-btn">
-            <ion-icon name="heart-outline"></ion-icon>
-            <span class="nav-action-text">Yêu thích</span>
-          </button>
-        </li>
-        <li>
-          <button class="nav-action-btn">
-            <ion-icon name="bag-outline"></ion-icon>
-            <span class="nav-action-text">Giỏ hàng</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
+
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="/Menu.html" class="navbar-link">Trang chủ</a>
+            </li>
+            <li class="navbar-item">
+              <a href="#" class="navbar-link">Giới thiệu</a>
+            </li>
+            <li class="navbar-item">
+              <a href="#" class="navbar-link">Sản phẩm</a>
+            </li>
+            <li class="navbar-item">
+              <a href="/lienhe.html" class="navbar-link">Liên hệ</a>
+            </li>
+          </ul>
+
+          <ul class="nav-action-list">
+            <li>
+              <button class="nav-action-btn">
+                <ion-icon name="search-outline"></ion-icon>
+                <span class="nav-action-text">Tìm kiếm</span>
+              </button>
+            </li>
+            <li>
+              <a href="/login.html" class="nav-action-btn">
+                <ion-icon name="person-outline"></ion-icon>
+                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+              </a>
+            </li>
+            <li>
+              <button class="nav-action-btn">
+                <ion-icon name="heart-outline"></ion-icon>
+                <span class="nav-action-text">Yêu thích</span>
+              </button>
+            </li>
+            <li>
+              <div class="mini-cart-menu">
+                <a href="giohang.html" class="nav-action-btn" title="Giỏ hàng">
+                  <div class="cart-icon-wrapper">
+                    <ion-icon name="bag-outline"></ion-icon>
+
+                    <span class="mini-count_item">3</span>
+                  </div>
+
+                  <span class="nav-action-text">Giỏ hàng</span>
+                </a>
+
+                <div class="mini-cart-content">
+                  <ul class="mini-cart-items-list">
+                    <li>
+                      <img
+                        src="./assets/images/giay1.jpg"
+                        alt="Nike Air Force 1"
+                      />
+                      <div class="mini-item-info">
+                        <a href="#" class="mini-item-name"
+                          >Nike Air Force 1 '07</a
+                        >
+                        <span class="mini-item-meta">Size 42 / Trắng</span>
+                        <span class="mini-item-price">2,890,000₫</span>
+                        <span class="mini-quantity">x1</span>
+                      </div>
+                      <button class="remove-item">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </li>
+
+                    <li>
+                      <img
+                        src="./assets/images/giay2.jpg"
+                        alt="Adidas Ultraboost"
+                      />
+                      <div class="mini-item-info">
+                        <a href="#" class="mini-item-name"
+                          >Adidas Ultraboost 22</a
+                        >
+                        <span class="mini-item-meta">Size 41 / Đen</span>
+                        <span class="mini-item-price">4,500,000₫</span>
+                        <span class="mini-quantity">x1</span>
+                      </div>
+                      <button class="remove-item">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </li>
+
+                    <li>
+                      <img
+                        src="./assets/images/giay3.jpg"
+                        alt="Puma Suede Classic"
+                      />
+                      <div class="mini-item-info">
+                        <a href="#" class="mini-item-name"
+                          >Puma Suede Classic</a
+                        >
+                        <span class="mini-item-meta">Size 40 / Đỏ</span>
+                        <span class="mini-item-price">1,990,000₫</span>
+                        <span class="mini-quantity">x1</span>
+                      </div>
+                      <button class="remove-item">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="mini-cart-footer">
+                    <div class="mini-cart-total">
+                      <span
+                        >Tổng tiền tạm tính:
+                        <strong class="mini-total-price"
+                          >9,380,000₫</strong
+                        ></span
+                      >
+                    </div>
+                    <a href="giohang.html" class="btn-pay"
+                      >Tiến hành thanh toán</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <main>
       <article>
@@ -1184,173 +1266,175 @@
     - #FOOTER
   -->
     <footer class="footer">
-  <div class="footer-top section">
-    <div class="container">
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <img
-            src="./assets/images/BHD%20LOGO.png"
-            width="110"
-            height="50"
-            alt="BHD"
-          />
-        </a>
+      <div class="footer-top section">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <img
+                src="./assets/images/BHD%20LOGO.png"
+                width="110"
+                height="50"
+                alt="BHD"
+              />
+            </a>
 
-        <ul class="social-list">
-          <li>
-            <a href="https://www.facebook.com/kcntt.nlu" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
+            <ul class="social-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/kcntt.nlu"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
 
-          <li>
-            <a
-              href="https://www.youtube.com/@NongLamUniversity/videos"
-              class="social-link"
-            >
-              <ion-icon name="logo-youtube"></ion-icon>
-            </a>
-          </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@NongLamUniversity/videos"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+              </li>
 
-          <li>
-            <a
-              href="https://www.tiktok.com/@nonglam.university"
-              class="social-link"
-            >
-              <ion-icon name="logo-tiktok"></ion-icon>
-            </a>
-          </li>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@nonglam.university"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-tiktok"></ion-icon>
+                </a>
+              </li>
 
-          <li>
-            <a
-              href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
-              class="social-link"
-            >
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-        </ul>
-      </div>
+              <li>
+                <a
+                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-      <div class="footer-link-box">
-        <ul class="footer-list">
-          <li>
-            <p class="footer-list-title">Thông tin liên hệ</p>
-          </li>
+          <div class="footer-link-box">
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Thông tin liên hệ</p>
+              </li>
 
-          <li>
-            <address class="footer-link">
-              <ion-icon name="location"></ion-icon>
-              <span class="footer-link-text">
-                Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
-              </span>
-            </address>
-          </li>
+              <li>
+                <address class="footer-link">
+                  <ion-icon name="location"></ion-icon>
+                  <span class="footer-link-text">
+                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
+                  </span>
+                </address>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="call"></ion-icon>
-              <span class="footer-link-text">0332536387</span>
-            </a>
-          </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="call"></ion-icon>
+                  <span class="footer-link-text">0332536387</span>
+                </a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="mail"></ion-icon>
-              <span class="footer-link-text">BHDsport@gmail.com</span>
-            </a>
-          </li>
-        </ul>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="mail"></ion-icon>
+                  <span class="footer-link-text">BHDsport@gmail.com</span>
+                </a>
+              </li>
+            </ul>
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Tài khoản</p></li>
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Tài khoản</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Xem giỏ hàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Yêu thích</span>
-            </a>
-          </li>
-        </ul>
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Tài khoản</p></li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Tài khoản</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Xem giỏ hàng</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Yêu thích</span>
+                </a>
+              </li>
+            </ul>
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Chính sách</p></li>
-          <li>
-            <a href="ChínhSáchBảoMật.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Chính sách bảo mật</span>
-            </a>
-          </li>
-          <li>
-            <a href="ChinhSachBaoHanh.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Chính sách bảo hành</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Hướng dẫn mua hàng</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Hướng dẫn thanh toán</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">FAQs</span>
-            </a>
-          </li>
-        </ul>
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Chính sách</p></li>
+              <li>
+                <a href="ChínhSáchBảoMật.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo mật</span>
+                </a>
+              </li>
+              <li>
+                <a href="ChinhSachBaoHanh.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo hành</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Hướng dẫn thanh toán</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">FAQs</span>
+                </a>
+              </li>
+            </ul>
 
-        <div class="footer-list">
-          <p class="footer-list-title">Đăng kí nhận tin</p>
-          <form action="" class="newsletter-form">
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Email"
-              class="newsletter-input"
-            />
-            <button type="submit" class="btn btn-primary">Đăng kí</button>
-          </form>
+            <div class="footer-list">
+              <p class="footer-list-title">Đăng kí nhận tin</p>
+              <form action="" class="newsletter-form">
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email"
+                  class="newsletter-input"
+                />
+                <button type="submit" class="btn btn-primary">Đăng kí</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="footer-bottom">
-    <div class="container">
-      <p class="copyright">
-        &copy; 2025
-        <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn chinh
-        phục mọi hành trình
-      </p>
-    </div>
-  </div>
-</footer>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2025
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
+            chinh phục mọi hành trình
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <!-- 
     - custom js link
   -->
 
- 
     <!-- 
     - ionicon link
   -->
