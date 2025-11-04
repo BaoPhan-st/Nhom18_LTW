@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập - BHD SPORT SHOES</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .contact-wrapper {
+      display: flex;
+      gap: 30px;
+      width: 95%;
+      max-width: 1400px;
+      margin: 30px auto;
+    }
+
+    .bando {
+      flex: 2;
+      height: 450px;
+      border: none;
+    }
+
+    .info-container {
+      flex: 1;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      font-family: Arial, sans-serif;
+    }
+
+    .info-container h3 {
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .info-item i {
+      width: 30px;
+      margin-right: 15px;
+      font-size: 18px;
+      color: #0078ff;
+      flex-shrink: 0;
+      text-align: center;
+      margin-top: 3px;
+    }
+
+    .info-text {
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .info-text strong {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    .info-text a {
+      color: #0078ff;
+      text-decoration: none;
+    }
+    .info-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="overlay"></div>
+
+        <a href="/Menu.html" class="logo">
+          <img
+            src="./assets/images/BHD%20LOGO.png"
+            width="100"
+            height="50"
+            alt="BHD logo"
+          />
+        </a>
+
+        <!-- Nút mở menu -->
+        <button class="nav-open-btn">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <nav class="navbar">
+          <button
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
+          >
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <a href="/Menu.html" class="logo">
+            <img
+              src="./assets/images/BHD%20LOGO.png"
+              width="140"
+              height="50"
+              alt="BHD logo"
+            />
+          </a>
+
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="/Menu.html" class="navbar-link">Trang chủ</a>
+            </li>
+            <li class="navbar-item">
+              <a href="#" class="navbar-link">Giới thiệu</a>
+            </li>
+            <li class="navbar-item">
+              <a href="#" class="navbar-link">Sản phẩm</a>
+            </li>
+            <li class="navbar-item">
+              <a href="/lienhe.html" class="navbar-link">Liên hệ</a>
+            </li>
+          </ul>
+
+          <ul class="nav-action-list">
+            <li>
+              <button class="nav-action-btn">
+                <ion-icon name="search-outline"></ion-icon>
+                <span class="nav-action-text">Tìm kiếm</span>
+              </button>
+            </li>
+            <li>
+              <a href="/login.html" class="nav-action-btn">
+                <ion-icon name="person-outline"></ion-icon>
+                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+              </a>
+            </li>
+            <li>
+              <button class="nav-action-btn">
+                <ion-icon name="heart-outline"></ion-icon>
+                <span class="nav-action-text">Yêu thích</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-action-btn">
+                <ion-icon name="bag-outline"></ion-icon>
+                <span class="nav-action-text">Giỏ hàng</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="contact-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2145255159867!2d106.78918677586935!3d10.871281657435231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276398969f7b%3A0x9672b7efd0893fc4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1762058833289!5m2!1svi!2s"
+        class="bando"
+      ></iframe>
+
+      <div class="info-container">
+        <h3>LIÊN HỆ</h3>
+
+        <div class="info-item">
+          <i class="fa-solid fa-map"></i>
+          <div class="info-text">
+            <strong>Địa chỉ:</strong><br />
+            Khu phố 6, phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fa-solid fa-phone"></i>
+          <div class="info-text">
+            <strong>Hotline:</strong><br />
+            028 3896 6780
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fa-solid fa-clock"></i>
+          <div class="info-text">
+            <strong>Thời gian làm việc:</strong> <br />
+            Thứ 2 - Thứ 7: 7:30 - 17:00
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-top section">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <img
+                src="./assets/images/BHD%20LOGO.png"
+                width="110"
+                height="50"
+                alt="BHD"
+              />
+            </a>
+
+            <ul class="social-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/kcntt.nlu"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.youtube.com/@NongLamUniversity/videos"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.tiktok.com/@nonglam.university"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-tiktok"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-link-box">
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Thông tin liên hệ</p>
+              </li>
+
+              <li>
+                <address class="footer-link">
+                  <ion-icon name="location"></ion-icon>
+                  <span class="footer-link-text">
+                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
+                  </span>
+                </address>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="call"></ion-icon>
+                  <span class="footer-link-text">0332536387</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="mail"></ion-icon>
+                  <span class="footer-link-text">BHDsport@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Tài khoản</p></li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Tài khoản</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Xem giỏ hàng</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Yêu thích</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Chính sách</p></li>
+              <li>
+                <a href="ChínhSáchBảoMật.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo mật</span>
+                </a>
+              </li>
+              <li>
+                <a href="ChinhSachBaoHanh.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo hành</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Hướng dẫn thanh toán</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">FAQs</span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="footer-list">
+              <p class="footer-list-title">Đăng kí nhận tin</p>
+              <form action="" class="newsletter-form">
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email"
+                  class="newsletter-input"
+                />
+                <button type="submit" class="btn btn-primary">Đăng kí</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2025
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
+            chinh phục mọi hành trình
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
