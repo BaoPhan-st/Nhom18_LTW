@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BHD - SPORT SHOES</title>
+    <style>
+        h2{
+            font: arial-labelledby 2.5rem;
+
+        }
+        h3{
+            font-size: 2.2rem;
+            margin: 0 0 8px;
+        }
+    </style>
 
     <!--
     - favicon
@@ -125,8 +135,110 @@
 </header>
 <main class="ChinhSachBaoHanh">
     <div class="container">
-        <h2>Chính sách bảo hành</h2>
+        <h2>Chính sách bảo hành
+            
+            <!--phạm vi áp dụng-->
+            <h3 id="scope" >1. Phạm vi áp dụng</h3>
+            <p>Chính sách này áp dụng cho tất cả sản phẩm giày bán tại <strong>BHDSportShoes</strong>, trừ khi có thoả thuận khác đã được ghi rõ trong hoá đơn hoặc hợp đồng.</p>
+            
+            <!--thời hạn bảo hành-->
+            <h3 id="warranty-period" >2. Thời hạn bảo hành</h3>
+            <p>Thời hạn bảo hành được ghi rõ trên từng sản phẩm/hoá đơn như sau
+                <ul>
+                    <li><strong>Giày chính hàng (bảo hành lỗi sản xuất: </strong>6 tháng kể từ ngày mua.</li>
+                    <li><strong>Phụ kiện (dây, lót cổ chân,...): </strong>4 tháng kể từ ngày mua.</li>
+                </ul>
+            </p>
+            <p class="muted">Lưu ý: thời gian bảo hành bắt đầu tính từ <i>ngày mua</i> trên hoá đơn/phiếu bảo hành.</p>
 
+            <!--những hạng mục bảo hành-->
+            <h3 id="covered">3. Những hạng mục được bảo hành</h3>
+            <p>Chúng tôi bảo hành các lỗi do nhà sản xuất, bao gồm nhưng không giới hạn:
+                <ul>
+                    <li>Đứt chỉ, bong keo tại các mối nối do lỗi sản xuất.</li>
+                    <li>Đế bị nứt vỡ sớm(không do va đập mạnh hay tác động bên ngoài).</li>
+                    <li>Hỏng khoá, móc, vhi tiết cơ bản do lỗi sản xuất.</li>
+                </ul>
+            </p>
+            
+            <!--những hạng muc không được bảo hành-->
+            <h3 id="not-covered">4. Những trường hợp không được bảo hành</h3>
+            <p>Không bảo hành trong các trường hợp sau:
+                <ul>
+                    <li>Tổn hại do sử dụng sai mục đích, bảo quản sai, bị ngâm nước, dùng hoá chất tẩy rửa mạnh.</li>
+                    <li>Hư hại do va chạm, tai nạn hoặc tác động vật lý(cắt, cháy, rách do ngoại lực).</li>
+                    <li>Mài mòn tự nhiên trong quá trình sử dụng(đế mòn, đổi màu nhẹ...)</li>
+                    <li>Sản phẩm đã được sửa chữa/thay đổi từ bên thứ 3 không được uỷ quyền.</li>
+                    <li>Thiếu phiếu bảo hành/hoá đơn mua hàng(nếu điều kiện bảo hành được yêu cầu).</li>
+                </ul>
+            </p>
+
+            <!--quy trình gửi sản phẩm bảo hành-->
+            <h3 id="procedure">5. Quy trình gửi sản phẩm bảo hành</h3>
+            <ol>
+                <li>1. Chuẩn bị: Gửi kèm <strong>Hoá đơn/Phiếu bảo hành</strong>, mô tả lỗi, ảnh chụp minh hoạ.</li>
+                <li>2. Gửi/đem sản phẩm đến <strong>Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</strong> hoặc gửi qua bưu điện theo hướng dẫn.</li>
+                <li>3. Kiểm tra: Nhân viên kỹ thuật sẽ kiểm tra và xác nhận lỗi trong vòng <strong>3-7 ngày</strong> làm việc(tuỳ thuộc lượng sản phẩm được yêu cầu).</li>
+                <li>4. Thông báo: Chúng tôi sẽ thông báo kết quả bằng email/số điện thoại.</li>
+                <li>5. Hoàn tất: Nếu đủ điều kiện bảo hành, sản phẩm sẽ được sửa chữa/chuyển đổi/hoàn tiền theo thoã thuận và chính sách dưới đây.</li>
+            </ol>
+            <div class="notes" role="notes">
+                Nếu phát hiện lỗi nghiêm tro ngj do nhà sản xuất trong vòng <strong>7 ngày</strong> kể từ ngày nhận hàng, bạn có thể yêu cầu đổi hoặc hoàn tiền ngay.
+            </div>
+            
+            <!--thời gian sửa chữa và cách xử lý-->
+            <h3 id="repair-time">6. Thời gian sửa chữa và cách xử lý</h3>
+            <p>Thời gian xử lý bảo hành tuỳ thuộc vào mức độ hỏng và phụ tùng:</p>
+            <table aria-label="Bảng thời gian xử lý">
+                <thead>
+                    <tr><th>Loại xử lý</th><th>Thời gian ước tính</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Sữa chữa thông thường</td><td>7-14 ngày làm việc</td></tr>
+                    <tr><td>Thay thế linh kiện/đế</td><td>10-20 ngày (tuỳ nguồn cung)</td></tr>
+                    <tr><td>Hoàn tiền/Đổi hàng</td><td>3-5 ngày làm việc</td></tr>
+                </tbody>
+            </table>
+            <p class="muted">Thời gian trên là ước tính; chúng tôi sẽ cập nhật liên tục cho khách hàng nếu cần thêm thời gian do chờ phụ kiện.</p>
+
+            <!--chi phí vận chuyển và chi phí khác-->
+            <h3 id="ship-cost">7. Chi phí vận chuyển và chi phí khác</h3>
+            <p>Trong trường hợp bảo hành do lỗi nhà sản xuất, <strong>BHDSportShoes</strong> chịu mọi chi phí vận chuyển nội bộ theo chính sách(nếu có). Nếu lỗi thuộc phạm vi bảo hành, khách hàng chịu chi phí gửi/nhận và chi phí sửa chữa phát sinh.</p>
+
+            <!--hoàn tiền-->
+            <h3 id="refund">8. Hoàn tiền</h3>
+            <p>Hoàn tiền được thực hiện khi:</p>
+            <ul>
+                <li>Sản phẩm bị lỗi nặng và không thể sửa chữa trong thời gian hợp lý.</li>
+                <li>Không còn hàng để đổi cùng mã/kiểu/size tương đương và khách hàng yêu cầu hoàn tiền.</li>
+            </ul>
+            <p>Thời gian nhận tiền: tuỳ phương thức thanh toán, thường từ <strong>3-7 ngày làm việc</strong> kể từ khi khách hàng chấp nhận hoàn tiền.</p>
+
+            <!--hướng dẫn bảo quản để tránh hư hỏng-->
+            <h3 id="tips">9. Hướng dẫn bảo quản để tránh hư hỏng</h3>
+            <ol>
+                <li>Tránh ngâm nước, để chỗ khỗ ráo, thoáng mát; không phơi trực tiếp dưới ánh nắng mặt trời gay gắt thời gian dài.</li>
+                <li>Vệ sinh bằng khăn mềm hoặc giấy lau ẩm, dùng dầu bóng/kem chuyên dụng nếu cần thiết - theo hướng dẫn nhà sản xuất.</li>
+                <li>Không sử dụng chất tẩy rửa có tính kiềm/axit manh hoặc cọ quá mạnh vào bế mặt da/sợi.</li>
+            </ol>
+            
+            <!--lien hệ bảo hành-->
+            <h3 id="contact">10. Liên hệ bảo hành</h3>
+            <div class="contact" role="region" aria-label="Thông tin liên hệ">
+                <p><strong>Địa chỉ:</strong> <a href="tel{{SĐT}}">Khu Phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</a></p>
+                <p><strong>Hotline:</strong> <a href="tel{{SĐT}}">0332536387</a></p>
+                <p><strong>Địa chỉ:</strong> <a href="tel{{SĐT}}">BHDsport@gmail.com</a></p>
+                <p><strong>GIờ làm việc:</strong> 8:30-14:30, Thứ 2-CN</p>
+            </div>
+
+            <!--tranh chấp và điều khoản pháp lý-->
+            <h3 id="dispute">11. Tranh chấp và điều khoản pháp lý</h3>
+            <p>Mọi tranh chấp liên quan đên chính sách này sẽ được giải quyết theo pháp luật Việt Nam. Nếu cần hỗ trợ thêm, hai bên sẽ cố gắng thương lượng trươc khi đưa ra cơ quan có thẩm quyền.</p>
+
+            <!--sửa đổi chính sách-->
+            <h3 id="version">12. Sửa đổi chính sách</h3>
+            <p>Chúng tôi có quyền cập nhật chính sách này. Mọi sửa đổi sẽ được đăng trên trang web và có hiệu lực kể từ ngày phát hành chính sách mới nhất.</p>
+        </h2>
 
     </div>
 </main>
