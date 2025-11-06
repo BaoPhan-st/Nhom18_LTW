@@ -2262,3 +2262,406 @@ a.footer-link:is(:hover, :focus) {
 .faq-answer ul {
     padding-left: 20px;
 }
+/*-----------------------------------*\
+ * #TAI KHOAN
+\*-----------------------------------*/
+
+.TaiKhoanPage {
+    padding-block: var(--section-padding);
+    background: var(--white);
+}
+
+.account-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.page-title {
+    font-size: var(--fs-2);
+    font-weight: var(--fw-700);
+    color: var(--rich-black-fogra-29);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.account-layout {
+    display: flex;
+    gap: 30px;
+}
+
+/* --- Sidebar Navigation --- */
+.account-sidebar {
+    flex-shrink: 0;
+    width: 250px;
+    padding: 20px;
+    background: var(--cultured);
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.user-name-display {
+    font-size: var(--fs-4);
+    font-weight: var(--fw-600);
+    color: var(--rich-black-fogra-29);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gainsboro);
+}
+
+.account-nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.account-nav-list li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: var(--onyx);
+    font-size: var(--fs-5);
+    font-weight: var(--fw-500);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: var(--transition-1);
+}
+
+.account-nav-list li ion-icon {
+    font-size: 2rem;
+}
+
+.account-nav-list li a:hover,
+.account-nav-list li.active a {
+    background: var(--bittersweet);
+    color: var(--white);
+    font-weight: var(--fw-600);
+}
+
+/* --- Main Content Area --- */
+.account-content {
+    flex-grow: 1;
+    background: var(--white);
+    padding: 20px;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.content-title {
+    font-size: var(--fs-3);
+    color: var(--bittersweet);
+    margin-bottom: 10px;
+}
+
+.account-form {
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: var(--fw-500);
+    margin-bottom: 8px;
+    color: var(--onyx);
+}
+
+.account-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--gainsboro);
+    border-radius: 4px;
+    font-size: var(--fs-6);
+    color: var(--rich-black-fogra-29);
+}
+
+.btn-save {
+    margin-top: 10px;
+    padding: 12px 30px;
+}
+
+/* --- Address Book Styling --- */
+.address-item {
+    border: 1px dashed var(--gainsboro);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+.address-item p {
+    font-size: var(--fs-6);
+    line-height: 1.6;
+    margin: 0;
+    color: var(--onyx);
+}
+.address-actions {
+    margin-top: 10px;
+}
+.btn-link.TaiKhoanPage {
+    background: none;
+    border: none;
+    color: var(--bittersweet);
+    cursor: pointer;
+    font-size: var(--fs-7);
+    margin-right: 15px;
+    padding: 0;
+    text-decoration: underline;
+}
+.btn-secondary.TaiKhoanPage {
+    padding: 10px 20px;
+    background: var(--cultured);
+    color: var(--rich-black-fogra-29);
+    border: 1px solid var(--gainsboro);
+    border-radius: 4px;
+    font-weight: var(--fw-500);
+    cursor: pointer;
+}
+
+/* --- Order History Table --- */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: var(--fs-6);
+    text-align: left;
+}
+.order-table th, .order-table td {
+    padding: 10px 15px;
+    border: 1px solid var(--cultured);
+}
+.order-table th {
+    background-color: var(--cultured);
+    font-weight: var(--fw-600);
+    color: var(--rich-black-fogra-29);
+}
+.status-delivered {
+    color: hsl(120, 39%, 45%);
+    font-weight: var(--fw-500);
+}
+.status-processing {
+    color: var(--salmon);
+    font-weight: var(--fw-500);
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .account-layout {
+        flex-direction: column;
+    }
+    .account-sidebar {
+        width: 100%;
+    }
+    .account-nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    .account-nav-list li {
+        flex-grow: 1;
+        min-width: 150px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/*-----------------------------------*\
+ * #ADDRESS MODAL (Hộp thoại Địa chỉ)
+\*-----------------------------------*/
+
+.modal {
+    /* Thiết lập Modal mặc định ẩn */
+    display: none;
+    position: fixed;
+    z-index: 100; /* Đảm bảo nó nằm trên mọi thứ */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: hsla(0, 0%, 0%, 0.4); /* Nền mờ */
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid var(--gainsboro);
+    width: 90%;
+    max-width: 600px; /* <--- ĐÃ TĂNG KÍCH THƯỚC */
+    border-radius: 8px;
+    position: relative;
+    animation: slideUp 0.3s;
+}
+
+.modal-title {
+    color: var(--rich-black-fogra-29);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--cultured);
+    padding-bottom: 10px;
+}
+
+.close-btn {
+    color: var(--onyx);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transition: var(--transition-1);
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--bittersweet);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.address-modal-form input {
+    margin-bottom: 5px;
+}
+
+.btn-save-address {
+    width: 100%;
+    margin-top: 20px;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* --- Tăng kích thước ô input trong Modal --- */
+.address-modal-form .input-group {
+    margin-bottom: 15px;
+}
+
+.address-modal-form input {
+    padding: 14px 15px;
+    width: 100%;
+    font-size: var(--fs-5);
+    border: 1px solid var(--gainsboro);
+    border-radius: 4px;
+}
+/*-----------------------------------*\
+ * #TOAST NOTIFICATION
+\*-----------------------------------*/
+
+.toast-container {
+    position: fixed;
+    bottom: 20px; /* Vị trí: dưới cùng, 20px từ mép */
+    left: 50%;
+    transform: translateX(-50%); /* Đưa vào giữa màn hình theo chiều ngang */
+    z-index: 1000; /* Đảm bảo nằm trên mọi thứ */
+    pointer-events: none; /* Cho phép click xuyên qua khi ẩn */
+}
+
+.toast-message {
+    visibility: hidden;
+
+    background-color: hsla(0, 0%, 15%, 0.9); /* Nền tối mờ */
+    color: var(--white);
+    text-align: center;
+    padding: 12px 25px;
+    font-size: var(--fs-6);
+    font-weight: var(--fw-500);
+
+    transition: visibility 0s, opacity 0.5s linear;
+    opacity: 0;
+}
+
+.toast-message.show {
+    visibility: visible;
+    opacity: 1;
+}
+/*-----------------------------------*\
+ * #SEARCH FORM
+\*-----------------------------------*/
+
+.search-form {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--white);
+    border-top: 1px solid var(--gainsboro);
+    border-bottom: 1px solid var(--gainsboro);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: var(--transition-1);
+    z-index: 50;
+}
+
+.search-form.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-form input[type="search"] {
+    flex-grow: 1;
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    font-size: var(--fs-5);
+    color: var(--rich-black-fogra-29);
+    outline: none;
+}
+
+.search-submit-btn,
+.search-close-btn {
+    background: none;
+    border: none;
+    color: var(--onyx);
+    font-size: 2.2rem;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: var(--transition-1);
+}
+
+.search-submit-btn:hover,
+.search-close-btn:hover {
+    color: var(--bittersweet);
+}
+
+@media (max-width: 992px) {
+    .search-form {
+        top: 0;
+        height: 70px;
+        position: fixed;
+    }
+}
+#search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
