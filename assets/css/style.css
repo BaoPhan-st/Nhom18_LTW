@@ -1300,60 +1300,113 @@ a.footer-link:is(:hover, :focus) {
   }
 }
 /*-----------------------------------*\
- * #ChinhsachBaoMat
+ * #CHINH SACH PAGES
 \*-----------------------------------*/
-.ChinhSachBaoMat {
-  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
-  padding: 60px 0;
-  line-height: 1.8;
-}
-.ChinhSachBaoMat .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.ChinhSachBaoMat h2 {
-  margin-bottom: 25px;
-}
-
-.ChinhSachBaoMat p {
-  margin-bottom: 16px;
-}
-
-.ChinhSachBaoMat ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin-bottom: 20px;
-}
-
-.ChinhSachBaoMat ul li {
-  margin-bottom: 10px;
-  padding-left: 1em;
-  position: relative;
-}
-.ChinhSachBaoMat ul li::before {
-  content: "-";
-  position: absolute;
-  left: 0;
-}
-#TextPageHeader {
-  background: var(--cultured);
-}
-/*-----------------------------------*\
- * #Chinhsachbaohanh
-\*-----------------------------------*/
+.ChinhSachBaoMat,
 .ChinhSachBaoHanh {
-  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
-  padding: 60px 0;
-  line-height: 1.8;
+    padding-block: var(--section-padding);
+    background: var(--white);
 }
-.ChinhSachBaoHanh .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
+
+.policy-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
-/* CART PAGE */
+
+.policy-title {
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: var(--fw-700);
+    font-size: var(--fs-2);
+}
+
+.policy-date {
+    text-align: center;
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-7);
+    color: var(--gray-x-11-gray);
+    margin-bottom: 40px;
+}
+
+.summary {
+    font-size: var(--fs-5);
+    font-family: var(--ff-roboto), sans-serif;
+    line-height: 1.6;
+    color: var(--onyx);
+    padding: 20px;
+    background: var(--cultured);
+    border-left: 4px solid var(--bittersweet);
+    margin-bottom: 40px;
+}
+
+.policy-section {
+    margin-bottom: 30px;
+}
+
+.section-heading {
+    font-size: var(--fs-3);
+    font-weight: var(--fw-600);
+    color: var(--rich-black-fogra-29);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--gainsboro);
+}
+
+.ChinhSachBaoMat p,
+.ChinhSachBaoHanh p {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-6);
+    line-height: 1.8;
+    color: var(--onyx);
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.ChinhSachBaoMat ul,
+.ChinhSachBaoHanh ul,
+.ChinhSachBaoHanh ol {
+    list-style-type: disc;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.ChinhSachBaoHanh ol {
+    list-style-type: decimal;
+}
+
+.ChinhSachBaoMat li,
+.ChinhSachBaoHanh li {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-6);
+    line-height: 1.6;
+    color: var(--onyx);
+    margin-bottom: 8px;
+}
+
+.final-note {
+    margin-top: 40px;
+    padding: 15px;
+    background: var(--maximum-blue-green_10);
+    color: var(--rich-black-fogra-29);
+    font-family: var(--ff-roboto), sans-serif;
+    font-style: italic;
+    border-radius: 4px;
+}
+
+.final-note a {
+    color: var(--bittersweet);
+    display: inline;
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+    .policy-title {
+        font-size: var(--fs-3);
+    }
+}
+
 /* CART PAGE */
 .cart-container {
     max-width: 1200px;
@@ -1522,7 +1575,7 @@ a.footer-link:is(:hover, :focus) {
     }
 }
 /*-----------------------------------*\
-* #WISHLIST PAGE (PHIÊN BẢN SẠCH VÀ HIỆN ĐẠI)
+           #WISHLIST PAGE
 \*-----------------------------------*/
 
 .WishList {
@@ -1752,4 +1805,460 @@ a.footer-link:is(:hover, :focus) {
         width: auto;
         flex-shrink: 0;
     }
+}
+/*-----------------------------------*\
+ * #GIOITHIEU PAGE
+\*-----------------------------------*/
+
+.GioiThieuPage {
+    padding-block: var(--section-padding);
+    background: var(--white);
+}
+
+.gioithieu-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header .h1 {
+    font-size: var(--fs-1);
+    font-weight: var(--fw-700);
+    color: var(--rich-black-fogra-29);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-5);
+    color: var(--onyx);
+    font-weight: var(--fw-500);
+}
+
+.header-divider {
+    border: 0;
+    border-top: 2px solid var(--bittersweet); /* Màu chủ đạo nổi bật */
+    width: 80px;
+    margin: 20px auto 50px auto;
+}
+
+/* Nội dung từng Section */
+.section-content {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed var(--gainsboro);
+}
+
+.section-content:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.section-title {
+    font-size: var(--fs-3);
+    color: var(--rich-black-fogra-29);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--cultured);
+}
+
+/* Tiêu đề phụ (H3) */
+.section-content .h3 {
+    font-family: var(--ff-josefin-sans), sans-serif;
+    color: var(--bittersweet);
+    font-weight: var(--fw-600);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Đoạn văn bản */
+.section-content p {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-6);
+    line-height: 1.8;
+    color: var(--onyx);
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+.section-content strong {
+    font-weight: var(--fw-700);
+    color: var(--rich-black-fogra-29);
+}
+
+/*-----------------------------------*\
+ * #GIOITHIEU PAGE
+\*-----------------------------------*/
+
+.GioiThieuPage {
+    padding-block: var(--section-padding);
+    background: var(--white);
+}
+
+.gioithieu-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header .h1 {
+    font-size: var(--fs-1);
+    font-weight: var(--fw-700);
+    color: var(--rich-black-fogra-29);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-5);
+    color: var(--onyx);
+    font-weight: var(--fw-500);
+}
+
+.header-divider {
+    border: 0;
+    border-top: 2px solid var(--bittersweet); /* Màu chủ đạo nổi bật */
+    width: 80px;
+    margin: 20px auto 50px auto;
+}
+
+/* Nội dung từng Section */
+.section-content {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed var(--gainsboro);
+}
+
+.section-content:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.section-title {
+    font-size: var(--fs-3); /* 2.2rem */
+    color: var(--rich-black-fogra-29);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--cultured);
+}
+
+/* Tiêu đề phụ (H3) */
+.section-content .h3 {
+    font-family: var(--ff-josefin-sans), sans-serif;
+    color: var(--bittersweet); /* Màu nhấn */
+    font-weight: var(--fw-600);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Đoạn văn bản */
+.section-content p {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-6); /* 1.6rem */
+    line-height: 1.8;
+    color: var(--onyx);
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+.section-content strong {
+    font-weight: var(--fw-700);
+    color: var(--rich-black-fogra-29);
+}
+
+/* Sứ mệnh và Tầm nhìn */
+.section-mission {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.mission-block {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: var(--cultured);
+    border-left: 5px solid var(--bittersweet);
+    border-radius: 4px;
+}
+.mission-block p {
+    margin-bottom: 0;
+}
+
+.final-cta {
+    text-align: center;
+    font-size: var(--fs-4);
+    font-weight: var(--fw-700);
+    color: var(--bittersweet) !important;
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-mission {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .mission-block {
+        min-width: 100%;
+    }
+}
+.section-mission {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.mission-block {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: var(--cultured);
+    border-left: 5px solid var(--bittersweet);
+    border-radius: 4px;
+}
+.mission-block p {
+    margin-bottom: 0;
+}
+
+.final-cta {
+    text-align: center;
+    font-size: var(--fs-4);
+    font-weight: var(--fw-700);
+    color: var(--bittersweet) !important;
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-mission {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .mission-block {
+        min-width: 100%;
+    }
+}
+/*-----------------------------------*\
+ * #HUONG DAN MUA HANG PAGE
+\*-----------------------------------*/
+
+.HuongDanMuaHangPage {
+    padding-block: var(--section-padding);
+    background: var(--white);
+}
+
+.guide-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.guide-title {
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: var(--fw-700);
+    font-size: var(--fs-2);
+}
+
+.guide-subtitle {
+    text-align: center;
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-5);
+    color: var(--bittersweet);
+    margin-bottom: 40px;
+}
+
+.summary {
+    font-size: var(--fs-5);
+    font-family: var(--ff-roboto), sans-serif;
+    line-height: 1.6;
+    color: var(--onyx);
+    padding: 20px;
+    background: var(--cultured);
+    border-left: 4px solid var(--bittersweet);
+    margin-bottom: 40px;
+}
+
+.guide-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--gainsboro);
+    border-radius: 8px;
+}
+
+.step-heading {
+    font-size: var(--fs-3);
+    font-weight: var(--fw-600);
+    color: var(--rich-black-fogra-29);
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-number {
+    font-size: 3rem;
+    font-weight: var(--fw-700);
+    color: var(--bittersweet);
+    flex-shrink: 0;
+    padding-right: 10px;
+    border-right: 2px solid var(--gainsboro);
+}
+
+.step-detail p,
+.step-detail ul,
+.step-detail ol {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-6);
+    line-height: 1.8;
+    color: var(--onyx);
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.step-detail ul,
+.step-detail ol {
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+
+.guide-separator {
+    border: 0;
+    border-top: 1px dashed var(--gray-x-11-gray);
+    margin: 40px 0;
+}
+
+.final-note ion-icon {
+    font-size: 1.8rem;
+}
+/*-----------------------------------*\
+ * #FAQ PAGE
+\*-----------------------------------*/
+
+.FAQPage {
+    padding-block: var(--section-padding);
+    background: var(--white);
+}
+
+.faq-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.faq-title {
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: var(--fw-700);
+    font-size: var(--fs-2);
+}
+
+.faq-subtitle {
+    text-align: center;
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-5);
+    color: var(--onyx);
+    margin-bottom: 50px;
+}
+
+
+.faq-category {
+    margin-bottom: 40px;
+}
+
+.category-title {
+    font-size: var(--fs-3);
+    font-weight: var(--fw-600);
+    color: var(--bittersweet);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cultured);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.category-title ion-icon {
+    font-size: 2.5rem;
+}
+
+
+.faq-item {
+    border: 1px solid var(--gainsboro);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 10px hsla(0, 0%, 0%, 0.05);
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: var(--cultured);
+    color: var(--rich-black-fogra-29);
+    padding: 18px 25px;
+    font-size: var(--fs-5);
+    font-weight: var(--fw-500);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-1);
+}
+
+.faq-question:hover {
+    background: hsla(200, 12%, 95%, 0.8);
+}
+
+.toggle-icon {
+    font-size: 2rem;
+    color: var(--bittersweet);
+    transition: transform 0.3s ease;
+}
+
+
+.faq-question.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 25px;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background: var(--white);
+}
+
+.faq-answer.open {
+    max-height: 500px;
+    padding: 20px 25px;
+}
+
+.faq-answer p, .faq-answer ul {
+    font-family: var(--ff-roboto), sans-serif;
+    font-size: var(--fs-6);
+    line-height: 1.7;
+    color: var(--onyx);
+    margin-bottom: 10px;
+}
+
+.faq-answer ul {
+    padding-left: 20px;
 }
