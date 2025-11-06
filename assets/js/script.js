@@ -1,4 +1,4 @@
-"use strict";
+
 
 /**
  * navbar toggle
@@ -17,4 +17,5 @@ for (let i = 0; i < navElems.length; i++) {
     overlay.classList.toggle("active");
   });
 }
+
 
