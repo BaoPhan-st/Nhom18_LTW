@@ -86,12 +86,12 @@
             </ul>
 
           <ul class="nav-action-list">
-            <li>
-              <button class="nav-action-btn">
-                <ion-icon name="search-outline"></ion-icon>
-                <span class="nav-action-text">Tìm kiếm</span>
-              </button>
-            </li>
+              <li>
+                  <button class="nav-action-btn" id="searchToggleBtn" data-search-btn>
+                      <ion-icon name="search-outline"></ion-icon>
+                      <span class="nav-action-text">Tìm kiếm</span>
+                  </button>
+              </li>
             <li>
               <a href="login.html" class="nav-action-btn">
                 <ion-icon name="person-outline"></ion-icon>
@@ -111,6 +111,14 @@
                 </a>
             </li>
           </ul>
+            <form class="search-form" id="search-form" action="#" method="get">
+                <input type="search" name="query" placeholder="Tìm kiếm sản phẩm..." id="search-input" required>
+
+                <button type="button" class="search-close-btn" id="searchCloseBtn">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+            </form>
         </nav>
       </div>
     </header>
@@ -261,7 +269,7 @@
                         >
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
-                        <div class="card-action-tooltip" id="card-label-1">
+                        <div class="card-action-tooltip" id="card1-label-C">
                           Thêm vào giỏ hàng
                         </div>
                       </li>
@@ -272,7 +280,7 @@
                         >
                           <ion-icon name="heart-outline"></ion-icon>
                         </button>
-                        <div class="card-action-tooltip" id="card-label-2">
+                        <div class="card-action-tooltip" id="card1-label-W">
                           Thêm vào mục yêu thích
                         </div>
                       </li>
@@ -308,7 +316,7 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
+                        <div class="card-action-tooltip" id="card2-label-C">
                           Thêm vào giỏ hàng
                         </div>
                       </li>
@@ -319,7 +327,7 @@
                         >
                           <ion-icon name="heart-outline"></ion-icon>
                         </button>
-                        <div class="card-action-tooltip" id="card-label-2">
+                        <div class="card-action-tooltip" id="card2-label-W">
                           Thêm vào mục yêu thích
                         </div>
                       </li>
@@ -356,20 +364,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card3-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card3-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -404,20 +412,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card4label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card4-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -451,20 +459,20 @@
                         >
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card5-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card5-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -498,20 +506,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card6-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card6-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -546,20 +554,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card7-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card7-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -594,20 +602,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card8-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card8-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -640,20 +648,20 @@
                         >
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card9-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card9-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -687,20 +695,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card10-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card10-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -735,20 +743,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card11-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card11-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -773,7 +781,6 @@
                       alt="Running Sneaker Shoes"
                       class="image-contain"
                     />
-                    <div class="card-badge">New</div>
                     <ul class="card-action-list">
                       <li class="card-action-item">
                         <button
@@ -783,20 +790,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card12-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card12-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -830,20 +837,20 @@
                         >
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card13-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card13-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -877,20 +884,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card14-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card14-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -925,20 +932,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card15-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card15-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -973,20 +980,20 @@
                           <ion-icon name="cart-outline"></ion-icon>
                         </button>
 
-                        <div class="card-action-tooltip" id="card-label-1">
-                          Thêm vào giỏ hàng
-                        </div>
+                          <div class="card-action-tooltip" id="card16-label-C">
+                              Thêm vào giỏ hàng
+                          </div>
                       </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">
-                          Thêm vào mục yêu thích
-                        </div>
+                        <li class="card-action-item">
+                            <button
+                                    class="card-action-btn"
+                                    aria-labelledby="card-label-2"
+                            >
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card16-label-W">
+                                Thêm vào mục yêu thích
+                            </div>
                       </li>
                     </ul>
                   </figure>
@@ -1055,22 +1062,20 @@
                             <ion-icon name="cart-outline"></ion-icon>
                           </button>
 
-                          <div class="card-action-tooltip" id="card-label-1">
-                            Thêm vào giỏ hàng
-                          </div>
+                            <div class="card-action-tooltip" id="card17-label-C">
+                                Thêm vào giỏ hàng
+                            </div>
                         </li>
-
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-2"
-                          >
-                            <ion-icon name="heart-outline"></ion-icon>
-                          </button>
-
-                          <div class="card-action-tooltip" id="card-label-2">
-                            Thêm vào mục yêu thích
-                          </div>
+                          <li class="card-action-item">
+                              <button
+                                      class="card-action-btn"
+                                      aria-labelledby="card-label-2"
+                              >
+                                  <ion-icon name="heart-outline"></ion-icon>
+                              </button>
+                              <div class="card-action-tooltip" id="card17-label-W">
+                                  Thêm vào mục yêu thích
+                              </div>
                         </li>
                       </ul>
                     </figure>
@@ -1104,22 +1109,20 @@
                             <ion-icon name="cart-outline"></ion-icon>
                           </button>
 
-                          <div class="card-action-tooltip" id="card-label-1">
-                            Thêm vào giỏ hàng
-                          </div>
+                            <div class="card-action-tooltip" id="card18-label-C">
+                                Thêm vào giỏ hàng
+                            </div>
                         </li>
-
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-2"
-                          >
-                            <ion-icon name="heart-outline"></ion-icon>
-                          </button>
-
-                          <div class="card-action-tooltip" id="card-label-2">
-                            Thêm vào mục yêu thích
-                          </div>
+                          <li class="card-action-item">
+                              <button
+                                      class="card-action-btn"
+                                      aria-labelledby="card-label-2"
+                              >
+                                  <ion-icon name="heart-outline"></ion-icon>
+                              </button>
+                              <div class="card-action-tooltip" id="card18-label-W">
+                                  Thêm vào mục yêu thích
+                              </div>
                         </li>
                       </ul>
                     </figure>
@@ -1275,23 +1278,26 @@
             <ul class="footer-list">
               <li><p class="footer-list-title">Tài khoản</p></li>
               <li>
-                <a href="#" class="footer-link">
+                <a href="Account.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">Tài khoản</span>
                 </a>
               </li>
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Xem giỏ hàng</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Yêu thích</span>
-                </a>
-              </li>
+                <li>
+                    <a href="Carts.html" class="footer-link">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                        <span class="footer-link-text">Xem giỏ hàng</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="WishList.html" class="footer-link">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                        <span class="footer-link-text">Yêu thích</span>
+                    </a>
+                </li>
             </ul>
 
             <ul class="footer-list">
@@ -1349,11 +1355,6 @@
         </div>
       </div>
     </footer>
-
-    <!--
-    - custom js link
-  -->
-
     <!--
     - ionicon link
   -->
@@ -1365,5 +1366,86 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <div id="toast-container" class="toast-container">
+        <div id="toast-message" class="toast-message"></div>
+    </div>
+    <script>
+
+        function showToast(message) {
+            const toastElement = document.getElementById('toast-message');
+
+            if (!toastElement) return;
+
+            toastElement.textContent = message;
+            toastElement.classList.add('show');
+            setTimeout(function(){
+                toastElement.classList.remove('show');
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const actionBtns = document.querySelectorAll('.product-card .card-action-btn');
+
+            actionBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const iconName = btn.querySelector('ion-icon').getAttribute('name');
+                    let message = "";
+
+                    if (iconName === 'cart-outline') {
+                        message = "Sản phẩm đã được thêm vào Giỏ hàng!";
+                    } else if (iconName === 'heart-outline') {
+                        message = "Đã thêm vào mục Yêu thích!";
+                    }
+
+                    if (message) {
+                        showToast(message);
+                    }
+                });
+            });
+
+            const searchToggleBtn = document.getElementById('searchToggleBtn');
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const searchCloseBtn = document.getElementById('searchCloseBtn');
+
+            if (searchToggleBtn && searchForm && searchInput) {
+
+                function toggleSearch(e) {
+                    if (e) e.preventDefault();
+                    searchForm.classList.toggle('active');
+
+                    if (searchForm.classList.contains('active')) {
+                        searchInput.focus();
+                    } else {
+                        searchInput.value = '';
+                    }
+                }
+
+
+                function handleSearchAction(e) {
+                    // Luôn gọi toggleSearch để bật/tắt form, bất kể trạng thái nào.
+                    toggleSearch(e);
+
+                }
+
+                searchToggleBtn.addEventListener('click', handleSearchAction);
+
+
+                if (searchCloseBtn) {
+                    searchCloseBtn.addEventListener('click', toggleSearch);
+                }
+
+                searchInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        toggleSearch(e);
+                    }
+                });
+            }
+        });
+    </script>
+
   </body>
 </html>
