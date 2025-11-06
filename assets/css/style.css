@@ -772,7 +772,7 @@ a.footer-link:is(:hover, :focus) {
 }
 
 .newsletter-form {
-  position: relative;
+    position: relative;
 }
 
 .newsletter-input {
@@ -2659,9 +2659,4 @@ a.footer-link:is(:hover, :focus) {
         height: 70px;
         position: fixed;
     }
-}
-#search-input::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    appearance: none;
-    display: none;
 }
