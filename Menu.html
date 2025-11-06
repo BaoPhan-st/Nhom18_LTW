@@ -1330,16 +1330,16 @@
 
             <div class="footer-list">
               <p class="footer-list-title">Đăng kí nhận tin</p>
-              <form action="" class="newsletter-form">
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Email"
-                  class="newsletter-input"
-                />
-                <button type="submit" class="btn btn-primary">Đăng kí</button>
-              </form>
+                <form id="newsletter-form" action="" class="newsletter-form" method="POST">
+                    <input
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="Email"
+                            class="newsletter-input"
+                    />
+                    <button type="submit" class="btn btn-primary"><span>Đăng Kí</span></button>
+                </form>
             </div>
           </div>
         </div>
@@ -1445,6 +1445,19 @@
                 });
             }
         });
+        const newsletterForm = document.getElementById('newsletter-form');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[name="email"]');
+                const emailValue = emailInput ? emailInput.value : '';
+                showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
+                if (emailInput) {
+                    emailInput.value = '';
+                }
+            });
+        }
     </script>
 
   </body>
