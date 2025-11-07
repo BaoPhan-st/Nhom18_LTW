@@ -37,7 +37,7 @@
     <div class="container">
         <div class="overlay" ></div>
 
-        <a href="#" class="logo">
+        <a href="Menu.html" class="logo">
             <img
                     src="./assets/images/BHD%20LOGO.png"
                     width="100"
@@ -52,7 +52,7 @@
             <ion-icon name="menu-outline"></ion-icon>
         </button>
 
-        <nav class="navbar" >
+        <nav class="navbar">
             <button
                     class="nav-close-btn"
                     data-nav-close-btn
@@ -61,7 +61,7 @@
                 <ion-icon name="close-outline"></ion-icon>
             </button>
 
-            <a href="#" class="logo">
+            <a href="Menu.html" class="logo">
                 <img
                         src="./assets/images/BHD%20LOGO.png"
                         width="140"
@@ -69,16 +69,14 @@
                         alt="BHD logo"
                 />
             </a>
-            <!--
-            - navbar-list
-            -->
+
             <ul class="navbar-list">
                 <li class="navbar-item">
                     <a href="Menu.html" class="navbar-link">Trang chủ</a>
                 </li>
 
                 <li class="navbar-item">
-                    <a href="#" class="navbar-link">Giới thiệu</a>
+                    <a href="gioithieu.html" class="navbar-link">Giới thiệu</a>
                 </li>
 
                 <li class="navbar-item">
@@ -86,65 +84,96 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a href="#" class="navbar-link">Liên hệ</a>
+                    <a href="lienhe.html" class="navbar-link">Liên hệ</a>
                 </li>
             </ul>
 
             <ul class="nav-action-list">
                 <li>
-                    <button class="nav-action-btn">
-                        <ion-icon name="search-outline" ></ion-icon>
+                    <button class="nav-action-btn" id="searchToggleBtn" data-search-btn>
+                        <ion-icon name="search-outline"></ion-icon>
                         <span class="nav-action-text">Tìm kiếm</span>
                     </button>
                 </li>
-
                 <li>
-                    <a href="#" class="nav-action-btn">
-                        <ion-icon name="person-outline" ></ion-icon>
-                        <span class="nav-action-text">Đăng nhập /Đăng kí</span>
+                    <a href="login.html" class="nav-action-btn">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span class="nav-action-text">Đăng nhập / Đăng kí</span>
                     </a>
                 </li>
-
                 <li>
-                    <button class="nav-action-btn">
+                    <a href="WishList.html" class="nav-action-btn">
                         <ion-icon name="heart-outline"></ion-icon>
                         <span class="nav-action-text">Yêu thích</span>
-
-                    </button>
+                    </a>
                 </li>
-
                 <li>
-                    <button class="nav-action-btn">
-                        <ion-icon name="bag-outline" ></ion-icon>
+                    <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+                        <ion-icon name="bag-outline"></ion-icon>
                         <span class="nav-action-text">Giỏ hàng</span>
-                    </button>
+                    </a>
                 </li>
             </ul>
+            <form class="search-form" id="search-form" action="#" method="get">
+                <input type="search" name="query" placeholder="Tìm kiếm sản phẩm..." id="search-input" required>
+
+                <button type="button" class="search-close-btn" id="searchCloseBtn">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+            </form>
         </nav>
     </div>
 </header>
-        <main class="ChinhSachBaoMat">
-            <div class="container">
-                <h2>Chính sách bảo mật thông tin</h2>
-                <div class="camket">
-                    <p>Chúng tôi luôn ưu tiên bảo mật thông tin khách hàng.</p>
-                    <p>Chúng tôi hiểu sử dụng hợp lý và bảo mật thông tin</p>
-                    <p>Chúng tôi cam kết việc sử dụng thông tin trên sẽ chỉ nhằm nâng cao chất lượng dịch vụ khách hàng và tạo sự thuận lợi cho việc mua sắm trực tuyến.</p>
-                </div>
-                <p><strong>Chúng tôi chỉ dùng thông tin của khách hàng để:</strong></p>
-                <ul class="chinhsachbaomat-list">
-                    <li>Nâng cao chất lượng dịch vụ hỗ trợ khách hàng.</li>
-                    <li>Giải quyết các vấn đề, tranh chấp phát sinh liên quan đến việc mua hàng, nhận hàng, thanh toán.</li>
-                    <li>Ngăn chặn những hoạt động vi phạm pháp luật.</li>
-                </ul>
-                <p>Chúng tôi chỉ sử dụng thông tin của khách hàng trong phạm vi liên quan đến việc mua hàng, nhận hàng, thanh toán, ... trên website này.</p>
-                <p>Website mwc.com.vn sẽ lưu trữ thông tin cá nhân của khách hàng trong toàn bộ thời gian website hoạt động.</p>
-                <p>Quý khách nếu là thành viên website sẽ có thể thay đổi thông tin cá nhân của mình bất cứ lúc nào trong trang quản lý tài khoản của mình.</p>
-                <p>Chúng tôi cam đoan sẽ không bán, không chia sẻ dẫn đến làm lộ thông tin cá nhân của khách hàng.</p>
-                <p>Mọi thông tin của quý khách đều được bảo mật bằng cách mã hoá trong cơ sở dữ liệu của BHDSportShoes.vn.</p>
-                <p><strong>Mọi ý kiến, thắc mắc, góp ý, phàn nàn, vui lòng liên hệ SĐT :0332536387</strong></p>
+<main class="GioiThieuPage">
+    <div class="gioithieu-container container">
+
+        <header class="page-header">
+            <h1 class="h1">Về BHD - SPORT SHOES</h1>
+            <p class="subtitle">Cùng Bạn Chinh Phục Mọi Hành Trình</p>
+        </header>
+
+        <hr class="header-divider">
+
+        <section class="section-content">
+            <h2 class="h2 section-title">👟 Câu Chuyện Của Chúng Tôi</h2>
+
+            <p><strong>BHD - SPORT SHOES</strong> được thành lập với niềm đam mê cháy bỏng dành cho thể thao và văn hóa đường phố. Chúng tôi tin rằng, một đôi giày không chỉ là vật dụng bảo vệ đôi chân, mà còn là **người bạn đồng hành** trên mỗi chặng đường chinh phục mục tiêu, từ sân cỏ đến đường chạy marathon, hay đơn giản chỉ là những bước đi tự tin trong cuộc sống hàng ngày.</p>
+
+            <p>Khởi nguồn từ một cửa hàng nhỏ, BHD đã phát triển thành thương hiệu đáng tin cậy, chuyên cung cấp **giày thể thao chính hãng 100%** từ các thương hiệu hàng đầu thế giới như Nike, Adidas, Puma, New Balance và nhiều hơn nữa.</p>
+        </section>
+
+        <section class="section-content">
+            <h2 class="h2 section-title">✅ Cam Kết Chất Lượng</h2>
+
+            <h3 class="h3">1. Chính Hãng Tuyệt Đối</h3>
+            <p>Chúng tôi cam kết <strong>HOÀN TIỀN GẤP ĐÔI</strong> nếu phát hiện sản phẩm là hàng giả, hàng nhái. Mỗi đôi giày tại BHD đều có tem, mác, và giấy tờ chứng minh nguồn gốc rõ ràng.</p>
+
+            <h3 class="h3">2. Giá Trị Thực</h3>
+            <p>BHD luôn nỗ lực tối ưu hóa chi phí để mang đến mức giá cạnh tranh nhất, đảm bảo khách hàng nhận được **giá trị tốt nhất** đi kèm với chất lượng sản phẩm chính hãng.</p>
+
+            <h3 class="h3">3. Dịch Vụ Tận Tâm</h3>
+            <p>Đội ngũ chuyên viên tư vấn của chúng tôi luôn sẵn sàng hỗ trợ bạn tìm được đôi giày **phù hợp nhất** với nhu cầu, sở thích và phong cách cá nhân, đi kèm với chính sách bảo hành, đổi trả và bảo mật thông tin rõ ràng.</p>
+        </section>
+
+        <section class="section-content section-mission">
+            <h2 class="h2 section-title">🌟 Sứ Mệnh & Tầm Nhìn</h2>
+
+            <div class="mission-block">
+                <h3 class="h3">Sứ Mệnh</h3>
+                <p>Trở thành cầu nối tin cậy, cung cấp những sản phẩm giày thể thao chất lượng cao, giúp người Việt **nâng tầm phong cách sống** và đạt được hiệu suất tốt nhất trong hoạt động thể thao.</p>
             </div>
-        </main>
+
+            <div class="mission-block">
+                <h3 class="h3">Tầm Nhìn</h3>
+                <p>Trong 5 năm tới, BHD - SPORT SHOES sẽ là hệ thống bán lẻ giày thể thao chính hãng hàng đầu Việt Nam với mạng lưới cửa hàng rộng khắp và nền tảng thương mại điện tử vững mạnh.</p>
+            </div>
+
+            <p class="final-cta">**BHD - SPORT SHOES:** Hãy bắt đầu hành trình của bạn ngay hôm nay!</p>
+        </section>
+
+    </div>
+</main>
 <!--
 - #FOOTER
 -->
@@ -227,7 +256,7 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">
+                        <a href="Account.html" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
 
                             <span class="footer-link-text">Tài khoản</span>
@@ -235,7 +264,7 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">
+                        <a href="Carts.html" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
 
                             <span class="footer-link-text">Xem giỏ hàng</span>
@@ -243,7 +272,7 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">
+                        <a href="WishList.html" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
 
                             <span class="footer-link-text">Yêu thích</span>
@@ -256,7 +285,7 @@
                     </li>
 
                     <li>
-                        <a href="ChínhSáchBảoMật..html" class="footer-link">
+                        <a href="ChinhSachBaoMat.html" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
 
                             <span class="footer-link-text">Chính sách bảo mật</span>
@@ -272,21 +301,14 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">
+                        <a href="huongdanmuahang.html" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
 
                             <span class="footer-link-text">Hướng dẫn mua hàng</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="footer-link">
-                            <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                            <span class="footer-link-text">Hướng dẫn thanh toán</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">
+                        <a href="faq.html" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
 
                             <span class="footer-link-text">FAQs</span>
@@ -295,7 +317,7 @@
                 </ul>
                 <div class="footer-list">
                     <p class="footer-list-title">Đăng kí nhận tin</p>
-                    <form action="" class="newsletter-form">
+                    <form id="newsletter-form" action="" class="newsletter-form" method="POST">
                         <input
                                 type="email"
                                 name="email"
@@ -303,8 +325,7 @@
                                 placeholder="Email"
                                 class="newsletter-input"
                         />
-
-                        <button type="submit" class="btn btn-primary">Đăng kí</button>
+                        <button type="submit" class="btn btn-primary"><span>Đăng Kí</span></button>
                     </form>
                 </div>
             </div>
@@ -319,13 +340,7 @@
         </div>
     </div>
 </footer>
-
-<!--
-- custom js link
--->
-<script src="./assets/js/script.js"></script>
-
-<!--
+<!-
 - ionicon link
 -->
 <script
@@ -337,4 +352,39 @@
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
 ></script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const searchToggleBtn = document.getElementById('searchToggleBtn');
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+
+        if (searchToggleBtn && searchForm && searchInput) {
+
+            function toggleSearch(e) {
+                if (e) e.preventDefault();
+                searchForm.classList.toggle('active');
+
+                if (searchForm.classList.contains('active')) {
+                    searchInput.focus();
+                } else {
+                    searchInput.value = '';
+                }
+            }
+
+            function handleSearchAction(e) {
+                toggleSearch(e);
+            }
+
+            searchToggleBtn.addEventListener('click', handleSearchAction);
+
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    toggleSearch(e);
+                }
+            });
+        }
+    });
+</script>
 </html>
