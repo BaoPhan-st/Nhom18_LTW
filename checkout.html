@@ -20,7 +20,19 @@
             />
         </a>
     </header>
+   <div class="container">
+      <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="Menu.html">Trang Chủ</a></li>
 
+            <li class="breadcrumb-item active" aria-current="page">
+              Thanh toán
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <div class="checkout-main-content">
 
         <div class="checkout-left">
@@ -134,6 +146,26 @@
             </div>
         </div>
     </div>
-
 </body>
+ <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
+
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    </script>
 </html>
