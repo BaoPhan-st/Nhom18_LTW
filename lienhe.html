@@ -22,73 +22,8 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="assets/css/lienhe.css" />
   </head>
-  <style>
-    .contact-wrapper {
-      display: flex;
-      gap: 30px;
-      width: 95%;
-      max-width: 1400px;
-      margin: 30px auto;
-    }
-
-    .bando {
-      flex: 2;
-      height: 450px;
-      border: none;
-    }
-
-    .info-container {
-      flex: 1;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      font-family: Arial, sans-serif;
-    }
-
-    .info-container h3 {
-      margin-bottom: 25px;
-      color: #333;
-      font-size: 22px;
-      text-align: center;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .info-item i {
-      width: 30px;
-      margin-right: 15px;
-      font-size: 18px;
-      color: #0078ff;
-      flex-shrink: 0;
-      text-align: center;
-      margin-top: 3px;
-    }
-
-    .info-text {
-      line-height: 1.6;
-      color: #555;
-    }
-
-    .info-text strong {
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 2px;
-    }
-
-    .info-text a {
-      color: #0078ff;
-      text-decoration: none;
-    }
-    .info-text a:hover {
-      text-decoration: underline;
-    }
-  </style>
   <body>
     <header class="header">
       <div class="container">
@@ -108,80 +43,104 @@
           <ion-icon name="menu-outline"></ion-icon>
         </button>
 
-          <nav class="navbar">
-              <button
-                      class="nav-close-btn"
-                      data-nav-close-btn
-                      aria-label="Close Menu"
-              >
-                  <ion-icon name="close-outline"></ion-icon>
-              </button>
+        <nav class="navbar">
+          <button
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
+          >
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
 
-              <a href="Menu.html" class="logo">
-                  <img
-                          src="./assets/images/BHD%20LOGO.png"
-                          width="140"
-                          height="50"
-                          alt="BHD logo"
-                  />
+          <a href="Menu.html" class="logo">
+            <img
+              src="./assets/images/BHD%20LOGO.png"
+              width="140"
+              height="50"
+              alt="BHD logo"
+            />
+          </a>
+
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="Menu.html" class="navbar-link">Trang chủ</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="gioithieu.html" class="navbar-link">Giới thiệu</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="#" class="navbar-link">Sản phẩm</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="lienhe.html" class="navbar-link">Liên hệ</a>
+            </li>
+          </ul>
+
+          <ul class="nav-action-list">
+            <li>
+              <button
+                class="nav-action-btn"
+                id="searchToggleBtn"
+                data-search-btn
+              >
+                <ion-icon name="search-outline"></ion-icon>
+                <span class="nav-action-text">Tìm kiếm</span>
+              </button>
+            </li>
+            <li class="nav-action-item nav-action-dropdown">
+              <a href="login.html" class="nav-action-btn">
+                <ion-icon name="person-outline"></ion-icon>
+                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
               </a>
 
-              <ul class="navbar-list">
-                  <li class="navbar-item">
-                      <a href="Menu.html" class="navbar-link">Trang chủ</a>
-                  </li>
+              <div class="dropdown-content">
+                <a href="login.html">Đăng nhập</a>
+                <a href="register.html">Đăng ký</a>
+              </div>
+            </li>
+            <li>
+              <a href="WishList.html" class="nav-action-btn">
+                <ion-icon name="heart-outline"></ion-icon>
+                <span class="nav-action-text">Yêu thích</span>
+              </a>
+            </li>
+            <li>
+              <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+                <ion-icon name="bag-outline"></ion-icon>
+                <span class="nav-action-text">Giỏ hàng</span>
+              </a>
+            </li>
+          </ul>
+          <form class="search-form" id="search-form" action="#" method="get">
+            <input
+              type="search"
+              name="query"
+              placeholder="Tìm kiếm sản phẩm..."
+              id="search-input"
+              required
+            />
 
-                  <li class="navbar-item">
-                      <a href="gioithieu.html" class="navbar-link">Giới thiệu</a>
-                  </li>
-
-                  <li class="navbar-item">
-                      <a href="#" class="navbar-link">Sản phầm</a>
-                  </li>
-
-                  <li class="navbar-item">
-                      <a href="lienhe.html" class="navbar-link">Liên hệ</a>
-                  </li>
-              </ul>
-
-              <ul class="nav-action-list">
-                  <li>
-                      <button class="nav-action-btn" id="searchToggleBtn" data-search-btn>
-                          <ion-icon name="search-outline"></ion-icon>
-                          <span class="nav-action-text">Tìm kiếm</span>
-                      </button>
-                  </li>
-                  <li>
-                      <a href="login.html" class="nav-action-btn">
-                          <ion-icon name="person-outline"></ion-icon>
-                          <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="WishList.html" class="nav-action-btn">
-                          <ion-icon name="heart-outline"></ion-icon>
-                          <span class="nav-action-text">Yêu thích</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
-                          <ion-icon name="bag-outline"></ion-icon>
-                          <span class="nav-action-text">Giỏ hàng</span>
-                      </a>
-                  </li>
-              </ul>
-              <form class="search-form" id="search-form" action="#" method="get">
-                  <input type="search" name="query" placeholder="Tìm kiếm sản phẩm..." id="search-input" required>
-
-                  <button type="button" class="search-close-btn" id="searchCloseBtn">
-                      <ion-icon name="close-outline"></ion-icon>
-                  </button>
-
-              </form>
-          </nav>
+            <button type="button" class="search-close-btn" id="searchCloseBtn">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </form>
+        </nav>
       </div>
     </header>
+    <div class="container">
+      <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="Menu.html">Trang Chủ</a></li>
 
+            <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <div class="contact-wrapper">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2145255159867!2d106.78918677586935!3d10.871281657435231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276398969f7b%3A0x9672b7efd0893fc4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1762058833289!5m2!1svi!2s"
@@ -301,19 +260,19 @@
             <ul class="footer-list">
               <li><p class="footer-list-title">Tài khoản</p></li>
               <li>
-                  <a href="Carts.html" class="footer-link">
-                      <ion-icon name="chevron-forward-outline"></ion-icon>
+                <a href="Carts.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
 
-                      <span class="footer-link-text">Xem giỏ hàng</span>
-                  </a>
+                  <span class="footer-link-text">Xem giỏ hàng</span>
+                </a>
               </li>
 
-                <li>
-                    <a href="WishList.html" class="footer-link">
-                        <ion-icon name="chevron-forward-outline"></ion-icon>
+              <li>
+                <a href="WishList.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
 
-                        <span class="footer-link-text">Yêu thích</span>
-                    </a>
+                  <span class="footer-link-text">Yêu thích</span>
+                </a>
               </li>
               <li>
                 <a href="Account.html" class="footer-link">
@@ -351,19 +310,27 @@
               </li>
             </ul>
 
-            <<div class="footer-list">
+            <
+            <div class="footer-list">
               <p class="footer-list-title">Đăng kí nhận tin</p>
-              <form id="newsletter-form" action="" class="newsletter-form" method="POST">
-                  <input
-                          type="email"
-                          name="email"
-                          required
-                          placeholder="Email"
-                          class="newsletter-input"
-                  />
-                  <button type="submit" class="btn btn-primary"><span>Đăng Kí</span></button>
+              <form
+                id="newsletter-form"
+                action=""
+                class="newsletter-form"
+                method="POST"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email"
+                  class="newsletter-input"
+                />
+                <button type="submit" class="btn btn-primary">
+                  <span>Đăng Kí</span>
+                </button>
               </form>
-          </div>
+            </div>
           </div>
         </div>
       </div>
@@ -387,39 +354,58 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchToggleBtn = document.getElementById("searchToggleBtn");
+        const searchForm = document.getElementById("search-form");
+        const searchInput = document.getElementById("search-input");
 
-            const searchToggleBtn = document.getElementById('searchToggleBtn');
-            const searchForm = document.getElementById('search-form');
-            const searchInput = document.getElementById('search-input');
+        if (searchToggleBtn && searchForm && searchInput) {
+          function toggleSearch(e) {
+            if (e) e.preventDefault();
+            searchForm.classList.toggle("active");
 
-            if (searchToggleBtn && searchForm && searchInput) {
-
-                function toggleSearch(e) {
-                    if (e) e.preventDefault();
-                    searchForm.classList.toggle('active');
-
-                    if (searchForm.classList.contains('active')) {
-                        searchInput.focus();
-                    } else {
-                        searchInput.value = '';
-                    }
-                }
-
-                function handleSearchAction(e) {
-                    toggleSearch(e);
-                }
-
-                searchToggleBtn.addEventListener('click', handleSearchAction);
-
-                searchInput.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        toggleSearch(e);
-                    }
-                });
+            if (searchForm.classList.contains("active")) {
+              searchInput.focus();
+            } else {
+              searchInput.value = "";
             }
-        });
+          }
+
+          function handleSearchAction(e) {
+            toggleSearch(e);
+          }
+
+          searchToggleBtn.addEventListener("click", handleSearchAction);
+
+          searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              toggleSearch(e);
+            }
+          });
+        }
+      });
+    </script>
+    <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
+
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
     </script>
   </body>
 </html>

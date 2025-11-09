@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng ký - BHD SPORT SHOES</title>
-    
+
     <link rel="stylesheet" href="assets/css/style.css" />
-    
-    <link rel="stylesheet" href="assets/css/loginandsign.css" />
-    
+
+    <link rel="stylesheet" href="assets/css/dangnhapvadangki.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -26,311 +26,157 @@
     />
   </head>
   <body>
-   
- <style>  section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 15px auto;
-      max-width: 1200px;
-      /* Thêm padding cho section để nó không dính vào header/footer trên di động */
-      padding: 60px 20px;
-    }
-
-    .containers {
-      width: 100%; /* Sửa thành 100% để linh hoạt hơn */
-      max-width: 500px; /* Giới hạn chiều rộng tối đa */
-      margin: 0 auto;
-      border-radius: var(--border-radius-md); /* Dùng biến bo tròn */
-      padding: 50px 40px; /* <-- ĐÃ SỬA PADDING (dài ra) */
-      animation: fadeIn 0.5s ease-in;
-
-      /* Cập nhật giao diện:
-   * Thêm border và box-shadow giống như các card sản phẩm
-   */
-      border: 1px solid var(--cultured);
-      background: var(--white);
-      box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.05);
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .heading-bar {
-      margin-top: 10px;
-      text-align: center;
-      margin-bottom: 30px; /* Thêm khoảng cách dưới */
-    }
-
-    /* Đồng bộ h1 với trang web */
-    .heading-bar h1 {
-      font-family: var(--ff-josefin-sans);
-      font-size: var(--fs-3); /* Dùng font size từ biến */
-      font-weight: 600;
-      color: var(--eerie-black); /* Dùng màu từ biến */
-      margin-bottom: 10px; /* Tăng khoảng cách */
-      text-transform: uppercase;
-    }
-
-    /* Đồng bộ <p> với trang web */
-    .heading-bar p {
-      font-family: var(--ff-roboto);
-      font-size: var(--fs-8); /* Dùng font size từ biến */
-      color: var(--sonic-silver); /* Dùng màu từ biến */
-    }
-
-    /* Đồng bộ link .as */
-    .as {
-      color: var(--salmon-pink); /* Dùng màu hồng chủ đạo */
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition-1);
-    }
-
-    .as:hover {
-      text-decoration: underline;
-    }
-
-    .rows .cols {
-      padding: 0; /* Bỏ padding thừa */
-    }
-
-    .page-auth {
-      font-size: var(--fs-7); /* Dùng font size từ biến */
-    }
-
-    fieldset.form-auth {
-      border: none;
-      margin-bottom: 20px; /* Tăng khoảng cách */
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Đồng bộ label */
-    label {
-      font-family: var(--ff-roboto);
-      font-size: var(--fs-7);
-      font-weight: 500;
-      color: var(--sonic-silver); /* Dùng màu xám nhạt */
-      margin-bottom: 8px; /* Tăng khoảng cách */
-    }
-
-    /* Đồng bộ input */
-    input[type="text"],
-    input[type="password"],
-    input[type="email"] {
-      background: var(--white);
-      padding: 12px 15px; /* Chỉnh lại padding */
-      border: 1px solid var(--cultured); /* Dùng border từ biến */
-      border-radius: var(--border-radius-sm); /* Dùng bo tròn từ biến */
-      outline: none;
-      transition: var(--transition-1);
-      font-size: var(--fs-7);
-      font-family: var(--ff-roboto);
-      width: 100%; /* Thêm để đảm bảo input chiếm đủ rộng */
-    }
-
-    /* Đồng bộ hiệu ứng :focus */
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    input[type="email"]:focus {
-      border-color: var(--salmon-pink);
-      box-shadow: 0 0 0 2px hsla(344, 100%, 71%, 0.2);
-    }
-
-    /* Đồng bộ small text */
-    small {
-      margin-top: 8px; /* Tăng khoảng cách */
-      font-size: var(--fs-8);
-      color: var(--sonic-silver);
-      font-family: var(--ff-roboto);
-    }
-
-    /* --- CSS cho nút Social --- */
-
-    .social-auth {
-      text-align: center;
-      margin-top: 25px; /* Tăng khoảng cách */
-      font-family: var(--ff-roboto);
-      font-size: var(--fs-8);
-      color: var(--sonic-silver);
-    }
-
-    .wrap-social-auth {
-      display: flex;
-      flex-direction: column;
-      gap: 10px; /* Tăng khoảng cách giữa 2 nút */
-      align-items: center;
-      margin-top: 15px; /* Tăng khoảng cách */
-      cursor: pointer;
-    }
-
-    /* Đồng bộ nút social (kiểu nút phụ .btn-outline) */
-    .wrap-social-auth button {
-      width: 100%;
-      max-width: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px; /* Tăng khoảng cách icon và chữ */
-
-      background-color: var(--white);
-      border: 1px solid var(--cultured); /* Border xám nhạt */
-      border-radius: var(--border-radius-sm); /* Dùng bo tròn từ biến */
-      padding: 10px 15px; /* Chỉnh padding */
-      cursor: pointer;
-
-      font-family: var(--ff-roboto);
-      font-size: var(--fs-7); /* Chỉnh font size */
-      font-weight: 500;
-      color: var(--eerie-black); /* Màu chữ đen */
-
-      transition: var(--transition-1);
-    }
-
-    .wrap-social-auth button:hover {
-      /* Khi hover, dùng màu hồng */
-      border-color: var(--salmon-pink);
-      color: var(--salmon-pink);
-      box-shadow: none; /* Bỏ shadow cũ */
-      transform: none; /* Bỏ transform cũ */
-    }
-    .btn-primary {
-      color: var(--white);
-      padding: 14px 162px;
-      align-items: center;
-      gap: 5px;
-      border: 1px solid var(--border-color, var(--bittersweet));
-      font-size: var(--fs-5);
-      background-color: var(--bittersweet);
-    }</style>
     <header class="header">
-  <div class="container">
-    <div class="overlay"></div>
+      <div class="container">
+        <div class="overlay"></div>
 
-    <a href="Menu.html" class="logo">
-      <img
-        src="./assets/images/BHD%20LOGO.png"
-        width="100"
-        height="50"
-        alt="BHD logo"
-      />
-    </a>
+        <a href="Menu.html" class="logo">
+          <img
+            src="./assets/images/BHD%20LOGO.png"
+            width="100"
+            height="50"
+            alt="BHD logo"
+          />
+        </a>
 
-    <!-- Nút mở menu -->
-    <button class="nav-open-btn">
-      <ion-icon name="menu-outline"></ion-icon>
-    </button>
+        <!-- Nút mở menu -->
+        <button class="nav-open-btn">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
 
-      <nav class="navbar">
+        <nav class="navbar">
           <button
-                  class="nav-close-btn"
-                  data-nav-close-btn
-                  aria-label="Close Menu"
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
           >
-              <ion-icon name="close-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
           </button>
 
           <a href="Menu.html" class="logo">
-              <img
-                      src="./assets/images/BHD%20LOGO.png"
-                      width="140"
-                      height="50"
-                      alt="BHD logo"
-              />
+            <img
+              src="./assets/images/BHD%20LOGO.png"
+              width="140"
+              height="50"
+              alt="BHD logo"
+            />
           </a>
 
           <ul class="navbar-list">
-              <li class="navbar-item">
-                  <a href="Menu.html" class="navbar-link">Trang chủ</a>
-              </li>
+            <li class="navbar-item">
+              <a href="Menu.html" class="navbar-link">Trang chủ</a>
+            </li>
 
-              <li class="navbar-item">
-                  <a href="gioithieu.html" class="navbar-link">Giới thiệu</a>
-              </li>
+            <li class="navbar-item">
+              <a href="gioithieu.html" class="navbar-link">Giới thiệu</a>
+            </li>
 
-              <li class="navbar-item">
-                  <a href="#" class="navbar-link">Sản phầm</a>
-              </li>
+            <li class="navbar-item">
+              <a href="#" class="navbar-link">Sản phẩm</a>
+            </li>
 
-              <li class="navbar-item">
-                  <a href="lienhe.html" class="navbar-link">Liên hệ</a>
-              </li>
+            <li class="navbar-item">
+              <a href="lienhe.html" class="navbar-link">Liên hệ</a>
+            </li>
           </ul>
 
           <ul class="nav-action-list">
-              <li>
-                  <button class="nav-action-btn" id="searchToggleBtn" data-search-btn>
-                      <ion-icon name="search-outline"></ion-icon>
-                      <span class="nav-action-text">Tìm kiếm</span>
-                  </button>
-              </li>
-              <li>
-                  <a href="login.html" class="nav-action-btn">
-                      <ion-icon name="person-outline"></ion-icon>
-                      <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="WishList.html" class="nav-action-btn">
-                      <ion-icon name="heart-outline"></ion-icon>
-                      <span class="nav-action-text">Yêu thích</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
-                      <ion-icon name="bag-outline"></ion-icon>
-                      <span class="nav-action-text">Giỏ hàng</span>
-                  </a>
-              </li>
+            <li>
+              <button
+                class="nav-action-btn"
+                id="searchToggleBtn"
+                data-search-btn
+              >
+                <ion-icon name="search-outline"></ion-icon>
+                <span class="nav-action-text">Tìm kiếm</span>
+              </button>
+            </li>
+            <li class="nav-action-item nav-action-dropdown">
+              <a href="login.html" class="nav-action-btn">
+                <ion-icon name="person-outline"></ion-icon>
+                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+              </a>
+
+              <div class="dropdown-content">
+                <a href="login.html">Đăng nhập</a>
+                <a href="register.html">Đăng ký</a>
+              </div>
+            </li>
+            <li>
+              <a href="WishList.html" class="nav-action-btn">
+                <ion-icon name="heart-outline"></ion-icon>
+                <span class="nav-action-text">Yêu thích</span>
+              </a>
+            </li>
+            <li>
+              <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+                <ion-icon name="bag-outline"></ion-icon>
+                <span class="nav-action-text">Giỏ hàng</span>
+              </a>
+            </li>
           </ul>
           <form class="search-form" id="search-form" action="#" method="get">
-              <input type="search" name="query" placeholder="Tìm kiếm sản phẩm..." id="search-input" required>
+            <input
+              type="search"
+              name="query"
+              placeholder="Tìm kiếm sản phẩm..."
+              id="search-input"
+              required
+            />
 
-              <button type="button" class="search-close-btn" id="searchCloseBtn">
-                  <ion-icon name="close-outline"></ion-icon>
-              </button>
-
+            <button type="button" class="search-close-btn" id="searchCloseBtn">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
           </form>
-      </nav>
-  </div>
-</header>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="Menu.html">Trang Chủ</a></li>
 
+            <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <main>
       <section>
-        <div class="containers"> 
+        <div class="containers">
           <div class="wrap-background" id="register-view">
-            
             <div class="heading-bar">
               <h1>Đăng ký tài khoản</h1>
               <p>
                 Bạn đã có tài khoản ?
-                <a class="as" href="/login.html">Đăng nhập tại đây</a>
+                <a class="as" href="./login.html">Đăng nhập tại đây</a>
               </p>
             </div>
 
             <div class="rows">
               <div class="cols">
                 <form class="page-auth" id="register">
-                  
                   <fieldset class="form-auth">
-                    <label>Tên của bạn</label>
+                    <label for="name">Tên đăng nhập</label>
                     <input
                       type="text"
-                      id="username"
-                      placeholder="Nhập họ và tên"
+                      id="name"
+                      placeholder="Tên đăng nhập"
                       required
+                      autocomplete="username"
                     />
                   </fieldset>
-
+                  <fieldset class="form-auth">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Nhập địa chỉ email"
+                      required
+                      autocomplete="email"
+                    />
+                  </fieldset>
                   <fieldset class="form-auth">
                     <label>Số điện thoại</label>
                     <input
@@ -350,7 +196,7 @@
                       placeholder="Tạo mật khẩu"
                       required
                     />
-                  </
+                  </fieldset>
 
                   <fieldset class="form-auth">
                     <label>Xác nhận mật khẩu</label>
@@ -362,177 +208,186 @@
                     />
                   </fieldset>
 
-                 <div>
-  <button type="submit" class="btn-primary">Đăng ký</button>
-</div>
+                  <div>
+                    <button type="submit" class="btn-primary">Đăng ký</button>
+                  </div>
                 </form>
-
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-   <footer class="footer">
-  <div class="footer-top section">
-    <div class="container">
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <img
-            src="./assets/images/BHD%20LOGO.png"
-            width="110"
-            height="50"
-            alt="BHD"
-          />
-        </a>
-
-        <ul class="social-list">
-          <li>
-            <a href="https://www.facebook.com/kcntt.nlu" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
+    <footer class="footer">
+      <div class="footer-top section">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <img
+                src="./assets/images/BHD%20LOGO.png"
+                width="110"
+                height="50"
+                alt="BHD"
+              />
             </a>
-          </li>
 
-          <li>
-            <a
-              href="https://www.youtube.com/@NongLamUniversity/videos"
-              class="social-link"
-            >
-              <ion-icon name="logo-youtube"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://www.tiktok.com/@nonglam.university"
-              class="social-link"
-            >
-              <ion-icon name="logo-tiktok"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
-              class="social-link"
-            >
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-link-box">
-        <ul class="footer-list">
-          <li>
-            <p class="footer-list-title">Thông tin liên hệ</p>
-          </li>
-
-          <li>
-            <address class="footer-link">
-              <ion-icon name="location"></ion-icon>
-              <span class="footer-link-text">
-                Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
-              </span>
-            </address>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="call"></ion-icon>
-              <span class="footer-link-text">0332536387</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="mail"></ion-icon>
-              <span class="footer-link-text">BHDsport@gmail.com</span>
-            </a>
-          </li>
-        </ul>
-
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Tài khoản</p></li>
-          <li>
-            <a href="Account.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Tài khoản</span>
-            </a>
-          </li>
-          <li>
-            <<a href="Carts.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-
-              <span class="footer-link-text">Xem giỏ hàng</span>
-          </a>
-          </li>
-
-            <li>
-                <a href="WishList.html" class="footer-link">
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                    <span class="footer-link-text">Yêu thích</span>
+            <ul class="social-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/kcntt.nlu"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-facebook"></ion-icon>
                 </a>
-          </li>
-        </ul>
+              </li>
 
-        <ul class="footer-list">
-          <li><p class="footer-list-title">Chính sách</p></li>
-          <li>
-            <a href="ChinhSachBaoMat.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Chính sách bảo mật</span>
-            </a>
-          </li>
-          <li>
-            <a href="ChinhSachBaoHanh.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Chính sách bảo hành</span>
-            </a>
-          </li>
-          <li>
-            <a href="huongdanmuahang.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">Hướng dẫn mua hàng</span>
-            </a>
-          <li>
-            <a href="faq.html" class="footer-link">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-              <span class="footer-link-text">FAQs</span>
-            </a>
-          </li>
-        </ul>
+              <li>
+                <a
+                  href="https://www.youtube.com/@NongLamUniversity/videos"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+              </li>
 
-          <div class="footer-list">
-              <p class="footer-list-title">Đăng kí nhận tin</p>
-              <form id="newsletter-form" action="" class="newsletter-form" method="POST">
-                  <input
-                          type="email"
-                          name="email"
-                          required
-                          placeholder="Email"
-                          class="newsletter-input"
-                  />
-                  <button type="submit" class="btn btn-primary"><span>Đăng Kí</span></button>
-              </form>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@nonglam.university"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-tiktok"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            </ul>
           </div>
+
+          <div class="footer-link-box">
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Thông tin liên hệ</p>
+              </li>
+
+              <li>
+                <address class="footer-link">
+                  <ion-icon name="location"></ion-icon>
+                  <span class="footer-link-text">
+                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
+                  </span>
+                </address>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="call"></ion-icon>
+                  <span class="footer-link-text">0332536387</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="mail"></ion-icon>
+                  <span class="footer-link-text">BHDsport@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Tài khoản</p></li>
+              <li>
+                <a href="Account.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Tài khoản</span>
+                </a>
+              </li>
+              <li>
+                <<a href="Carts.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Xem giỏ hàng</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="WishList.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Yêu thích</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Chính sách</p></li>
+              <li>
+                <a href="ChinhSachBaoMat.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo mật</span>
+                </a>
+              </li>
+              <li>
+                <a href="ChinhSachBaoHanh.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo hành</span>
+                </a>
+              </li>
+              <li>
+                <a href="huongdanmuahang.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="faq.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">FAQs</span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="footer-list">
+              <p class="footer-list-title">Đăng kí nhận tin</p>
+              <form
+                id="newsletter-form"
+                action=""
+                class="newsletter-form"
+                method="POST"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email"
+                  class="newsletter-input"
+                />
+                <button type="submit" class="btn btn-primary">
+                  <span>Đăng Kí</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="footer-bottom">
-    <div class="container">
-      <p class="copyright">
-        &copy; 2025
-        <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn chinh
-        phục mọi hành trình
-      </p>
-    </div>
-  </div>
-</footer>
-
-
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2025
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
+            chinh phục mọi hành trình
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <script
       type="module"
@@ -542,40 +397,26 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
- <script>
-     document.addEventListener('DOMContentLoaded', function() {
+    <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
 
-         const searchToggleBtn = document.getElementById('searchToggleBtn');
-         const searchForm = document.getElementById('search-form');
-         const searchInput = document.getElementById('search-input');
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
 
-         if (searchToggleBtn && searchForm && searchInput) {
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
 
-             function toggleSearch(e) {
-                 if (e) e.preventDefault();
-                 searchForm.classList.toggle('active');
-
-                 if (searchForm.classList.contains('active')) {
-                     searchInput.focus();
-                 } else {
-                     searchInput.value = '';
-                 }
-             }
-
-             function handleSearchAction(e) {
-                 toggleSearch(e);
-             }
-
-             searchToggleBtn.addEventListener('click', handleSearchAction);
-
-             searchInput.addEventListener('keydown', function(e) {
-                 if (e.key === 'Enter') {
-                     e.preventDefault();
-                     toggleSearch(e);
-                 }
-             });
-         }
-     });
- </script>
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    </script>
   </body>
 </html>
