@@ -75,11 +75,16 @@
                 <span class="nav-action-text">Tìm kiếm</span>
               </button>
             </li>
-            <li>
+            <li class="nav-action-item nav-action-dropdown">
               <a href="login.html" class="nav-action-btn">
                 <ion-icon name="person-outline"></ion-icon>
                 <span class="nav-action-text">Đăng nhập / Đăng kí</span>
               </a>
+
+              <div class="dropdown-content">
+                <a href="login.html">Đăng nhập</a>
+                <a href="register.html">Đăng ký</a>
+              </div>
             </li>
             <li>
               <a href="WishList.html" class="nav-action-btn">
@@ -110,7 +115,19 @@
         </nav>
       </div>
     </header>
+    <div class="container">
+      <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="Menu.html">Trang Chủ</a></li>
 
+            <li class="breadcrumb-item active" aria-current="page">
+              Quên mật khẩu
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <main>
       <section>
         <div class="containers">
@@ -318,4 +335,25 @@
       </div>
     </footer>
   </body>
+  <script>
+    const navOpenBtn = document.querySelector(".nav-open-btn");
+    const navCloseBtn = document.querySelector(".nav-close-btn");
+    const navbar = document.querySelector(".navbar");
+    const overlay = document.querySelector(".overlay");
+
+    navOpenBtn.addEventListener("click", () => {
+      navbar.classList.add("active");
+      overlay.classList.add("active");
+    });
+
+    navCloseBtn.addEventListener("click", () => {
+      navbar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      navbar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+  </script>
 </html>
