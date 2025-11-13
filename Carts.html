@@ -13,7 +13,7 @@
     <!--
     -  css link
   -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <!--
     - google font link
@@ -444,36 +444,6 @@
         navbar.classList.remove("active");
         overlay.classList.remove("active");
       });
-    </script>
-    <script>
-      const decreaseBtns = document.querySelectorAll(".cart-item-quantity .decrease");
-      const increaseBtns = document.querySelectorAll(".cart-item-quantity .increase");
-      const quantityInputs = document.querySelectorAll(".cart-item-quantity input");
-      const removeBtns = document.querySelectorAll(".remove-btn");
-
-      decreaseBtns.forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-          let currentValue = parseInt(quantityInputs[index].value);
-          if (currentValue > 1) {
-            quantityInputs[index].value = currentValue - 1;
-          }
-        });
-      });
-      increaseBtns.forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-          let currentValue = parseInt(quantityInputs[index].value);
-          quantityInputs[index].value = currentValue + 1;
-        });
-      });
-       removeBtns.forEach((btn) => {
-         btn.addEventListener("click", () => {
-           const cartItem = btn.closest(".cart-item");
-           if (cartItem) {
-             cartItem.remove();
-           }
-         });
-       });
-        
     </script>
   </body>
 </html>

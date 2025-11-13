@@ -184,7 +184,9 @@
                     </small>
                   </fieldset>
                   <div>
-                    <button type="submit" class="btn-primary">Đăng nhập</button>
+                    <button type="button" id="btn-primary" class="btn-primary">
+                      Đăng nhập
+                    </button>
                   </div>
                 </form>
                 <div class="social-auth">
@@ -408,6 +410,11 @@
         navbar.classList.remove("active");
         overlay.classList.remove("active");
       });
+      document
+        .getElementById("btn-primary")
+        .addEventListener("click", function () {
+          window.location.href = "menusaulogin.html";
+        });
     </script>
   </body>
 </html>
