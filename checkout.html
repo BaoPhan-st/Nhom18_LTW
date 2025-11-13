@@ -5,6 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Đặt Hàng - Hoàn thiện</title>
     <link rel="stylesheet" href="assets/css/checkout.css">
+    <!-- <style>
+        .footer {
+            font-family: var(--f-roboto), sans-serif;
+        }
+        .footer-top {
+          background: var(--cultured);
+        }
+        .footer-brand {
+          padding-bottom: 50px;
+          border-bottom: 1px solid var(--gainsboro);
+          margin-bottom: 50px;
+        }
+        .footer-brand .logo{
+          margin-bottom: 15px;
+        }
+        .social-list {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .social-link {
+          background: var(--gainsboro);
+          color: var(--onyx);
+          font-size: 20px;
+          padding: 10px;
+          transition: var(--transition-1);
+        }
+        .social-link:is(:hover, :focus) {
+          background: var(--bittersweet);
+          color: var(--white);
+        }
+        .footer-list-title {
+          position: relative;
+          color: var(--rich-black-fogra-29);
+          font-family: var(--ff-josefin-sans), sans-serif;
+          font-size: var(--fs-3);
+          font-weight: var(--fw-700);
+          margin-bottom: 25px;
+        }
+        .footer-list-title::after {
+          content: "";
+          display: block;
+          background: var(--bittersweet);
+          width: 50px;
+          height: 2px;
+          margin-top: 10px;
+        }
+        .footer-link {
+          color: var(--onyx);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-block: 6px;
+          transition: var(--transition-1);
+        }
+        a.footer-link:is(:hover, :focus) {
+          color: var(--bittersweet);
+        }
+        .footer-link-text {
+          color: var(--bittersweet);
+        }
+        .footer-list:not(:last-child) {
+          margin-bottom: 30px;
+        }
+        .footer-list:first-child ion-icon {
+          color: var(--bittersweet);
+          font-size: 22px;
+        }
+
+        .newsletter-text {
+          color: var(--onyx);
+          line-height: 1.7;
+          margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+          position: relative;
+        }
+
+        .newsletter-input {
+          background: var(--white);
+          color: var(--onyx);
+          padding: 15px 25px;
+          padding-right: 120px;
+        }
+
+        .newsletter-form .btn-primary {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          font-family: var(--ff-josefin-sans), sans-serif;
+          font-size: var(--fs-6);
+          font-weight: var(--fw-600);
+          padding-inline: 20px;
+        }
+
+        .footer-bottom {
+          background: var(--rich-black-fogra-29);
+          padding-block: 20px;
+        }
+
+        .copyright {
+          text-align: center;
+          color: var(--white);
+        }
+
+        .copyright-link {
+          display: inline-block;
+          color: var(--bittersweet);
+        }
+    </style> -->
 </head>
 <body>
 
@@ -112,6 +224,8 @@
                     </section>
 
                 </div>
+            </div>
+        </div>
 
         <div class="checkout-right">
             <div class="order-summary-box">
@@ -146,6 +260,177 @@
             </div>
         </div>
     </div>
+    
+</div>
+   <footer class="footer">
+      <div class="footer-top section">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <img
+                src="./assets/images/BHD%20LOGO.png"
+                width="110"
+                height="50"
+                alt="BHD"
+              />
+            </a>
+
+            <ul class="social-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/kcntt.nlu"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.youtube.com/@NongLamUniversity/videos"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.tiktok.com/@nonglam.university"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-tiktok"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-link-box">
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Thông tin liên hệ</p>
+              </li>
+
+              <li>
+                <address class="footer-link">
+                  <ion-icon name="location"></ion-icon>
+                  <span class="footer-link-text">
+                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
+                  </span>
+                </address>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="call"></ion-icon>
+                  <span class="footer-link-text">0332536387</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="mail"></ion-icon>
+                  <span class="footer-link-text">BHDsport@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Tài khoản</p></li>
+              <li>
+                <a href="Account.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Tài khoản</span>
+                </a>
+              </li>
+              <li>
+                <a href="Carts.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Xem giỏ hàng</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="WishList.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Yêu thích</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Chính sách</p></li>
+              <li>
+                <a href="ChinhSachBaoMat.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo mật</span>
+                </a>
+              </li>
+              <li>
+                <a href="ChinhSachBaoHanh.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Chính sách bảo hành</span>
+                </a>
+              </li>
+              <li>
+                <a href="huongdanmuahang.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
+                </a>
+              </li>
+              <li>
+                <a href="faq.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">FAQs</span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="footer-list">
+              <p class="footer-list-title">Đăng kí nhận tin</p>
+              <form
+                id="newsletter-form"
+                action=""
+                class="newsletter-form"
+                method="POST"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email"
+                  class="newsletter-input"
+                />
+                <button type="submit" class="btn btn-primary">
+                  <span>Đăng Kí</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2025
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
+            chinh phục mọi hành trình
+          </p>
+        </div>
+      </div>
+    </footer>
 </body>
  <script>
       const navOpenBtn = document.querySelector(".nav-open-btn");
