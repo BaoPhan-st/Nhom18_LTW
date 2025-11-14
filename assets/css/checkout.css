@@ -356,6 +356,7 @@ hr.separator {
     }
     .checkout-left .separator {
         display: block;
+        position: initial;
     }
     .checkout-right {
         margin-top: 20px;
@@ -387,35 +388,3 @@ hr.separator {
 .order-actions .btn-checkout:active {
     transform: scale(0.98);
 }
-
-.ChinhSachBaoMat p,
-.ChinhSachBaoHanh p {
-  font-family: var(--ff-roboto), sans-serif;
-  font-size: var(--fs-6);
-  line-height: 1.8;
-  color: var(--onyx);
-  margin-bottom: 15px;
-  text-align: justify;
-}
-
-.ChinhSachBaoMat ul,
-.ChinhSachBaoHanh ul,
-.ChinhSachBaoHanh ol {
-  list-style-type: disc;
-  padding-left: 25px;
-  margin-bottom: 20px;
-}
-
-.ChinhSachBaoHanh ol {
-  list-style-type: decimal;
-}
-
-.ChinhSachBaoMat li,
-.ChinhSachBaoHanh li {
-  font-family: var(--ff-roboto), sans-serif;
-  font-size: var(--fs-6);
-  line-height: 1.6;
-  color: var(--onyx);
-  margin-bottom: 8px;
-}
-

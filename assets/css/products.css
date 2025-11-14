@@ -1,3 +1,51 @@
+.promotion-box{
+  position: relative;
+  display: flex;
+  gap: 15px;
+  margin: 20px auto;
+  top: 4px;
+  left: 20px;
+  height: 230px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.voucher, .free-ship{
+  flex: 1 1 0;
+  min-width: 180px;
+  padding: 15px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.voucher h3, .free-ship h3 {
+  background: #ff3b30;
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.voucher button, .free-ship button{
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px 10px;
+  background-color: #ecbebb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.voucher button:hover, .free-ship button:hover{
+  background: #ffe0b2;
+}
+
 .shop-layout {
   display: flex;
   gap: 24px;
