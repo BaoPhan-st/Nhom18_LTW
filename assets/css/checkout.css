@@ -337,7 +337,7 @@ hr.separator {
 
 
 /* Media query cho responsive (bố cục 1 cột trên di động) */
-@media (min-width: 992px) {
+@media (max-width: 992px) {
     .checkout-main-content {
         flex-direction: column;
         gap: 0;
@@ -362,13 +362,6 @@ hr.separator {
         margin-top: 20px;
     }
 }
-@media (min-width:1200px) {
-    .footer-link-box {
-        grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-        gap: 50px;
-    }
-}
-
 
 .order-actions .btn-back:hover {
     color: #0056b3;
@@ -387,4 +380,118 @@ hr.separator {
 
 .order-actions .btn-checkout:active {
     transform: scale(0.98);
+}
+
+.footer {
+  font-family: var(--ff-roboto), sans-serif;
+}
+
+.footer-top {
+  background: var(--cultured);
+}
+
+.footer-brand {
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--gainsboro);
+  margin-bottom: 50px;
+}
+
+.footer-brand .logo {
+  margin-bottom: 15px;
+}
+
+.social-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-link {
+  background: var(--gainsboro);
+  color: var(--onyx);
+  font-size: 20px;
+  padding: 10px;
+  transition: var(--transition-1);
+}
+
+.social-link:is(:hover, :focus) {
+  background: var(--bittersweet);
+  color: var(--white);
+}
+
+.footer-list-title {
+  position: relative;
+  color: var(--rich-black-fogra-29);
+  font-family: var(--ff-josefin-sans), sans-serif;
+  font-size: var(--fs-3);
+  font-weight: var(--fw-700);
+  margin-bottom: 25px;
+}
+
+.footer-list-title::after {
+  content: "";
+  display: block;
+  background: var(--bittersweet);
+  width: 50px;
+  height: 2px;
+  margin-top: 10px;
+}
+
+.footer-link {
+  color: var(--onyx);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 6px;
+  transition: var(--transition-1);
+}
+
+a.footer-link:is(:hover, :focus) {
+  color: var(--bittersweet);
+}
+
+.footer-link-text {
+  flex: 1;
+}
+
+.footer-list:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.footer-list:first-child ion-icon {
+  color: var(--bittersweet);
+  font-size: 22px;
+}
+
+.newsletter-text {
+  color: var(--onyx);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.newsletter-form {
+  position: relative;
+}
+
+.newsletter-input {
+  background: var(--white);
+  color: var(--onyx);
+  padding: 15px 25px;
+  padding-right: 120px;
+}
+
+.newsletter-form .btn-primary {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  font-family: var(--ff-josefin-sans), sans-serif;
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  padding-inline: 20px;
+}
+
+.footer-bottom {
+  background: var(--rich-black-fogra-29);
+  padding-block: 20px;
 }
