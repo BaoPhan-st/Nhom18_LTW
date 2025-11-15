@@ -2,22 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BHD - SPORT SHOES</title>
-    <!--
-    - favicon
-  -->
-    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <title>Chi tiết sản phẩm - BHD SPORT SHOES</title>
 
-    <!--
-    -  css link
-  -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/chitietsanpham.css" />
+    <link rel="stylesheet" href="assets/css/products.css" />
 
-    <!--
-    - google font link
-  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,12 +25,8 @@
     />
   </head>
 
-  <body id="top">
-    <!--
-- #HEADER
--->
-
-    <header id="TextPageHeader" class="header">
+  <body>
+    <header class="header">
       <div class="container">
         <div class="overlay"></div>
 
@@ -43,9 +38,7 @@
             alt="BHD logo"
           />
         </a>
-        <!--
-        - Web responsive
-        -->
+
         <button class="nav-open-btn">
           <ion-icon name="menu-outline"></ion-icon>
         </button>
@@ -142,42 +135,229 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Menu.html">Trang Chủ</a></li>
+            <li class="breadcrumb-item">
+              <a href="Products.html">Sản Phẩm</a>
+            </li>
 
-            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Chi tiết sản phẩm
+            </li>
           </ol>
         </nav>
       </div>
     </div>
-    <main class="cart-container">
-      <h1 class="cart-title">Giỏ hàng của bạn</h1>
 
-      <div class="cart-item">
-        <img src="./assets/images/product-2.jpg" alt="Nike Air Zoom" />
-        <div class="cart-item-info">
-          <p class="cart-item-name">Giày thể thao Nike Air Zoom</p>
-          <p class="cart-item-price">1,500,000 đ</p>
+    <div class="product-detail-container">
+      <div class="product-detail-layout">
+        <div class="product-gallery">
+          <div class="thumbnail-column">
+            <ul class="thumbnail-list">
+              <li class="thumbnail-item active">
+                <img src="assets/images/product-1.jpg" alt="thumbnail 1" />
+              </li>
+
+              <li class="thumbnail-item">
+                <img src="assets/images/product-8.jpg" alt="thumbnail 2" />
+              </li>
+
+              <li class="thumbnail-item">
+                <img src="assets/images/product-2.jpg" alt="thumbnail 3" />
+              </li>
+              <li class="thumbnail-item">
+                <img src="assets/images/product-3.jpg" alt="thumbnail 4" />
+              </li>
+              <li class="thumbnail-item">
+                <img src="assets/images/product-4.jpg" alt="thumbnail 5" />
+              </li>
+              <li class="thumbnail-item">
+                <img src="assets/images/product-1.jpg" alt="thumbnail 6" />
+              </li>
+            </ul>
+          </div>
+          <div class="main-image">
+            <img
+              src="assets/images/product-1.jpg"
+              alt="Nike Air Force 1 '07"
+              id="main-product-image"
+            />
+          </div>
+        </div>
+        <div class="product-details">
+          <h1 class="product-title">Nike Air Force 1 '07</h1>
+
+          <p class="product-price-detail"><s>2.450.000đ</s>-1.960.000đ</p>
+
+          <div class="filter-group">
+            <div class="filter-group-header">
+              <h3>Màu sắc</h3>
+              <button class="toggle-btn">-</button>
+            </div>
+            <div class="filter-group-body">
+              <ul class="filter-list-color">
+                <li id="filter-color-black">
+                  <input type="checkbox" id="color-black" />
+                  <label for="color-black">Đen</label>
+                </li>
+
+                <li id="filter-color-white">
+                  <input type="checkbox" id="color-white" />
+                  <label for="color-white">Trắng</label>
+                </li>
+
+                <li id="filter-color-red">
+                  <input type="checkbox" id="color-red" />
+                  <label for="color-red">Đỏ</label>
+                </li>
+
+                <li id="filter-color-blue">
+                  <input type="checkbox" id="color-blue" />
+                  <label for="color-blue">Xanh dương</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="product-option-group">
+            <label class="option-label">Kích thước</label>
+            <div class="size-option-list">
+              <button class="size-option">39</button>
+              <button class="size-option">40</button>
+              <button class="size-option">41</button>
+              <button class="size-option">42</button>
+              <button class="size-option">43</button>
+            </div>
+          </div>
+          <div class="product-option-group">
+            <label class="option-label">Số lượng</label>
+            <div class="quantity-selector">
+              <button class="quantity-btn" aria-label="Giảm số lượng">-</button>
+              <input type="number" class="quantity-input" value="1" min="1" />
+              <button class="quantity-btn" aria-label="Tăng số lượng">+</button>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+            <button class="btn btn-buy-now">MUA NGAY</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-description-tabs">
+        <input
+          type="radio"
+          name="product-tabs"
+          id="tab-btn-1"
+          class="tab-radio"
+          checked
+        />
+        <input
+          type="radio"
+          name="product-tabs"
+          id="tab-btn-2"
+          class="tab-radio"
+        />
+
+        <div class="tab-headers">
+          <label class="tab-link" for="tab-btn-1">Mô tả sản phẩm</label>
+          <label class="tab-link" for="tab-btn-2">Vận chuyển & Đổi trả</label>
         </div>
 
-        <div class="cart-item-quantity">
-          <button class="quantity-btn decrease">-</button>
-          <input type="number" value="1" min="1" />
-          <button class="quantity-btn increase">+</button>
+        <div class="tab-content-wrapper">
+          <div id="tab-1" class="tab-content">
+            <p>
+              Nội dung mô tả sản phẩm (ví dụ: Nike Air Force 1 '07 là một biểu
+              tượng, mang đến sự thoải mái và phong cách...)
+            </p>
+            <ul>
+              <li>Chất liệu da cao cấp.</li>
+              <li>Đế Air êm ái.</li>
+              <li>Phong cách cổ điển.</li>
+            </ul>
+          </div>
+
+          <div id="tab-2" class="tab-content">
+            <p>Nội dung chính sách vận chuyển và đổi trả...</p>
+          </div>
         </div>
-
-        <button class="remove-btn">Xóa</button>
       </div>
-      <div class="cart-summary">
-        <p class="cart-total">
-          Tổng tiền:
-          <span id="total-price">1,500,000₫</span>
-        </p>
-        <a href="checkout.html" class="checkout-btn">Thanh toán</a>
-      </div>
-    </main>
+      <h2 class="related-title">Bạn có thể thích</h2>
 
-    <!--
-- #FOOTER
--->
+      <section class="related-products">
+        <div class="related-product-grid">
+          <div class="product-card">
+            <div class="product-image-container">
+              <a href="#">
+                <img
+                  src="assets/images/related-1.jpg"
+                  alt="Sản phẩm liên quan 1"
+                  class="product-image"
+                />
+              </a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Nam</span>
+              <h3 class="product-name">
+                <a href="#">Nike Dunk Low Retro</a>
+              </h3>
+              <p class="product-price">2.929.000đ</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image-container">
+              <a href="#">
+                <img
+                  src="assets/images/related-2.jpg"
+                  alt="Sản phẩm liên quan 2"
+                  class="product-image"
+                />
+              </a>
+              <span class="badge sale-badge">-15%</span>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Nữ</span>
+              <h3 class="product-name"><a href="#">Puma Suede Classic</a></h3>
+              <p class="product-price">1.890.000đ</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image-container">
+              <a href="#">
+                <img
+                  src="assets/images/related-3.jpg"
+                  alt="Sản phẩm liên quan 3"
+                  class="product-image"
+                />
+              </a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Nam và Nữ</span>
+              <h3 class="product-name"><a href="#">New Balance 550</a></h3>
+              <p class="product-price">3.500.000đ</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image-container">
+              <a href="#">
+                <img
+                  src="assets/images/related-4.jpg"
+                  alt="Sản phẩm liên quan 4"
+                  class="product-image"
+                />
+              </a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Nam</span>
+              <h3 class="product-name"><a href="#">Adidas Samba OG</a></h3>
+              <p class="product-price">2.800.000đ</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <footer class="footer">
       <div class="footer-top section">
         <div class="container">
@@ -362,9 +542,7 @@
         </div>
       </div>
     </footer>
-    <!-
-- ionicon link
--->
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -373,57 +551,6 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const searchToggleBtn = document.getElementById("searchToggleBtn");
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search-input");
-
-        if (searchToggleBtn && searchForm && searchInput) {
-          function toggleSearch(e) {
-            if (e) e.preventDefault();
-            searchForm.classList.toggle("active");
-
-            if (searchForm.classList.contains("active")) {
-              searchInput.focus();
-            } else {
-              searchInput.value = "";
-            }
-          }
-
-          function handleSearchAction(e) {
-            toggleSearch(e);
-          }
-
-          searchToggleBtn.addEventListener("click", handleSearchAction);
-
-          searchInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              toggleSearch(e);
-            }
-          });
-        }
-      });
-      const newsletterForm = document.getElementById("newsletter-form");
-
-      if (newsletterForm) {
-        newsletterForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Hiển thị thông báo xác nhận thành công
-          showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
-
-          // Xóa nội dung input
-          const emailInput = newsletterForm.querySelector(
-            'input[name="email"]'
-          );
-          if (emailInput) {
-            emailInput.value = "";
-          }
-        });
-      }
-    </script>
     <script>
       const navOpenBtn = document.querySelector(".nav-open-btn");
       const navCloseBtn = document.querySelector(".nav-close-btn");

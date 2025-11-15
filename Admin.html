@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        overflow-x: hidden;
+        display: flex;
+    }
+    .admin-avatar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .admin-avatar .admin-icon{
+        width: 40px;
+        height: 40px;
+        background-color: #4cafaf;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .admin-icon{
+        margin-left: 20px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 200px;
+        background: #1e1e2f;
+        height: 100vh;
+        color: #fff;
+        position: fixed;
+        padding: 20px 0;
+        flex-shrink: 0;
+        overflow-y: auto;
+    }
+
+    .sidebar h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 22px;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        padding: 14px 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .sidebar ul li:hover,
+    .sidebar ul li.active {
+        background: #6c72b6;
+    }
+
+    /* Main Content */
+    .main {
+        flex: 1;
+        margin-left: 200px;
+        padding: 20px;
+        width: calc(100% - 200px);
+    }
+
+    .main section{
+        display: none;
+    }
+
+    .main section.active{
+        display: block;
+    }
+
+    /* Header */
+    .admin-header {
+        background: #fff;
+        padding: 15px 20px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Cards */
+    .cards-manager {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .cards-manager > div {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .cards-manager div h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .cards-manager div data {
+        display: block;
+        margin-top: 10px;
+        font-size: 28px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    /* Data Table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    table th, table td {
+        padding: 14px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+
+    table th {
+        background: #f1f1f1;
+        font-weight: bold;
+        color: #333;
+    }
+
+    table tr:hover {
+        background: #f9f9f9;
+    }
+    @media (max-width:900px){
+        .cards-manager{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="admin-avatar">
+        <div class="admin-icon">BHD</div>
+        <span class="admin-name">Admin</span>
+    </div>
+    <ul class="menu">
+        <li class="active" data-section="dashboard">Dashboard</li>
+        <li data-section="products">Quản lý sản phẩm</li>
+        <li data-section="orders">Quản lý đơn hàng</li>
+        <li data-section="accounts">Quản lý tài khoản</li>
+        <li data-section="statistics">Thống kê</li>
+        <li data-section="setting">Cài đặt</li>
+        <li data-section="logout">Đăng xuất</li>
+    </ul>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+    <!--DASHBOARD-->
+    <section id="dashboard" class="active">
+        <div class="admin-header">
+            <h2>Dashboard</h2>
+            <strong>Xin chào, Admin 👋</strong>
+        </div>
+        
+        <!-- CARDS -->
+        <div class="cards-manager">
+            <div class="card-order-today">
+                <h3>Đơn hàng hôm nay</h3>
+                <data value="5">5</data>
+            </div>
+            <div class="card-revenue">
+                <h3>Doanh thu hôm nay</h3>
+                <data value="6000000">6.000.000đ</data>
+            </div>
+            <div class="card-customer">
+                <h3>Khách hàng mới</h3>
+                <data value="5">5</data>
+            </div>
+            <div class="card-inventory">
+                <h3>Sản phẩm tồn kho</h3>
+                <data value="10">10</data>
+            </div>
+        </div>
+        
+        <!-- TABLE -->
+        <h3>Đơn hàng gần đây</h3>
+        <table>
+            <tr>
+                <th>Mã đơn</th>
+                <th>Khách hàng</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+            </tr>
+            <tr>
+                <td>#00123</td>
+                <td>Nguyễn Văn Hùng</td>
+                <td>2.000.000đ</td>
+                <td>Hoàn thành</td>
+            </tr>
+            <tr>
+                <td>#00122</td>
+                <td>Nguyễn Văn Điền</td>
+                <td>2.000.000đ</td>
+                <td>Đang giao</td>
+            </tr>
+            <tr>
+                <td>#00121</td>
+                <td>Phan Văn Gia Bảo</td>
+                <td>2.000.000đ</td>
+                <td>Chờ xác nhận</td>
+            </tr>
+        </table>
+    </section>
+    <section id="products">
+        <div class="admin-main">
+            <h2>Quản lý sản phẩm</h2>
+            <strong>Xin chào, Admin 👋</strong>
+        </div>
+    </section>
+    <section id="orders">
+        <div class="admin-main">
+            <h2>Quản lý đơn hàng</h2>
+            <strong>Xin chào, Admin 👋</strong>
+        </div>
+    </section>
+    <section id="accounts">
+        <div class="admin-main">
+            <h2>Quản lý tài khoản</h2>
+            <strong>Xin chào, Admin 👋</strong>
+        </div>
+    </section>
+    <section id="statistics">
+        <div class="admin-main">
+            <h2>Thống kê</h2>
+            <strong>Xin chào, Admin 👋</strong>
+        </div>
+    </section>
+    <section id="setting">
+        <div class="admin-main">
+            <h2>Cài đặt</h2>
+            <strong>Xin chào, Admin 👋</strong>
+        </div>
+    </section>
+    <section id="logout">
+        <div class="admin-main">
+            <h2>Đăng xuất</h2>
+            <strong>Xin chào, Admin 👋</strong>
+        </div>
+    </section>
+</div>
+    
+</body>
+<script>
+    const menuItems = document.querySelectorAll('.menu li');
+    const sections = document.querySelectorAll('section');
+    
+    menuItems.forEach(item =>{
+        item.addEventListener('click', () => {
+            menuItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const secID = item.getAttribute('data-section');
+            const actSec = document.getElementById(secID);
+            if(actSec) actSec.classList.add('active');
+        });
+    });
+</script>
+</html>

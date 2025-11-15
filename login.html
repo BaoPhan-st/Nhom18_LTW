@@ -73,7 +73,7 @@
             </li>
 
             <li class="navbar-item">
-              <a href="#" class="navbar-link">Sản phẩm</a>
+              <a href="Products.html" class="navbar-link">Sản phẩm</a>
             </li>
 
             <li class="navbar-item">
@@ -184,7 +184,9 @@
                     </small>
                   </fieldset>
                   <div>
-                    <button type="submit" class="btn-primary">Đăng nhập</button>
+                    <button type="button" id="btn-primary" class="btn-primary">
+                      Đăng nhập
+                    </button>
                   </div>
                 </form>
                 <div class="social-auth">
@@ -408,6 +410,20 @@
         navbar.classList.remove("active");
         overlay.classList.remove("active");
       });
+  document.getElementById("btn-primary").addEventListener("click", function () {
+  var username = document.getElementById("name").value;
+  var password = document.getElementById("password").value;
+  if (username === "admin" && password === "admin123") {
+    window.location.href = "admin.html";
+  } 
+  else if (username === "user" && password === "123") {
+    window.location.href = "menusaulogin.html";
+  } 
+  else {
+    alert("Sai tên đăng nhập hoặc mật khẩu!");
+  }
+});
+
     </script>
   </body>
 </html>
