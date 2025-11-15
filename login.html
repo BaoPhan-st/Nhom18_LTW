@@ -410,11 +410,20 @@
         navbar.classList.remove("active");
         overlay.classList.remove("active");
       });
-      document
-        .getElementById("btn-primary")
-        .addEventListener("click", function () {
-          window.location.href = "menusaulogin.html";
-        });
+  document.getElementById("btn-primary").addEventListener("click", function () {
+  var username = document.getElementById("name").value;
+  var password = document.getElementById("password").value;
+  if (username === "admin" && password === "admin123") {
+    window.location.href = "admin.html";
+  } 
+  else if (username === "user" && password === "123") {
+    window.location.href = "menusaulogin.html";
+  } 
+  else {
+    alert("Sai tên đăng nhập hoặc mật khẩu!");
+  }
+});
+
     </script>
   </body>
 </html>

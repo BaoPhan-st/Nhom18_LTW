@@ -344,3 +344,32 @@
   color: #333;
   margin: 0;
 }
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end; /* đẩy sang phải */
+  margin-top: 20px;
+}
+
+.page-btn {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-number.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
