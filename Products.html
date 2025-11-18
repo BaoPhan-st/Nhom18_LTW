@@ -566,25 +566,58 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchToggleBtn = document.getElementById("searchToggleBtn");
+            const searchForm = document.getElementById("search-form");
+            const searchInput = document.getElementById("search-input");
 
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
-      });
+            if (searchToggleBtn && searchForm && searchInput) {
+                function toggleSearch(e) {
+                    if (e) e.preventDefault();
+                    searchForm.classList.toggle("active");
 
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+                    if (searchForm.classList.contains("active")) {
+                        searchInput.focus();
+                    } else {
+                        searchInput.value = "";
+                    }
+                }
 
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+                function handleSearchAction(e) {
+                    toggleSearch(e);
+                }
+
+                searchToggleBtn.addEventListener("click", handleSearchAction);
+
+                searchInput.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        toggleSearch(e);
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        const navOpenBtn = document.querySelector(".nav-open-btn");
+        const navCloseBtn = document.querySelector(".nav-close-btn");
+        const navbar = document.querySelector(".navbar");
+        const overlay = document.querySelector(".overlay");
+
+        navOpenBtn.addEventListener("click", () => {
+            navbar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        navCloseBtn.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+
+        overlay.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
     </script>
   </body>
 </html>
