@@ -1451,20 +1451,6 @@
         }
       });
       const newsletterForm = document.getElementById("newsletter-form");
-
-      if (newsletterForm) {
-        newsletterForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const emailInput = newsletterForm.querySelector(
-            'input[name="email"]'
-          );
-          const emailValue = emailInput ? emailInput.value : "";
-          showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
-          if (emailInput) {
-            emailInput.value = "";
-          }
-        });
-      }
     </script>
     <script>
       const navOpenBtn = document.querySelector(".nav-open-btn");
