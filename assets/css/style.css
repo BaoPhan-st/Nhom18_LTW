@@ -613,7 +613,7 @@ body {
   color: blueviolet;
   background: #ff3b30;
 }
-.card-pro div{
+.card-pro div {
   position: absolute;
   top: 20%;
   display: flex;
@@ -624,22 +624,38 @@ body {
   opacity: 0;
   font-size: larger;
   animation: showPro 9s infinite;
-  text-shadow:
-    -2px -2px 0 #fff,
-    2px -2px 0 #fff,
-    -2px  2px 0 #fff,
-    2px  2px 0 #fff;
+  text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff,
+    2px 2px 0 #fff;
 }
-.card-pro div:nth-child(1){animation-delay: 0s;}
-.card-pro div:nth-child(2){animation-delay: 3s;}
-.card-pro div:nth-child(3){animation-delay: 6s;}
+.card-pro div:nth-child(1) {
+  animation-delay: 0s;
+}
+.card-pro div:nth-child(2) {
+  animation-delay: 3s;
+}
+.card-pro div:nth-child(3) {
+  animation-delay: 6s;
+}
 
-@keyframes showPro{
-  0% {opacity: 0; transform: translateX(10px);}
-  10% {opacity: 1; transform: translateX(0);}
-  33% {opacity: 1;}
-  36% {opacity: 0; transform: translateX(-10px);}
-  100% {opacity: 0;}
+@keyframes showPro {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  33% {
+    opacity: 1;
+  }
+  36% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 0;
+  }
 }
 /* BreadCrumb*/
 .breadcrumb-container {
@@ -1046,7 +1062,7 @@ a.footer-link:is(:hover, :focus) {
     --fs-4: 2.2rem;
   }
 
-  . card-pro .special-product .has-scrollbar > li {
+  .card-pro .special-product .has-scrollbar > li {
     min-width: 100%;
   }
 
