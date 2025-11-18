@@ -1,11 +1,8 @@
-.nav-action-text {
-  display: none;
-}
-
-.nav-action-item:hover ion-icon {
-  display: none;
-}
-
-.nav-action-item:hover .nav-action-text {
-  display: inline-block;
+@media (hover: hover) {
+  .nav-action-item:hover ion-icon {
+    display: none;
+  }
+  .nav-action-item:hover .nav-action-text {
+    display: inline-block;
+  }
 }
