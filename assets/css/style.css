@@ -755,7 +755,7 @@ body {
 }
 
 /*-----------------------------------*\
- * #PRODUCTS
+ * Product
 \*-----------------------------------*/
 
 .product .section-title {
@@ -793,16 +793,13 @@ body {
   gap: 50px 25px;
 }
 .product-price-line-3 {
+    min-height: 65px; /* hoặc 45px tùy thiết kế */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-
-    width: 100%;
-    margin-top: 10px;
-    padding: 0;
-
 }
+
 
 .product-card-price .discounted-price-group {
     /* Giữ nguyên flex cho [Giá giảm] [Giá gốc] */
@@ -3238,6 +3235,12 @@ a.footer-link:is(:hover, :focus) {
     background: var(--rich-black-fogra-29);
     padding-block: 20px;
 }
+/*-----------------------------------*\
+ * Product_Detail
+\*-----------------------------------*/
+/*-----------------------------------*\
+ * Product
+\*-----------------------------------*/
 /*Cuối kì xoá*/
 .Thanh_toán{
     color: #eeeeee;
