@@ -755,7 +755,7 @@ body {
 }
 
 /*-----------------------------------*\
- * #PRODUCTS
+ * Product
 \*-----------------------------------*/
 
 .product .section-title {
@@ -793,16 +793,13 @@ body {
   gap: 50px 25px;
 }
 .product-price-line-3 {
+    min-height: 65px; /* hoặc 45px tùy thiết kế */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-
-    width: 100%;
-    margin-top: 10px;
-    padding: 0;
-
 }
+
 
 .product-card-price .discounted-price-group {
     /* Giữ nguyên flex cho [Giá giảm] [Giá gốc] */
@@ -1468,14 +1465,10 @@ a.footer-link:is(:hover, :focus) {
 /* CART PAGE */
 /*
  * CSS cho trang Giỏ hàng (Cart)
- * Đã điều chỉnh: Tăng chiều rộng container (1140px -> 1280px) và căn giữa toàn bộ nội dung.
  */
 
-/* Thiết lập cơ bản (giả định đã có reset/base styles) */
 .container {
-    /* ĐÃ SỬA: Tăng chiều rộng tối đa để giỏ hàng dài hơn */
     max-width: 1280px;
-    /* Đã có: margin: 0 auto; để đảm bảo căn giữa */
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -1874,6 +1867,41 @@ a.footer-link:is(:hover, :focus) {
     .wishlist-actions .action-btn {
         flex-grow: 0; /* Ngăn nút Xoá chiếm toàn bộ chiều rộng */
         max-width: none;
+    }
+}
+/* --- NÚT MỚI: THÊM VÀO GIỎ HÀNG (WISHLIST) --- */
+.wishlist-actions .add-to-cart-btn {
+    background-color: var(--bittersweet, #ff6b6b);
+    color: var(--white, #fff);
+    margin-right: 10px;
+}
+
+.wishlist-actions .add-to-cart-btn:hover {
+    background-color: #e04e4e;
+    transform: translateY(-2px);
+}
+
+
+.wishlist-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-basis: 300px;
+    gap: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+@media (max-width: 768px) {
+    .wishlist-actions {
+        width: 100%;
+        flex-basis: 100%;
+        justify-content: space-between; /* Căn đều 2 nút */
+    }
+
+    .wishlist-actions .action-btn {
+        flex-grow: 1;
+        max-width: 48%;
+        margin-left: 0;
     }
 }
 /*-----------------------------------*\
@@ -3238,6 +3266,10 @@ a.footer-link:is(:hover, :focus) {
     background: var(--rich-black-fogra-29);
     padding-block: 20px;
 }
+/*-----------------------------------*\
+ * PopUp_Cart
+\*-----------------------------------*/
+
 /*Cuối kì xoá*/
 .Thanh_toán{
     color: #eeeeee;
