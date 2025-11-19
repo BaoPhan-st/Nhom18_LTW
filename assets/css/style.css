@@ -1465,14 +1465,10 @@ a.footer-link:is(:hover, :focus) {
 /* CART PAGE */
 /*
  * CSS cho trang Giỏ hàng (Cart)
- * Đã điều chỉnh: Tăng chiều rộng container (1140px -> 1280px) và căn giữa toàn bộ nội dung.
  */
 
-/* Thiết lập cơ bản (giả định đã có reset/base styles) */
 .container {
-    /* ĐÃ SỬA: Tăng chiều rộng tối đa để giỏ hàng dài hơn */
     max-width: 1280px;
-    /* Đã có: margin: 0 auto; để đảm bảo căn giữa */
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -1871,6 +1867,41 @@ a.footer-link:is(:hover, :focus) {
     .wishlist-actions .action-btn {
         flex-grow: 0; /* Ngăn nút Xoá chiếm toàn bộ chiều rộng */
         max-width: none;
+    }
+}
+/* --- NÚT MỚI: THÊM VÀO GIỎ HÀNG (WISHLIST) --- */
+.wishlist-actions .add-to-cart-btn {
+    background-color: var(--bittersweet, #ff6b6b);
+    color: var(--white, #fff);
+    margin-right: 10px;
+}
+
+.wishlist-actions .add-to-cart-btn:hover {
+    background-color: #e04e4e;
+    transform: translateY(-2px);
+}
+
+
+.wishlist-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-basis: 300px;
+    gap: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+@media (max-width: 768px) {
+    .wishlist-actions {
+        width: 100%;
+        flex-basis: 100%;
+        justify-content: space-between; /* Căn đều 2 nút */
+    }
+
+    .wishlist-actions .action-btn {
+        flex-grow: 1;
+        max-width: 48%;
+        margin-left: 0;
     }
 }
 /*-----------------------------------*\
@@ -3236,11 +3267,9 @@ a.footer-link:is(:hover, :focus) {
     padding-block: 20px;
 }
 /*-----------------------------------*\
- * Product_Detail
+ * PopUp_Cart
 \*-----------------------------------*/
-/*-----------------------------------*\
- * Product
-\*-----------------------------------*/
+
 /*Cuối kì xoá*/
 .Thanh_toán{
     color: #eeeeee;
