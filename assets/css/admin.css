@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    overflow-x: hidden;
+    display: flex;
+}
+
+.admin-avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-avatar .admin-icon{
+    width: 40px;
+    height: 40px;
+    background-color: #4cafaf;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.admin-icon{
+    margin-left: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: #1e1e2f;
+    height: 100vh;
+    color: #fff;
+    position: fixed;
+    padding: 20px 0;
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 22px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background: #6c72b6;
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    margin-left: 200px;
+    padding: 20px;
+    width: calc(100% - 200px);
+}
+
+.main section{
+    display: none;
+    overflow: auto;
+    overflow-x: auto;
+}
+
+.main section.active{
+    display: block;
+}
+
+/* Header */
+.admin-header {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Cards */
+.cards-manager {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.cards-manager > div {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cards-manager div h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.cards-manager div data {
+    display: block;
+    margin-top: 10px;
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Data Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+table th, table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background: #f1f1f1;
+    font-weight: bold;
+    color: #333;
+}
+    
+table tr:hover {
+    background: #f9f9f9;
+}
+
+#userTable button{
+    background: #6c72b6;
+    color: #eee;
+    width: 70px;
+    height: 20px;
+}
+#userTable .state{
+    color: red;
+    font-weight: bold;
+}
+    
+@media (max-width:900px){
+    .cards-manager{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.setting form{
+    width: 80%;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.setting form input{
+    height: 20px;
+}
+
+.setting form button{
+    margin-top: 20px;
+    height: 20px;
+    width: 150px;
+    background: green;
+    color: white;
+    left: calc(70% - 150px);
+}
+
+.logout-confirm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-confirm button{
+    background: #c5ecec;
+}
