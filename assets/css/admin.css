@@ -195,3 +195,7 @@ table tr:hover {
 .logout-confirm button{
     background: #c5ecec;
 }
+
+#addProductBtn{
+    display: flex;
+}
