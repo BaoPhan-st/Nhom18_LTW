@@ -413,3 +413,12 @@
   color: #4caf50;
   font-size: 18px;
 }
+.product-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.product-meta p {
+  margin: 0;
+}
