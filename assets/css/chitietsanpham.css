@@ -228,47 +228,6 @@
   color: white;
   border-color: #000;
 }
-.color-list {
-  display: flex;
-  gap: 10px;
-  margin-top: 5px;
-}
-
-.color-item {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-sizing: border-box; /* Để viền không làm vỡ kích thước */
-  border: 2px solid #eee; /* Viền mặc định */
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Hiệu ứng khi di chuột vào */
-.color-item:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  border-color: #ccc;
-}
-
-/* Class riêng cho từng màu */
-.color-item.black {
-  background-color: #000;
-}
-
-.color-item.white {
-  background-color: #fff;
-  border-color: #ccc;
-}
-
-.color-item.red {
-  background-color: red; /* Hoặc mã màu #d90429 */
-}
-
-.color-item.selected {
-  border: 2px solid #000; /* Viền đen đậm khi chọn */
-  transform: scale(1.1);
-}
 
 .action-area {
   margin-top: 30px;
