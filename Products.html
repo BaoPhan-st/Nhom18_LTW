@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sản phẩm - BHD SPORT SHOES</title>
 
@@ -24,6 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
   </head>
 
   <body>
@@ -40,7 +41,6 @@
           />
         </a>
 
-        <!-- Nút mở menu -->
         <button class="nav-open-btn">
           <ion-icon name="menu-outline"></ion-icon>
         </button>
@@ -58,15 +58,12 @@
             <li class="navbar-item">
               <a href="Menu.html" class="navbar-link">Trang chủ</a>
             </li>
-
             <li class="navbar-item">
               <a href="gioithieu.html" class="navbar-link">Giới thiệu</a>
             </li>
-
             <li class="navbar-item">
               <a href="Products.html" class="navbar-link">Sản phẩm</a>
             </li>
-
             <li class="navbar-item">
               <a href="lienhe.html" class="navbar-link">Liên hệ</a>
             </li>
@@ -83,19 +80,16 @@
                 <span class="nav-action-text">Tìm kiếm</span>
               </button>
             </li>
-
             <li class="nav-action-item nav-action-dropdown">
               <a href="login.html" class="nav-action-btn">
                 <ion-icon name="person-outline"></ion-icon>
                 <span class="nav-action-text">Đăng nhập / Đăng kí</span>
               </a>
-
               <div class="dropdown-content">
                 <a href="login.html">Đăng nhập</a>
                 <a href="register.html">Đăng ký</a>
               </div>
             </li>
-
             <li>
               <a href="WishList.html" class="nav-action-btn">
                 <ion-icon name="heart-outline"></ion-icon>
@@ -117,7 +111,6 @@
               id="search-input"
               required
             />
-
             <button type="button" class="search-close-btn" id="searchCloseBtn">
               <ion-icon name="close-outline"></ion-icon>
             </button>
@@ -125,22 +118,6 @@
         </nav>
       </div>
     </header>
-    <!--promotion-->
-    <div class="promotion-box">
-      <div class="voucher">
-        <h3>Voucher</h3>
-        <button>Giảm 10.000đ</button>
-        <button>Giảm 25.000đ</button>
-        <button>Giảm 50.000đ</button>
-        <button>Giảm 100.000đ</button>
-      </div>
-      <div class="free-ship">
-        <h3>Free Ship</h3>
-        <button>Giảm 20.000d cho đơn từ 100.000đ</button>
-        <button>Giảm 40.000d cho đơn từ 200.000đ</button>
-        <button>Giảm 50.000d cho đơn từ 300.000đ</button>
-      </div>
-    </div>
 
     <div class="shop-layout">
       <aside class="filter-sidebar">
@@ -189,7 +166,7 @@
             <button class="toggle-btn">-</button>
           </div>
           <div class="filter-group-body">
-            <ul class="filter-list-grid">
+            <ul class="filter-list-grid" id="size-filter-list">
               <li>
                 <input type="checkbox" id="size-38" /><label for="size-38"
                   >38</label
@@ -226,6 +203,47 @@
 
         <div class="filter-group">
           <div class="filter-group-header">
+            <h3>Khoảng giá</h3>
+            <button class="toggle-btn">-</button>
+          </div>
+          <div class="filter-group-body">
+            <div class="price-filter">
+              <div class="slider-container">
+                <div class="slider-track"></div>
+                <input
+                  type="range"
+                  min="0"
+                  max="5000000"
+                  value="0"
+                  id="slider-1"
+                  oninput="slideOne()"
+                />
+                <input
+                  type="range"
+                  min="0"
+                  max="5000000"
+                  value="5000000"
+                  id="slider-2"
+                  oninput="slideTwo()"
+                />
+              </div>
+              <div class="price-input">
+                <div class="field">
+                  <span>Từ</span>
+                  <input type="text" id="range1" value="0đ" readonly />
+                </div>
+                <div class="separator">-</div>
+                <div class="field">
+                  <span>Đến</span>
+                  <input type="text" id="range2" value="5.000.000đ" readonly />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-header">
             <h3>Màu sắc</h3>
             <button class="toggle-btn">-</button>
           </div>
@@ -235,17 +253,14 @@
                 <input type="checkbox" id="color-black" />
                 <label for="color-black">Đen</label>
               </li>
-
               <li id="filter-color-white">
                 <input type="checkbox" id="color-white" />
                 <label for="color-white">Trắng</label>
               </li>
-
               <li id="filter-color-red">
                 <input type="checkbox" id="color-red" />
                 <label for="color-red">Đỏ</label>
               </li>
-
               <li id="filter-color-blue">
                 <input type="checkbox" id="color-blue" />
                 <label for="color-blue">Xanh dương</label>
@@ -259,115 +274,320 @@
         <div class="sort-toolbar">
           <label for="sort-select">Sắp xếp theo:</label>
           <select id="sort-select" class="sort-dropdown">
+            <option value="default">Mặc định</option>
             <option value="newest">Sản phẩm mới nhất</option>
+            <option value="bestseller">Sản phẩm bán chạy</option>
             <option value="price-asc">Giá từ thấp đến cao</option>
             <option value="price-desc">Giá từ cao đến thấp</option>
           </select>
         </div>
-
-        <div class="product-grid">
-          <div class="product-card">
-            <div class="product-image-container">
-              <a href="chitietsanpham.html">
+        <ul class="product-list grid-list">
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
                 <img
                   src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
                   alt="Nike Air Force 1 '07"
-                  class="product-image"
+                  class="image-contain"
                 />
-              </a>
-              <span
-                class="badge new-badge"
-                style="
-                  position: absolute;
-                  top: 20px;
-                  left: 20px;
-                  background: var(--bittersweet);
-                  color: var(--white);
-                  padding: 5px 15px;
-                  font-family: var(--ff-roboto), sans-serif;
-                  font-size: var(--fs-7);
-                  border-radius: 25px;
-                "
-                >New</span
-              >
+                <div class="card-badge new-badge">New</div>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam</a>
+                </div>
+                <h3 class="h3 card-title">
+                  <a href="chitietsanpham.html">Nike Air Force 1 '07</a>
+                </h3>
+                <data class="card-price" value="3239000">3.239.000đ</data>
+              </div>
             </div>
-            <div class="product-info">
-              <span class="product-category">Nam</span>
-              <h3 class="product-name"><a href="#">Nike Air Force 1 '07</a></h3>
-              <p class="product-price">3.239.000đ</p>
-            </div>
-          </div>
+          </li>
 
-          <div class="product-card">
-            <div class="product-image-container">
-              <a href="chitietsanpham.html">
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
                 <img
                   src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
                   alt="Nike Air Jordan 1"
-                  class="product-image"
+                  class="image-contain"
                 />
-              </a>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam</a>
+                </div>
+                <h3 class="h3 card-title">
+                  <a href="chitietsanpham.html">Nike Air Jordan 1 Mid</a>
+                </h3>
+                <data class="card-price" value="4109000">4.109.000đ</data>
+              </div>
             </div>
-            <div class="product-info">
-              <span class="product-category">Nam</span>
-              <h3 class="product-name">
-                <a href="chitietsanpham.html">Nike Air Jordan 1 Mid</a>
-              </h3>
-              <p class="product-price">4.109.000đ</p>
-            </div>
-          </div>
+          </li>
 
-          <div class="product-card">
-            <div class="product-image-container">
-              <a href="chitietsanpham.html">
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
                 <img
                   src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
                   alt="Adidas Ultraboost"
-                  class="product-image"
+                  class="image-contain"
                 />
-              </a>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam</a>
+                </div>
+                <h3 class="h3 card-title">
+                  <a href="chitietsanpham.html">Adidas Ultraboost 1.0</a>
+                </h3>
+                <data class="card-price" value="4500000">4.500.000đ</data>
+              </div>
             </div>
-            <div class="product-info">
-              <span class="product-category">Nam</span>
-              <h3 class="product-name">
-                <a href="chitietsanpham.html">Adidas Ultraboost 1.0</a>
-              </h3>
-              <p class="product-price">4.500.000đ</p>
-            </div>
-          </div>
+          </li>
 
-          <div class="product-card">
-            <div class="product-image-container">
-              <a href="chitietsanpham.html">
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
                 <img
                   src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
                   alt="Converse Chuck 70"
-                  class="product-image"
+                  class="image-contain"
                 />
-              </a>
-              <span
-                class="badge sale-badge"
-                style="
-                  position: absolute;
-                  top: 20px;
-                  left: 10%;
-                  background: red;
-                  color: var(--white);
-                  padding: 5px 15px;
-                  font-family: var(--ff-roboto), sans-serif;
-                  font-size: var(--fs-10);
-                  border-radius: 5px;
-                "
-                >-20%</span
-              >
+                <div class="card-badge sale-badge">-20%</div>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam và Nữ</a>
+                </div>
+                <h3 class="h3 card-title"><a href="#">Converse Chuck 70</a></h3>
+                <data class="card-price" value="1960000"
+                  >1.960.000đ
+                  <del style="color: #888; font-size: 0.9em"
+                    >2.450.000đ</del
+                  ></data
+                >
+              </div>
             </div>
-            <div class="product-info">
-              <span class="product-category">Nam và Nữ</span>
-              <h3 class="product-name"><a href="#">Converse Chuck 70</a></h3>
-              <p class="product-price"><s>2.450.000đ</s>-1.960.000</p>
+          </li>
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
+                <img
+                  src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
+                  alt="Converse Chuck 70"
+                  class="image-contain"
+                />
+                <div class="card-badge sale-badge">-20%</div>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam và Nữ</a>
+                </div>
+                <h3 class="h3 card-title"><a href="#">Converse Chuck 70</a></h3>
+                <data class="card-price" value="1960000"
+                  >1.960.000đ
+                  <del style="color: #888; font-size: 0.9em"
+                    >2.450.000đ</del
+                  ></data
+                >
+              </div>
             </div>
-          </div>
-        </div>
+          </li>
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
+                <img
+                  src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
+                  alt="Converse Chuck 70"
+                  class="image-contain"
+                />
+                <div class="card-badge sale-badge">-20%</div>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam và Nữ</a>
+                </div>
+                <h3 class="h3 card-title"><a href="#">Converse Chuck 70</a></h3>
+                <data class="card-price" value="1960000"
+                  >1.960.000đ
+                  <del style="color: #888; font-size: 0.9em"
+                    >2.450.000đ</del
+                  ></data
+                >
+              </div>
+            </div>
+          </li>
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
+                <img
+                  src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
+                  alt="Converse Chuck 70"
+                  class="image-contain"
+                />
+                <div class="card-badge sale-badge">-20%</div>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam và Nữ</a>
+                </div>
+                <h3 class="h3 card-title"><a href="#">Converse Chuck 70</a></h3>
+                <data class="card-price" value="1960000"
+                  >1.960.000đ
+                  <del style="color: #888; font-size: 0.9em"
+                    >2.450.000đ</del
+                  ></data
+                >
+              </div>
+            </div>
+          </li>
+          <li class="product-item">
+            <div class="product-card" tabindex="0">
+              <figure class="card-banner">
+                <img
+                  src="assets/images/product-1.jpg"
+                  width="312"
+                  height="350"
+                  loading="lazy"
+                  alt="Converse Chuck 70"
+                  class="image-contain"
+                />
+                <div class="card-badge sale-badge">-20%</div>
+                <ul class="card-action-list">
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                  </li>
+                  <li class="card-action-item">
+                    <button class="card-action-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                  </li>
+                </ul>
+              </figure>
+              <div class="card-content">
+                <div class="card-cat">
+                  <a href="#" class="card-cat-link">Nam và Nữ</a>
+                </div>
+                <h3 class="h3 card-title"><a href="#">Converse Chuck 70</a></h3>
+                <data class="card-price" value="1960000"
+                  >1.960.000đ
+                  <del style="color: #888; font-size: 0.9em"
+                    >2.450.000đ</del
+                  ></data
+                >
+              </div>
+            </div>
+          </li>
+        </ul>
+
         <div class="pagination">
           <button class="page-btn prev-btn" disabled>&laquo;</button>
           <button class="page-btn page-number active">1</button>
@@ -378,7 +598,11 @@
       </main>
     </div>
 
-    <footer class="footer">
+    <div id="toast-message" class="toast-message">
+      <i class="fas fa-check-circle"></i> <span></span>
+    </div>
+
+      <footer class="footer">
       <div class="footer-top section">
         <div class="container">
           <div class="footer-brand">
@@ -439,7 +663,6 @@
               <li>
                 <address class="footer-link">
                   <ion-icon name="location"></ion-icon>
-
                   <span class="footer-link-text">
                     Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
                   </span>
@@ -449,7 +672,6 @@
               <li>
                 <a href="#" class="footer-link">
                   <ion-icon name="call"></ion-icon>
-
                   <span class="footer-link-text">0332536387</span>
                 </a>
               </li>
@@ -457,25 +679,19 @@
               <li>
                 <a href="#" class="footer-link">
                   <ion-icon name="mail"></ion-icon>
-
                   <span class="footer-link-text">BHDsport@gmail.com</span>
                 </a>
               </li>
             </ul>
 
             <ul class="footer-list">
-              <li>
-                <p class="footer-list-title">Tài khoản</p>
-              </li>
-
+              <li><p class="footer-list-title">Tài khoản</p></li>
               <li>
                 <a href="Account.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">Tài khoản</span>
                 </a>
               </li>
-
               <li>
                 <a href="Carts.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -492,42 +708,35 @@
                 </a>
               </li>
             </ul>
-            <ul class="footer-list">
-              <li>
-                <p class="footer-list-title">Chính sách</p>
-              </li>
 
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Chính sách</p></li>
               <li>
                 <a href="ChinhSachBaoMat.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">Chính sách bảo mật</span>
                 </a>
               </li>
-
               <li>
                 <a href="ChinhSachBaoHanh.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">Chính sách bảo hành</span>
                 </a>
               </li>
-
               <li>
                 <a href="huongdanmuahang.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
               <li>
                 <a href="faq.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">FAQs</span>
                 </a>
               </li>
             </ul>
+
             <div class="footer-list">
               <p class="footer-list-title">Đăng kí nhận tin</p>
               <form
@@ -556,12 +765,13 @@
         <div class="container">
           <p class="copyright">
             &copy; 2025
-            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>.Cùng bạn
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
             chinh phục mọi hành trình
           </p>
         </div>
       </div>
     </footer>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -570,25 +780,80 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+
     <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
+      // 1. HÀM HIỂN THỊ THÔNG BÁO TOAST
+      function showToast(message) {
+        const toast = document.getElementById("toast-message");
+        if (toast) {
+          toast.querySelector("span").textContent = message;
+          toast.classList.add("show");
+          // Tự động ẩn sau 3 giây
+          setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+      }
 
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
-      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- 2. XỬ LÝ MENU MOBILE ---
+        const navOpenBtn = document.querySelector(".nav-open-btn");
+        const navCloseBtn = document.querySelector(".nav-close-btn");
+        const navbar = document.querySelector(".navbar");
+        const overlay = document.querySelector(".overlay");
 
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+        if (navOpenBtn)
+          navOpenBtn.addEventListener("click", () => {
+            navbar.classList.add("active");
+            overlay.classList.add("active");
+          });
+        if (navCloseBtn)
+          navCloseBtn.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+          });
+        if (overlay)
+          overlay.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+          });
 
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
+        // --- 3. XỬ LÝ LỌC SIZE (CHỈ ĐƯỢC CHỌN 1 CÁI) ---
+        const sizeCheckboxes = document.querySelectorAll(
+          '#size-filter-list input[type="checkbox"]'
+        );
+
+        sizeCheckboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            if (this.checked) {
+              // Nếu người dùng tích vào ô này
+              // -> Bỏ tích tất cả các ô khác
+              sizeCheckboxes.forEach((other) => {
+                if (other !== this) other.checked = false;
+              });
+
+              // Hiện thông báo cho vui (tùy chọn)
+              const sizeLabel = this.nextElementSibling.textContent;
+              showToast("Đã lọc theo Size: " + sizeLabel);
+            }
+          });
+        });
+
+        // --- 4. XỬ LÝ NÚT GIỎ HÀNG / YÊU THÍCH TRÊN SẢN PHẨM ---
+        const actionBtns = document.querySelectorAll(".card-action-btn");
+
+        actionBtns.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault(); // Chặn thẻ a bao ngoài (nếu có)
+
+            const icon = this.querySelector("ion-icon");
+            const iconName = icon ? icon.getAttribute("name") : "";
+
+            if (iconName === "cart-outline") {
+              showToast("Đã thêm sản phẩm vào Giỏ hàng!");
+            } else if (iconName === "heart-outline") {
+              showToast("Đã thêm sản phẩm vào Yêu thích!");
+            }
+          });
+        });
       });
     </script>
   </body>
