@@ -142,7 +142,10 @@
           <div class="product-info-box">
             <h1 class="product-title">Nike Air Force 1 '07</h1>
 
-            <p class="brand-info">Thương hiệu: <strong>Nike</strong></p>
+            <div class="product-meta">
+              <p class="brand-info">Thương hiệu: <strong>Nike</strong></p>
+              <p class="stock-info">Kho: <strong data-stock="10">10</strong></p>
+            </div>
 
             <div class="price-row">
               <span class="current-price">1.960.000đ</span>
@@ -646,6 +649,20 @@
           .addEventListener("click", function () {
             showToast("Đã thêm sản phẩm này vào Yêu thích!");
           });
+      });
+      const checkboxes = document.querySelectorAll(
+        '.filter-list-color input[type="checkbox"]'
+      );
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+          if (this.checked) {
+            checkboxes.forEach((otherCheckbox) => {
+              if (otherCheckbox !== this) {
+                otherCheckbox.checked = false;
+              }
+            });
+          }
+        });
       });
     </script>
   </body>
