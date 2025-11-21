@@ -141,32 +141,118 @@
         </nav>
       </div>
     </div>
-    <main class="cart-container">
-      <h1 class="cart-title">Giỏ hàng của bạn</h1>
+    <!--
+   - #CartContent
+   -->
+    <main class="cart-page-content">
+        <div class="container">
+            <h1 class="cart-header">Giỏ hàng</h1>
 
-      <div class="cart-item">
-        <img src="./assets/images/product-2.jpg" alt="Nike Air Zoom" />
-        <div class="cart-item-info">
-          <p class="cart-item-name">Giày thể thao Nike Air Zoom</p>
-          <p class="cart-item-price">1,500,000 đ</p>
+            <div class="cart-items-list">
+
+                <div class="product-item">
+                    <div class="product-details">
+                        <img src="assets/images/product-1.jpg" alt="Tên Sản Phẩm 1" class="product-image">
+
+                        <div class="product-info">
+
+                            <h2 class="product-name">
+                                <a href="chitietsanpham.html" class="product-link">Nike Air Force 1 '07</a>
+                            </h2>
+
+                            <div class="product-attributes-line-2">
+                                <p class="product-size">Size: 40</p>
+                                <div class="product-color">
+                                    <div class="color-box" style="background-color: #e74c3c;" title="Hex: #e74c3c (Đỏ)"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-price-line-3c"
+                                 data-id="12345"
+                                 data-price-raw="1500000"
+                                 data-original-raw="1808500"
+                                 data-discount-percentage="17">
+                                <div class="discounted-price-group">
+                                    <span class="discounted-price">199.000 VNĐ</span>
+                                    <span class="original-price">250.000 VNĐ</span>
+                                </div>
+                                <p class="discount-value">Giảm: 21%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <input type="number" value="1" min="1" class="quantity-input">
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+
+                        <button class="action-btn delete-btn">Xoá</button>
+
+                        <button class="action-btn buy-now-btn">Mua ngay</button>
+                    </div>
+                </div>
+
+                <hr class="separator">
+
+                <div class="product-item">
+                    <div class="product-details">
+                        <img src="assets/images/product-2.jpg" alt="Tên Sản Phẩm 2" class="product-image">
+
+                        <div class="product-info">
+
+                            <h2 class="product-name">
+                                <a href="#" class="product-link">Nike Air Force 1 '07</a>
+                            </h2>
+
+                            <div class="product-attributes-line-2">
+                                <p class="product-size">Size: 40</p>
+                                <div class="product-color">
+                                    <div class="color-box" style="background-color: #3498db;" title="Hex: #3498db (Xanh Dương)"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-price-line-3c"
+                                data-id="12345"
+                                data-price-raw="1500000"
+                                data-original-raw="1808500"
+                                data-discount-percentage="17">
+                                <div class="discounted-price-group">
+                                    <span class="discounted-price">1.500.000 VNĐ</span>
+                                    <span class="original-price" style="display: none;">1.500.000 VNĐ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <input type="number" value="2" min="1" class="quantity-input">
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+
+                        <button class="action-btn delete-btn">Xoá</button>
+                        <button class="action-btn buy-now-btn">Mua ngay</button>
+                    </div>
+                </div>
+
+                <hr class="separator">
+
+            </div>
+
+            <div class="cart-summary-section">
+                <div class="total-line">
+                    <span class="total-label">Tổng cộng:</span>
+                    <span class="total-price">3.199.000 VNĐ</span>
+                </div>
+             <button class="checkout-btn"> <a href="checkout.html" class="Thanh_toán">Tiến Hành Đặt hàng</a></button>
+            </div>
+
         </div>
-
-        <div class="cart-item-quantity">
-          <button class="quantity-btn decrease">-</button>
-          <input type="number" value="1" min="1" />
-          <button class="quantity-btn increase">+</button>
-        </div>
-
-        <button class="remove-btn">Xóa</button>
-      </div>
-      <div class="cart-summary">
-        <p class="cart-total">
-          Tổng tiền:
-          <span id="total-price">1,500,000₫</span>
-        </p>
-        <a href="checkout.html" class="checkout-btn">Thanh toán</a>
-      </div>
     </main>
+
 
     <!--
 - #FOOTER
@@ -367,76 +453,58 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const searchToggleBtn = document.getElementById("searchToggleBtn");
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search-input");
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchToggleBtn = document.getElementById("searchToggleBtn");
+            const searchForm = document.getElementById("search-form");
+            const searchInput = document.getElementById("search-input");
 
-        if (searchToggleBtn && searchForm && searchInput) {
-          function toggleSearch(e) {
-            if (e) e.preventDefault();
-            searchForm.classList.toggle("active");
+            if (searchToggleBtn && searchForm && searchInput) {
+                function toggleSearch(e) {
+                    if (e) e.preventDefault();
+                    searchForm.classList.toggle("active");
 
-            if (searchForm.classList.contains("active")) {
-              searchInput.focus();
-            } else {
-              searchInput.value = "";
+                    if (searchForm.classList.contains("active")) {
+                        searchInput.focus();
+                    } else {
+                        searchInput.value = "";
+                    }
+                }
+
+                function handleSearchAction(e) {
+                    toggleSearch(e);
+                }
+
+                searchToggleBtn.addEventListener("click", handleSearchAction);
+
+                searchInput.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        toggleSearch(e);
+                    }
+                });
             }
-          }
-
-          function handleSearchAction(e) {
-            toggleSearch(e);
-          }
-
-          searchToggleBtn.addEventListener("click", handleSearchAction);
-
-          searchInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              toggleSearch(e);
-            }
-          });
-        }
-      });
-      const newsletterForm = document.getElementById("newsletter-form");
-
-      if (newsletterForm) {
-        newsletterForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Hiển thị thông báo xác nhận thành công
-          showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
-
-          // Xóa nội dung input
-          const emailInput = newsletterForm.querySelector(
-            'input[name="email"]'
-          );
-          if (emailInput) {
-            emailInput.value = "";
-          }
         });
-      }
     </script>
     <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
+        const navOpenBtn = document.querySelector(".nav-open-btn");
+        const navCloseBtn = document.querySelector(".nav-close-btn");
+        const navbar = document.querySelector(".navbar");
+        const overlay = document.querySelector(".overlay");
 
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
-      });
+        navOpenBtn.addEventListener("click", () => {
+            navbar.classList.add("active");
+            overlay.classList.add("active");
+        });
 
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+        navCloseBtn.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
 
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+        overlay.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
     </script>
   </body>
 </html>

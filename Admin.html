@@ -4,157 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f6f9;
-        overflow-x: hidden;
-        display: flex;
-    }
-    .admin-avatar {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .admin-avatar .admin-icon{
-        width: 40px;
-        height: 40px;
-        background-color: #4cafaf;
-        color: #fff;
-        font-size: 15px;
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-    }
-    .admin-icon{
-        margin-left: 20px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-        width: 200px;
-        background: #1e1e2f;
-        height: 100vh;
-        color: #fff;
-        position: fixed;
-        padding: 20px 0;
-        flex-shrink: 0;
-        overflow-y: auto;
-    }
-
-    .sidebar h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 22px;
-    }
-
-    .sidebar ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .sidebar ul li {
-        padding: 14px 20px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .sidebar ul li:hover,
-    .sidebar ul li.active {
-        background: #6c72b6;
-    }
-
-    /* Main Content */
-    .main {
-        flex: 1;
-        margin-left: 200px;
-        padding: 20px;
-        width: calc(100% - 200px);
-    }
-
-    .main section{
-        display: none;
-    }
-
-    .main section.active{
-        display: block;
-    }
-
-    /* Header */
-    .admin-header {
-        background: #fff;
-        padding: 15px 20px;
-        border-radius: 6px;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* Cards */
-    .cards-manager {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        margin-bottom: 25px;
-    }
-
-    .cards-manager > div {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-    }
-
-    .cards-manager div h3 {
-        margin: 0;
-        font-size: 16px;
-        color: #555;
-    }
-
-    .cards-manager div data {
-        display: block;
-        margin-top: 10px;
-        font-size: 28px;
-        color: #333;
-        font-weight: bold;
-    }
-
-    /* Data Table */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    table th, table td {
-        padding: 14px;
-        text-align: left;
-        border-bottom: 1px solid #eee;
-    }
-
-    table th {
-        background: #f1f1f1;
-        font-weight: bold;
-        color: #333;
-    }
-
-    table tr:hover {
-        background: #f9f9f9;
-    }
-    @media (max-width:900px){
-        .cards-manager{
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    
-    </style>
+   <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 <body>
 
@@ -181,14 +31,13 @@
     <section id="dashboard" class="active">
         <div class="admin-header">
             <h2>Dashboard</h2>
-            <strong>Xin chào, Admin 👋</strong>
         </div>
         
         <!-- CARDS -->
         <div class="cards-manager">
             <div class="card-order-today">
                 <h3>Đơn hàng hôm nay</h3>
-                <data value="5">5</data>
+                <data value="3">3</data>
             </div>
             <div class="card-revenue">
                 <h3>Doanh thu hôm nay</h3>
@@ -200,74 +49,555 @@
             </div>
             <div class="card-inventory">
                 <h3>Sản phẩm tồn kho</h3>
-                <data value="10">10</data>
+                <data value="10">30</data>
             </div>
         </div>
         
-        <!-- TABLE -->
         <h3>Đơn hàng gần đây</h3>
-        <table>
-            <tr>
-                <th>Mã đơn</th>
-                <th>Khách hàng</th>
-                <th>Tổng tiền</th>
-                <th>Trạng thái</th>
-            </tr>
-            <tr>
-                <td>#00123</td>
-                <td>Nguyễn Văn Hùng</td>
-                <td>2.000.000đ</td>
-                <td>Hoàn thành</td>
-            </tr>
-            <tr>
-                <td>#00122</td>
-                <td>Nguyễn Văn Điền</td>
-                <td>2.000.000đ</td>
-                <td>Đang giao</td>
-            </tr>
-            <tr>
-                <td>#00121</td>
-                <td>Phan Văn Gia Bảo</td>
-                <td>2.000.000đ</td>
-                <td>Chờ xác nhận</td>
-            </tr>
-        </table>
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th>Sản phẩm</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                </tr>
+                <tr>
+                    <td>#DH001</td>
+                    <td>Nguyễn Văn Hưng</td>
+                    <td>Nike Air Force 1 '07</td>
+                    <td>9.800.000đ</td>
+                    <td>Đã hoàn thành</td>
+                </tr>
+                <tr>
+                    <td>#DH002</td>
+                    <td>Phạm Thị Điền</td>
+                    <td>Nike Air Jordan 1 Mid</td>
+                    <td>12.327.000đ</td>
+                    <td>Đã hoàn thành</td>
+                </tr>
+                <tr>
+                    <td>#DH003</td>
+                    <td>Trần Văn Điền</td>
+                    <td>Adidas Ultraboost 1.0</td>
+                    <td>18.000.000đ</td>
+                    <td>Đang giao hàng</td>
+                </tr>
+            </table>
+        </div>
     </section>
+
+    <!-- SẢN PHẨM -->
     <section id="products">
-        <div class="admin-main">
-            <h2>Quản lý sản phẩm</h2>
-            <strong>Xin chào, Admin 👋</strong>
+        <div class="admin-header">
+            <h2 style="position: relative">Quản lý sản phẩm</h2>
+            <button id="addProductBtn" >➕ Thêm sản phẩm</button>
+        </div>
+
+        <!-- content -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã SP</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Tồn kho</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable">
+                    <tr>
+                        <td>SP001</td>
+                        <td>Nike Air Jordan 1 Mid</td>
+                        <td>1.500.000đ</td>
+                        <td>10</td>
+                        <td>
+                            <button class="delete-btn">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SP002</td>
+                        <td>Adidas Ultraboost 1.0</td>
+                        <td>1.750.000đ</td>
+                        <td>15</td>
+                        <td>
+                            <button class="delete-btn">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SP003</td>
+                        <td>Converse Chuck 70</td>
+                        <td>2.000.000đ</td>
+                        <td>5</td>
+                        <td>
+                            <button class="delete-btn">Xoá</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
+    
+    <!-- ĐƠN HÀNG -->
     <section id="orders">
-        <div class="admin-main">
+        <div class="admin-header">
             <h2>Quản lý đơn hàng</h2>
-            <strong>Xin chào, Admin 👋</strong>
+        </div>
+
+        <!-- content -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Khách hàng</th>
+                        <th>Ngày đặt</th>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                        <th>Thanh toán</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                
+                <tbody id="ordersTable">
+                    <tr>
+                        <td>#DH001</td>
+                        <td>Nguyễn Văn Hưng</td>
+                        <td>12/11/2025</td>
+                        <td>Nike Air Force 1 '07</td>
+                        <td>1.960.000đ</td>
+                        <td>5</td>
+                        <td>9.800.000đ</td>
+                        <td>Thu tiền tận nơi - COD</td>
+                        <td>Đã hoàn thành</td>
+                    </tr>
+                    <tr>
+                        <td>#DH002</td>
+                        <td>Phạm Thị Điền</td>
+                        <td>12/11/2025</td>
+                        <td>Nike Air Jordan 1 Mid</td>
+                        <td>4.109.000đ</td>
+                        <td>3</td>
+                        <td>12.327.000đ</td>
+                        <td>Thu tiền tận nơi - COD</td>
+                        <td>Đã hoàn thành</td>
+                    </tr>
+                    <tr>
+                        <td>#DH003</td>
+                        <td>Trần Văn Điền</td>
+                        <td>12/11/2025</td>
+                        <td>Adidas Ultraboost 1.0</td>
+                        <td>4.500.000đ</td>
+                        <td>4</td>
+                        <td>18.000.000đ</td>
+                        <td>Thu tiền tận nơi - COD</td>
+                        <td>Đang giao hàng</td>
+                    </tr>
+                    <tr>
+                        <td>#DH004</td>
+                        <td>Lê Thị Nhung</td>
+                        <td>11/1/2025</td>
+                        <td>Converse Chuck 70</td>
+                        <td>1.960.000đ</td>
+                        <td>1</td>
+                        <td>1.960.000đ</td>
+                        <td>Thu tiền tận nơi - COD</td>
+                        <td>Đã hủy đơn</td>
+                    </tr>
+                    <tr>
+                        <td>#DH005</td>
+                        <td>Ngô Văn Hùng</td>
+                        <td>10/11/2025</td>
+                        <td>Adidas Ultraboost 1.0</td>
+                        <td>4.500.000đ</td>
+                        <td>2</td>
+                        <td>9.000.000đ</td>
+                        <td>Chuyển khoản</td>
+                        <td>Đang giao hàng </td>
+                    </tr>
+                    <tr>
+                        <td>#DH006</td>
+                        <td>Võ Minh Bảo</td>
+                        <td>10/11/2025</td>
+                        <td>Nike Air Jordan 1 Mid</td>
+                        <td>4.109.000đ</td>
+                        <td>3</td>
+                        <td>12.327.000đ</td>
+                        <td>Thu tiền tận nơi - COD</td>
+                        <td>Đã hoàn thành</td>
+                    </tr>
+                    <tr>
+                        <td>#DH007</td>
+                        <td>Phan Văn Gia Huy</td>
+                        <td>09/11/2025</td>
+                        <td>Converse Chuck 70</td>
+                        <td>1.960.000đ</td>
+                        <td>1</td>
+                        <td>1.960.000đ</td>
+                        <td>Thu tiền tận nơi - COD</td>
+                        <td>Đã hoàn thành</td>
+                    </tr>
+                    <tr>
+                        <td>#DH008</td>
+                        <td>Nguyễn Văn Đô</td>
+                        <td>09/11/2025</td>
+                        <td>Nike Air Force 1 '07</td>
+                        <td>1.960.000đ</td>
+                        <td>2</td>
+                        <td>3.920.000đ</td>
+                        <td>Thu tiền tận nơi - COD</td>
+                        <td>Đã hủy đơn</td>
+                    </tr>
+                </tbody>
+            </table>    
         </div>
     </section>
+    
+    <!-- TÀI KHOẢN -->
     <section id="accounts">
-        <div class="admin-main">
+        <div class="admin-header">
             <h2>Quản lý tài khoản</h2>
-            <strong>Xin chào, Admin 👋</strong>
+        </div>
+        
+        <!-- content -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ và tên</th>
+                        <th>Email</th>
+                        <th>SĐT</th>
+                        <th>Địa chỉ</th>
+                        <th>Vai trò</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable">
+                    <tr>
+                        <td>#AC001</td>
+                        <td>Nguyễn Văn Hưng</td>
+                        <td>hung.nguyen@gmail.com</td>
+                        <td>0901123456</td>
+                        <td>Hà Nội</td>
+                        <td>Khách hàng</td>
+                        <td>12/11/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC002</td>
+                        <td>Phạm Thị Điền</td>
+                        <td>dien.pham@gmail.com</td>
+                        <td>0934567890</td>
+                        <td>TP. Hồ Chí Minh</td>
+                        <td>Khách hàng</td>
+                        <td>12/11/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC003</td>
+                        <td>Trần Văn Điền</td>
+                        <td>dien.tran@gmail.com</td>
+                        <td>0987456123</td>
+                        <td>Đà Nẵng</td>
+                        <td>Khách hàng</td>
+                        <td>11/11/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC004</td>
+                        <td>Lê Thị Nhung</td>
+                        <td>nhung.le@gmail.com</td>
+                        <td>0912345678</td>
+                        <td>Hải Phòng</td>
+                        <td>Khách hàng</td>
+                        <td>11/11/2025</td>
+                        <td class="state">Khóa</td>
+                        <td>
+                            <button class="delete-btn">Mở khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC005</td>
+                        <td>Ngô Văn Hùng</td>
+                        <td>hung.ngovan@gmail.com</td>
+                        <td>0978543210</td>
+                        <td>Nghệ An</td>
+                        <td>Khách hàng</td>
+                        <td>10/11/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC006</td>
+                        <td>Võ Minh Bảo</td>
+                        <td>bao.vo@gmail.com</td>
+                        <td>0909785643</td>
+                        <td>Bình Định</td>
+                        <td>Khách hàng</td>
+                        <td>10/11/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC007</td>
+                        <td>Phan Văn Gia Huy</td>
+                        <td>giahuy.phan@gmail.com</td>
+                        <td>0923456789</td>
+                        <td>Cần Thơ</td>
+                        <td>Khách hàng</td>
+                        <td>09/11/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC008</td>
+                        <td>Nguyễn Văn Đô</td>
+                        <td>do.nguyenvan@gmail.com</td>
+                        <td>0332456789</td>
+                        <td>Huế</td>
+                        <td>Khách hàng</td>
+                        <td>09/11/2025</td>
+                        <td class="state">Khóa</td>
+                        <td>
+                            <button class="delete-btn">Mở khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC009</td>
+                        <td>Nguyễn Văn Hùng</td>
+                        <td>hungvan@gmail.com</td>
+                        <td>0905112233</td>
+                        <td>TP. Hồ Chí Minh</td>
+                        <td>Seller</td>
+                        <td>01/10/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Khóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC010</td>
+                        <td>Nguyễn Văn Điền</td>
+                        <td>dien.van@gmail.com</td>
+                        <td>0912334455</td>
+                        <td>Hà Nội</td>
+                        <td>Seller</td>
+                        <td>03/10/2025</td>
+                        <td class="state">Hoạt động</td>
+                        <td>
+                            <button class="delete-btn">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AC011</td>
+                        <td>Phan Văn Gia Bảo</td>
+                        <td>giabao.van@gmail.com</td>
+                        <td>0987123987</td>
+                        <td>Đà Nẵng</td>
+                        <td>Seller</td>
+                        <td>05/10/2025</td>
+                        <td class="state">Khóa</td>
+                        <td>
+                            <button class="delete-btn">Mở khóa</button>
+                        </td>
+                    </tr>
+                </tbody>                
+            </table>
         </div>
     </section>
+
+    <!-- THỐNG KÊ -->
     <section id="statistics">
         <div class="admin-main">
-            <h2>Thống kê</h2>
-            <strong>Xin chào, Admin 👋</strong>
+            <div class="admin-header">
+                <h2>Thống kê</h2>
+            </div>
+            
+            <!-- tổng quan -->
+            <div class="cards-manager">
+                <div class="stat-card">
+                    <h3>Đơn hàng</h3>
+                    <data value="8">8</data>
+                </div>
+                <div class="stat-card">
+                    <h3>Tài khoản</h3>
+                    <data value="11">11</data>
+                </div>
+                <div class="stat-card">
+                    <h3>Số lượng bán ra</h3>
+                    <data value="21">21</data>
+                </div>
+                <div class="stat-card">
+                    <h3>Tổng doanh thu</h3>
+                    <data>69.334.000đ</data>
+                </div>
+            </div>
+
+            <!-- chi tiết sản phẩm -->
+            <h3>Thống kê sản phẩm</h3>
+            <table class="stat-table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng bán</th>
+                        <th>Doanh thu</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>Nike Air Force 1 '07</td>
+                        <td>1.960.000đ</td>
+                        <td>7</td>
+                        <td>13.720.000đ</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Nike Air Jordan 1 Mid</td>
+                        <td>4.109.000đ</td>
+                        <td>6</td>
+                        <td>24.654.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Adidas Ultraboost 1.0</td>
+                        <td>4.500.000đ</td>
+                        <td>6</td>
+                        <td>27.000.000đ</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Converse Chuck 70</td>
+                        <td>1.960.000đ</td>
+                        <td>2</td>
+                        <td>3.920.000đ</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- thống kê theo thanh toán -->
+            <h3>Phương thức thanh toán</h3>
+            <table class="stat-table">
+                <thead>
+                    <tr>
+                        <th>Phương thức</th>
+                        <th>Số đơn</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>Thanh toán khi nhận hàng (COD)</td>
+                        <td>7</td>
+                        <td>60.334.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Chuyển khoản</td>
+                        <td>1</td>
+                        <td>9.000.000đ</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- thống kê trạng thái -->
+            <h3>Trạng thái đơn hàng</h3>
+            <table class="state-table">
+                <thead>
+                    <tr>
+                        <th>Trạng thái</th>
+                        <th>Số lượng</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>Đã hoàn thành</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Đang giao hàng</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Đã hủy đơn</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+            
         </div>
     </section>
+
+    <!-- CÀI ĐẶT -->
     <section id="setting">
-        <div class="admin-main">
+        <div class="admin-header">
             <h2>Cài đặt</h2>
-            <strong>Xin chào, Admin 👋</strong>
         </div>
+        <div class="setting">
+            <h3>Thông tin tài khoản</h3>
+            <form>
+                <label>Họ tên</label>
+                <input type="text" value="Admin">
+                <label>Email</label>
+                <input type="email" value="admin@gmail.com">
+                <label>Mật khẩu mới</label>
+                <input type="password">
+                <button type="submit">Cập nhật</button>
+            </form>
+            <h3>Cài đặt hệ thống</h3>
+            <label>
+                Ngôn ngữ:
+                <select>
+                    <option value="vi">Việt Nam</option>
+                    <option value="en">English</option>
+                </select>
+            </label>
+            <label>
+                Giao diện:
+                <select>
+                    <option value="dark">tối</option>
+                    <option value="white">sáng</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- content -->
+
     </section>
     <section id="logout">
-        <div class="admin-main">
+        <div class="admin-header">
             <h2>Đăng xuất</h2>
-            <strong>Xin chào, Admin 👋</strong>
         </div>
+
+        <!-- content -->
+         <div class="logout-confirm">
+             <h3>Xác nhận đăng xuất</h3>
+             <p>Bạn có muốn xác nhận đăng xuất phiên làm viêc này?</p>
+             <button id="confirm-logout">Đăng xuất</button>
+         </div>
     </section>
 </div>
     

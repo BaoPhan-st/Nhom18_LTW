@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang Đặt Hàng - Hoàn thiện</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/checkout.css" />
+      <!--
+    - favicon
+  -->
+      <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
   </head>
   <body>
     <div class="checkout-container">
@@ -428,25 +431,58 @@
     </footer>
   </body>
   <script>
-    const navOpenBtn = document.querySelector(".nav-open-btn");
-    const navCloseBtn = document.querySelector(".nav-close-btn");
-    const navbar = document.querySelector(".navbar");
-    const overlay = document.querySelector(".overlay");
+      document.addEventListener("DOMContentLoaded", function () {
+          const searchToggleBtn = document.getElementById("searchToggleBtn");
+          const searchForm = document.getElementById("search-form");
+          const searchInput = document.getElementById("search-input");
 
-    navOpenBtn.addEventListener("click", () => {
-      navbar.classList.add("active");
-      overlay.classList.add("active");
-    });
+          if (searchToggleBtn && searchForm && searchInput) {
+              function toggleSearch(e) {
+                  if (e) e.preventDefault();
+                  searchForm.classList.toggle("active");
 
-    navCloseBtn.addEventListener("click", () => {
-      navbar.classList.remove("active");
-      overlay.classList.remove("active");
-    });
+                  if (searchForm.classList.contains("active")) {
+                      searchInput.focus();
+                  } else {
+                      searchInput.value = "";
+                  }
+              }
 
-    overlay.addEventListener("click", () => {
-      navbar.classList.remove("active");
-      overlay.classList.remove("active");
-    });
+              function handleSearchAction(e) {
+                  toggleSearch(e);
+              }
+
+              searchToggleBtn.addEventListener("click", handleSearchAction);
+
+              searchInput.addEventListener("keydown", function (e) {
+                  if (e.key === "Enter") {
+                      e.preventDefault();
+                      toggleSearch(e);
+                  }
+              });
+          }
+      });
+  </script>
+  <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
+
+      navOpenBtn.addEventListener("click", () => {
+          navbar.classList.add("active");
+          overlay.classList.add("active");
+      });
+
+      navCloseBtn.addEventListener("click", () => {
+          navbar.classList.remove("active");
+          overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+          navbar.classList.remove("active");
+          overlay.classList.remove("active");
+      });
   </script>
   <script>   function showToast(message) {
         const toastElement = document.getElementById("toast-message");
