@@ -76,17 +76,17 @@
             </li>
           </ul>
 
-          <ul class="nav-action-list">
-            <li>
-              <button
-                class="nav-action-btn"
-                id="searchToggleBtn"
-                data-search-btn
-              >
-                <ion-icon name="search-outline"></ion-icon>
-                <span class="nav-action-text">Tìm kiếm</span>
-              </button>
-            </li>
+            <ul class="nav-action-list">
+                <li>
+                    <button
+                            class="nav-action-btn"
+                            id="searchToggleBtn"
+                            data-search-btn
+                    >
+                        <ion-icon name="search-outline"></ion-icon>
+                        <span class="nav-action-text">Tìm kiếm</span>
+                    </button>
+                </li>
             <li class="nav-action-item nav-action-dropdown">
               <a href="login.html" class="nav-action-btn">
                 <ion-icon name="person-outline"></ion-icon>
@@ -959,14 +959,15 @@
 
             const popup = document.getElementById("cartPopup");
             const popupClose = document.querySelector(".cart-close");
-            const openButtons = document.querySelectorAll(
-                ".nav-action-btn ion-icon[name='bag-outline'], .card-action-btn ion-icon[name='cart-outline']"
-            );
-            // Mở popup
+            const openButtons = document.querySelectorAll(".card-action-btn");
+
             openButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    popup.classList.add("active");
-                });
+                const icon = btn.querySelector("ion-icon");
+                if (icon && icon.getAttribute("name") === "cart-outline") {
+                    btn.addEventListener("click", () => {
+                        popup.classList.add("active");
+                    });
+                }
             });
 
             // Đóng popup
@@ -1072,8 +1073,38 @@
             },
         });
     </script>
-  </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchToggleBtn = document.getElementById("searchToggleBtn");
+            const searchForm = document.getElementById("search-form");
+            const searchInput = document.getElementById("search-input");
 
+            if (searchToggleBtn && searchForm && searchInput) {
+                function toggleSearch(e) {
+                    if (e) e.preventDefault();
+                    searchForm.classList.toggle("active");
 
+                    if (searchForm.classList.contains("active")) {
+                        searchInput.focus();
+                    } else {
+                        searchInput.value = "";
+                    }
+                }
+
+                function handleSearchAction(e) {
+                    toggleSearch(e);
+                }
+
+                searchToggleBtn.addEventListener("click", handleSearchAction);
+
+                searchInput.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        toggleSearch(e);
+                    }
+                });
+            }
+        });
+    </script>
   </body>
 </html>

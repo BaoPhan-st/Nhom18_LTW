@@ -1751,14 +1751,15 @@
 
             const popup = document.getElementById("cartPopup");
             const popupClose = document.querySelector(".cart-close");
-            const openButtons = document.querySelectorAll(
-                ".nav-action-btn ion-icon[name='bag-outline'], .card-action-btn ion-icon[name='cart-outline']"
-            );
-            // Mở popup
+            const openButtons = document.querySelectorAll(".card-action-btn");
+            
             openButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    popup.classList.add("active");
-                });
+                const icon = btn.querySelector("ion-icon");
+                if (icon && icon.getAttribute("name") === "cart-outline") {
+                    btn.addEventListener("click", () => {
+                        popup.classList.add("active");
+                    });
+                }
             });
 
             // Đóng popup

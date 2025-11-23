@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chi tiết sản phẩm - BHD SPORT SHOES</title>
+      <!--
+    - favicon
+  -->
       <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -30,7 +33,6 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-
   </head>
 
   <body id="top">
@@ -66,13 +68,17 @@
               <a href="lienhe.html" class="navbar-link">Liên hệ</a>
             </li>
           </ul>
-          <ul class="nav-action-list">
-            <li>
-              <button class="nav-action-btn">
-                <ion-icon name="search-outline"></ion-icon
-                ><span class="nav-action-text">Tìm kiếm</span>
-              </button>
-            </li>
+            <ul class="nav-action-list">
+                <li>
+                    <button
+                            class="nav-action-btn"
+                            id="searchToggleBtn"
+                            data-search-btn
+                    >
+                        <ion-icon name="search-outline"></ion-icon>
+                        <span class="nav-action-text">Tìm kiếm</span>
+                    </button>
+                </li>
             <li class="nav-action-item nav-action-dropdown">
               <a href="login.html" class="nav-action-btn"
                 ><ion-icon name="person-outline"></ion-icon
@@ -92,6 +98,23 @@
               >
             </li>
           </ul>
+            <form class="search-form" id="search-form" action="#" method="get">
+                <input
+                        type="search"
+                        name="query"
+                        placeholder="Tìm kiếm sản phẩm..."
+                        id="search-input"
+                        required
+                />
+
+                <button
+                        type="button"
+                        class="search-close-btn"
+                        id="searchCloseBtn"
+                >
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </form>
         </nav>
       </div>
     </header>
@@ -554,118 +577,224 @@
         </div>
       </div>
     </footer>
+    <div id="cartPopup" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="cart-close">&times;</span>
 
+            <div class="cart-product-box">
+                <img src="./assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
+
+                <div class="cart-info">
+                    <h2 id="popupName">Running Sneaker Shoes</h2>
+
+                    <div class="price-line">
+                        <span class="price-sale" id="popupPrice">1.500.000đ</span>
+                        <span class="price-original" id="popupOriginal">1.850.000đ</span>
+                        <span class="price-discount" id="popupDiscount">-17%</span>
+                    </div>
+
+
+                    <!-- Màu -->
+                    <div class="popup-option-block">
+                        <label>Màu sắc:</label>
+                        <div class="popup-color-list" id="popupColors">
+                            <div class="popup-color-item selected" data-value="Trắng" style="--c:#ffffff"></div>
+                            <div class="popup-color-item" data-value="Đen" style="--c:#000000"></div>
+                            <div class="popup-color-item" data-value="Xanh" style="--c:#007BFF"></div>
+                        </div>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="popup-option-block">
+                        <label>Kích cỡ:</label>
+                        <div class="popup-size-list" id="popupSizes">
+                            <div class="popup-size-item selected" data-value="38">38</div>
+                            <div class="popup-size-item" data-value="39">39</div>
+                            <div class="popup-size-item" data-value="40">40</div>
+                        </div>
+                    </div>
+
+                    <div class="popup-option-block">
+                        <label>Số lượng:</label>
+                        <div class="qty-group">
+                            <button class="qty-btn minus">−</button>
+                            <input type="number" id="popupQty" value="1" min="1" />
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+
+                    <button class="popup-add-cart"> Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
-      function changeImage(element) {
-        document.getElementById("main-image").src = element.src;
-      }
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchToggleBtn = document.getElementById("searchToggleBtn");
+            const searchForm = document.getElementById("search-form");
+            const searchInput = document.getElementById("search-input");
 
-      function showToast(message) {
-        const toast = document.getElementById("toast-message");
-        if (toast) {
-          toast.querySelector("span").textContent = message;
-          toast.classList.add("show");
-          setTimeout(() => toast.classList.remove("show"), 3000);
-        }
-      }
+            if (searchToggleBtn && searchForm && searchInput) {
+                function toggleSearch(e) {
+                    if (e) e.preventDefault();
+                    searchForm.classList.toggle("active");
 
-      document.addEventListener("DOMContentLoaded", function () {
-        // Mobile Menu Logic
-        const navOpenBtn = document.querySelector(".nav-open-btn");
-        const navCloseBtn = document.querySelector(".nav-close-btn");
-        const navbar = document.querySelector(".navbar");
-        const overlay = document.querySelector(".overlay");
-        const toggleNav = () => {
-          navbar.classList.toggle("active");
-          overlay.classList.toggle("active");
-        };
-        if (navOpenBtn) navOpenBtn.addEventListener("click", toggleNav);
-        if (navCloseBtn) navCloseBtn.addEventListener("click", toggleNav);
-        if (overlay) overlay.addEventListener("click", toggleNav);
+                    if (searchForm.classList.contains("active")) {
+                        searchInput.focus();
+                    } else {
+                        searchInput.value = "";
+                    }
+                }
 
-        // 1. JS CHO NÚT CỘNG TRỪ SỐ LƯỢNG
-        const minusBtn = document.getElementById("qty-minus");
-        const plusBtn = document.getElementById("qty-plus");
-        const qtyInput = document.getElementById("qty-val");
+                function handleSearchAction(e) {
+                    toggleSearch(e);
+                }
 
-        if (plusBtn && qtyInput) {
-          plusBtn.addEventListener("click", function () {
-            let val = parseInt(qtyInput.value) || 0;
-            qtyInput.value = val + 1;
-          });
-        }
-        if (minusBtn && qtyInput) {
-          minusBtn.addEventListener("click", function () {
-            let val = parseInt(qtyInput.value) || 0;
-            if (val > 1) {
-              // Không cho giảm dưới 1
-              qtyInput.value = val - 1;
+                searchToggleBtn.addEventListener("click", handleSearchAction);
+
+                searchInput.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        toggleSearch(e);
+                    }
+                });
             }
-          });
-        }
-
-        // 2. JS XỬ LÝ CHỌN SIZE
-        const sizeBtns = document.querySelectorAll(".size-btn");
-        sizeBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            // Bỏ chọn tất cả
-            sizeBtns.forEach((b) => b.classList.remove("selected"));
-            // Chọn cái vừa bấm
-            btn.classList.add("selected");
-          });
         });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const popup = document.getElementById("cartPopup");
+            const popupClose = document.querySelector(".cart-close");
 
-        // 3. JS CHO SẢN PHẨM GỢI Ý
-        const actionBtns = document.querySelectorAll(
-          ".product-card .card-action-btn"
-        );
-        actionBtns.forEach((btn) => {
-          btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            const iconName = btn.querySelector("ion-icon").getAttribute("name");
-            let message = "";
-            if (iconName === "cart-outline") {
-              message = "Sản phẩm đã được thêm vào Giỏ hàng!";
-            } else if (iconName === "heart-outline") {
-              message = "Đã thêm vào mục Yêu thích!";
-            }
-            if (message) showToast(message);
-          });
-        });
-
-        // 4. JS CHO 3 NÚT CHÍNH
-        document
-          .getElementById("btn-add-cart")
-          .addEventListener("click", function () {
-            showToast("Đã thêm sản phẩm này vào Giỏ hàng!");
-          });
-
-        document
-          .getElementById("btn-buy-now")
-          .addEventListener("click", function () {
-            showToast("Đang chuyển đến trang thanh toán...");
-          });
-
-        document
-          .getElementById("btn-wishlist")
-          .addEventListener("click", function () {
-            showToast("Đã thêm sản phẩm này vào Yêu thích!");
-          });
-      });
-      const checkboxes = document.querySelectorAll(
-        '.filter-list-color input[type="checkbox"]'
-      );
-      checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", function () {
-          if (this.checked) {
-            checkboxes.forEach((otherCheckbox) => {
-              if (otherCheckbox !== this) {
-                otherCheckbox.checked = false;
-              }
+            // Nút giỏ hàng chính ở chi tiết sản phẩm → chỉ toast
+            const mainCartBtn = document.getElementById("btn-add-cart");
+            mainCartBtn.addEventListener("click", () => {
+                showToast("Đã thêm sản phẩm này vào Giỏ hàng!");
             });
-          }
+
+            // Nút wishlist ở chi tiết sản phẩm → toast
+            document.getElementById("btn-wishlist").addEventListener("click", () => {
+                showToast("Đã thêm sản phẩm này vào Yêu thích!");
+            });
+
+            // Nút mua ngay → toast
+            document.getElementById("btn-buy-now").addEventListener("click", () => {
+                showToast("Đang chuyển đến trang thanh toán...");
+            });
+
+            // ================== Sản phẩm gợi ý ==================
+            document.querySelectorAll(".product-card .card-action-btn").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const icon = btn.querySelector("ion-icon");
+                    const iconName = icon.getAttribute("name");
+
+                    const card = btn.closest(".product-card");
+                    const productName = card.querySelector(".card-title a").textContent;
+                    const productImg = card.querySelector("img").src;
+                    const productPrice = card.querySelector(".card-price").textContent;
+
+                    if (iconName === "cart-outline") {
+                        // Chỉ mở popup
+                        showProductPopup({
+                            image: productImg,
+                            name: productName,
+                            price: productPrice,
+                            original: "",
+                            discount: "",
+                            colors: [
+                                { value: "Trắng", color: "#ffffff" },
+                                { value: "Đen", color: "#000000" },
+                                { value: "Xanh", color: "#007BFF" }
+                            ],
+                            sizes: [38, 39, 40]
+                        });
+                    } else if (iconName === "heart-outline") {
+                        // Wishlist → toast
+                        showToast(`Đã thêm sản phẩm vào mục Yêu thích!`);
+                    }
+                });
+            });
+
+            // ================== Popup ==================
+            popupClose.addEventListener("click", () => popup.classList.remove("active"));
+            window.addEventListener("click", (e) => {
+                if (e.target === popup) popup.classList.remove("active");
+            });
+
+            // Nút thêm vào giỏ trong popup → chỉ đóng popup
+            document.querySelector(".popup-add-cart").addEventListener("click", () => {
+                showToast(`Đã thêm sản phẩm vào Giỏ Hàng!`);
+                popup.classList.remove("active");
+            });
+
+            // ================== Popup màu & size & số lượng ==================
+            const colorItems = document.querySelectorAll("#popupColors .popup-color-item");
+            colorItems.forEach(item => item.addEventListener("click", () => {
+                colorItems.forEach(i => i.classList.remove("selected"));
+                item.classList.add("selected");
+            }));
+
+            const sizeItems = document.querySelectorAll("#popupSizes .popup-size-item");
+            sizeItems.forEach(item => item.addEventListener("click", () => {
+                sizeItems.forEach(i => i.classList.remove("selected"));
+                item.classList.add("selected");
+            }));
+
+            const qtyInput = document.getElementById("popupQty");
+            document.querySelector(".qty-btn.minus").addEventListener("click", () => {
+                let val = parseInt(qtyInput.value);
+                if (val > 1) qtyInput.value = val - 1;
+            });
+            document.querySelector(".qty-btn.plus").addEventListener("click", () => {
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            });
+            qtyInput.addEventListener("input", () => { if (qtyInput.value < 1) qtyInput.value = 1; });
+
+            // ================== Hàm toast & popup ==================
+            window.showToast = (message) => {
+                const toast = document.getElementById("toast-message");
+                toast.querySelector("span").textContent = message;
+                toast.classList.add("show");
+                setTimeout(() => toast.classList.remove("show"), 3000);
+            };
+
+            window.showProductPopup = (data) => {
+                if (data.image) document.getElementById("popupImg").src = data.image;
+                if (data.name) document.getElementById("popupName").textContent = data.name;
+                if (data.price) document.getElementById("popupPrice").textContent = data.price;
+                if (data.original) document.getElementById("popupOriginal").textContent = data.original;
+                if (data.discount) document.getElementById("popupDiscount").textContent = data.discount;
+                qtyInput.value = 1;
+
+                popup.classList.add("active");
+            };
+
+            // ================== Mobile menu, chọn size chi tiết sản phẩm ==================
+            const navOpenBtn = document.querySelector(".nav-open-btn");
+            const navCloseBtn = document.querySelector(".nav-close-btn");
+            const navbar = document.querySelector(".navbar");
+            const overlay = document.querySelector(".overlay");
+            const toggleNav = () => { navbar.classList.toggle("active"); overlay.classList.toggle("active"); };
+            if (navOpenBtn) navOpenBtn.addEventListener("click", toggleNav);
+            if (navCloseBtn) navCloseBtn.addEventListener("click", toggleNav);
+            if (overlay) overlay.addEventListener("click", toggleNav);
+
+            const sizeBtns = document.querySelectorAll(".size-btn");
+            sizeBtns.forEach(btn => btn.addEventListener("click", () => {
+                sizeBtns.forEach(b => b.classList.remove("selected"));
+                btn.classList.add("selected");
+            }));
+
+            // Checkbox màu chi tiết sản phẩm chỉ chọn 1
+            const checkboxes = document.querySelectorAll('.filter-list-color input[type="checkbox"]');
+            checkboxes.forEach(checkbox => checkbox.addEventListener("change", function () {
+                if (this.checked) {
+                    checkboxes.forEach(other => { if (other !== this) other.checked = false; });
+                }
+            }));
         });
-      });
     </script>
   </body>
 </html>
