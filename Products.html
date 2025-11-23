@@ -5,10 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sản phẩm - BHD SPORT SHOES</title>
+      <link
+              rel="stylesheet"
+              href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+      />
+
+      <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/dangnhapvadangki.css" />
     <link rel="stylesheet" href="assets/css/products.css" />
+
+
 
     <link
       rel="stylesheet"
@@ -117,6 +125,65 @@
         </nav>
       </div>
     </header>
+    <div class="banner-slide">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#" class="banner-link">
+                        <img
+                                src="https://cdn.shopify.com/s/files/1/0456/5070/6581/files/HP_BACKFRI_KV_DESK_VN.jpg?v=1763548181&width=1440"
+                                alt="Banner Slide 1"
+                                class="banner-img"
+                                width="1200"
+                                height="300"
+                        />
+                    </a>
+                </div>
+
+                <div class="swiper-slide">
+                    <a href="#" class="banner-link">
+                        <img
+                                src="https://cdn.shopify.com/s/files/1/0456/5070/6581/files/LP_NIKE_FOOTBALL_KV.jpg?v=1746584732"
+                                alt="Banner Slide 2"
+                                class="banner-img"
+                                width="1200"
+                                height="300"
+                        />
+                    </a>
+                </div>
+
+                <div class="swiper-slide">
+                    <a href="#" class="banner-link">
+                        <img
+                                src="https://cdn.shopify.com/s/files/1/0456/5070/6581/files/LP_NIKE_RUNNING_KV.jpg?v=1746584732"
+                                alt="Banner Slide 3"
+                                class="banner-img"
+                                width="1200"
+                                height="300"
+                        />
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="banner-link">
+                        <img
+                                src="https://cdn.shopify.com/s/files/1/0456/5070/6581/files/LP_NIKE_TRAIN_KV.jpg?v=1746584732"
+                                alt="Banner Slide 4"
+                                class="banner-img"
+                                width="1200"
+                                height="300"
+                        />
+                    </a>
+                </div>
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <div class="shop-layout">
+    </div>
 
     <div class="shop-layout">
       <aside class="filter-sidebar">
@@ -284,7 +351,7 @@
                 <label for="color-blue">Xanh dương</label>
               </li>
             </ul>
-          </div
+          </div>
         </div>
       </aside>
 
@@ -836,5 +903,35 @@
         });
       });
     </script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <script>
+        // Khởi tạo Swiper
+        const swiper = new Swiper('.swiper-container', {
+            // Các tùy chọn cơ bản:
+            loop: true, // Lặp vô hạn
+
+            // Phân trang (dấu chấm)
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Nút điều hướng (Nút qua lại)
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // Tự động chạy (nếu muốn)
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+  </body>
+
+
   </body>
 </html>
