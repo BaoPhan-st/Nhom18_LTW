@@ -535,35 +535,7 @@ input:checked + .brand-label .brand-icon {
   filter: grayscale(0%);
   transform: scale(1.1);
 }
-.toast-message {
-  position: fixed;
-  top: 100px;
-  right: 20px;
-  background-color: #333;
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 4px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(20px);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.toast-message.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-}
-.toast-message i {
-  color: #4caf50;
-  font-size: 18px;
-}
+
 @media (max-width: 992px) {
   .shop-layout {
     flex-direction: column;
@@ -588,7 +560,7 @@ input:checked + .brand-label .brand-icon {
   }
 }
 /* ================================================= */
-/* # Banner Slider (Khắc phục khoảng trắng) */
+/* # Banner Slider
 /* ================================================= */
 
 

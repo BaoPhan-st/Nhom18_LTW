@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BHD - SPORT SHOES</title>
+      <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+              integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+              crossorigin="anonymous"
+              referrerpolicy="no-referrer"
+      />
 
     <!--
     - favicon
@@ -1586,109 +1593,9 @@
         </div>
       </div>
     </footer>
-    <button id="openModalBtn" class="product-button">
-        🛒 Xem Chi Tiết Sản Phẩm
-    </button>
-
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-
-            <div class="product-details">
-                <div class="product-image-container">
-                    <img src="assets/images/placeholder.jpg" alt="Tên Sản Phẩm" id="productImage">
-                </div>
-
-                <div class="product-info">
-                    <h2 id="productName">Áo Thun Polo Cổ Bẻ</h2>
-
-                    <div class="price-section">
-                        <p class="original-price">Giá gốc: <span id="originalPrice">500.000 VNĐ</span></p>
-                        <p class="discounted-price">Giá: <span id="discountedPrice">350.000 VNĐ</span></p>
-                        <p class="discount-value">Giảm: <span id="discountValue">150.000 VNĐ (30%)</span></p>
-                    </div>
-
-                    <hr>
-
-                    <div class="option-selection">
-                        <p class="option-label">Màu sắc:</p>
-                        <div class="option-list" id="colorOptions">
-                            <div class="option-item selected" data-value="Trắng">Trắng</div>
-                            <div class="option-item" data-value="Đen">Đen</div>
-                            <div class="option-item" data-value="Xanh">Xanh</div>
-                        </div>
-                    </div>
-
-                    <div class="option-selection">
-                        <p class="option-label">Kích cỡ:</p>
-                        <div class="option-list" id="sizeOptions">
-                            <div class="option-item selected" data-value="M">M</div>
-                            <div class="option-item" data-value="L">L</div>
-                            <div class="option-item" data-value="XL">XL</div>
-                        </div>
-                    </div>
-
-                    <button class="add-to-cart-btn">
-                        ➕ Thêm vào Giỏ Hàng
-                    </button>
-                </div>
-            </div>
-
-        </div>
+    <div id="toast-message" class="toast-message">
+        <i class="fas fa-check-circle"></i> <span></span>
     </div>
-    <button id="openModalBtn" class="product-button">
-        🛒 Xem Chi Tiết Sản Phẩm
-    </button>
-
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-
-            <div class="product-details">
-                <div class="product-image-container">
-                    <img src="assets/images/placeholder.jpg" alt="Tên Sản Phẩm" id="productImage">
-                </div>
-
-                <div class="product-info">
-                    <h2 id="productName">Áo Thun Polo Cổ Bẻ</h2>
-
-                    <div class="price-section">
-                        <p class="original-price">Giá gốc: <span id="originalPrice">500.000 VNĐ</span></p>
-                        <p class="discounted-price">Giá: <span id="discountedPrice">350.000 VNĐ</span></p>
-                        <p class="discount-value">Giảm: <span id="discountValue">150.000 VNĐ (30%)</span></p>
-                    </div>
-
-                    <hr>
-
-                    <div class="option-selection">
-                        <p class="option-label">Màu sắc:</p>
-                        <div class="option-list" id="colorOptions">
-                            <div class="option-item selected" data-value="Trắng">Trắng</div>
-                            <div class="option-item" data-value="Đen">Đen</div>
-                            <div class="option-item" data-value="Xanh">Xanh</div>
-                        </div>
-                    </div>
-
-                    <div class="option-selection">
-                        <p class="option-label">Kích cỡ:</p>
-                        <div class="option-list" id="sizeOptions">
-                            <div class="option-item selected" data-value="M">M</div>
-                            <div class="option-item" data-value="L">L</div>
-                            <div class="option-item" data-value="XL">XL</div>
-                        </div>
-                    </div>
-
-                    <button class="add-to-cart-btn">
-                        ➕ Thêm vào Giỏ Hàng
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-  </body>
-</html>
 
     <!--
     - ionicon link
@@ -1701,9 +1608,6 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <div id="toast-container" class="toast-container">
-      <div id="toast-message" class="toast-message"></div>
-    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -1758,70 +1662,181 @@
         navbar.classList.remove("active");
         overlay.classList.remove("active");
       });
-          document.addEventListener('DOMContentLoaded', () => {
-          // 1. Lấy các phần tử HTML
-          const modal = document.getElementById('productModal');
+    </script>
+        <script>
+            // 1. HÀM HIỂN THỊ THÔNG BÁO TOAST
+            function showToast(message) {
+                const toast = document.getElementById("toast-message");
+                if (toast) {
+                    toast.querySelector("span").textContent = message;
+                    toast.classList.add("show");
+                    // Tự động ẩn sau 3 giây
+                    setTimeout(() => toast.classList.remove("show"), 3000);
+                }
+            }
 
-          // THAY ĐỔI ĐỂ CHỌN NÚT KÍCH HOẠT ĐÚNG:
-          // Nếu bạn dùng nút "Xem Chi Tiết Sản Phẩm" có ID là 'openModalBtn':
-          const openBtn = document.getElementById('openModalBtn');
+            document.addEventListener("DOMContentLoaded", function () {
+                const overlay = document.querySelector(".overlay");
+                const actionBtns = document.querySelectorAll(".card-action-btn");
 
-          // Nếu bạn muốn dùng nút "Cart" có sẵn trong header (thường có class/id khác):
-          // VÍ DỤ: const openBtn = document.querySelector('.icon-cart'); // Hoặc bất kỳ selector nào của nút Cart
+                actionBtns.forEach((btn) => {
+                    btn.addEventListener("click", function (e) {
+                        e.preventDefault(); // Chặn thẻ a bao ngoài (nếu có)
 
-          const closeBtn = document.querySelector('.close-btn');
-          const colorOptions = document.querySelectorAll('#colorOptions .option-item');
-          const sizeOptions = document.querySelectorAll('#sizeOptions .option-item');
+                        const icon = this.querySelector("ion-icon");
+                        const iconName = icon ? icon.getAttribute("name") : "";
 
-          // 2. Chức năng Mở Pop-up
-          if (openBtn) { // Kiểm tra xem nút có tồn tại không
-          openBtn.onclick = function() {
-          modal.style.display = 'block';
-      }
-      } else {
-          console.warn("Nút kích hoạt modal (openModalBtn) không được tìm thấy.");
-      }
+                         if (iconName === "heart-outline") {
+                            showToast("Đã thêm sản phẩm vào Yêu thích!");
+                        }
+                    });
+                });
+            });
+        </script>
+    <div id="cartPopup" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="cart-close">&times;</span>
 
-          // 3. Chức năng Đóng Pop-up khi click vào nút 'x'
-          closeBtn.onclick = function() {
-          modal.style.display = 'none';
-      }
+            <div class="cart-product-box">
+                <img src="./assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
 
-          // 4. Chức năng Đóng Pop-up khi click ra ngoài khu vực nội dung
-          window.onclick = function(event) {
-          if (event.target == modal) {
-          modal.style.display = 'none';
-      }
-      }
+                <div class="cart-info">
+                    <h2 id="popupName">Running Sneaker Shoes</h2>
 
-          // 5 & 6. Logic chọn Màu sắc và Kích cỡ (Size)
-          colorOptions.forEach(option => {
-          option.addEventListener('click', function() {
-          colorOptions.forEach(item => item.classList.remove('selected'));
-          this.classList.add('selected');
-      });
-      });
+                    <div class="price-line">
+                        <span class="price-sale" id="popupPrice">1.500.000đ</span>
+                        <span class="price-original" id="popupOriginal">1.850.000đ</span>
+                        <span class="price-discount" id="popupDiscount">-17%</span>
+                    </div>
 
-          sizeOptions.forEach(option => {
-          option.addEventListener('click', function() {
-          sizeOptions.forEach(item => item.classList.remove('selected'));
-          this.classList.add('selected');
-      });
-      });
 
-          // 7. Logic nút Thêm vào Giỏ Hàng
-          const addToCartBtn = document.querySelector('.add-to-cart-btn');
-          addToCartBtn.addEventListener('click', function() {
-          const selectedColor = document.querySelector('#colorOptions .option-item.selected').getAttribute('data-value');
-          const selectedSize = document.querySelector('#sizeOptions .option-item.selected').getAttribute('data-value');
-          const productName = document.getElementById('productName').textContent;
+                    <!-- Màu -->
+                    <div class="popup-option-block">
+                        <label>Màu sắc:</label>
+                        <div class="popup-color-list" id="popupColors">
+                            <div class="popup-color-item selected" data-value="Trắng" style="--c:#ffffff"></div>
+                            <div class="popup-color-item" data-value="Đen" style="--c:#000000"></div>
+                            <div class="popup-color-item" data-value="Xanh" style="--c:#007BFF"></div>
+                        </div>
+                    </div>
 
-          alert(`Đã thêm sản phẩm "${productName}" (Màu: ${selectedColor}, Size: ${selectedSize}) vào giỏ hàng!`);
-          modal.style.display = 'none'; // Đóng modal sau khi thêm
-      });
-      });
+                    <!-- Size -->
+                    <div class="popup-option-block">
+                        <label>Kích cỡ:</label>
+                        <div class="popup-size-list" id="popupSizes">
+                            <div class="popup-size-item selected" data-value="38">38</div>
+                            <div class="popup-size-item" data-value="39">39</div>
+                            <div class="popup-size-item" data-value="40">40</div>
+                        </div>
+                    </div>
+
+                    <div class="popup-option-block">
+                        <label>Số lượng:</label>
+                        <div class="qty-group">
+                            <button class="qty-btn minus">−</button>
+                            <input type="number" id="popupQty" value="1" min="1" />
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+
+                    <button class="popup-add-cart"> Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const popup = document.getElementById("cartPopup");
+            const popupClose = document.querySelector(".cart-close");
+            const openButtons = document.querySelectorAll(
+                ".nav-action-btn ion-icon[name='bag-outline'], .card-action-btn ion-icon[name='cart-outline']"
+            );
+            // Mở popup
+            openButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    popup.classList.add("active");
+                });
+            });
+
+            // Đóng popup
+            popupClose.addEventListener("click", () => popup.classList.remove("active"));
+            window.addEventListener("click", (e) => {
+                if (e.target === popup) popup.classList.remove("active");
+            });
+
+            // ================== CHỌN MÀU ==================
+            const colorItems = document.querySelectorAll("#popupColors .popup-color-item");
+            colorItems.forEach(item => {
+                item.addEventListener("click", () => {
+                    colorItems.forEach(i => i.classList.remove("selected"));
+                    item.classList.add("selected");
+                });
+            });
+
+            // ================== CHỌN SIZE ==================
+            const sizeItems = document.querySelectorAll("#popupSizes .popup-size-item");
+            sizeItems.forEach(item => {
+                item.addEventListener("click", () => {
+                    sizeItems.forEach(i => i.classList.remove("selected"));
+                    item.classList.add("selected");
+                });
+            });
+
+            // ================== THAY ĐỔI SỐ LƯỢNG ==================
+            const qtyInput = document.getElementById("popupQty");
+            const minusBtn = document.querySelector(".qty-btn.minus");
+            const plusBtn = document.querySelector(".qty-btn.plus");
+
+            minusBtn.addEventListener("click", () => {
+                let val = parseInt(qtyInput.value);
+                if (val > 1) qtyInput.value = val - 1;
+            });
+
+            plusBtn.addEventListener("click", () => {
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            });
+
+            qtyInput.addEventListener("input", () => {
+                if (qtyInput.value < 1) qtyInput.value = 1;
+            });
+
+            // ================== NÚT THÊM VÀO GIỎ ==================
+            const addToCartBtn = document.querySelector(".popup-add-cart");
+
+            addToCartBtn.addEventListener("click", () => {
+                const name  = document.getElementById("popupName").textContent;
+                const color = document.querySelector("#popupColors .selected")?.dataset.value;
+                const size  = document.querySelector("#popupSizes .selected")?.dataset.value;
+                const qty   = document.getElementById("popupQty").value;
+
+                // Gọi toast
+                showToast(`Đã thêm sản phẩm vào Giỏ hàng!`);
+
+                // Đóng popup
+                popup.classList.remove("active");
+            });
+
+
+
+            // ================== HÀM ĐỔ DỮ LIỆU VÀO POPUP ==================
+            window.showProductPopup = (data) => {
+                if (data.image)      document.getElementById("popupImg").src = data.image;
+                if (data.name)       document.getElementById("popupName").textContent = data.name;
+                if (data.original)   document.getElementById("popupOriginal").textContent = data.original;
+                if (data.price)      document.getElementById("popupPrice").textContent = data.price;
+                if (data.discount)   document.getElementById("popupDiscount").textContent = data.discount;
+
+                document.getElementById("popupQty").value = 1;
+
+                popup.classList.add("active");
+            };
+
+        });
+
 
     </script>
-
   </body>
 </html>
