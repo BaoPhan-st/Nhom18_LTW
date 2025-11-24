@@ -158,7 +158,7 @@ table tr:hover {
     background: #f9f9f9;
 }
 
-#userTable button{
+table button{
     background: #6c72b6;
     color: #eee;
     width: 70px;
@@ -190,6 +190,8 @@ table tr:hover {
     color: #444;
 }
 
+.variant-form,
+.product-form,
 .banner-form, 
 .update-form{
     display: flex;
@@ -197,6 +199,8 @@ table tr:hover {
     gap: 15px;
 }
 
+.variant-form label,
+.product-form label,
 .banner-form label,
 .update-form label{
     font-size: 15px;
@@ -204,7 +208,12 @@ table tr:hover {
     color: #333;
 }
 
+.variant-form input,
+.product-form input,
 .update-form input,
+.variant-form select,
+.product-form select,
+.update-form select,
 .banner-form input,
 .banner-form select{
     padding: 10px;
@@ -215,22 +224,31 @@ table tr:hover {
     transition: 0.25s;
 }
 
+.variant-form input:focus,
+.product-form input:focus,
+.update-form input:focus,
+.variant-form select:focus,
+.product-form select:focus,
+.update-form select:focus,
 .banner-form input:focus,
 .banner-form select:focus{
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
 }
 
+.product-form select,
 .banner-form select{
     background: #fff;
 }
 
+.variant-form button,
+.product-form button,
 .banner-form button,
 .update-form button{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    width: 200px;
     height: 30px;
     background: #007bff;
     color: #fff;
