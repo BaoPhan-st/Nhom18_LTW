@@ -54,7 +54,7 @@ body {
 }
 
 .menu li {
-    padding: 14px 20px;
+    padding: 10px 20px;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
     color: #fff;
@@ -190,32 +190,21 @@ table button{
     color: #444;
 }
 
-.variant-form,
-.product-form,
-.banner-form, 
-.update-form{
+.form-add{
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.variant-form label,
-.product-form label,
-.banner-form label,
-.update-form label{
+.form-add label{
     font-size: 15px;
     font-weight: 500;
     color: #333;
 }
 
-.variant-form input,
-.product-form input,
-.update-form input,
-.variant-form select,
-.product-form select,
-.update-form select,
-.banner-form input,
-.banner-form select{
+
+.form-add input,
+.form-add select{
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -224,27 +213,18 @@ table button{
     transition: 0.25s;
 }
 
-.variant-form input:focus,
-.product-form input:focus,
-.update-form input:focus,
-.variant-form select:focus,
-.product-form select:focus,
-.update-form select:focus,
-.banner-form input:focus,
-.banner-form select:focus{
+.form-add input:focus,
+.form-add select:focus{
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
 }
 
-.product-form select,
-.banner-form select{
+.form-add select,
+.form-add select{
     background: #fff;
 }
 
-.variant-form button,
-.product-form button,
-.banner-form button,
-.update-form button{
+.form-add button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,11 +234,16 @@ table button{
     color: #fff;
     border: 1px solid #c4c0c0;
     border-radius: 5px ;
+    margin-bottom: 10px;
 }
 
-.update-form button{
+.form-add button{
     background: green;
     margin-bottom: 20px;
+}
+.form-add button:hover{
+    background: #0056b3;
+    cursor: pointer;
 }
 
 .setting form{
@@ -291,6 +276,8 @@ table button{
 
 .logout-confirm button{
     background: #c5ecec;
+    height: 30px;
+    width: 100px;
 }
 
 #addProductBtn{
@@ -320,3 +307,14 @@ table button{
     opacity: 1;
     transform: translateY(0);
 }
+
+textarea{
+    resize: none;
+}
+
+.actions .btn-edit{
+    margin-bottom: 5px;
+}
+
+
+

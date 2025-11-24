@@ -124,16 +124,59 @@
             </div>
         </section>
 
-
-        <!-- người dùng và sản phẩm -->
+    <!-- người dùng và sản phẩm -->
         <!-- TÀI KHOẢN -->
         <section id="accounts">
             <div class="admin-header">
                 <h2>Quản lý tài khoản</h2>
             </div>
 
-            <!-- content -->
-            <div class="table-wrapper">
+            <!-- thêm tài khoản -->
+            <div class="content">
+
+                <form class="form-add">
+                    <label for="acc-id">ID:</label>
+                    <input type="text" id="acc-id" placeholder="Nhập ID tài khoản">
+
+                    <label for="acc-email">Email:</label>
+                    <input type="email" id="acc-email" placeholder="Nhập email">
+
+                    <label for="acc-pass">Password:</label>
+                    <input type="text" id="acc-pass" placeholder="Nhập mật khẩu">
+
+                    <label for="acc-phone">Số điện thoại:</label>
+                    <input type="text" id="acc-phone" placeholder="Nhập số điện thoại">
+
+                    <label for="acc-address">Địa chỉ:</label>
+                    <textarea id="acc-address" placeholder="Nhập địa chỉ"></textarea>
+
+                    <label for="acc-role">Vai trò:</label>
+                    <select id="acc-role">
+                        <option value="user">User</option>
+                        <option value="seller">Seller</option>
+                        <option value="admin">Admin</option>
+                    </select>
+
+                    <label for="acc-fullname">Họ và tên:</label>
+                    <input type="text" id="acc-fullname" placeholder="Nhập họ tên">
+
+                    <label for="acc-status">Trạng thái:</label>
+                    <select id="acc-status">
+                        <option value="active">Hoạt động</option>
+                        <option value="inactive">Không hoạt động</option>
+                        <option value="banned">Bị khóa</option>
+                    </select>
+
+                    <label for="acc-date">Ngày tạo:</label>
+                    <input type="date" id="acc-date">
+
+                    <button type="submit" class="btn-addAccount">Thêm tài khoản</button>
+                </form>
+                <div id="toast" class="active"></div>
+                
+            </div>
+            <!-- table -->
+            <div class="acc-table">
                 <table>
                     <thead>
                         <tr>
@@ -146,6 +189,7 @@
                             <th>Họ và tên</th>
                             <th>Trạng thái</th>
                             <th>Ngày tạo</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody id="userTable">
@@ -159,8 +203,12 @@
                             <td>Nguyễn Văn An</td>
                             <td>active</td>
                             <td>2025-01-01</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>2</td>
                             <td>seller2@shop.com</td>
@@ -171,8 +219,12 @@
                             <td>Trần Thị Bình</td>
                             <td>active</td>
                             <td>2025-01-03</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>3</td>
                             <td>seller3@shop.com</td>
@@ -183,8 +235,12 @@
                             <td>Lê Văn Chính</td>
                             <td>active</td>
                             <td>2025-01-05</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>4</td>
                             <td>user1@gmail.com</td>
@@ -195,8 +251,12 @@
                             <td>Phạm Thị Dung</td>
                             <td>active</td>
                             <td>2025-02-01</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>5</td>
                             <td>user2@gmail.com</td>
@@ -207,8 +267,12 @@
                             <td>Hoàng Văn hoa</td>
                             <td>active</td>
                             <td>2025-02-02</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>6</td>
                             <td>user3@gmail.com</td>
@@ -219,8 +283,12 @@
                             <td>Bùi Thị Xuyến</td>
                             <td>active</td>
                             <td>2025-02-03</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>7</td>
                             <td>user4@gmail.com</td>
@@ -231,8 +299,12 @@
                             <td>Đỗ Văn Giang</td>
                             <td>active</td>
                             <td>2025-02-04</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>8</td>
                             <td>user5@gmail.com</td>
@@ -243,8 +315,12 @@
                             <td>Vũ Thị Huyền</td>
                             <td>active</td>
                             <td>2025-02-05</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>9</td>
                             <td>user6@gmail.com</td>
@@ -255,8 +331,12 @@
                             <td>Trịnh Văn Hường</td>
                             <td>active</td>
                             <td>2025-02-06</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
+            
                         <tr>
                             <td>10</td>
                             <td>user7@gmail.com</td>
@@ -267,12 +347,96 @@
                             <td>Phan Thị Phương</td>
                             <td>active</td>
                             <td>2025-02-07</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
-
                     </tbody>
+            
                 </table>
             </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const userTableBody = document.getElementById('userTable');
+                    const formAdd = document.querySelector('.form-add');
+                    const btnAddAccount = document.querySelector('.btn-addAccount');
+
+                    // Hàm hiển thị Toast Message
+                    function showToast(message, isError = false) {
+                        const menuToast = document.querySelectorAll
+                        const toast = document.getElementById('toast');
+                        toast.textContent = message;
+                        toast.className = 'toast show ' + (isError ? 'error' : 'success');
+
+                        setTimeout(() => {
+                            toast.className = toast.className.replace(' show', '');
+                        }, 3000);
+                    }
+
+                    // SỰ KIỆN CLICK TRÊN CÁC NÚT SỬA VÀ XÓA
+                    userTableBody.addEventListener('click', function (event) {
+                        const target = event.target;
+
+                        const row = target.closest('tr');
+                        if (!row) return;
+
+                        const userId = row.cells[0].textContent;
+
+                        if (target.classList.contains('btn-edit')) {
+                            handleEdit(row, userId);
+                        }
+                        else if (target.classList.contains('btn-delete')) {
+                            handleDelete(row, userId);
+                        }
+                    });
+
+                    function handleEdit(row, userId) {
+                        // Lấy tất cả dữ liệu của hàng hiện tại
+                        const data = {
+                            id: row.cells[0].textContent,
+                            email: row.cells[1].textContent,
+                            password_hash: row.cells[2].textContent,
+                            phone_number: row.cells[3].textContent,
+                            address: row.cells[4].textContent,
+                            role: row.cells[5].textContent,
+                            fullname: row.cells[6].textContent,
+                            status: row.cells[7].textContent,
+                            date: row.cells[8].textContent,
+                        };
+
+                        // 1. Đưa dữ liệu vào Form
+                        document.getElementById('acc-id').value = data.id;
+                        document.getElementById('acc-email').value = data.email;
+                        document.getElementById('acc-pass').value = data.password_hash;
+                        document.getElementById('acc-phone').value = data.phone_number;
+                        document.getElementById('acc-address').value = data.address;
+                        document.getElementById('acc-role').value = data.role;
+                        document.getElementById('acc-fullname').value = data.fullname;
+                        document.getElementById('acc-status').value = data.status === 'active' ? 'active' : data.status === 'inactive' ? 'inactive' : 'banned';
+                        document.getElementById('acc-date').value = data.date;
+
+                        // 2. Chuyển nút "Thêm tài khoản" thành "Cập nhật"
+                        btnAddAccount.textContent = 'Cập nhật tài khoản';
+                        btnAddAccount.classList.remove('btn-addAccount');
+                        btnAddAccount.classList.add('btn-updateAccount');
+
+                        showToast(`Đang sửa tài khoản ID: ${userId}. Vui lòng cập nhật trong form.`, false);
+
+                        formAdd.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    // LOGIC XỬ LÝ XÓA
+                    function handleDelete(row, userId) {
+                        if (confirm(`Bạn có chắc chắn muốn xóa tài khoản ID: ${userId} (${row.cells[6].textContent}) không?`)) {
+                            row.remove();
+                            showToast(`Đã xóa tài khoản ID: ${userId} thành công.`, false);
+                        }
+                    }
+                });
+            </script>
         </section>
+        
 
         <!-- SẢN PHẨM -->
         <section id="products">
@@ -284,7 +448,7 @@
             <div class="content">
                 <h3><strong>+</strong> Thêm banner mới</h3>
 
-                <form class="product-form">
+                <form class="form-add">
 
                     <label for="product-code">Mã SP:</label>
                     <input type="text" id="product-code" placeholder="Nhập mã sản phẩm">
@@ -320,7 +484,7 @@
 
             </div>
 
-            <!-- content -->
+            <!-- table -->
             <div class="product-table">
                 <table>
                     <thead>
@@ -346,9 +510,9 @@
                             <td>2025-01-01</td>
                             <td>2027-01-01</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -361,9 +525,9 @@
                             <td>2025-01-03</td>
                             <td>2027-01-03</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -376,9 +540,9 @@
                             <td>2025-01-05</td>
                             <td>2026-12-31</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -391,9 +555,9 @@
                             <td>2025-01-07</td>
                             <td>2026-12-31</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -406,9 +570,9 @@
                             <td>2025-01-10</td>
                             <td>2027-01-10</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -421,9 +585,9 @@
                             <td>2025-01-12</td>
                             <td>2027-01-12</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -436,9 +600,9 @@
                             <td>2025-01-15</td>
                             <td>2027-01-15</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -451,9 +615,9 @@
                             <td>2025-01-17</td>
                             <td>2026-12-31</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -466,9 +630,9 @@
                             <td>2025-01-20</td>
                             <td>2026-12-31</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
 
@@ -481,14 +645,15 @@
                             <td>2025-01-22</td>
                             <td>2027-01-22</td>
                             <td>Có</td>
-                            <td>
-                                <button>Sửa</button>
-                                <button>Xóa</button>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            
         </section>
 
         <!-- BIẾN THỂ -->
@@ -501,7 +666,7 @@
             <div class="content">
                 <h3><strong>+</strong> Thêm biến thể mới</h3>
 
-                <form class="variant-form">
+                <form class="form-add">
 
                     <label for="variant-product">ID sản phẩm:</label>
                     <input type="text" id="variant-product" placeholder="Nhập ID sản phẩm">
@@ -524,7 +689,7 @@
                     <button type="submit" class="btn-addVariant">Thêm biến thể</button>
                 </form>
 
-                <div id="toast" class="toast"></div>
+                <div id="toast"></div>
 
             </div>
 
@@ -548,7 +713,10 @@
                             <td>1</td>
                             <td>10</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP001</td>
@@ -556,7 +724,10 @@
                             <td>3</td>
                             <td>8</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -565,7 +736,10 @@
                             <td>2</td>
                             <td>12</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP002</td>
@@ -573,7 +747,10 @@
                             <td>4</td>
                             <td>6</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -582,7 +759,10 @@
                             <td>2</td>
                             <td>9</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP003</td>
@@ -590,7 +770,10 @@
                             <td>4</td>
                             <td>7</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -599,7 +782,10 @@
                             <td>1</td>
                             <td>10</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP004</td>
@@ -607,7 +793,10 @@
                             <td>3</td>
                             <td>4</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -616,7 +805,10 @@
                             <td>2</td>
                             <td>15</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP005</td>
@@ -624,7 +816,10 @@
                             <td>4</td>
                             <td>10</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -633,7 +828,10 @@
                             <td>1</td>
                             <td>8</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP006</td>
@@ -641,7 +839,10 @@
                             <td>3</td>
                             <td>6</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -650,7 +851,10 @@
                             <td>2</td>
                             <td>7</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP007</td>
@@ -658,7 +862,10 @@
                             <td>4</td>
                             <td>5</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -667,7 +874,10 @@
                             <td>1</td>
                             <td>12</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP008</td>
@@ -675,7 +885,10 @@
                             <td>3</td>
                             <td>6</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -684,7 +897,10 @@
                             <td>2</td>
                             <td>9</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP009</td>
@@ -692,7 +908,10 @@
                             <td>4</td>
                             <td>5</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -701,7 +920,10 @@
                             <td>1</td>
                             <td>10</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>SP010</td>
@@ -709,7 +931,10 @@
                             <td>3</td>
                             <td>7</td>
                             <td>Có</td>
-                            <td><button>Sửa</button> <button>Xóa</button></td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                     </tbody>
@@ -731,6 +956,7 @@
                             <th>Slug</th>
                             <th>Quy tắc xếp</th>
                             <th>Trạng thái</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -740,6 +966,10 @@
                             <td>giay-chay-bo</td>
                             <td>Thứ tự giảm dần theo giá</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -748,6 +978,10 @@
                             <td>giay-sneaker</td>
                             <td>Thứ tự tăng dần theo tên</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -756,6 +990,10 @@
                             <td>giay-the-thao-nam</td>
                             <td>Thứ tự giảm dần theo ngày thêm</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -764,6 +1002,10 @@
                             <td>giay-the-thao-nu</td>
                             <td>Thứ tự tăng dần theo giá</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -772,6 +1014,10 @@
                             <td>giay-leo-nui</td>
                             <td>Thứ tự giảm dần theo tên</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -780,6 +1026,10 @@
                             <td>giay-tap-gym</td>
                             <td>Thứ tự tăng dần theo ngày thêm</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -788,6 +1038,10 @@
                             <td>giay-thuong-ngay</td>
                             <td>Thứ tự giảm dần theo giá</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -796,6 +1050,10 @@
                             <td>giay-skate</td>
                             <td>Thứ tự tăng dần theo tên</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -804,6 +1062,10 @@
                             <td>giay-running-sieu-nhe</td>
                             <td>Thứ tự giảm dần theo ngày thêm</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -812,6 +1074,10 @@
                             <td>giay-di-bo</td>
                             <td>Thứ tự tăng dần theo giá</td>
                             <td>Hiện</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                     </tbody>
@@ -830,7 +1096,7 @@
             <div class="content">
                 <h3><strong>+</strong> Thêm banner mới</h3>
 
-                <form class="banner-form">
+                <form class="form-add">
 
                     <label for="banner-id">ID:</label>
                     <input type="text" id="banner-id" placeholder="Nhập ID banner">
@@ -871,9 +1137,7 @@
                     <button type="submit" class="btn-addBanner">Thêm banner</button>
                 </form>
 
-                <div id="toast" class="toast"></div>
-
-                <div id="toast" class="toast">Đã thêm banner vào web!</div>
+                <div id="toast"></div>
             </div>
 
             <div class="banner-table">
@@ -891,6 +1155,7 @@
                             <th>Trạng thái</th>
                             <th>Ngày tạo</th>
                             <th>Ngày hạn</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -906,6 +1171,10 @@
                             <td>Hiện</td>
                             <td>2025-01-01</td>
                             <td>2025-06-01</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -920,6 +1189,10 @@
                             <td>Hiện</td>
                             <td>2025-01-05</td>
                             <td>2025-06-05</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -934,6 +1207,10 @@
                             <td>Hiện</td>
                             <td>2025-01-10</td>
                             <td>2025-06-10</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -948,6 +1225,10 @@
                             <td>Hiện</td>
                             <td>2025-01-12</td>
                             <td>2025-06-12</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -962,6 +1243,10 @@
                             <td>Hiện</td>
                             <td>2025-01-15</td>
                             <td>2025-06-15</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -976,6 +1261,10 @@
                             <td>Hiện</td>
                             <td>2025-01-18</td>
                             <td>2025-06-18</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -990,6 +1279,10 @@
                             <td>Hiện</td>
                             <td>2025-01-20</td>
                             <td>2025-06-20</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1004,6 +1297,10 @@
                             <td>Hiện</td>
                             <td>2025-01-22</td>
                             <td>2025-06-22</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1018,6 +1315,10 @@
                             <td>Hiện</td>
                             <td>2025-01-25</td>
                             <td>2025-06-25</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1032,6 +1333,10 @@
                             <td>Hiện</td>
                             <td>2025-01-28</td>
                             <td>2025-06-28</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                     </tbody>
@@ -1052,6 +1357,7 @@
                             <th>Email</th>
                             <th>Trạng thái</th>
                             <th>Ngày tạo</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1060,6 +1366,10 @@
                             <td>user1@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-01</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1067,6 +1377,10 @@
                             <td>user2@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-02</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1074,6 +1388,10 @@
                             <td>user3@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-03</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1081,6 +1399,10 @@
                             <td>user4@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-04</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1088,6 +1410,10 @@
                             <td>user5@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-05</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1095,6 +1421,10 @@
                             <td>user6@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-06</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1102,6 +1432,10 @@
                             <td>user7@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-07</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1109,6 +1443,10 @@
                             <td>user8@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-08</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1116,6 +1454,10 @@
                             <td>user9@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-09</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1123,6 +1465,10 @@
                             <td>user10@gmail.com</td>
                             <td>Đang đăng ký</td>
                             <td>2025-01-10</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -1142,6 +1488,7 @@
                             <th>Người dùng</th>
                             <th>Sản phẩm</th>
                             <th>Thời gian</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1149,60 +1496,100 @@
                             <td>user1@gmail.com</td>
                             <td>Nike Air Force 1 '07</td>
                             <td>2025-01-05 10:30</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user2@gmail.com</td>
                             <td>Adidas Ultraboost 1.0</td>
                             <td>2025-01-06 14:20</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user3@gmail.com</td>
                             <td>Nike Air Force 1 '07</td>
                             <td>2025-01-07 09:15</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user4@gmail.com</td>
                             <td>Nike Air Jordan 1 Mid</td>
                             <td>2025-01-08 11:45</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user5@gmail.com</td>
                             <td>Converse Chuck 70</td>
                             <td>2025-01-09 16:30</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user6@gmail.com</td>
                             <td>Nike Air Force 1 '07</td>
                             <td>2025-01-10 13:00</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user7@gmail.com</td>
                             <td>Converse Chuck 70</td>
                             <td>2025-01-11 17:20</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user1@gmail.com</td>
                             <td>Converse Chuck 70</td>
                             <td>2025-01-12 15:10</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user2@gmail.com</td>
                             <td>Nike Air Force 1 '07</td>
                             <td>2025-01-13 12:25</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>user3@gmail.com</td>
                             <td>Adidas Ultraboost 1.0</td>
                             <td>2025-01-14 09:50</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                     </tbody>
@@ -1217,8 +1604,8 @@
                 <h2>Quản lý đơn hàng</h2>
             </div>
 
-            <!-- content -->
-            <div class="table-wrapper">
+            <!-- table -->
+            <div class="order-table">
                 <table>
                     <thead>
                         <tr>
@@ -1234,6 +1621,7 @@
                             <th>Thanh toán</th>
                             <th>Trạng thái thanh toán</th>
                             <th>Lưu ý</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
 
@@ -1251,6 +1639,10 @@
                             <td>COD</td>
                             <td>Chưa thanh toán</td>
                             <td>Giao hàng nhanh</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1266,6 +1658,10 @@
                             <td>VNPay</td>
                             <td>Đã thanh toán</td>
                             <td>Giao trong ngày</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1281,6 +1677,10 @@
                             <td>COD</td>
                             <td>Chưa thanh toán</td>
                             <td>Giao hàng chậm</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1296,6 +1696,10 @@
                             <td>VNPay</td>
                             <td>Đã thanh toán</td>
                             <td>Khẩn cấp</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1311,6 +1715,10 @@
                             <td>COD</td>
                             <td>Chưa thanh toán</td>
                             <td>Giao trong ngày</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1326,6 +1734,10 @@
                             <td>VNPay</td>
                             <td>Đã thanh toán</td>
                             <td>Giao hàng nhanh</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1341,6 +1753,10 @@
                             <td>COD</td>
                             <td>Chưa thanh toán</td>
                             <td>Giao hàng chậm</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1356,6 +1772,10 @@
                             <td>VNPay</td>
                             <td>Đã thanh toán</td>
                             <td>Khẩn cấp</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1371,6 +1791,10 @@
                             <td>VNPay</td>
                             <td>Đã thanh toán</td>
                             <td>Giao trong ngày</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1386,6 +1810,10 @@
                             <td>COD</td>
                             <td>Chưa thanh toán</td>
                             <td>Giao hàng chậm</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                     </tbody>
@@ -1409,6 +1837,7 @@
                             <th>ID Màu</th>
                             <th>Số lượng</th>
                             <th>Ngày thêm</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody class="cart-table">
@@ -1420,6 +1849,10 @@
                             <td>1</td>
                             <td>1</td>
                             <td>2025-01-05</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1430,6 +1863,10 @@
                             <td>4</td>
                             <td>2</td>
                             <td>2025-01-06</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1440,6 +1877,10 @@
                             <td>2</td>
                             <td>1</td>
                             <td>2025-01-07</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1450,6 +1891,10 @@
                             <td>1</td>
                             <td>1</td>
                             <td>2025-01-08</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1460,6 +1905,10 @@
                             <td>2</td>
                             <td>3</td>
                             <td>2025-01-09</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1470,6 +1919,10 @@
                             <td>3</td>
                             <td>1</td>
                             <td>2025-01-10</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1480,6 +1933,10 @@
                             <td>4</td>
                             <td>2</td>
                             <td>2025-01-11</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1490,6 +1947,10 @@
                             <td>1</td>
                             <td>1</td>
                             <td>2025-01-12</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1500,6 +1961,10 @@
                             <td>3</td>
                             <td>2</td>
                             <td>2025-01-13</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                         <tr>
@@ -1510,6 +1975,10 @@
                             <td>4</td>
                             <td>1</td>
                             <td>2025-01-14</td>
+                            <td class="actions">
+                                <button class="btn-edit">Sửa</button>
+                                <button class="btn-delete">Xóa</button>
+                            </td>
                         </tr>
 
                     </tbody>
@@ -1518,7 +1987,7 @@
 
         </section>
 
-    <!-- thống kê -->
+        <!-- thống kê -->
         <!-- THỐNG KÊ -->
         <section id="statistics">
             <div class="admin-main">
@@ -1657,16 +2126,16 @@
             </div>
         </section>
 
-    <!-- thông tin và đăng xuất -->
+        <!-- thông tin và đăng xuất -->
         <!-- CÀI ĐẶT -->
         <section id="setting">
             <div class="admin-header">
                 <h2>Cài đặt</h2>
             </div>
-            <div class="content">
+            <div class="setting-content">
                 <h3>Thông tin tài khoản</h3>
 
-                <form class="update-form">
+                <form class="form-add">
 
                     <label>Họ tên</label>
                     <input type="text" placeholder="Admin">
@@ -1685,8 +2154,6 @@
                 <label>Phí ship mặc định:</label>
                 <input type="number" id="fee" value="30000">
             </div>
-
-            <!-- content -->
 
         </section>
 
@@ -1746,14 +2213,16 @@
 
     const btnForm = document.querySelectorAll('form button');
     btnForm.forEach(btn => {
-        btn.addEventListener('click', function(e){
-            if(btn.type === 'submit'){
+        btn.addEventListener('click', function (e) {
+            if (btn.type === 'submit') {
                 e.preventDefault();
             }
             const btnName = btn.textContent || btn.innerText;
-            showToast(`Đã "${btnName}" thành công`);
+            showToast(`${btnName} thành công`);
         });
     });
+
+
 
 </script>
 
