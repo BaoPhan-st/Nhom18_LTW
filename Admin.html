@@ -15,20 +15,21 @@
         <span class="admin-name">Admin</span>
     </div>
     <ul class="menu">
-        <li class="active" data-section="dashboard">Dashboard</li>
-        <li data-section="products">Quản lý sản phẩm</li>
-        <li data-section="orders">Quản lý đơn hàng</li>
-        <li data-section="accounts">Quản lý tài khoản</li>
-        <li data-section="statistics">Thống kê</li>
-        <li data-section="setting">Cài đặt</li>
-        <li data-section="logout">Đăng xuất</li>
+        <li class="active" data-section="dashboard"><a href="#dashboard">Dashboard</a></li>
+        <li data-section="products"><a href="#products">Quản lý sản phẩm</a></li>
+        <li data-section="orders"><a href="#orders">Quản lý đơn hàng</a></li>
+        <li data-section="accounts"><a href="#accounts">Quản lý tài khoản</a></li>
+        <li data-section="banners"><a href="#banners">Banner</a></li>
+        <li data-section="statistics"><a href="#statistics">Thống kê</a></li>
+        <li data-section="setting"><a href="#setting">Cài đặt</a></li>
+        <li data-section="logout"><a href="#logout">Đăng xuất</a></li>
     </ul>
 </div>
 
 <!-- MAIN -->
 <div class="main">
     <!--DASHBOARD-->
-    <section id="dashboard" class="active">
+    <section id="dashboard" class="active-section">
         <div class="admin-header">
             <h2>Dashboard</h2>
         </div>
@@ -428,6 +429,35 @@
         </div>
     </section>
 
+    <!-- BANNER -->
+    <section id="banners">
+        <div class="admin-header">
+            <h2>Quản lý Banner</h2>
+        </div>
+        
+        <div class="content">
+            <h3><strong>+</strong> Thêm banner mới</h3>
+            
+            <form class="banner-form">
+                
+                <label for="banner-name">Tên banner:</label>
+                <input type="text" id="banner-name" placeholder="Nhập tên banner">
+                
+                <label for="banner-url">Đường dẫn (URL):</label>
+                <input type="url" id="banner-url" placeholder="Nhập URL">
+                                
+                <label for="start-date">Ngày bắt đầu:</label>
+                <input type="date" id="start-date" name="start">
+                
+                <label for="end-date">Ngày kết thúc:</label>
+                <input type="date" id="end-date" name="end">
+                
+                <button type="submit" class="btn-addBanner">Thêm banner</button>
+            </form>
+            <div id="toast" class="toast">Đã thêm banner vào web!</div>
+        </div>
+    </section>
+    
     <!-- THỐNG KÊ -->
     <section id="statistics">
         <div class="admin-main">
@@ -556,37 +586,34 @@
         <div class="admin-header">
             <h2>Cài đặt</h2>
         </div>
-        <div class="setting">
+        <div class="content">
             <h3>Thông tin tài khoản</h3>
-            <form>
+
+            <form class="update-form">
+
                 <label>Họ tên</label>
-                <input type="text" value="Admin">
+                <input type="text" placeholder="Admin">
+
                 <label>Email</label>
-                <input type="email" value="admin@gmail.com">
+                <input type="email" placeholder="admin@gmail.com">
+                
                 <label>Mật khẩu mới</label>
                 <input type="password">
-                <button type="submit">Cập nhật</button>
+
+                <button type="submit" class="btn-update">Cập nhật</button>
             </form>
-            <h3>Cài đặt hệ thống</h3>
-            <label>
-                Ngôn ngữ:
-                <select>
-                    <option value="vi">Việt Nam</option>
-                    <option value="en">English</option>
-                </select>
-            </label>
-            <label>
-                Giao diện:
-                <select>
-                    <option value="dark">tối</option>
-                    <option value="white">sáng</option>
-                </select>
-            </label>
+
+
+            <h3>Cài đặt mua hàng</h3>
+            <label>Phí ship mặc định:</label>
+            <input type="number" id="fee" value="30000">
         </div>
 
         <!-- content -->
 
     </section>
+
+    <!-- ĐĂNG XUẤT -->
     <section id="logout">
         <div class="admin-header">
             <h2>Đăng xuất</h2>
@@ -606,16 +633,48 @@
     const menuItems = document.querySelectorAll('.menu li');
     const sections = document.querySelectorAll('section');
     
-    menuItems.forEach(item =>{
-        item.addEventListener('click', () => {
-            menuItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-            sections.forEach(sec => sec.classList.remove('active'));
+    // HÀM SHOW VÀ LOAD SECTION HIỆN TẠI
+    function showSection(secID) {
+        sections.forEach(sec => sec.classList.remove('active-section'));
+        document.getElementById(secID)?.classList.add('active-section');
+        
+        menuItems.forEach(li => li.classList.remove('active'));
+        document.querySelector(`.menu li[data-section="${secID}"]`)?.classList.add('active');
+    }
 
-            const secID = item.getAttribute('data-section');
-            const actSec = document.getElementById(secID);
-            if(actSec) actSec.classList.add('active');
+    showSection(location.hash.slice(1) || 'dashboard');
+    menuItems.forEach(li => {
+        li.addEventListener('click', e => {
+            e.preventDefault();
+            const secID = li.dataset.section;
+            window.location.hash = secID;
+            showSection(secID);
         });
     });
+
+    window.addEventListener('hashchange', () => {
+        showSection(location.hash.slice(1) || 'dashboard');
+    });
+
+    // HÀM HIỂN THỊ THÔNG BÁO TOAST
+    function showToast(message){
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    const bannerForm = document.querySelector('.banner-form');
+    bannerForm?.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('banner-name').value;
+        showToast('Đã thêm banner "${name}" thành công!');
+        bannerForm.reset();
+    })
+
 </script>
 </html>

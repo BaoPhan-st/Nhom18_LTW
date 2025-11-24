@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    min-width: 500px;
     font-family: Arial, sans-serif;
     background: #f4f6f9;
     overflow-x: hidden;
@@ -47,20 +48,28 @@ body {
     font-size: 22px;
 }
 
-.sidebar ul {
+.menu {
     list-style: none;
     padding: 0;
 }
 
-.sidebar ul li {
+.menu li {
     padding: 14px 20px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background 0.3s, color 0.3s;
+    color: #fff;
 }
 
-.sidebar ul li:hover,
-.sidebar ul li.active {
+.menu li a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.menu li:hover,
+.menu li.active {
     background: #6c72b6;
+    color: #fff;
 }
 
 /* Main Content */
@@ -71,13 +80,13 @@ body {
     width: calc(100% - 200px);
 }
 
-.main section{
+section{
     display: none;
     overflow: auto;
     overflow-x: auto;
 }
 
-.main section.active{
+section.active-section{
     display: block;
 }
 
@@ -86,7 +95,7 @@ body {
     background: #fff;
     padding: 15px 20px;
     border-radius: 6px;
-    margin-bottom: 20px;
+    margin: 20px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -124,9 +133,10 @@ body {
 /* Data Table */
 table {
     width: 100%;
+    margin-right: 20px;
     border-collapse: collapse;
     background: white;
-    border-radius: 8px;
+    border: 1px #333;
     overflow: auto;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -134,7 +144,8 @@ table {
 table th, table td {
     padding: 14px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border: 1px solid #555;
+    border-bottom: 1px solid #555;
 }
 
 table th {
@@ -162,6 +173,74 @@ table tr:hover {
     .cards-manager{
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+.content{
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(100%-20px);
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.content h3{
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #444;
+}
+
+.banner-form, 
+.update-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.banner-form label,
+.update-form label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+.update-form input,
+.banner-form input,
+.banner-form select{
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.25s;
+}
+
+.banner-form input:focus,
+.banner-form select:focus{
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+.banner-form select{
+    background: #fff;
+}
+
+.banner-form button,
+.update-form button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    background: #007bff;
+    color: #fff;
+    border: 1px solid #c4c0c0;
+    border-radius: 5px ;
+}
+
+.update-form button{
+    background: green;
+    margin-bottom: 20px;
 }
 
 .setting form{
@@ -198,4 +277,28 @@ table tr:hover {
 
 #addProductBtn{
     display: flex;
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 6px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.4s;
+    transform: translateY(-20px);
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
 }
