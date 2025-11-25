@@ -2094,5 +2094,27 @@
     </div>
 
 </body>
+</script>
+ // HÀM HIỂN THỊ THÔNG BÁO TOAST
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
 
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    const btnForm = document.querySelectorAll('form button');
+    btnForm.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            if (btn.type === 'submit') {
+                e.preventDefault();
+            }
+            const btnName = btn.textContent || btn.innerText;
+            showToast(`${btnName} thành công`);
+        });
+    });
+</script>
 </html>
