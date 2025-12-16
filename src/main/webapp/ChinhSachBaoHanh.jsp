@@ -1,0 +1,503 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BHD - SPORT SHOES</title>
+
+    <!--
+    - favicon
+  -->
+    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+
+    <!--
+    -  css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!--
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body id="top">
+    <!--
+- #HEADER
+-->
+
+    <header class="header">
+      <div class="container">
+        <div class="overlay"></div>
+
+        <a href="Menu.jsp" class="logo">
+          <img
+            src="./assets/images/BHD%20LOGO.png"
+            width="100"
+            height="50"
+            alt="BHD logo"
+          />
+        </a>
+
+        <!-- Nút mở menu -->
+        <button class="nav-open-btn">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <nav class="navbar">
+          <button
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
+          >
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="Menu.jsp" class="navbar-link">Trang chủ</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="Products.jsp" class="navbar-link">Sản phẩm</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
+            </li>
+          </ul>
+
+          <ul class="nav-action-list">
+            <li>
+              <button
+                class="nav-action-btn"
+                id="searchToggleBtn"
+                data-search-btn
+              >
+                <ion-icon name="search-outline"></ion-icon>
+                <span class="nav-action-text">Tìm kiếm</span>
+              </button>
+            </li>
+
+            <li class="nav-action-item nav-action-dropdown">
+              <a href="login.jsp" class="nav-action-btn">
+                <ion-icon name="person-outline"></ion-icon>
+                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+              </a>
+
+              <div class="dropdown-content">
+                <a href="login.jsp">Đăng nhập</a>
+                <a href="register.jsp">Đăng ký</a>
+              </div>
+            </li>
+
+            <li>
+              <a href="WishList.jsp" class="nav-action-btn">
+                <ion-icon name="heart-outline"></ion-icon>
+                <span class="nav-action-text">Yêu thích</span>
+              </a>
+            </li>
+            <li>
+              <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+                <ion-icon name="bag-outline"></ion-icon>
+                <span class="nav-action-text">Giỏ hàng</span>
+              </a>
+            </li>
+          </ul>
+          <form class="search-form" id="search-form" action="#" method="get">
+            <input
+              type="search"
+              name="query"
+              placeholder="Tìm kiếm sản phẩm..."
+              id="search-input"
+              required
+            />
+
+            <button type="button" class="search-close-btn" id="searchCloseBtn">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </form>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+              Chính sách bảo hành
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <main class="ChinhSachBaoHanh">
+      <div class="container policy-content">
+        <h1 class="h2 policy-title" style="color: var(--rich-black-fogra-29)">
+          QUY ĐỊNH BẢO HÀNH SẢN PHẨM CHÍNH HÃNG
+        </h1>
+        <p class="policy-date">
+          Áp dụng cho mọi sản phẩm giày mua tại BHD - SPORT SHOES.
+        </p>
+
+        <p class="summary">
+          Chúng tôi cam kết chất lượng sản phẩm chính hãng đi kèm chính sách bảo
+          hành rõ ràng, minh bạch để đảm bảo quý khách yên tâm khi mua sắm.
+        </p>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">1. Điều kiện Bảo hành Tiêu chuẩn</h3>
+          <p>Sản phẩm đủ điều kiện bảo hành khi đáp ứng các yêu cầu sau:</p>
+          <ul>
+            <li>
+              Thời gian bảo hành: <strong>03 tháng (90 ngày)</strong> kể từ ngày
+              mua hàng (ghi trên hóa đơn).
+            </li>
+            <li>
+              Sản phẩm phải được mua trực tiếp từ hệ thống BHD hoặc các kênh
+              phân phối chính thức.
+            </li>
+            <li>
+              Khách hàng phải cung cấp hóa đơn/biên nhận hoặc thông tin mua hàng
+              hợp lệ để xác minh.
+            </li>
+          </ul>
+        </section>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">2. Các Lỗi được Bảo hành Miễn phí</h3>
+          <p>
+            Chúng tôi áp dụng bảo hành miễn phí đối với các lỗi kỹ thuật phát
+            sinh từ nhà sản xuất:
+          </p>
+          <ol>
+            <li>
+              <strong>Bung/Hở Keo:</strong> Keo dán bị bong tại các mối nối
+              chính (mũi giày, gót giày, đế giày) không do tác động ngoại lực.
+            </li>
+            <li>
+              <strong>Đứt/Sút Chỉ:</strong> Các đường chỉ may bị đứt tại các khu
+              vực chịu lực hoặc trang trí.
+            </li>
+            <li>
+              <strong>Lỗi kỹ thuật khác:</strong> Đệm khí bị xì hơi (nếu có), đế
+              giày bị nứt vỡ không do va chạm mạnh hoặc sử dụng sai mục đích.
+            </li>
+          </ol>
+        </section>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">3. Các Trường hợp Từ chối Bảo hành</h3>
+          <p>
+            Bảo hành không áp dụng hoặc sẽ được tính phí sửa chữa trong các
+            trường hợp sau:
+          </p>
+          <ul>
+            <li>Sản phẩm bị hao mòn tự nhiên (mòn đế, phai màu, cũ).</li>
+            <li>
+              Lỗi do người sử dụng: Giày bị rách, thủng, trầy xước, cháy, tiếp
+              xúc với hóa chất.
+            </li>
+            <li>
+              Giày bị biến dạng do giặt, sấy, hoặc bảo quản không đúng theo
+              hướng dẫn.
+            </li>
+            <li>
+              Sản phẩm đã được sửa chữa hoặc can thiệp bởi bên thứ ba không phải
+              BHD.
+            </li>
+            <li>Hết thời hạn bảo hành 03 tháng.</li>
+          </ul>
+        </section>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">4. Quy trình Giải quyết Bảo hành</h3>
+          <p>
+            <strong>Bước 1:</strong> Khách hàng mang/gửi sản phẩm về cửa hàng
+            kèm thông tin mua hàng.
+          </p>
+          <p>
+            <strong>Bước 2:</strong> Bộ phận kỹ thuật BHD kiểm tra và đánh giá
+            tình trạng lỗi. Thời gian kiểm tra: **3-5 ngày làm việc**.
+          </p>
+          <p>
+            <strong>Bước 3:</strong> Thông báo kết quả và tiến hành sửa chữa.
+            Trong trường hợp không thể sửa chữa, BHD có thể đề xuất phương án
+            thay thế sản phẩm tương đương (tùy thuộc vào chính sách của từng
+            hãng).
+          </p>
+        </section>
+
+        <p class="final-note">
+          Mọi thắc mắc vui lòng liên hệ Bộ phận Dịch vụ Khách hàng qua Hotline:
+          0332536387.
+        </p>
+      </div>
+    </main>
+    <!--
+- #FOOTER
+-->
+    <footer class="footer">
+      <div class="footer-top section">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <img
+                src="./assets/images/BHD%20LOGO.png"
+                width="110"
+                height="50"
+                alt="BHD"
+              />
+            </a>
+
+            <ul class="social-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/kcntt.nlu"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.youtube.com/@NongLamUniversity/videos"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.tiktok.com/@nonglam.university"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-tiktok"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
+                  class="social-link"
+                >
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-link-box">
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Thông tin liên hệ</p>
+              </li>
+
+              <li>
+                <address class="footer-link">
+                  <ion-icon name="location"></ion-icon>
+
+                  <span class="footer-link-text">
+                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
+                  </span>
+                </address>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="call"></ion-icon>
+
+                  <span class="footer-link-text">0332536387</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link">
+                  <ion-icon name="mail"></ion-icon>
+
+                  <span class="footer-link-text">BHDsport@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Tài khoản</p>
+              </li>
+
+              <li>
+                <a href="Account.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Tài khoản</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="Carts.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Xem giỏ hàng</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="WishList.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Yêu thích</span>
+                </a>
+              </li>
+            </ul>
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Chính sách</p>
+              </li>
+
+              <li>
+                <a href="ChinhSachBaoMat.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Chính sách bảo mật</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="ChinhSachBaoHanh.html" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Chính sách bảo hành</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="huongdanmuahang.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
+                </a>
+              </li>
+              <li>
+                <a href="faq.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">FAQs</span>
+                </a>
+              </li>
+            </ul>
+            <div class="footer-list">
+              <p class="footer-list-title">Đăng kí nhận tin</p>
+              <form
+                id="newsletter-form"
+                action=""
+                class="newsletter-form"
+                method="POST"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email"
+                  class="newsletter-input"
+                />
+                <button type="submit" class="btn btn-primary">
+                  <span>Đăng Kí</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2025
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>.Cùng bạn
+            chinh phục mọi hành trình
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-
+- ionicon link
+-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchToggleBtn = document.getElementById("searchToggleBtn");
+        const searchForm = document.getElementById("search-form");
+        const searchInput = document.getElementById("search-input");
+
+        if (searchToggleBtn && searchForm && searchInput) {
+          function toggleSearch(e) {
+            if (e) e.preventDefault();
+            searchForm.classList.toggle("active");
+
+            if (searchForm.classList.contains("active")) {
+              searchInput.focus();
+            } else {
+              searchInput.value = "";
+            }
+          }
+
+          function handleSearchAction(e) {
+            toggleSearch(e);
+          }
+
+          searchToggleBtn.addEventListener("click", handleSearchAction);
+
+          searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              toggleSearch(e);
+            }
+          });
+        }
+      });
+    </script>
+    <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
+
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
