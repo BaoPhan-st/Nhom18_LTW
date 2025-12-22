@@ -82,8 +82,10 @@
         <div class="admin-header"><h2>Quản lý tài khoản</h2></div>
 
         <form class="form-add">
-          <label>ID:</label><input /> <label>Email:</label><input />
-          <label>Password:</label><input /> <label>SĐT:</label><input />
+          <label>ID:</label><input id="id" />
+          <label>Email:</label><input id="email"/>
+          <label>Password:</label><input id="password"/>
+          <label>SĐT:</label><input id="sdt"/>
 
           <!-- Nút hành động -->
           <div class="action-buttons">
@@ -123,8 +125,10 @@
         <div class="admin-header"><h2>Quản lý sản phẩm</h2></div>
 
         <form class="form-add">
-          <label>Mã SP:</label><input /> <label>Tên sản phẩm:</label><input />
-          <label>Mô tả:</label><textarea></textarea>
+          <label>Mã SP:</label><input id="maSP"/>
+          <label>Tên sản phẩm:</label><input id="name"/>
+          <label>Mô tả:</label>
+          <textarea id="description"></textarea>
 
           <div class="action-buttons">
             <button type="button" class="btn-add">
@@ -162,8 +166,9 @@
         <div class="admin-header"><h2>Quản lý biến thể</h2></div>
 
         <form class="form-add">
-          <label>ID SP:</label><input /> <label>Size:</label><input />
-          <label>Màu:</label><input />
+          <label>ID SP:</label><input id="id-product"/>
+          <label>Size:</label><input id="size"/>
+          <label>Màu:</label><input id="color"/>
 
           <div class="action-buttons">
             <button type="button" class="btn-add">
@@ -198,8 +203,9 @@
         <div class="admin-header"><h2>Banner</h2></div>
 
         <form class="form-add">
-          <label>ID:</label><input /> <label>Title:</label><input />
-          <label>Link:</label><input />
+          <label>ID:</label><input id="id"/>
+          <label>Title:</label><input id="title"/>
+          <label>Link:</label><input id="link"/>
 
           <div class="action-buttons">
             <button type="button" class="btn-add">
@@ -250,19 +256,24 @@
     <!-- JS CHUYỂN TRANG + XÓA -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // reload section
         const menuItems = document.querySelectorAll(".menu li");
         const sections = document.querySelectorAll("section");
 
-        menuItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            menuItems.forEach((i) => i.classList.remove("active"));
-            item.classList.add("active");
+        let activeSectionID = localStorage.getItem("activeSection");
 
+        sections.forEach(sec => sec.classList.toggle("active-section", sec.id === activeSectionID));
+        menuItems.forEach(item => item.classList.toggle("active", item.getAttribute("data-section") === activeSectionID));
+
+        menuItems.forEach(item => {
+          item.addEventListener("click", () => {
             const target = item.getAttribute("data-section");
 
-            sections.forEach((sec) => {
-              sec.classList.toggle("active-section", sec.id === target);
-            });
+            sections.forEach(sec => sec.classList.toggle("active-section", sec.id === target));
+            menuItems.forEach(i => i.classList.remove("active"));
+            item.classList.add("active");
+
+            localStorage.setItem("activeSection", target);
           });
         });
 
