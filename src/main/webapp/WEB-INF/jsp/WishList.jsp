@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
     <link rel="stylesheet" href="./assets/css/wishlist_content.css" />
 
@@ -35,7 +35,7 @@
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -151,7 +151,7 @@
 
                 <div class="product-item">
                     <div class="product-details">
-                        <img src="assets/images/product-1.jpg" alt="Tên Sản Phẩm 1" class="product-image">
+                        <img src="../../assets/images/product-1.jpg" alt="Tên Sản Phẩm 1" class="product-image">
 
                         <div class="product-info">
 
@@ -183,7 +183,7 @@
 
                 <div class="product-item">
                     <div class="product-details">
-                        <img src="assets/images/product-2.jpg" alt="Tên Sản Phẩm 2" class="product-image">
+                        <img src="../../assets/images/product-2.jpg" alt="Tên Sản Phẩm 2" class="product-image">
 
                         <div class="product-info">
 
@@ -225,7 +225,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -416,7 +416,7 @@
             <span class="cart-close">&times;</span>
 
             <div class="cart-product-box">
-                <img src="./assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
+                <img src="../../assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
 
                 <div class="cart-info">
                     <h2 id="popupName">Running Sneaker Shoes</h2>

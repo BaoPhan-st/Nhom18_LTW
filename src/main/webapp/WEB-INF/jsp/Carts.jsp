@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BHD - SPORT SHOES</title>
-
     <!--
     - favicon
   -->
@@ -15,7 +14,7 @@
     <!--
     -  css link
   -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
     <!--
     - google font link
@@ -39,7 +38,7 @@
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -109,7 +108,7 @@
               </a>
             </li>
             <li>
-              <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+              <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
                 <ion-icon name="bag-outline"></ion-icon>
                 <span class="nav-action-text">Giỏ hàng</span>
               </a>
@@ -131,122 +130,131 @@
         </nav>
       </div>
     </header>
+
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
 
-            <li class="breadcrumb-item active" aria-current="page">
-              Chính sách bảo hành
-            </li>
+            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
           </ol>
         </nav>
       </div>
     </div>
-    <main class="ChinhSachBaoHanh">
-      <div class="container policy-content">
-        <h1 class="h2 policy-title" style="color: var(--rich-black-fogra-29)">
-          QUY ĐỊNH BẢO HÀNH SẢN PHẨM CHÍNH HÃNG
-        </h1>
-        <p class="policy-date">
-          Áp dụng cho mọi sản phẩm giày mua tại BHD - SPORT SHOES.
-        </p>
+    <!--
+   - #CartContent
+   -->
+    <main class="cart-page-content">
+        <div class="container">
+            <h1 class="cart-header">Giỏ hàng</h1>
 
-        <p class="summary">
-          Chúng tôi cam kết chất lượng sản phẩm chính hãng đi kèm chính sách bảo
-          hành rõ ràng, minh bạch để đảm bảo quý khách yên tâm khi mua sắm.
-        </p>
+            <div class="cart-items-list">
 
-        <section class="policy-section">
-          <h3 class="h3 section-heading">1. Điều kiện Bảo hành Tiêu chuẩn</h3>
-          <p>Sản phẩm đủ điều kiện bảo hành khi đáp ứng các yêu cầu sau:</p>
-          <ul>
-            <li>
-              Thời gian bảo hành: <strong>03 tháng (90 ngày)</strong> kể từ ngày
-              mua hàng (ghi trên hóa đơn).
-            </li>
-            <li>
-              Sản phẩm phải được mua trực tiếp từ hệ thống BHD hoặc các kênh
-              phân phối chính thức.
-            </li>
-            <li>
-              Khách hàng phải cung cấp hóa đơn/biên nhận hoặc thông tin mua hàng
-              hợp lệ để xác minh.
-            </li>
-          </ul>
-        </section>
+                <div class="product-item">
+                    <div class="product-details">
+                        <img src="../../assets/images/product-1.jpg" alt="Tên Sản Phẩm 1" class="product-image">
 
-        <section class="policy-section">
-          <h3 class="h3 section-heading">2. Các Lỗi được Bảo hành Miễn phí</h3>
-          <p>
-            Chúng tôi áp dụng bảo hành miễn phí đối với các lỗi kỹ thuật phát
-            sinh từ nhà sản xuất:
-          </p>
-          <ol>
-            <li>
-              <strong>Bung/Hở Keo:</strong> Keo dán bị bong tại các mối nối
-              chính (mũi giày, gót giày, đế giày) không do tác động ngoại lực.
-            </li>
-            <li>
-              <strong>Đứt/Sút Chỉ:</strong> Các đường chỉ may bị đứt tại các khu
-              vực chịu lực hoặc trang trí.
-            </li>
-            <li>
-              <strong>Lỗi kỹ thuật khác:</strong> Đệm khí bị xì hơi (nếu có), đế
-              giày bị nứt vỡ không do va chạm mạnh hoặc sử dụng sai mục đích.
-            </li>
-          </ol>
-        </section>
+                        <div class="product-info">
 
-        <section class="policy-section">
-          <h3 class="h3 section-heading">3. Các Trường hợp Từ chối Bảo hành</h3>
-          <p>
-            Bảo hành không áp dụng hoặc sẽ được tính phí sửa chữa trong các
-            trường hợp sau:
-          </p>
-          <ul>
-            <li>Sản phẩm bị hao mòn tự nhiên (mòn đế, phai màu, cũ).</li>
-            <li>
-              Lỗi do người sử dụng: Giày bị rách, thủng, trầy xước, cháy, tiếp
-              xúc với hóa chất.
-            </li>
-            <li>
-              Giày bị biến dạng do giặt, sấy, hoặc bảo quản không đúng theo
-              hướng dẫn.
-            </li>
-            <li>
-              Sản phẩm đã được sửa chữa hoặc can thiệp bởi bên thứ ba không phải
-              BHD.
-            </li>
-            <li>Hết thời hạn bảo hành 03 tháng.</li>
-          </ul>
-        </section>
+                            <h2 class="product-name">
+                                <a href="chitietsanpham.jsp" class="product-link">Nike Air Force 1 '07</a>
+                            </h2>
 
-        <section class="policy-section">
-          <h3 class="h3 section-heading">4. Quy trình Giải quyết Bảo hành</h3>
-          <p>
-            <strong>Bước 1:</strong> Khách hàng mang/gửi sản phẩm về cửa hàng
-            kèm thông tin mua hàng.
-          </p>
-          <p>
-            <strong>Bước 2:</strong> Bộ phận kỹ thuật BHD kiểm tra và đánh giá
-            tình trạng lỗi. Thời gian kiểm tra: **3-5 ngày làm việc**.
-          </p>
-          <p>
-            <strong>Bước 3:</strong> Thông báo kết quả và tiến hành sửa chữa.
-            Trong trường hợp không thể sửa chữa, BHD có thể đề xuất phương án
-            thay thế sản phẩm tương đương (tùy thuộc vào chính sách của từng
-            hãng).
-          </p>
-        </section>
+                            <div class="product-attributes-line-2">
+                                <p class="product-size">Size: 40</p>
+                                <div class="product-color">
+                                    <div class="color-box" style="background-color: #e74c3c;" title="Hex: #e74c3c (Đỏ)"></div>
+                                </div>
+                            </div>
 
-        <p class="final-note">
-          Mọi thắc mắc vui lòng liên hệ Bộ phận Dịch vụ Khách hàng qua Hotline:
-          0332536387.
-        </p>
-      </div>
+                            <div class="product-price-line-3c"
+                                 data-id="12345"
+                                 data-price-raw="1500000"
+                                 data-original-raw="1808500"
+                                 data-discount-percentage="17">
+                                <div class="discounted-price-group">
+                                    <span class="discounted-price">199.000 VNĐ</span>
+                                    <span class="original-price">250.000 VNĐ</span>
+                                </div>
+                                <p class="discount-value">Giảm: 21%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <input type="number" value="1" min="1" class="quantity-input">
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+
+                        <button class="action-btn delete-btn">Xoá</button>
+
+                        <button class="action-btn buy-now-btn">Mua ngay</button>
+                    </div>
+                </div>
+
+                <hr class="separator">
+
+                <div class="product-item">
+                    <div class="product-details">
+                        <img src="../../assets/images/product-2.jpg" alt="Tên Sản Phẩm 2" class="product-image">
+
+                        <div class="product-info">
+
+                            <h2 class="product-name">
+                                <a href="#" class="product-link">Nike Air Force 1 '07</a>
+                            </h2>
+
+                            <div class="product-attributes-line-2">
+                                <p class="product-size">Size: 40</p>
+                                <div class="product-color">
+                                    <div class="color-box" style="background-color: #3498db;" title="Hex: #3498db (Xanh Dương)"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-price-line-3c"
+                                data-id="12345"
+                                data-price-raw="1500000"
+                                data-original-raw="1808500"
+                                data-discount-percentage="17">
+                                <div class="discounted-price-group">
+                                    <span class="discounted-price">1.500.000 VNĐ</span>
+                                    <span class="original-price" style="display: none;">1.500.000 VNĐ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <input type="number" value="2" min="1" class="quantity-input">
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+
+                        <button class="action-btn delete-btn">Xoá</button>
+                        <button class="action-btn buy-now-btn">Mua ngay</button>
+                    </div>
+                </div>
+
+                <hr class="separator">
+
+            </div>
+
+            <div class="cart-summary-section">
+                <div class="total-line">
+                    <span class="total-label">Tổng cộng:</span>
+                    <span class="total-price">3.199.000 VNĐ</span>
+                </div>
+             <button class="checkout-btn"> <a href="checkout.jsp" class="Thanh_toán">Tiến Hành Đặt hàng</a></button>
+            </div>
+
+        </div>
     </main>
+
+
     <!--
 - #FOOTER
 -->
@@ -256,7 +264,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -349,7 +357,7 @@
               </li>
 
               <li>
-                <a href="Carts.jsp" class="footer-link">
+                <a href="Carts.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -378,7 +386,7 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoHanh.html" class="footer-link">
+                <a href="ChinhSachBaoHanh.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo hành</span>
@@ -446,58 +454,58 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const searchToggleBtn = document.getElementById("searchToggleBtn");
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search-input");
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchToggleBtn = document.getElementById("searchToggleBtn");
+            const searchForm = document.getElementById("search-form");
+            const searchInput = document.getElementById("search-input");
 
-        if (searchToggleBtn && searchForm && searchInput) {
-          function toggleSearch(e) {
-            if (e) e.preventDefault();
-            searchForm.classList.toggle("active");
+            if (searchToggleBtn && searchForm && searchInput) {
+                function toggleSearch(e) {
+                    if (e) e.preventDefault();
+                    searchForm.classList.toggle("active");
 
-            if (searchForm.classList.contains("active")) {
-              searchInput.focus();
-            } else {
-              searchInput.value = "";
+                    if (searchForm.classList.contains("active")) {
+                        searchInput.focus();
+                    } else {
+                        searchInput.value = "";
+                    }
+                }
+
+                function handleSearchAction(e) {
+                    toggleSearch(e);
+                }
+
+                searchToggleBtn.addEventListener("click", handleSearchAction);
+
+                searchInput.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        toggleSearch(e);
+                    }
+                });
             }
-          }
-
-          function handleSearchAction(e) {
-            toggleSearch(e);
-          }
-
-          searchToggleBtn.addEventListener("click", handleSearchAction);
-
-          searchInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              toggleSearch(e);
-            }
-          });
-        }
-      });
+        });
     </script>
     <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
+        const navOpenBtn = document.querySelector(".nav-open-btn");
+        const navCloseBtn = document.querySelector(".nav-close-btn");
+        const navbar = document.querySelector(".navbar");
+        const overlay = document.querySelector(".overlay");
 
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
-      });
+        navOpenBtn.addEventListener("click", () => {
+            navbar.classList.add("active");
+            overlay.classList.add("active");
+        });
 
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+        navCloseBtn.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
 
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+        overlay.addEventListener("click", () => {
+            navbar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
     </script>
   </body>
 </html>

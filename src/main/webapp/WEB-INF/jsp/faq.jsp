@@ -15,7 +15,7 @@
     <!--
     -  css link
   -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
     <!--
     - google font link
@@ -39,7 +39,7 @@
 
           <a href="Menu.jsp" class="logo">
             <img
-              src="./assets/images/BHD%20LOGO.png"
+              src="../../assets/images/BHD%20LOGO.png"
               width="100"
               height="50"
               alt="BHD logo"
@@ -348,7 +348,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"

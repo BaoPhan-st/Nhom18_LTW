@@ -3,32 +3,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng ký - BHD SPORT SHOES</title>
+    <title>Quên mật khẩu - BHD SPORT SHOES</title>
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-
-    <link rel="stylesheet" href="assets/css/dangnhapvadangki.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/forgotpass.css" />
       <!--
-          - favicon
-        -->
+    - favicon
+  -->
       <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <header class="header">
@@ -37,7 +21,7 @@
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -96,7 +80,7 @@
 
               <div class="dropdown-content">
                 <a href="login.jsp">Đăng nhập</a>
-                <a href="register.html">Đăng ký</a>
+                <a href="register.jsp">Đăng ký</a>
               </div>
             </li>
 
@@ -129,13 +113,16 @@
         </nav>
       </div>
     </header>
+
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
 
-            <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Quên mật khẩu
+            </li>
           </ol>
         </nav>
       </div>
@@ -143,86 +130,47 @@
     <main>
       <section>
         <div class="containers">
-          <div class="wrap-background" id="register-view">
+          <div class="wrap-background" id="forgot-password-view">
             <div class="heading-bar">
-              <h1>Đăng ký tài khoản</h1>
+              <h1>Quên mật khẩu</h1>
               <p>
-                Bạn đã có tài khoản ?
-                <a class="as" href="login.jsp">Đăng nhập tại đây</a>
+                Nhập địa chỉ email của bạn để nhận hướng dẫn đặt lại mật khẩu.
               </p>
             </div>
-
             <div class="rows">
               <div class="cols">
-                <form class="page-auth" id="register">
-                  <fieldset class="form-auth">
-                    <label for="name">Tên đăng nhập</label>
-                    <input
-                      type="text"
-                      id="name"
-                      placeholder="Tên đăng nhập"
-                      required
-                      autocomplete="username"
-                    />
-                  </fieldset>
+                <form class="page-auth" id="forgot-password">
                   <fieldset class="form-auth">
                     <label for="email">Email</label>
                     <input
                       type="email"
                       id="email"
-                      placeholder="Nhập địa chỉ email"
+                      placeholder="Nhập địa chỉ email của bạn"
                       required
                       autocomplete="email"
                     />
                   </fieldset>
-                  <fieldset class="form-auth">
-                    <label>Số điện thoại</label>
-                    <input
-                      type="text"
-                      id="phone"
-                      placeholder="Số điện thoại"
-                      required
-                      autocomplete="tel"
-                    />
-                  </fieldset>
-
-                  <fieldset class="form-auth">
-                    <label>Mật khẩu</label>
-                    <input
-                      type="password"
-                      id="password"
-                      placeholder="Tạo mật khẩu"
-                      required
-                    />
-                  </fieldset>
-
-                  <fieldset class="form-auth">
-                    <label>Xác nhận mật khẩu</label>
-                    <input
-                      type="password"
-                      id="confirmPassword"
-                      placeholder="Nhập lại mật khẩu"
-                      required
-                    />
-                  </fieldset>
-
                   <div>
-                    <button type="submit" class="btn-primary">Đăng ký</button>
+                    <button type="submit" class="btn-primary">
+                      Gửi yêu cầu
+                    </button>
                   </div>
                 </form>
+                <p>Quay lại <a class="as" href="login.jsp">Đăng nhập</a></p>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
+
     <footer class="footer">
       <div class="footer-top section">
         <div class="container">
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -307,7 +255,7 @@
                 </a>
               </li>
               <li>
-                <<a href="Carts.jsp" class="footer-link">
+                <a href="Carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -343,7 +291,6 @@
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
-
               <li>
                 <a href="faq.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -386,7 +333,7 @@
         </div>
       </div>
     </footer>
-
+  </body>
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -395,119 +342,112 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <script>
-      function showToast(message) {
-        const toastElement = document.getElementById("toast-message");
+  <script>
+    function showToast(message) {
+      const toastElement = document.getElementById("toast-message");
 
-        if (!toastElement) return;
+      if (!toastElement) return;
 
-        toastElement.textContent = message;
-        toastElement.classList.add("show");
-        setTimeout(function () {
-          toastElement.classList.remove("show");
-        }, 3000);
-      }
+      toastElement.textContent = message;
+      toastElement.classList.add("show");
+      setTimeout(function () {
+        toastElement.classList.remove("show");
+      }, 3000);
+    }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const actionBtns = document.querySelectorAll(
-          ".product-card .card-action-btn"
-        );
+    document.addEventListener("DOMContentLoaded", function () {
+      const actionBtns = document.querySelectorAll(
+        ".product-card .card-action-btn"
+      );
 
-        actionBtns.forEach((btn) => {
-          btn.addEventListener("click", function (e) {
-            e.preventDefault();
+      actionBtns.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
 
-            const iconName = btn.querySelector("ion-icon").getAttribute("name");
-            let message = "";
+          const iconName = btn.querySelector("ion-icon").getAttribute("name");
+          let message = "";
 
-            if (iconName === "cart-outline") {
-              message = "Sản phẩm đã được thêm vào Giỏ hàng!";
-            } else if (iconName === "heart-outline") {
-              message = "Đã thêm vào mục Yêu thích!";
-            }
-
-            if (message) {
-              showToast(message);
-            }
-          });
-        });
-
-        const searchToggleBtn = document.getElementById("searchToggleBtn");
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search-input");
-        const searchCloseBtn = document.getElementById("searchCloseBtn");
-
-        if (searchToggleBtn && searchForm && searchInput) {
-          function toggleSearch(e) {
-            if (e) e.preventDefault();
-            searchForm.classList.toggle("active");
-
-            if (searchForm.classList.contains("active")) {
-              searchInput.focus();
-            } else {
-              searchInput.value = "";
-            }
+          if (iconName === "cart-outline") {
+            message = "Sản phẩm đã được thêm vào Giỏ hàng!";
+          } else if (iconName === "heart-outline") {
+            message = "Đã thêm vào mục Yêu thích!";
           }
 
-          function handleSearchAction(e) {
-            // Luôn gọi toggleSearch để bật/tắt form, bất kể trạng thái nào.
+          if (message) {
+            showToast(message);
+          }
+        });
+      });
+
+      const searchToggleBtn = document.getElementById("searchToggleBtn");
+      const searchForm = document.getElementById("search-form");
+      const searchInput = document.getElementById("search-input");
+      const searchCloseBtn = document.getElementById("searchCloseBtn");
+
+      if (searchToggleBtn && searchForm && searchInput) {
+        function toggleSearch(e) {
+          if (e) e.preventDefault();
+          searchForm.classList.toggle("active");
+
+          if (searchForm.classList.contains("active")) {
+            searchInput.focus();
+          } else {
+            searchInput.value = "";
+          }
+        }
+
+        function handleSearchAction(e) {
+          // Luôn gọi toggleSearch để bật/tắt form, bất kể trạng thái nào.
+          toggleSearch(e);
+        }
+
+        searchToggleBtn.addEventListener("click", handleSearchAction);
+
+        if (searchCloseBtn) {
+          searchCloseBtn.addEventListener("click", toggleSearch);
+        }
+
+        searchInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
             toggleSearch(e);
           }
-
-          searchToggleBtn.addEventListener("click", handleSearchAction);
-
-          if (searchCloseBtn) {
-            searchCloseBtn.addEventListener("click", toggleSearch);
-          }
-
-          searchInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              toggleSearch(e);
-            }
-          });
-        }
-      });
-      const newsletterForm = document.getElementById("newsletter-form");
-
-      if (newsletterForm) {
-        newsletterForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const emailInput = newsletterForm.querySelector(
-            'input[name="email"]'
-          );
-          const emailValue = emailInput ? emailInput.value : "";
-          showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
-          if (emailInput) {
-            emailInput.value = "";
-          }
         });
       }
-    </script>
-    <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
+    });
+    const newsletterForm = document.getElementById("newsletter-form");
 
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
+    if (newsletterForm) {
+      newsletterForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const emailInput = newsletterForm.querySelector('input[name="email"]');
+        const emailValue = emailInput ? emailInput.value : "";
+        showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
+        if (emailInput) {
+          emailInput.value = "";
+        }
       });
+    }
+  </script>
+  <script>
+    const navOpenBtn = document.querySelector(".nav-open-btn");
+    const navCloseBtn = document.querySelector(".nav-close-btn");
+    const navbar = document.querySelector(".navbar");
+    const overlay = document.querySelector(".overlay");
 
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
+    navOpenBtn.addEventListener("click", () => {
+      navbar.classList.add("active");
+      overlay.classList.add("active");
+    });
 
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-    </script>
-    <script>  document.getElementById("register").onsubmit = function (e) {
-    e.preventDefault();
-    window.location.href = "login.html";
-  };</script>
-  </body>
+    navCloseBtn.addEventListener("click", () => {
+      navbar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      navbar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+  </script>
 </html>

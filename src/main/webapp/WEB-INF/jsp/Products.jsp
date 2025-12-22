@@ -13,9 +13,9 @@
 
     <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/dangnhapvadangki.css" />
-    <link rel="stylesheet" href="assets/css/products.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/dangnhapvadangki.css" />
+    <link rel="stylesheet" href="../../assets/css/products.css" />
 
     <link
       rel="stylesheet"
@@ -40,7 +40,7 @@
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -208,7 +208,7 @@
                 <input type="checkbox" id="brand-nike" />
                 <label for="brand-nike" class="brand-label">
                   <img
-                    src="assets/images/nike_logo.png"
+                    src="../../assets/images/nike_logo.png"
                     alt="Nike"
                     class="brand-icon"
                   />
@@ -220,7 +220,7 @@
                 <input type="checkbox" id="brand-adidas" />
                 <label for="brand-adidas" class="brand-label">
                   <img
-                    src="assets/images/adidas_logo.png"
+                    src="../../assets/images/adidas_logo.png"
                     alt="Adidas"
                     class="brand-icon"
                   />
@@ -232,7 +232,7 @@
                 <input type="checkbox" id="brand-puma" />
                 <label for="brand-puma" class="brand-label">
                   <img
-                    src="assets/images/puma_logo.jpg"
+                    src="../../assets/images/puma_logo.jpg"
                     alt="Puma"
                     class="brand-icon"
                   />
@@ -369,7 +369,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -404,7 +404,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -438,7 +438,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -472,7 +472,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -509,7 +509,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -546,7 +546,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -583,7 +583,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -620,7 +620,7 @@
             <div class="product-card" tabindex="0">
               <figure class="card-banner">
                 <img
-                  src="assets/images/product-1.jpg"
+                  src="../../assets/images/product-1.jpg"
                   width="312"
                   height="350"
                   loading="lazy"
@@ -675,7 +675,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -906,7 +906,7 @@
 
         <div class="cart-product-box">
           <img
-            src="./assets/images/product-1.jpg"
+            src="../../assets/images/product-1.jpg"
             class="cart-product-img"
             id="popupImg"
           />

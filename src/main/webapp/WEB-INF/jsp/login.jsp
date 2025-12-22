@@ -5,15 +5,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quên mật khẩu - BHD SPORT SHOES</title>
+    <title>Đăng nhập - BHD SPORT SHOES</title>
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/forgotpass.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
+    <link rel="stylesheet" href="../../assets/css/dangnhapvadangki.css" />
       <!--
-    - favicon
-  -->
+          - favicon
+        -->
       <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
     <header class="header">
       <div class="container">
@@ -21,7 +37,7 @@
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -73,13 +89,13 @@
             </li>
 
             <li class="nav-action-item nav-action-dropdown">
-              <a href="login.jsp" class="nav-action-btn">
+              <a href="login.html" class="nav-action-btn">
                 <ion-icon name="person-outline"></ion-icon>
                 <span class="nav-action-text">Đăng nhập / Đăng kí</span>
               </a>
 
               <div class="dropdown-content">
-                <a href="login.jsp">Đăng nhập</a>
+                <a href="login.html">Đăng nhập</a>
                 <a href="register.jsp">Đăng ký</a>
               </div>
             </li>
@@ -113,7 +129,6 @@
         </nav>
       </div>
     </header>
-
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
@@ -121,7 +136,7 @@
             <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
 
             <li class="breadcrumb-item active" aria-current="page">
-              Quên mật khẩu
+              Đăng nhập
             </li>
           </ol>
         </nav>
@@ -130,47 +145,71 @@
     <main>
       <section>
         <div class="containers">
-          <div class="wrap-background" id="forgot-password-view">
+          <div class="wrap-background" id="login-view">
             <div class="heading-bar">
-              <h1>Quên mật khẩu</h1>
+              <h1>Đăng nhập tài khoản</h1>
               <p>
-                Nhập địa chỉ email của bạn để nhận hướng dẫn đặt lại mật khẩu.
+                Bạn chưa có tài khoản ?
+                <a class="as" href="register.jsp">Đăng ký tại đây</a>
               </p>
             </div>
             <div class="rows">
               <div class="cols">
-                <form class="page-auth" id="forgot-password">
+                <form class="page-auth" id="login">
                   <fieldset class="form-auth">
-                    <label for="email">Email</label>
+                    <label for="name">Tên đăng nhập</label>
                     <input
-                      type="email"
-                      id="email"
-                      placeholder="Nhập địa chỉ email của bạn"
+                      type="text"
+                      id="name"
+                      placeholder="Tên đăng nhập"
                       required
-                      autocomplete="email"
+                      autocomplete="username"
                     />
                   </fieldset>
+                  <fieldset class="form-auth">
+                    <label>Mật khẩu</label>
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Mật khẩu"
+                      required
+                      autocomplete="current-password"
+                    />
+                    <small
+                      >Quên mật khẩu ?
+                      <a class="as" href="forgotpass.jsp"> Nhấn vào đây</a>
+                    </small>
+                  </fieldset>
                   <div>
-                    <button type="submit" class="btn-primary">
-                      Gửi yêu cầu
+                    <button type="button" id="btn-primary" class="btn-primary">
+                      Đăng nhập
                     </button>
                   </div>
                 </form>
-                <p>Quay lại <a class="as" href="login.jsp">Đăng nhập</a></p>
+                <div class="social-auth">
+                  <p>Hoặc đăng nhập bằng</p>
+                  <div class="wrap-social-auth">
+                    <button type="button" id="google-login-btn" aria-label="Đăng nhập bằng Google">
+                      <div class="btn-google">
+                        <i class="fa-brands fa-google"></i>
+                      </div>
+                      <div>Đăng nhập Google</div>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-
     <footer class="footer">
       <div class="footer-top section">
         <div class="container">
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -333,7 +372,7 @@
         </div>
       </div>
     </footer>
-  </body>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -342,112 +381,129 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-  <script>
-    function showToast(message) {
-      const toastElement = document.getElementById("toast-message");
+    <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
 
-      if (!toastElement) return;
-
-      toastElement.textContent = message;
-      toastElement.classList.add("show");
-      setTimeout(function () {
-        toastElement.classList.remove("show");
-      }, 3000);
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const actionBtns = document.querySelectorAll(
-        ".product-card .card-action-btn"
-      );
-
-      actionBtns.forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const iconName = btn.querySelector("ion-icon").getAttribute("name");
-          let message = "";
-
-          if (iconName === "cart-outline") {
-            message = "Sản phẩm đã được thêm vào Giỏ hàng!";
-          } else if (iconName === "heart-outline") {
-            message = "Đã thêm vào mục Yêu thích!";
-          }
-
-          if (message) {
-            showToast(message);
-          }
-        });
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
       });
 
-      const searchToggleBtn = document.getElementById("searchToggleBtn");
-      const searchForm = document.getElementById("search-form");
-      const searchInput = document.getElementById("search-input");
-      const searchCloseBtn = document.getElementById("searchCloseBtn");
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
 
-      if (searchToggleBtn && searchForm && searchInput) {
-        function toggleSearch(e) {
-          if (e) e.preventDefault();
-          searchForm.classList.toggle("active");
-
-          if (searchForm.classList.contains("active")) {
-            searchInput.focus();
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+      document
+        .getElementById("btn-primary")
+        .addEventListener("click", function () {
+          var username = document.getElementById("name").value;
+          var password = document.getElementById("password").value;
+          if (username === "admin" && password === "admin123") {
+            window.location.href = "admin.html";
+          } else if (username === "user" && password === "123") {
+            window.location.href = "menusaulogin.jsp";
           } else {
-            searchInput.value = "";
+            alert("Sai tên đăng nhập hoặc mật khẩu!");
           }
-        }
+        });
+    </script>
+    <script>
+      function showToast(message) {
+        const toastElement = document.getElementById("toast-message");
 
-        function handleSearchAction(e) {
-          // Luôn gọi toggleSearch để bật/tắt form, bất kể trạng thái nào.
-          toggleSearch(e);
-        }
+        if (!toastElement) return;
 
-        searchToggleBtn.addEventListener("click", handleSearchAction);
+        toastElement.textContent = message;
+        toastElement.classList.add("show");
+        setTimeout(function () {
+          toastElement.classList.remove("show");
+        }, 3000);
+      }
 
-        if (searchCloseBtn) {
-          searchCloseBtn.addEventListener("click", toggleSearch);
-        }
+      document.addEventListener("DOMContentLoaded", function () {
+        const actionBtns = document.querySelectorAll(
+          ".product-card .card-action-btn"
+        );
 
-        searchInput.addEventListener("keydown", function (e) {
-          if (e.key === "Enter") {
+        actionBtns.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
             e.preventDefault();
+
+            const iconName = btn.querySelector("ion-icon").getAttribute("name");
+            let message = "";
+
+            if (iconName === "cart-outline") {
+              message = "Sản phẩm đã được thêm vào Giỏ hàng!";
+            } else if (iconName === "heart-outline") {
+              message = "Đã thêm vào mục Yêu thích!";
+            }
+
+            if (message) {
+              showToast(message);
+            }
+          });
+        });
+
+        const searchToggleBtn = document.getElementById("searchToggleBtn");
+        const searchForm = document.getElementById("search-form");
+        const searchInput = document.getElementById("search-input");
+        const searchCloseBtn = document.getElementById("searchCloseBtn");
+
+        if (searchToggleBtn && searchForm && searchInput) {
+          function toggleSearch(e) {
+            if (e) e.preventDefault();
+            searchForm.classList.toggle("active");
+
+            if (searchForm.classList.contains("active")) {
+              searchInput.focus();
+            } else {
+              searchInput.value = "";
+            }
+          }
+
+          function handleSearchAction(e) {
+            // Luôn gọi toggleSearch để bật/tắt form, bất kể trạng thái nào.
             toggleSearch(e);
+          }
+
+          searchToggleBtn.addEventListener("click", handleSearchAction);
+
+          if (searchCloseBtn) {
+            searchCloseBtn.addEventListener("click", toggleSearch);
+          }
+
+          searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              toggleSearch(e);
+            }
+          });
+        }
+      });
+      const newsletterForm = document.getElementById("newsletter-form");
+
+      if (newsletterForm) {
+        newsletterForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const emailInput = newsletterForm.querySelector(
+            'input[name="email"]'
+          );
+          const emailValue = emailInput ? emailInput.value : "";
+          showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
+          if (emailInput) {
+            emailInput.value = "";
           }
         });
       }
-    });
-    const newsletterForm = document.getElementById("newsletter-form");
-
-    if (newsletterForm) {
-      newsletterForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const emailInput = newsletterForm.querySelector('input[name="email"]');
-        const emailValue = emailInput ? emailInput.value : "";
-        showToast("Cảm ơn bạn! Đã đăng ký nhận tin thành công.");
-        if (emailInput) {
-          emailInput.value = "";
-        }
-      });
-    }
-  </script>
-  <script>
-    const navOpenBtn = document.querySelector(".nav-open-btn");
-    const navCloseBtn = document.querySelector(".nav-close-btn");
-    const navbar = document.querySelector(".navbar");
-    const overlay = document.querySelector(".overlay");
-
-    navOpenBtn.addEventListener("click", () => {
-      navbar.classList.add("active");
-      overlay.classList.add("active");
-    });
-
-    navCloseBtn.addEventListener("click", () => {
-      navbar.classList.remove("active");
-      overlay.classList.remove("active");
-    });
-
-    overlay.addEventListener("click", () => {
-      navbar.classList.remove("active");
-      overlay.classList.remove("active");
-    });
-  </script>
+    </script>
+    <script type="module" src="../../assets/script/auth.js"></script>
+  </body>
 </html>

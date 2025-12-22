@@ -11,9 +11,9 @@
   -->
       <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/chitietsanpham.css" />
-    <link rel="stylesheet" href="assets/css/products.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/chitietsanpham.css" />
+    <link rel="stylesheet" href="../../assets/css/products.css" />
 
     <link
       rel="stylesheet"
@@ -42,7 +42,7 @@
         <div class="overlay"></div>
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -134,30 +134,30 @@
           <div class="product-gallery-box">
             <div class="sub-img-container">
               <img
-                src="assets/images/product-1.jpg"
+                src="../../assets/images/product-1.jpg"
                 onclick="changeImage(this)"
               />
               <img
-                src="assets/images/product-8.jpg"
+                src="../../assets/images/product-8.jpg"
                 onclick="changeImage(this)"
               />
               <img
-                src="assets/images/product-2.jpg"
+                src="../../assets/images/product-2.jpg"
                 onclick="changeImage(this)"
               />
               <img
-                src="assets/images/product-3.jpg"
+                src="../../assets/images/product-3.jpg"
                 onclick="changeImage(this)"
               />
               <img
-                src="assets/images/product-4.jpg"
+                src="../../assets/images/product-4.jpg"
                 onclick="changeImage(this)"
               />
             </div>
 
             <div class="main-img-container">
               <img
-                src="assets/images/product-1.jpg"
+                src="../../assets/images/product-1.jpg"
                 id="main-image"
                 alt="Main Product"
               />
@@ -276,7 +276,7 @@
               <div class="product-card" tabindex="0">
                 <figure class="card-banner">
                   <img
-                    src="assets/images/product-5.jpg"
+                    src="../../assets/images/product-5.jpg"
                     width="312"
                     height="350"
                     loading="lazy"
@@ -309,7 +309,7 @@
               <div class="product-card" tabindex="0">
                 <figure class="card-banner">
                   <img
-                    src="assets/images/product-2.jpg"
+                    src="../../assets/images/product-2.jpg"
                     width="312"
                     height="350"
                     loading="lazy"
@@ -342,7 +342,7 @@
               <div class="product-card" tabindex="0">
                 <figure class="card-banner">
                   <img
-                    src="assets/images/product-1.jpg"
+                    src="../../assets/images/product-1.jpg"
                     width="312"
                     height="350"
                     loading="lazy"
@@ -374,7 +374,7 @@
               <div class="product-card" tabindex="0">
                 <figure class="card-banner">
                   <img
-                    src="assets/images/product-3.jpg"
+                    src="../../assets/images/product-3.jpg"
                     width="312"
                     height="350"
                     loading="lazy"
@@ -415,7 +415,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -583,7 +583,7 @@
             <span class="cart-close">&times;</span>
 
             <div class="cart-product-box">
-                <img src="./assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
+                <img src="../../assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
 
                 <div class="cart-info">
                     <h2 id="popupName">Running Sneaker Shoes</h2>

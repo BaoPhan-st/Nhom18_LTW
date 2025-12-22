@@ -180,7 +180,7 @@ table button {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: calc(100%-20px);
+  width: calc(100% - 20px);
   margin: 20px auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

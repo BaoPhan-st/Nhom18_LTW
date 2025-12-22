@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang Đặt Hàng - Hoàn thiện</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
       <!--
     - favicon
   -->
@@ -19,7 +19,7 @@
 
           <a href="Menu.jsp" class="logo">
             <img
-              src="./assets/images/BHD%20LOGO.png"
+              src="../../assets/images/BHD%20LOGO.png"
               width="100"
               height="50"
               alt="BHD logo"
@@ -226,7 +226,7 @@
 
             <div class="order-item">
               <img
-                src="assets/images/product-2.jpg"
+                src="../../assets/images/product-2.jpg"
                 alt="Giày Nike Nam Chính hãng"
                 class="item-image"
               />
@@ -267,7 +267,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"

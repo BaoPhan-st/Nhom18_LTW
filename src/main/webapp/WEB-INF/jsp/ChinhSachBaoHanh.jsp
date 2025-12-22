@@ -15,7 +15,7 @@
     <!--
     -  css link
   -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
     <!--
     - google font link
@@ -32,13 +32,14 @@
     <!--
 - #HEADER
 -->
- <header class="header">
+
+    <header class="header">
       <div class="container">
         <div class="overlay"></div>
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -130,210 +131,120 @@
         </nav>
       </div>
     </header>
-    <main class="TaiKhoanPage">
-      <div class="container account-dashboard">
-        <h1 class="h2 page-title">Tài Khoản Của Tôi</h1>
+    <div class="container">
+      <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
 
-        <div class="account-layout">
-          <aside class="account-sidebar">
-            <div class="user-info-summary">
-              <p class="user-name-display">Xin chào, **Nguyễn Văn A**</p>
-            </div>
-
-            <ul class="account-nav-list">
-              <li class="active">
-                <a href="#personal-info" data-tab="info"
-                  ><ion-icon name="person-circle-outline"></ion-icon> Thông tin
-                  cá nhân</a
-                >
-              </li>
-              <li>
-                <a href="#change-password" data-tab="password"
-                  ><ion-icon name="lock-closed-outline"></ion-icon> Đổi mật
-                  khẩu</a
-                >
-              </li>
-              <li>
-                <a href="#address-book" data-tab="address"
-                  ><ion-icon name="map-outline"></ion-icon> Sổ địa chỉ</a
-                >
-              </li>
-              <li>
-                <a href="#order-history" data-tab="orders"
-                  ><ion-icon name="time-outline"></ion-icon> Lịch sử đơn hàng</a
-                >
-              </li>
-              <li>
-                <a href="#"
-                  ><ion-icon name="log-out-outline"></ion-icon> Đăng xuất</a
-                >
-              </li>
-            </ul>
-          </aside>
-
-          <div class="account-content">
-            <section
-              id="personal-info"
-              class="tab-content active"
-              data-content="info"
-            >
-              <h3 class="h3 content-title">Thông Tin Cá Nhân</h3>
-              <p>Quản lý tên, email và số điện thoại của bạn.</p>
-
-              <form class="account-form">
-                <div class="input-group">
-                  <label for="full-name">Họ và Tên</label>
-                  <input
-                    type="text"
-                    id="full-name"
-                    value="Nguyễn Văn A"
-                    required
-                  />
-                </div>
-
-                <div class="input-group">
-                  <label for="email">Địa chỉ Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    value="nguyenvana@gmail.com"
-                    required
-                  />
-                </div>
-
-                <div class="input-group">
-                  <label for="phone">Số điện thoại</label>
-                  <input type="tel" id="phone" value="0332536387" required />
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-save">
-                  Cập Nhật Thông Tin
-                </button>
-              </form>
-            </section>
-
-            <section
-              id="change-password"
-              class="tab-content"
-              data-content="password"
-            >
-              <h3 class="h3 content-title">Đổi Mật Khẩu</h3>
-              <p>Đặt mật khẩu mới để tăng cường bảo mật tài khoản.</p>
-
-              <form class="account-form">
-                <div class="input-group">
-                  <label for="current-password">Mật khẩu hiện tại</label>
-                  <input type="password" id="current-password" required />
-                </div>
-
-                <div class="input-group">
-                  <label for="new-password">Mật khẩu mới</label>
-                  <input type="password" id="new-password" required />
-                </div>
-
-                <div class="input-group">
-                  <label for="confirm-password">Xác nhận mật khẩu mới</label>
-                  <input type="password" id="confirm-password" required />
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-save">
-                  Đổi Mật Khẩu
-                </button>
-              </form>
-            </section>
-
-            <section
-              id="address-book"
-              class="tab-content"
-              data-content="address"
-            >
-              <h3 class="h3 content-title">Sổ Địa Chỉ Giao Hàng</h3>
-              <p>Thêm và quản lý các địa chỉ nhận hàng của bạn.</p>
-
-              <div class="address-item">
-                <p class="address-label"><strong>Địa chỉ Mặc định:</strong></p>
-                <p>Nguyễn Văn A - 0332536387</p>
-                <p>Số 45, Đường Lê Lợi, Phường A, Quận B, TP. Hồ Chí Minh</p>
-                <div class="address-actions">
-                  <button class="btn-link edit-btn">Chỉnh sửa</button>
-                </div>
-              </div>
-
-              <button class="btn-secondary btn-add-address">
-                Thêm Địa Chỉ Mới
-              </button>
-            </section>
-
-            <section
-              id="order-history"
-              class="tab-content"
-              data-content="orders"
-            >
-              <h3 class="h3 content-title">Lịch Sử Đơn Hàng</h3>
-              <p>Xem lại các đơn hàng đã đặt tại BHD - SPORT SHOES.</p>
-
-              <table class="order-table">
-                <thead>
-                  <tr>
-                    <th>Mã Đơn</th>
-                    <th>Ngày Đặt</th>
-                    <th>Tổng Cộng</th>
-                    <th>Trạng Thái</th>
-                    <th>Chi tiết</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>#BHD-1001</td>
-                    <td>01/11/2025</td>
-                    <td>1.550.000₫</td>
-                    <td class="status-delivered">Đã giao</td>
-                    <td><a href="checkout.jsp" class="btn-link">Xem</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-          </div>
-        </div>
+            <li class="breadcrumb-item active" aria-current="page">
+              Chính sách bảo hành
+            </li>
+          </ol>
+        </nav>
       </div>
-      <div class="modal" id="addressModal">
-        <div class="modal-content">
-          <span class="close-btn">&times;</span>
-          <h3 class="h3 modal-title">Thêm/Chỉnh Sửa Địa Chỉ</h3>
+    </div>
+    <main class="ChinhSachBaoHanh">
+      <div class="container policy-content">
+        <h1 class="h2 policy-title" style="color: var(--rich-black-fogra-29)">
+          QUY ĐỊNH BẢO HÀNH SẢN PHẨM CHÍNH HÃNG
+        </h1>
+        <p class="policy-date">
+          Áp dụng cho mọi sản phẩm giày mua tại BHD - SPORT SHOES.
+        </p>
 
-          <form class="address-modal-form">
-            <div class="input-group">
-              <label for="modal-fullname">Họ và Tên</label>
-              <input type="text" id="modal-fullname" required />
-            </div>
-            <div class="input-group">
-              <label for="modal-phone">Số điện thoại</label>
-              <input type="tel" id="modal-phone" required />
-            </div>
-            <div class="input-group">
-              <label for="modal-province">Tỉnh/Thành phố</label>
-              <input type="text" id="modal-province" required />
-            </div>
-            <div class="input-group">
-              <label for="modal-district">Quận/Huyện</label>
-              <input type="text" id="modal-district" required />
-            </div>
-            <div class="input-group">
-              <label for="modal-ward">Phường/Xã</label>
-              <input type="text" id="modal-ward" required />
-            </div>
-            <div class="input-group">
-              <label for="modal-detail"
-                >Địa chỉ chi tiết (Số nhà, Tên đường)</label
-              >
-              <input type="text" id="modal-detail" required />
-            </div>
+        <p class="summary">
+          Chúng tôi cam kết chất lượng sản phẩm chính hãng đi kèm chính sách bảo
+          hành rõ ràng, minh bạch để đảm bảo quý khách yên tâm khi mua sắm.
+        </p>
 
-            <button type="submit" class="btn btn-primary btn-save-address">
-              Lưu Địa Chỉ
-            </button>
-          </form>
-        </div>
+        <section class="policy-section">
+          <h3 class="h3 section-heading">1. Điều kiện Bảo hành Tiêu chuẩn</h3>
+          <p>Sản phẩm đủ điều kiện bảo hành khi đáp ứng các yêu cầu sau:</p>
+          <ul>
+            <li>
+              Thời gian bảo hành: <strong>03 tháng (90 ngày)</strong> kể từ ngày
+              mua hàng (ghi trên hóa đơn).
+            </li>
+            <li>
+              Sản phẩm phải được mua trực tiếp từ hệ thống BHD hoặc các kênh
+              phân phối chính thức.
+            </li>
+            <li>
+              Khách hàng phải cung cấp hóa đơn/biên nhận hoặc thông tin mua hàng
+              hợp lệ để xác minh.
+            </li>
+          </ul>
+        </section>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">2. Các Lỗi được Bảo hành Miễn phí</h3>
+          <p>
+            Chúng tôi áp dụng bảo hành miễn phí đối với các lỗi kỹ thuật phát
+            sinh từ nhà sản xuất:
+          </p>
+          <ol>
+            <li>
+              <strong>Bung/Hở Keo:</strong> Keo dán bị bong tại các mối nối
+              chính (mũi giày, gót giày, đế giày) không do tác động ngoại lực.
+            </li>
+            <li>
+              <strong>Đứt/Sút Chỉ:</strong> Các đường chỉ may bị đứt tại các khu
+              vực chịu lực hoặc trang trí.
+            </li>
+            <li>
+              <strong>Lỗi kỹ thuật khác:</strong> Đệm khí bị xì hơi (nếu có), đế
+              giày bị nứt vỡ không do va chạm mạnh hoặc sử dụng sai mục đích.
+            </li>
+          </ol>
+        </section>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">3. Các Trường hợp Từ chối Bảo hành</h3>
+          <p>
+            Bảo hành không áp dụng hoặc sẽ được tính phí sửa chữa trong các
+            trường hợp sau:
+          </p>
+          <ul>
+            <li>Sản phẩm bị hao mòn tự nhiên (mòn đế, phai màu, cũ).</li>
+            <li>
+              Lỗi do người sử dụng: Giày bị rách, thủng, trầy xước, cháy, tiếp
+              xúc với hóa chất.
+            </li>
+            <li>
+              Giày bị biến dạng do giặt, sấy, hoặc bảo quản không đúng theo
+              hướng dẫn.
+            </li>
+            <li>
+              Sản phẩm đã được sửa chữa hoặc can thiệp bởi bên thứ ba không phải
+              BHD.
+            </li>
+            <li>Hết thời hạn bảo hành 03 tháng.</li>
+          </ul>
+        </section>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">4. Quy trình Giải quyết Bảo hành</h3>
+          <p>
+            <strong>Bước 1:</strong> Khách hàng mang/gửi sản phẩm về cửa hàng
+            kèm thông tin mua hàng.
+          </p>
+          <p>
+            <strong>Bước 2:</strong> Bộ phận kỹ thuật BHD kiểm tra và đánh giá
+            tình trạng lỗi. Thời gian kiểm tra: **3-5 ngày làm việc**.
+          </p>
+          <p>
+            <strong>Bước 3:</strong> Thông báo kết quả và tiến hành sửa chữa.
+            Trong trường hợp không thể sửa chữa, BHD có thể đề xuất phương án
+            thay thế sản phẩm tương đương (tùy thuộc vào chính sách của từng
+            hãng).
+          </p>
+        </section>
+
+        <p class="final-note">
+          Mọi thắc mắc vui lòng liên hệ Bộ phận Dịch vụ Khách hàng qua Hotline:
+          0332536387.
+        </p>
       </div>
     </main>
     <!--
@@ -345,7 +256,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -430,7 +341,7 @@
               </li>
 
               <li>
-                <a href="Account.html" class="footer-link">
+                <a href="Account.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Tài khoản</span>
@@ -467,7 +378,7 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoHanh.jsp" class="footer-link">
+                <a href="ChinhSachBaoHanh.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo hành</span>
@@ -523,8 +434,7 @@
         </div>
       </div>
     </footer>
-
-    <!--
+    <!-
 - ionicon link
 -->
     <script
@@ -535,86 +445,6 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const navLinks = document.querySelectorAll(".account-nav-list a");
-        const tabContents = document.querySelectorAll(".tab-content");
-
-        navLinks.forEach((link) => {
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            const targetTab = this.getAttribute("data-tab");
-
-            navLinks.forEach((nav) =>
-              nav.closest("li").classList.remove("active")
-            );
-            tabContents.forEach((content) =>
-              content.classList.remove("active")
-            );
-
-            this.closest("li").classList.add("active");
-
-            const activeContent = document.querySelector(
-              `[data-content="${targetTab}"]`
-            );
-            if (activeContent) {
-              activeContent.classList.add("active");
-            }
-          });
-        });
-
-        const modal = document.getElementById("addressModal");
-        const closeBtn = modal.querySelector(".close-btn");
-        const addAddressBtn = document.querySelector(".btn-add-address");
-        const editBtns = document.querySelectorAll(".edit-btn");
-        const removeBtns = document.querySelectorAll(".remove-btn");
-        const modalTitle = modal.querySelector(".modal-title");
-        const addressForm = modal.querySelector(".address-modal-form");
-        const saveAddressBtn = modal.querySelector(".btn-save-address");
-
-        function openAddressModal(isEdit = false) {
-          modalTitle.textContent = isEdit
-            ? "Chỉnh Sửa Địa Chỉ"
-            : "Thêm Địa Chỉ Mới";
-          addressForm.reset();
-          modal.style.display = "block";
-        }
-
-        addAddressBtn.addEventListener("click", () => {
-          openAddressModal(false);
-        });
-
-        editBtns.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            openAddressModal(true);
-          });
-        });
-
-        removeBtns.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            confirm("Bạn có chắc chắn muốn xóa địa chỉ này không?");
-          });
-        });
-
-        closeBtn.addEventListener("click", () => {
-          modal.style.display = "none";
-        });
-
-        window.addEventListener("click", (event) => {
-          if (event.target === modal) {
-            modal.style.display = "none";
-          }
-        });
-
-        addressForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          modal.style.display = "none";
-        });
-      });
-    </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const searchToggleBtn = document.getElementById("searchToggleBtn");
@@ -669,6 +499,5 @@
         overlay.classList.remove("active");
       });
     </script>
-    
   </body>
 </html>

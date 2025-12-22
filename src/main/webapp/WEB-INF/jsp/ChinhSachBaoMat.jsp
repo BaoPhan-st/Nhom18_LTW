@@ -5,38 +5,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập - BHD SPORT SHOES</title>
+    <title>BHD - SPORT SHOES</title>
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <!--
+    - favicon
+  -->
+    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-      <!--
-          - favicon
-        -->
-      <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <!--
+    -  css link
+  -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
+    <!--
+    - google font link
+  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/lienhe.css" />
   </head>
-  <body>
+
+  <body id="top">
+    <!--
+- #HEADER
+-->
+
     <header class="header">
       <div class="container">
         <div class="overlay"></div>
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -71,7 +74,7 @@
             </li>
 
             <li class="navbar-item">
-              <a href="lienhe.html" class="navbar-link">Liên hệ</a>
+              <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
             </li>
           </ul>
 
@@ -134,52 +137,135 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
 
-            <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Chính sách bảo mật
+            </li>
           </ol>
         </nav>
       </div>
     </div>
-    <div class="contact-wrapper">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2145255159867!2d106.78918677586935!3d10.871281657435231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276398969f7b%3A0x9672b7efd0893fc4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1762058833289!5m2!1svi!2s"
-        class="bando"
-      ></iframe>
+    <main class="ChinhSachBaoMat">
+      <div class="container policy-content">
+        <h1 class="h2 policy-title" style="color: var(--rich-black-fogra-29)">
+          CHÍNH SÁCH BẢO MẬT DỮ LIỆU CÁ NHÂN
+        </h1>
+        <p class="policy-date">Cập nhật lần cuối: 06/11/2025</p>
 
-      <div class="info-container">
-        <h3>LIÊN HỆ</h3>
+        <p class="summary">
+          <strong>BHD - SPORT SHOES</strong> cam kết bảo vệ tuyệt đối quyền
+          riêng tư và thông tin cá nhân của quý khách. Chính sách này mô tả cách
+          chúng tôi xử lý thông tin cá nhân của bạn.
+        </p>
 
-        <div class="info-item">
-          <i class="fa-solid fa-map"></i>
-          <div class="info-text">
-            <strong>Địa chỉ:</strong><br />
-            Khu phố 6, phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
-          </div>
-        </div>
+        <section class="policy-section">
+          <h3 class="h3 section-heading">1. Thu thập và Loại thông tin</h3>
+          <p>
+            Chúng tôi thu thập thông tin khi bạn đăng ký tài khoản, đặt hàng
+            hoặc sử dụng dịch vụ. Các loại dữ liệu bao gồm:
+          </p>
+          <ul>
+            <li>
+              <strong>Thông tin nhận dạng:</strong> Họ tên, ngày sinh, giới
+              tính.
+            </li>
+            <li>
+              <strong>Thông tin liên hệ:</strong> Số điện thoại, Email, Địa chỉ
+              giao hàng.
+            </li>
+            <li>
+              <strong>Thông tin thanh toán:</strong> Dữ liệu giao dịch (Không
+              bao gồm chi tiết thẻ tín dụng).
+            </li>
+            <li>
+              <strong>Dữ liệu kỹ thuật:</strong> Địa chỉ IP, Cookie, lịch sử
+              duyệt web trên BHD.
+            </li>
+          </ul>
+        </section>
 
-        <div class="info-item">
-          <i class="fa-solid fa-phone"></i>
-          <div class="info-text">
-            <strong>Hotline:</strong><br />
-            028 3896 6780
-          </div>
-        </div>
+        <section class="policy-section">
+          <h3 class="h3 section-heading">2. Mục đích sử dụng Thông tin</h3>
+          <p>
+            Thông tin của quý khách được sử dụng với mục đích chính đáng và đã
+            được thông báo:
+          </p>
+          <ol>
+            <li>Xử lý và hoàn tất các đơn hàng, giao dịch mua bán.</li>
+            <li>
+              Cung cấp hỗ trợ kỹ thuật và giải quyết các khiếu nại phát sinh.
+            </li>
+            <li>
+              Quản lý tài khoản khách hàng, bao gồm điểm thưởng và ưu đãi.
+            </li>
+            <li>
+              Cải thiện chất lượng dịch vụ và cá nhân hóa trải nghiệm người
+              dùng.
+            </li>
+            <li>
+              Gửi thông tin tiếp thị, khuyến mại (chỉ khi có sự đồng ý của khách
+              hàng).
+            </li>
+          </ol>
+        </section>
 
-        <div class="info-item">
-          <i class="fa-solid fa-clock"></i>
-          <div class="info-text">
-            <strong>Thời gian làm việc:</strong> <br />
-            Thứ 2 - Thứ 7: 7:30 - 17:00
-          </div>
-        </div>
+        <section class="policy-section">
+          <h3 class="h3 section-heading">3. Bảo vệ và Chia sẻ Dữ liệu</h3>
+          <p>
+            Chúng tôi cam kết sử dụng các biện pháp bảo mật tiêu chuẩn ngành:
+          </p>
+          <ul>
+            <li>
+              <strong>Bảo mật:</strong> Sử dụng mã hóa SSL và các giao thức bảo
+              mật tiên tiến để bảo vệ dữ liệu.
+            </li>
+            <li>
+              <strong>Chia sẻ:</strong> Dữ liệu chỉ được chia sẻ với các bên thứ
+              ba (nhà vận chuyển, đối tác thanh toán) khi cần thiết để hoàn
+              thành dịch vụ của quý khách.
+            </li>
+            <li>
+              <strong>Không bán dữ liệu:</strong> BHD tuyệt đối không bán, cho
+              thuê hoặc trao đổi thông tin cá nhân của khách hàng vì mục đích
+              thương mại.
+            </li>
+          </ul>
+        </section>
+
+        <section class="policy-section">
+          <h3 class="h3 section-heading">4. Quyền của Chủ thể Dữ liệu</h3>
+          <p>Theo Luật Bảo vệ Dữ liệu, quý khách có các quyền sau:</p>
+          <ul>
+            <li>
+              Quyền truy cập và yêu cầu cung cấp bản sao dữ liệu cá nhân của
+              mình.
+            </li>
+            <li>
+              Quyền yêu cầu chỉnh sửa thông tin không chính xác hoặc đã lỗi
+              thời.
+            </li>
+            <li>
+              Quyền rút lại sự đồng ý nhận thông tin tiếp thị bất cứ lúc nào.
+            </li>
+          </ul>
+        </section>
+
+        <p class="final-note">
+          Để thực hiện bất kỳ quyền nào ở trên hoặc nếu có thắc mắc, vui lòng
+          liên hệ Bộ phận Bảo mật qua email:
+          <a href="mailto:BHDsport@gmail.com">BHDsport@gmail.com</a>.
+        </p>
       </div>
-    </div>
+    </main>
+    <!--
+- #FOOTER
+-->
     <footer class="footer">
       <div class="footer-top section">
         <div class="container">
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -234,6 +320,7 @@
               <li>
                 <address class="footer-link">
                   <ion-icon name="location"></ion-icon>
+
                   <span class="footer-link-text">
                     Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
                   </span>
@@ -243,6 +330,7 @@
               <li>
                 <a href="#" class="footer-link">
                   <ion-icon name="call"></ion-icon>
+
                   <span class="footer-link-text">0332536387</span>
                 </a>
               </li>
@@ -250,13 +338,25 @@
               <li>
                 <a href="#" class="footer-link">
                   <ion-icon name="mail"></ion-icon>
+
                   <span class="footer-link-text">BHDsport@gmail.com</span>
                 </a>
               </li>
             </ul>
 
             <ul class="footer-list">
-              <li><p class="footer-list-title">Tài khoản</p></li>
+              <li>
+                <p class="footer-list-title">Tài khoản</p>
+              </li>
+
+              <li>
+                <a href="Account.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                  <span class="footer-link-text">Tài khoản</span>
+                </a>
+              </li>
+
               <li>
                 <a href="Carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -272,43 +372,43 @@
                   <span class="footer-link-text">Yêu thích</span>
                 </a>
               </li>
-              <li>
-                <a href="Account.jsp" class="footer-link">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Yêu thích</span>
-                </a>
-              </li>
             </ul>
-
             <ul class="footer-list">
-              <li><p class="footer-list-title">Chính sách</p></li>
               <li>
-                <a href="ChinhSachBaoMat.jsp" class="footer-link">
+                <p class="footer-list-title">Chính sách</p>
+              </li>
+
+              <li>
+                <a href="ChinhSachBaoMat.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
+
                   <span class="footer-link-text">Chính sách bảo mật</span>
                 </a>
               </li>
+
               <li>
                 <a href="ChinhSachBaoHanh.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
+
                   <span class="footer-link-text">Chính sách bảo hành</span>
                 </a>
               </li>
+
               <li>
                 <a href="huongdanmuahang.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
+
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
               <li>
                 <a href="faq.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
+
                   <span class="footer-link-text">FAQs</span>
                 </a>
               </li>
             </ul>
-
-            <
             <div class="footer-list">
               <p class="footer-list-title">Đăng kí nhận tin</p>
               <form
@@ -337,12 +437,15 @@
         <div class="container">
           <p class="copyright">
             &copy; 2025
-            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>.Cùng bạn
             chinh phục mọi hành trình
           </p>
         </div>
       </div>
     </footer>
+    <!-
+- ionicon link
+-->
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"

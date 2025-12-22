@@ -5,40 +5,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BHD - SPORT SHOES</title>
-    <!--
-    - favicon
-  -->
-    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <title>Đăng nhập - BHD SPORT SHOES</title>
 
-    <!--
-    -  css link
-  -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
-    <!--
-    - google font link
-  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+      <!--
+          - favicon
+        -->
+      <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../../assets/css/lienhe.css" />
   </head>
-
-  <body id="top">
-    <!--
-- #HEADER
--->
-
+  <body>
     <header class="header">
       <div class="container">
         <div class="overlay"></div>
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -73,7 +71,7 @@
             </li>
 
             <li class="navbar-item">
-              <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
+              <a href="lienhe.html" class="navbar-link">Liên hệ</a>
             </li>
           </ul>
 
@@ -108,7 +106,7 @@
               </a>
             </li>
             <li>
-              <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+              <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
                 <ion-icon name="bag-outline"></ion-icon>
                 <span class="nav-action-text">Giỏ hàng</span>
               </a>
@@ -130,141 +128,58 @@
         </nav>
       </div>
     </header>
-
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
 
-            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+            <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
           </ol>
         </nav>
       </div>
     </div>
-    <!--
-   - #CartContent
-   -->
-    <main class="cart-page-content">
-        <div class="container">
-            <h1 class="cart-header">Giỏ hàng</h1>
+    <div class="contact-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2145255159867!2d106.78918677586935!3d10.871281657435231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276398969f7b%3A0x9672b7efd0893fc4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1762058833289!5m2!1svi!2s"
+        class="bando"
+      ></iframe>
 
-            <div class="cart-items-list">
+      <div class="info-container">
+        <h3>LIÊN HỆ</h3>
 
-                <div class="product-item">
-                    <div class="product-details">
-                        <img src="assets/images/product-1.jpg" alt="Tên Sản Phẩm 1" class="product-image">
-
-                        <div class="product-info">
-
-                            <h2 class="product-name">
-                                <a href="chitietsanpham.jsp" class="product-link">Nike Air Force 1 '07</a>
-                            </h2>
-
-                            <div class="product-attributes-line-2">
-                                <p class="product-size">Size: 40</p>
-                                <div class="product-color">
-                                    <div class="color-box" style="background-color: #e74c3c;" title="Hex: #e74c3c (Đỏ)"></div>
-                                </div>
-                            </div>
-
-                            <div class="product-price-line-3c"
-                                 data-id="12345"
-                                 data-price-raw="1500000"
-                                 data-original-raw="1808500"
-                                 data-discount-percentage="17">
-                                <div class="discounted-price-group">
-                                    <span class="discounted-price">199.000 VNĐ</span>
-                                    <span class="original-price">250.000 VNĐ</span>
-                                </div>
-                                <p class="discount-value">Giảm: 21%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-actions">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <input type="number" value="1" min="1" class="quantity-input">
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-
-                        <button class="action-btn delete-btn">Xoá</button>
-
-                        <button class="action-btn buy-now-btn">Mua ngay</button>
-                    </div>
-                </div>
-
-                <hr class="separator">
-
-                <div class="product-item">
-                    <div class="product-details">
-                        <img src="assets/images/product-2.jpg" alt="Tên Sản Phẩm 2" class="product-image">
-
-                        <div class="product-info">
-
-                            <h2 class="product-name">
-                                <a href="#" class="product-link">Nike Air Force 1 '07</a>
-                            </h2>
-
-                            <div class="product-attributes-line-2">
-                                <p class="product-size">Size: 40</p>
-                                <div class="product-color">
-                                    <div class="color-box" style="background-color: #3498db;" title="Hex: #3498db (Xanh Dương)"></div>
-                                </div>
-                            </div>
-
-                            <div class="product-price-line-3c"
-                                data-id="12345"
-                                data-price-raw="1500000"
-                                data-original-raw="1808500"
-                                data-discount-percentage="17">
-                                <div class="discounted-price-group">
-                                    <span class="discounted-price">1.500.000 VNĐ</span>
-                                    <span class="original-price" style="display: none;">1.500.000 VNĐ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-actions">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <input type="number" value="2" min="1" class="quantity-input">
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-
-                        <button class="action-btn delete-btn">Xoá</button>
-                        <button class="action-btn buy-now-btn">Mua ngay</button>
-                    </div>
-                </div>
-
-                <hr class="separator">
-
-            </div>
-
-            <div class="cart-summary-section">
-                <div class="total-line">
-                    <span class="total-label">Tổng cộng:</span>
-                    <span class="total-price">3.199.000 VNĐ</span>
-                </div>
-             <button class="checkout-btn"> <a href="checkout.jsp" class="Thanh_toán">Tiến Hành Đặt hàng</a></button>
-            </div>
-
+        <div class="info-item">
+          <i class="fa-solid fa-map"></i>
+          <div class="info-text">
+            <strong>Địa chỉ:</strong><br />
+            Khu phố 6, phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
+          </div>
         </div>
-    </main>
 
+        <div class="info-item">
+          <i class="fa-solid fa-phone"></i>
+          <div class="info-text">
+            <strong>Hotline:</strong><br />
+            028 3896 6780
+          </div>
+        </div>
 
-    <!--
-- #FOOTER
--->
+        <div class="info-item">
+          <i class="fa-solid fa-clock"></i>
+          <div class="info-text">
+            <strong>Thời gian làm việc:</strong> <br />
+            Thứ 2 - Thứ 7: 7:30 - 17:00
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="footer">
       <div class="footer-top section">
         <div class="container">
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -319,7 +234,6 @@
               <li>
                 <address class="footer-link">
                   <ion-icon name="location"></ion-icon>
-
                   <span class="footer-link-text">
                     Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
                   </span>
@@ -329,7 +243,6 @@
               <li>
                 <a href="#" class="footer-link">
                   <ion-icon name="call"></ion-icon>
-
                   <span class="footer-link-text">0332536387</span>
                 </a>
               </li>
@@ -337,27 +250,15 @@
               <li>
                 <a href="#" class="footer-link">
                   <ion-icon name="mail"></ion-icon>
-
                   <span class="footer-link-text">BHDsport@gmail.com</span>
                 </a>
               </li>
             </ul>
 
             <ul class="footer-list">
+              <li><p class="footer-list-title">Tài khoản</p></li>
               <li>
-                <p class="footer-list-title">Tài khoản</p>
-              </li>
-
-              <li>
-                <a href="Account.jsp" class="footer-link">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                  <span class="footer-link-text">Tài khoản</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="Carts.html" class="footer-link">
+                <a href="Carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -371,43 +272,43 @@
                   <span class="footer-link-text">Yêu thích</span>
                 </a>
               </li>
-            </ul>
-            <ul class="footer-list">
               <li>
-                <p class="footer-list-title">Chính sách</p>
+                <a href="Account.jsp" class="footer-link">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                  <span class="footer-link-text">Yêu thích</span>
+                </a>
               </li>
+            </ul>
 
+            <ul class="footer-list">
+              <li><p class="footer-list-title">Chính sách</p></li>
               <li>
                 <a href="ChinhSachBaoMat.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">Chính sách bảo mật</span>
                 </a>
               </li>
-
               <li>
                 <a href="ChinhSachBaoHanh.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">Chính sách bảo hành</span>
                 </a>
               </li>
-
               <li>
                 <a href="huongdanmuahang.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
               <li>
                 <a href="faq.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
-
                   <span class="footer-link-text">FAQs</span>
                 </a>
               </li>
             </ul>
+
+            <
             <div class="footer-list">
               <p class="footer-list-title">Đăng kí nhận tin</p>
               <form
@@ -436,15 +337,12 @@
         <div class="container">
           <p class="copyright">
             &copy; 2025
-            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>.Cùng bạn
+            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
             chinh phục mọi hành trình
           </p>
         </div>
       </div>
     </footer>
-    <!-
-- ionicon link
--->
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -454,58 +352,58 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchToggleBtn = document.getElementById("searchToggleBtn");
-            const searchForm = document.getElementById("search-form");
-            const searchInput = document.getElementById("search-input");
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchToggleBtn = document.getElementById("searchToggleBtn");
+        const searchForm = document.getElementById("search-form");
+        const searchInput = document.getElementById("search-input");
 
-            if (searchToggleBtn && searchForm && searchInput) {
-                function toggleSearch(e) {
-                    if (e) e.preventDefault();
-                    searchForm.classList.toggle("active");
+        if (searchToggleBtn && searchForm && searchInput) {
+          function toggleSearch(e) {
+            if (e) e.preventDefault();
+            searchForm.classList.toggle("active");
 
-                    if (searchForm.classList.contains("active")) {
-                        searchInput.focus();
-                    } else {
-                        searchInput.value = "";
-                    }
-                }
-
-                function handleSearchAction(e) {
-                    toggleSearch(e);
-                }
-
-                searchToggleBtn.addEventListener("click", handleSearchAction);
-
-                searchInput.addEventListener("keydown", function (e) {
-                    if (e.key === "Enter") {
-                        e.preventDefault();
-                        toggleSearch(e);
-                    }
-                });
+            if (searchForm.classList.contains("active")) {
+              searchInput.focus();
+            } else {
+              searchInput.value = "";
             }
-        });
+          }
+
+          function handleSearchAction(e) {
+            toggleSearch(e);
+          }
+
+          searchToggleBtn.addEventListener("click", handleSearchAction);
+
+          searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              toggleSearch(e);
+            }
+          });
+        }
+      });
     </script>
     <script>
-        const navOpenBtn = document.querySelector(".nav-open-btn");
-        const navCloseBtn = document.querySelector(".nav-close-btn");
-        const navbar = document.querySelector(".navbar");
-        const overlay = document.querySelector(".overlay");
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
 
-        navOpenBtn.addEventListener("click", () => {
-            navbar.classList.add("active");
-            overlay.classList.add("active");
-        });
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
 
-        navCloseBtn.addEventListener("click", () => {
-            navbar.classList.remove("active");
-            overlay.classList.remove("active");
-        });
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
 
-        overlay.addEventListener("click", () => {
-            navbar.classList.remove("active");
-            overlay.classList.remove("active");
-        });
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
     </script>
   </body>
 </html>

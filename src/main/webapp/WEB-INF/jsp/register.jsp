@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập - BHD SPORT SHOES</title>
+    <title>Đăng ký - BHD SPORT SHOES</title>
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
-    <link rel="stylesheet" href="./assets/css/dangnhapvadangki.css" />
+    <link rel="stylesheet" href="../../assets/css/dangnhapvadangki.css" />
       <!--
           - favicon
         -->
       <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -29,7 +30,6 @@
       rel="stylesheet"
     />
   </head>
-
   <body>
     <header class="header">
       <div class="container">
@@ -37,7 +37,7 @@
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -89,14 +89,14 @@
             </li>
 
             <li class="nav-action-item nav-action-dropdown">
-              <a href="login.html" class="nav-action-btn">
+              <a href="login.jsp" class="nav-action-btn">
                 <ion-icon name="person-outline"></ion-icon>
                 <span class="nav-action-text">Đăng nhập / Đăng kí</span>
               </a>
 
               <div class="dropdown-content">
-                <a href="login.html">Đăng nhập</a>
-                <a href="register.jsp">Đăng ký</a>
+                <a href="login.jsp">Đăng nhập</a>
+                <a href="register.html">Đăng ký</a>
               </div>
             </li>
 
@@ -135,9 +135,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
 
-            <li class="breadcrumb-item active" aria-current="page">
-              Đăng nhập
-            </li>
+            <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
           </ol>
         </nav>
       </div>
@@ -145,17 +143,18 @@
     <main>
       <section>
         <div class="containers">
-          <div class="wrap-background" id="login-view">
+          <div class="wrap-background" id="register-view">
             <div class="heading-bar">
-              <h1>Đăng nhập tài khoản</h1>
+              <h1>Đăng ký tài khoản</h1>
               <p>
-                Bạn chưa có tài khoản ?
-                <a class="as" href="register.jsp">Đăng ký tại đây</a>
+                Bạn đã có tài khoản ?
+                <a class="as" href="login.jsp">Đăng nhập tại đây</a>
               </p>
             </div>
+
             <div class="rows">
               <div class="cols">
-                <form class="page-auth" id="login">
+                <form class="page-auth" id="register">
                   <fieldset class="form-auth">
                     <label for="name">Tên đăng nhập</label>
                     <input
@@ -167,36 +166,50 @@
                     />
                   </fieldset>
                   <fieldset class="form-auth">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Nhập địa chỉ email"
+                      required
+                      autocomplete="email"
+                    />
+                  </fieldset>
+                  <fieldset class="form-auth">
+                    <label>Số điện thoại</label>
+                    <input
+                      type="text"
+                      id="phone"
+                      placeholder="Số điện thoại"
+                      required
+                      autocomplete="tel"
+                    />
+                  </fieldset>
+
+                  <fieldset class="form-auth">
                     <label>Mật khẩu</label>
                     <input
                       type="password"
                       id="password"
-                      placeholder="Mật khẩu"
+                      placeholder="Tạo mật khẩu"
                       required
-                      autocomplete="current-password"
                     />
-                    <small
-                      >Quên mật khẩu ?
-                      <a class="as" href="forgotpass.jsp"> Nhấn vào đây</a>
-                    </small>
                   </fieldset>
+
+                  <fieldset class="form-auth">
+                    <label>Xác nhận mật khẩu</label>
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      placeholder="Nhập lại mật khẩu"
+                      required
+                    />
+                  </fieldset>
+
                   <div>
-                    <button type="button" id="btn-primary" class="btn-primary">
-                      Đăng nhập
-                    </button>
+                    <button type="submit" class="btn-primary">Đăng ký</button>
                   </div>
                 </form>
-                <div class="social-auth">
-                  <p>Hoặc đăng nhập bằng</p>
-                  <div class="wrap-social-auth">
-                    <button type="button" id="google-login-btn" aria-label="Đăng nhập bằng Google">
-                      <div class="btn-google">
-                        <i class="fa-brands fa-google"></i>
-                      </div>
-                      <div>Đăng nhập Google</div>
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -209,7 +222,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -294,7 +307,7 @@
                 </a>
               </li>
               <li>
-                <a href="Carts.jsp" class="footer-link">
+                <<a href="Carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -330,6 +343,7 @@
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
+
               <li>
                 <a href="faq.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -381,40 +395,6 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
-
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
-      });
-
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-      document
-        .getElementById("btn-primary")
-        .addEventListener("click", function () {
-          var username = document.getElementById("name").value;
-          var password = document.getElementById("password").value;
-          if (username === "admin" && password === "admin123") {
-            window.location.href = "admin.html";
-          } else if (username === "user" && password === "123") {
-            window.location.href = "menusaulogin.jsp";
-          } else {
-            alert("Sai tên đăng nhập hoặc mật khẩu!");
-          }
-        });
-    </script>
     <script>
       function showToast(message) {
         const toastElement = document.getElementById("toast-message");
@@ -504,6 +484,30 @@
         });
       }
     </script>
-    <script type="module" src="assets/script/auth.js"></script>
+    <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
+
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    </script>
+    <script>  document.getElementById("register").onsubmit = function (e) {
+    e.preventDefault();
+    window.location.href = "login.html";
+  };</script>
   </body>
 </html>

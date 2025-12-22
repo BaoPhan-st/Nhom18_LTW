@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="assets/css/admin.css" />
+    <link rel="stylesheet" href="../../assets/css/admin.css" />
 
     <!-- Font Awesome để dùng icon -->
     <link
@@ -156,6 +156,19 @@
               <th>Khả dụng</th>
               <th>Thao tác</th>
             </tr>
+          <c:forEach var="product" items="${products}">
+            <tr>
+              <td>${product.id}</td>
+              <td>${product.name}</td>
+              <td>${product.description}</td>
+              <td>${product.price}</td>
+              <td>${product.brandID}</td>
+              <td>${product.date_add}</td>
+              <td>${product.exp}</td>
+              <td>${product.available}</td>
+              <td>${product.active}</td>
+            </tr>
+          </c:forEach>
           </thead>
           <tbody></tbody>
         </table>

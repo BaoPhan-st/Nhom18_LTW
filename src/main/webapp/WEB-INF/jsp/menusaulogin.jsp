@@ -15,8 +15,8 @@
     <!--
     -  css link
   -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/menusaulogin.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/menusaulogin.css" />
     <!--
     - google font link
   -->
@@ -38,7 +38,7 @@
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -133,7 +133,7 @@
 
         <section
           class="section hero"
-          style="background-image: url('./assets/images/hero-banner.png')"
+          style="background-image: url('../../assets/images/hero-banner.png')"
         >
           <div class="container">
             <h2 class="h1 hero-title">Bộ sưu tập <strong>Mùa hè</strong></h2>
@@ -165,7 +165,7 @@
                 <div
                   class="collection-card"
                   style="
-                    background-image: url('./assets/images/collection-1.jpg');
+                    background-image: url('../../assets/images/collection-1.jpg');
                   "
                 >
                   <h3 class="h4 card-title">Bộ sưu tập Nam</h3>
@@ -185,7 +185,7 @@
                 <div
                   class="collection-card"
                   style="
-                    background-image: url('./assets/images/collection-2.jpg');
+                    background-image: url('../../assets/images/collection-2.jpg');
                   "
                 >
                   <h3 class="h4 card-title">Bộ sưu tập Nữ</h3>
@@ -205,7 +205,7 @@
                 <div
                   class="collection-card"
                   style="
-                    background-image: url('./assets/images/collection-3.jpg');
+                    background-image: url('../../assets/images/collection-3.jpg');
                   "
                 >
                   <h3 class="h4 card-title">Bộ sưu tập Thể thao</h3>
@@ -255,7 +255,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-1.jpg"
+                      src="../../assets/images/product-1.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -301,7 +301,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-2.jpg"
+                      src="../../assets/images/product-2.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -349,7 +349,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-3.jpg"
+                      src="../../assets/images/product-3.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -397,7 +397,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-4.jpg"
+                      src="../../assets/images/product-4.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -445,7 +445,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-1.jpg"
+                      src="../../assets/images/product-1.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -491,7 +491,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-2.jpg"
+                      src="../../assets/images/product-2.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -539,7 +539,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-3.jpg"
+                      src="../../assets/images/product-3.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -587,7 +587,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-4.jpg"
+                      src="../../assets/images/product-4.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -634,7 +634,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-1.jpg"
+                      src="../../assets/images/product-1.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -680,7 +680,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-2.jpg"
+                      src="../../assets/images/product-2.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -728,7 +728,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-3.jpg"
+                      src="../../assets/images/product-3.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -776,7 +776,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-4.jpg"
+                      src="../../assets/images/product-4.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -823,7 +823,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-1.jpg"
+                      src="../../assets/images/product-1.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -869,7 +869,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-2.jpg"
+                      src="../../assets/images/product-2.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -917,7 +917,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-3.jpg"
+                      src="../../assets/images/product-3.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -965,7 +965,7 @@
                 <div class="product-card" tabindex="0">
                   <figure class="card-banner">
                     <img
-                      src="./assets/images/product-4.jpg"
+                      src="../../assets/images/product-4.jpg"
                       width="312"
                       height="350"
                       loading="lazy"
@@ -1019,7 +1019,7 @@
             <div
               class="special-banner"
               style="
-                background-image: url('./assets/images/special-banner.jpg');
+                background-image: url('../../assets/images/special-banner.jpg');
               "
             >
               <h2 class="h3 banner-title">Giày Đẹp – Giá Hời</h2>
@@ -1046,7 +1046,7 @@
                   <div class="product-card" tabindex="0">
                     <figure class="card-banner">
                       <img
-                        src="./assets/images/product-1.jpg"
+                        src="../../assets/images/product-1.jpg"
                         width="312"
                         height="350"
                         alt="Running Sneaker Shoes"
@@ -1093,7 +1093,7 @@
                   <div class="product-card" tabindex="0">
                     <figure class="card-banner">
                       <img
-                        src="./assets/images/product-1.jpg"
+                        src="../../assets/images/product-1.jpg"
                         width="312"
                         height="350"
                         alt="Running Sneaker Shoes"
@@ -1141,7 +1141,7 @@
                   <div class="product-card" tabindex="0">
                     <figure class="card-banner">
                       <img
-                        src="./assets/images/product-1.jpg"
+                        src="../../assets/images/product-1.jpg"
                         width="312"
                         height="350"
                         alt="Running Sneaker Shoes"
@@ -1201,7 +1201,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"

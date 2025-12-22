@@ -15,7 +15,7 @@
     <!--
     -  css link
   -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
     <!--
     - google font link
@@ -32,14 +32,13 @@
     <!--
 - #HEADER
 -->
-
-    <header class="header">
+ <header class="header">
       <div class="container">
         <div class="overlay"></div>
 
         <a href="Menu.jsp" class="logo">
           <img
-            src="./assets/images/BHD%20LOGO.png"
+            src="../../assets/images/BHD%20LOGO.png"
             width="100"
             height="50"
             alt="BHD logo"
@@ -131,129 +130,210 @@
         </nav>
       </div>
     </header>
-    <div class="container">
-      <div class="breadcrumb-container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
+    <main class="TaiKhoanPage">
+      <div class="container account-dashboard">
+        <h1 class="h2 page-title">Tài Khoản Của Tôi</h1>
 
-            <li class="breadcrumb-item active" aria-current="page">
-              Chính sách bảo mật
-            </li>
-          </ol>
-        </nav>
+        <div class="account-layout">
+          <aside class="account-sidebar">
+            <div class="user-info-summary">
+              <p class="user-name-display">Xin chào, **Nguyễn Văn A**</p>
+            </div>
+
+            <ul class="account-nav-list">
+              <li class="active">
+                <a href="#personal-info" data-tab="info"
+                  ><ion-icon name="person-circle-outline"></ion-icon> Thông tin
+                  cá nhân</a
+                >
+              </li>
+              <li>
+                <a href="#change-password" data-tab="password"
+                  ><ion-icon name="lock-closed-outline"></ion-icon> Đổi mật
+                  khẩu</a
+                >
+              </li>
+              <li>
+                <a href="#address-book" data-tab="address"
+                  ><ion-icon name="map-outline"></ion-icon> Sổ địa chỉ</a
+                >
+              </li>
+              <li>
+                <a href="#order-history" data-tab="orders"
+                  ><ion-icon name="time-outline"></ion-icon> Lịch sử đơn hàng</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><ion-icon name="log-out-outline"></ion-icon> Đăng xuất</a
+                >
+              </li>
+            </ul>
+          </aside>
+
+          <div class="account-content">
+            <section
+              id="personal-info"
+              class="tab-content active"
+              data-content="info"
+            >
+              <h3 class="h3 content-title">Thông Tin Cá Nhân</h3>
+              <p>Quản lý tên, email và số điện thoại của bạn.</p>
+
+              <form class="account-form">
+                <div class="input-group">
+                  <label for="full-name">Họ và Tên</label>
+                  <input
+                    type="text"
+                    id="full-name"
+                    value="Nguyễn Văn A"
+                    required
+                  />
+                </div>
+
+                <div class="input-group">
+                  <label for="email">Địa chỉ Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    value="nguyenvana@gmail.com"
+                    required
+                  />
+                </div>
+
+                <div class="input-group">
+                  <label for="phone">Số điện thoại</label>
+                  <input type="tel" id="phone" value="0332536387" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-save">
+                  Cập Nhật Thông Tin
+                </button>
+              </form>
+            </section>
+
+            <section
+              id="change-password"
+              class="tab-content"
+              data-content="password"
+            >
+              <h3 class="h3 content-title">Đổi Mật Khẩu</h3>
+              <p>Đặt mật khẩu mới để tăng cường bảo mật tài khoản.</p>
+
+              <form class="account-form">
+                <div class="input-group">
+                  <label for="current-password">Mật khẩu hiện tại</label>
+                  <input type="password" id="current-password" required />
+                </div>
+
+                <div class="input-group">
+                  <label for="new-password">Mật khẩu mới</label>
+                  <input type="password" id="new-password" required />
+                </div>
+
+                <div class="input-group">
+                  <label for="confirm-password">Xác nhận mật khẩu mới</label>
+                  <input type="password" id="confirm-password" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-save">
+                  Đổi Mật Khẩu
+                </button>
+              </form>
+            </section>
+
+            <section
+              id="address-book"
+              class="tab-content"
+              data-content="address"
+            >
+              <h3 class="h3 content-title">Sổ Địa Chỉ Giao Hàng</h3>
+              <p>Thêm và quản lý các địa chỉ nhận hàng của bạn.</p>
+
+              <div class="address-item">
+                <p class="address-label"><strong>Địa chỉ Mặc định:</strong></p>
+                <p>Nguyễn Văn A - 0332536387</p>
+                <p>Số 45, Đường Lê Lợi, Phường A, Quận B, TP. Hồ Chí Minh</p>
+                <div class="address-actions">
+                  <button class="btn-link edit-btn">Chỉnh sửa</button>
+                </div>
+              </div>
+
+              <button class="btn-secondary btn-add-address">
+                Thêm Địa Chỉ Mới
+              </button>
+            </section>
+
+            <section
+              id="order-history"
+              class="tab-content"
+              data-content="orders"
+            >
+              <h3 class="h3 content-title">Lịch Sử Đơn Hàng</h3>
+              <p>Xem lại các đơn hàng đã đặt tại BHD - SPORT SHOES.</p>
+
+              <table class="order-table">
+                <thead>
+                  <tr>
+                    <th>Mã Đơn</th>
+                    <th>Ngày Đặt</th>
+                    <th>Tổng Cộng</th>
+                    <th>Trạng Thái</th>
+                    <th>Chi tiết</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#BHD-1001</td>
+                    <td>01/11/2025</td>
+                    <td>1.550.000₫</td>
+                    <td class="status-delivered">Đã giao</td>
+                    <td><a href="checkout.jsp" class="btn-link">Xem</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </div>
       </div>
-    </div>
-    <main class="ChinhSachBaoMat">
-      <div class="container policy-content">
-        <h1 class="h2 policy-title" style="color: var(--rich-black-fogra-29)">
-          CHÍNH SÁCH BẢO MẬT DỮ LIỆU CÁ NHÂN
-        </h1>
-        <p class="policy-date">Cập nhật lần cuối: 06/11/2025</p>
+      <div class="modal" id="addressModal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h3 class="h3 modal-title">Thêm/Chỉnh Sửa Địa Chỉ</h3>
 
-        <p class="summary">
-          <strong>BHD - SPORT SHOES</strong> cam kết bảo vệ tuyệt đối quyền
-          riêng tư và thông tin cá nhân của quý khách. Chính sách này mô tả cách
-          chúng tôi xử lý thông tin cá nhân của bạn.
-        </p>
+          <form class="address-modal-form">
+            <div class="input-group">
+              <label for="modal-fullname">Họ và Tên</label>
+              <input type="text" id="modal-fullname" required />
+            </div>
+            <div class="input-group">
+              <label for="modal-phone">Số điện thoại</label>
+              <input type="tel" id="modal-phone" required />
+            </div>
+            <div class="input-group">
+              <label for="modal-province">Tỉnh/Thành phố</label>
+              <input type="text" id="modal-province" required />
+            </div>
+            <div class="input-group">
+              <label for="modal-district">Quận/Huyện</label>
+              <input type="text" id="modal-district" required />
+            </div>
+            <div class="input-group">
+              <label for="modal-ward">Phường/Xã</label>
+              <input type="text" id="modal-ward" required />
+            </div>
+            <div class="input-group">
+              <label for="modal-detail"
+                >Địa chỉ chi tiết (Số nhà, Tên đường)</label
+              >
+              <input type="text" id="modal-detail" required />
+            </div>
 
-        <section class="policy-section">
-          <h3 class="h3 section-heading">1. Thu thập và Loại thông tin</h3>
-          <p>
-            Chúng tôi thu thập thông tin khi bạn đăng ký tài khoản, đặt hàng
-            hoặc sử dụng dịch vụ. Các loại dữ liệu bao gồm:
-          </p>
-          <ul>
-            <li>
-              <strong>Thông tin nhận dạng:</strong> Họ tên, ngày sinh, giới
-              tính.
-            </li>
-            <li>
-              <strong>Thông tin liên hệ:</strong> Số điện thoại, Email, Địa chỉ
-              giao hàng.
-            </li>
-            <li>
-              <strong>Thông tin thanh toán:</strong> Dữ liệu giao dịch (Không
-              bao gồm chi tiết thẻ tín dụng).
-            </li>
-            <li>
-              <strong>Dữ liệu kỹ thuật:</strong> Địa chỉ IP, Cookie, lịch sử
-              duyệt web trên BHD.
-            </li>
-          </ul>
-        </section>
-
-        <section class="policy-section">
-          <h3 class="h3 section-heading">2. Mục đích sử dụng Thông tin</h3>
-          <p>
-            Thông tin của quý khách được sử dụng với mục đích chính đáng và đã
-            được thông báo:
-          </p>
-          <ol>
-            <li>Xử lý và hoàn tất các đơn hàng, giao dịch mua bán.</li>
-            <li>
-              Cung cấp hỗ trợ kỹ thuật và giải quyết các khiếu nại phát sinh.
-            </li>
-            <li>
-              Quản lý tài khoản khách hàng, bao gồm điểm thưởng và ưu đãi.
-            </li>
-            <li>
-              Cải thiện chất lượng dịch vụ và cá nhân hóa trải nghiệm người
-              dùng.
-            </li>
-            <li>
-              Gửi thông tin tiếp thị, khuyến mại (chỉ khi có sự đồng ý của khách
-              hàng).
-            </li>
-          </ol>
-        </section>
-
-        <section class="policy-section">
-          <h3 class="h3 section-heading">3. Bảo vệ và Chia sẻ Dữ liệu</h3>
-          <p>
-            Chúng tôi cam kết sử dụng các biện pháp bảo mật tiêu chuẩn ngành:
-          </p>
-          <ul>
-            <li>
-              <strong>Bảo mật:</strong> Sử dụng mã hóa SSL và các giao thức bảo
-              mật tiên tiến để bảo vệ dữ liệu.
-            </li>
-            <li>
-              <strong>Chia sẻ:</strong> Dữ liệu chỉ được chia sẻ với các bên thứ
-              ba (nhà vận chuyển, đối tác thanh toán) khi cần thiết để hoàn
-              thành dịch vụ của quý khách.
-            </li>
-            <li>
-              <strong>Không bán dữ liệu:</strong> BHD tuyệt đối không bán, cho
-              thuê hoặc trao đổi thông tin cá nhân của khách hàng vì mục đích
-              thương mại.
-            </li>
-          </ul>
-        </section>
-
-        <section class="policy-section">
-          <h3 class="h3 section-heading">4. Quyền của Chủ thể Dữ liệu</h3>
-          <p>Theo Luật Bảo vệ Dữ liệu, quý khách có các quyền sau:</p>
-          <ul>
-            <li>
-              Quyền truy cập và yêu cầu cung cấp bản sao dữ liệu cá nhân của
-              mình.
-            </li>
-            <li>
-              Quyền yêu cầu chỉnh sửa thông tin không chính xác hoặc đã lỗi
-              thời.
-            </li>
-            <li>
-              Quyền rút lại sự đồng ý nhận thông tin tiếp thị bất cứ lúc nào.
-            </li>
-          </ul>
-        </section>
-
-        <p class="final-note">
-          Để thực hiện bất kỳ quyền nào ở trên hoặc nếu có thắc mắc, vui lòng
-          liên hệ Bộ phận Bảo mật qua email:
-          <a href="mailto:BHDsport@gmail.com">BHDsport@gmail.com</a>.
-        </p>
+            <button type="submit" class="btn btn-primary btn-save-address">
+              Lưu Địa Chỉ
+            </button>
+          </form>
+        </div>
       </div>
     </main>
     <!--
@@ -265,7 +345,7 @@
           <div class="footer-brand">
             <a href="#" class="logo">
               <img
-                src="./assets/images/BHD%20LOGO.png"
+                src="../../assets/images/BHD%20LOGO.png"
                 width="110"
                 height="50"
                 alt="BHD"
@@ -350,7 +430,7 @@
               </li>
 
               <li>
-                <a href="Account.jsp" class="footer-link">
+                <a href="Account.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Tài khoản</span>
@@ -379,7 +459,7 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoMat.html" class="footer-link">
+                <a href="ChinhSachBaoMat.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo mật</span>
@@ -443,7 +523,8 @@
         </div>
       </div>
     </footer>
-    <!-
+
+    <!--
 - ionicon link
 -->
     <script
@@ -454,6 +535,86 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".account-nav-list a");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetTab = this.getAttribute("data-tab");
+
+            navLinks.forEach((nav) =>
+              nav.closest("li").classList.remove("active")
+            );
+            tabContents.forEach((content) =>
+              content.classList.remove("active")
+            );
+
+            this.closest("li").classList.add("active");
+
+            const activeContent = document.querySelector(
+              `[data-content="${targetTab}"]`
+            );
+            if (activeContent) {
+              activeContent.classList.add("active");
+            }
+          });
+        });
+
+        const modal = document.getElementById("addressModal");
+        const closeBtn = modal.querySelector(".close-btn");
+        const addAddressBtn = document.querySelector(".btn-add-address");
+        const editBtns = document.querySelectorAll(".edit-btn");
+        const removeBtns = document.querySelectorAll(".remove-btn");
+        const modalTitle = modal.querySelector(".modal-title");
+        const addressForm = modal.querySelector(".address-modal-form");
+        const saveAddressBtn = modal.querySelector(".btn-save-address");
+
+        function openAddressModal(isEdit = false) {
+          modalTitle.textContent = isEdit
+            ? "Chỉnh Sửa Địa Chỉ"
+            : "Thêm Địa Chỉ Mới";
+          addressForm.reset();
+          modal.style.display = "block";
+        }
+
+        addAddressBtn.addEventListener("click", () => {
+          openAddressModal(false);
+        });
+
+        editBtns.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openAddressModal(true);
+          });
+        });
+
+        removeBtns.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            confirm("Bạn có chắc chắn muốn xóa địa chỉ này không?");
+          });
+        });
+
+        closeBtn.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+
+        addressForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          modal.style.display = "none";
+        });
+      });
+    </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const searchToggleBtn = document.getElementById("searchToggleBtn");
@@ -508,5 +669,6 @@
         overlay.classList.remove("active");
       });
     </script>
+    
   </body>
 </html>
