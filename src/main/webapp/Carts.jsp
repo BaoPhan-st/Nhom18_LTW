@@ -36,7 +36,7 @@
       <div class="container">
         <div class="overlay"></div>
 
-        <a href="Menu.jsp" class="logo">
+        <a href="menu.jsp" class="logo">
           <img
             src="./assets/images/BHD%20LOGO.png"
             width="100"
@@ -61,7 +61,7 @@
 
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="Menu.jsp" class="navbar-link">Trang chủ</a>
+              <a href="menu.jsp" class="navbar-link">Trang chủ</a>
             </li>
 
             <li class="navbar-item">
@@ -69,7 +69,7 @@
             </li>
 
             <li class="navbar-item">
-              <a href="Products.jsp" class="navbar-link">Sản phẩm</a>
+              <a href="products.jsp" class="navbar-link">Sản phẩm</a>
             </li>
 
             <li class="navbar-item">
@@ -102,7 +102,7 @@
             </li>
 
             <li>
-              <a href="WishList.jsp" class="nav-action-btn">
+              <a href="wishlist.jsp" class="nav-action-btn">
                 <ion-icon name="heart-outline"></ion-icon>
                 <span class="nav-action-text">Yêu thích</span>
               </a>
@@ -135,7 +135,7 @@
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
 
             <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
           </ol>
@@ -349,7 +349,7 @@
               </li>
 
               <li>
-                <a href="Account.jsp" class="footer-link">
+                <a href="account.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Tài khoản</span>
@@ -365,7 +365,7 @@
               </li>
 
               <li>
-                <a href="WishList.jsp" class="footer-link">
+                <a href="wishlist.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
