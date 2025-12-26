@@ -33,114 +33,110 @@
 - #HEADER
 -->
 
-   <header class="header">
+    <header class="header">
         <div class="container">
-          <div class="overlay"></div>
+            <div class="overlay"></div>
 
-          <a href="Menu.jsp" class="logo">
-            <img
-              src="./assets/images/BHD%20LOGO.png"
-              width="100"
-              height="50"
-              alt="BHD logo"
-            />
-          </a>
+            <a href="menu.jsp" class="logo">
+                <img
+                        src="./assets/images/BHD%20LOGO.png"
+                        width="100"
+                        height="50"
+                        alt="BHD logo"
+                />
+            </a>
 
-          <!-- Nút mở menu -->
-          <button class="nav-open-btn">
-            <ion-icon name="menu-outline"></ion-icon>
-          </button>
-
-          <nav class="navbar">
-            <button
-              class="nav-close-btn"
-              data-nav-close-btn
-              aria-label="Close Menu"
-            >
-              <ion-icon name="close-outline"></ion-icon>
+            <!-- Nút mở menu -->
+            <button class="nav-open-btn">
+                <ion-icon name="menu-outline"></ion-icon>
             </button>
 
-            <ul class="navbar-list">
-              <li class="navbar-item">
-                <a href="Menu.jsp" class="navbar-link">Trang chủ</a>
-              </li>
-
-              <li class="navbar-item">
-                <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
-              </li>
-
-              <li class="navbar-item">
-                <a href="Products.jsp" class="navbar-link">Sản phẩm</a>
-              </li>
-
-              <li class="navbar-item">
-                <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
-              </li>
-            </ul>
-
-            <ul class="nav-action-list">
-              <li>
+            <nav class="navbar">
                 <button
-                  class="nav-action-btn"
-                  id="searchToggleBtn"
-                  data-search-btn
+                        class="nav-close-btn"
+                        data-nav-close-btn
+                        aria-label="Close Menu"
                 >
-                  <ion-icon name="search-outline"></ion-icon>
-                  <span class="nav-action-text">Tìm kiếm</span>
+                    <ion-icon name="close-outline"></ion-icon>
                 </button>
-              </li>
 
-              <li class="nav-action-item nav-action-dropdown">
-                <a href="login.jsp" class="nav-action-btn">
-                  <ion-icon name="person-outline"></ion-icon>
-                  <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                </a>
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="menu.jsp" class="navbar-link">Trang chủ</a>
+                    </li>
 
-                <div class="dropdown-content">
-                  <a href="login.jsp">Đăng nhập</a>
-                  <a href="register.jsp">Đăng ký</a>
-                </div>
-              </li>
+                    <li class="navbar-item">
+                        <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
+                    </li>
 
-              <li>
-                <a href="WishList.jsp" class="nav-action-btn">
-                  <ion-icon name="heart-outline"></ion-icon>
-                  <span class="nav-action-text">Yêu thích</span>
-                </a>
-              </li>
-              <li>
-                <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
-                  <ion-icon name="bag-outline"></ion-icon>
-                  <span class="nav-action-text">Giỏ hàng</span>
-                </a>
-              </li>
-            </ul>
-            <form class="search-form" id="search-form" action="#" method="get">
-              <input
-                type="search"
-                name="query"
-                placeholder="Tìm kiếm sản phẩm..."
-                id="search-input"
-                required
-              />
+                    <li class="navbar-item">
+                        <a href="products.jsp" class="navbar-link">Sản phẩm</a>
+                    </li>
 
-              <button
-                type="button"
-                class="search-close-btn"
-                id="searchCloseBtn"
-              >
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
-            </form>
-          </nav>
+                    <li class="navbar-item">
+                        <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
+                    </li>
+                </ul>
+
+                <ul class="nav-action-list">
+                    <li>
+                        <button
+                                class="nav-action-btn"
+                                id="searchToggleBtn"
+                                data-search-btn
+                        >
+                            <ion-icon name="search-outline"></ion-icon>
+                            <span class="nav-action-text">Tìm kiếm</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-action-item nav-action-dropdown">
+                        <a href="login.jsp" class="nav-action-btn">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+                        </a>
+
+                        <div class="dropdown-content">
+                            <a href="login.jsp">Đăng nhập</a>
+                            <a href="register.jsp">Đăng ký</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="wishlist.jsp" class="nav-action-btn">
+                            <ion-icon name="heart-outline"></ion-icon>
+                            <span class="nav-action-text">Yêu thích</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+                            <ion-icon name="bag-outline"></ion-icon>
+                            <span class="nav-action-text">Giỏ hàng</span>
+                        </a>
+                    </li>
+                </ul>
+                <form class="search-form" id="search-form" action="#" method="get">
+                    <input
+                            type="search"
+                            name="query"
+                            placeholder="Tìm kiếm sản phẩm..."
+                            id="search-input"
+                            required
+                    />
+
+                    <button type="button" class="search-close-btn" id="searchCloseBtn">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </form>
+            </nav>
         </div>
-      </header>
+    </header>
 
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
 
             <li class="breadcrumb-item active" aria-current="page">
               Câu hỏi thường gặp
@@ -433,7 +429,7 @@
               </li>
 
               <li>
-                <a href="Account.jsp" class="footer-link">
+                <a href="account.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Tài khoản</span>
@@ -449,7 +445,7 @@
               </li>
 
               <li>
-                <a href="WishList.jsp" class="footer-link">
+                <a href="wishlist.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>

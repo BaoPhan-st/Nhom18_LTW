@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ page
+import="model.user.User" %> <% User user = (User) request.getAttribute("user");
+if (user == null) { response.sendRedirect("login.jsp"); return; } %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,11 +34,11 @@
     <!--
 - #HEADER
 -->
- <header class="header">
+    <header class="header">
       <div class="container">
         <div class="overlay"></div>
 
-        <a href="Menu.jsp" class="logo">
+        <a href="menu.jsp" class="logo">
           <img
             src="./assets/images/BHD%20LOGO.png"
             width="100"
@@ -61,7 +63,7 @@
 
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="Menu.jsp" class="navbar-link">Trang chủ</a>
+              <a href="menu.jsp" class="navbar-link">Trang chủ</a>
             </li>
 
             <li class="navbar-item">
@@ -69,7 +71,7 @@
             </li>
 
             <li class="navbar-item">
-              <a href="Products.jsp" class="navbar-link">Sản phẩm</a>
+              <a href="products.jsp" class="navbar-link">Sản phẩm</a>
             </li>
 
             <li class="navbar-item">
@@ -102,13 +104,13 @@
             </li>
 
             <li>
-              <a href="WishList.jsp" class="nav-action-btn">
+              <a href="wishlist.jsp" class="nav-action-btn">
                 <ion-icon name="heart-outline"></ion-icon>
                 <span class="nav-action-text">Yêu thích</span>
               </a>
             </li>
             <li>
-              <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+              <a href="carts.jsp" class="nav-action-btn" title="Giỏ hàng">
                 <ion-icon name="bag-outline"></ion-icon>
                 <span class="nav-action-text">Giỏ hàng</span>
               </a>
@@ -137,7 +139,10 @@
         <div class="account-layout">
           <aside class="account-sidebar">
             <div class="user-info-summary">
-              <p class="user-name-display">Xin chào, **Nguyễn Văn A**</p>
+              <p class="user-name-display">
+                Xin chào, **<%= user.getFullName() != null ? user.getFullName()
+                : user.getEmail() %>**
+              </p>
             </div>
 
             <ul class="account-nav-list">
@@ -180,15 +185,12 @@
               <h3 class="h3 content-title">Thông Tin Cá Nhân</h3>
               <p>Quản lý tên, email và số điện thoại của bạn.</p>
 
-              <form class="account-form">
+              <form class="account-form" method="post" action="account">
                 <div class="input-group">
                   <label for="full-name">Họ và Tên</label>
-                  <input
-                    type="text"
-                    id="full-name"
-                    value="Nguyễn Văn A"
-                    required
-                  />
+                  <input type="text" id="full-name" name="fullName" value="<%=
+                  user.getFullName() != null ? user.getFullName() : "" %>"
+                  required />
                 </div>
 
                 <div class="input-group">
@@ -196,14 +198,24 @@
                   <input
                     type="email"
                     id="email"
-                    value="nguyenvana@gmail.com"
+                    name="email"
+                    value="<%= user.getEmail() %>"
+                    readonly
                     required
                   />
                 </div>
 
                 <div class="input-group">
                   <label for="phone">Số điện thoại</label>
-                  <input type="tel" id="phone" value="0332536387" required />
+                  <input type="tel" id="phone" name="phoneNumber" value="<%=
+                  user.getPhoneNumber() != null ? user.getPhoneNumber() : "" %>"
+                  required />
+                </div>
+
+                <div class="input-group">
+                  <label for="address">Địa chỉ</label>
+                  <input type="text" id="address" name="address" value="<%=
+                  user.getAddress() != null ? user.getAddress() : "" %>" />
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-save">
@@ -252,8 +264,12 @@
 
               <div class="address-item">
                 <p class="address-label"><strong>Địa chỉ Mặc định:</strong></p>
-                <p>Nguyễn Văn A - 0332536387</p>
-                <p>Số 45, Đường Lê Lợi, Phường A, Quận B, TP. Hồ Chí Minh</p>
+                <p>
+                  <%= user.getFullName() != null ? user.getFullName() : "" %> -
+                  <%= user.getPhoneNumber() != null ? user.getPhoneNumber() : ""
+                  %>
+                </p>
+                <p><%= user.getAddress() != null ? user.getAddress() : "" %></p>
                 <div class="address-actions">
                   <button class="btn-link edit-btn">Chỉnh sửa</button>
                 </div>
@@ -446,7 +462,7 @@
               </li>
 
               <li>
-                <a href="WishList.jsp" class="footer-link">
+                <a href="wishlist.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
@@ -669,6 +685,5 @@
         overlay.classList.remove("active");
       });
     </script>
-    
   </body>
 </html>
