@@ -297,7 +297,7 @@
                 </a>
               </li>
               <li>
-                <<a href="Carts.jsp" class="footer-link">
+                <<a href="carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>

@@ -93,7 +93,7 @@
               >
             </li>
             <li>
-              <a href="Carts.jsp" class="nav-action-btn"
+              <a href="carts.jsp" class="nav-action-btn"
                 ><ion-icon name="bag-outline"></ion-icon
                 ><span class="nav-action-text">Giỏ hàng</span></a
               >
@@ -500,7 +500,7 @@
                 </a>
               </li>
               <li>
-                <a href="Carts.jsp" class="footer-link">
+                <a href="carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>

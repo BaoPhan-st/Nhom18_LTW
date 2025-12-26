@@ -89,7 +89,7 @@
                 </a>
               </li>
               <li>
-                <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+                <a href="carts.jsp" class="nav-action-btn" title="Giỏ hàng">
                   <ion-icon name="bag-outline"></ion-icon>
                   <span class="nav-action-text">Giỏ hàng</span>
                 </a>
@@ -122,7 +122,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
               <li class="breadcrumb-item">
-                <a href="Carts.jsp">Giỏ hàng </a>
+                <a href="carts.jsp">Giỏ hàng </a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Thanh toán
@@ -254,7 +254,7 @@
             </div>
 
             <div class="order-actions">
-              <a href="Carts.jsp" class="btn-back"> Quay về giỏ hàng</a>
+              <a href="carts.jsp" class="btn-back"> Quay về giỏ hàng</a>
               <button class="btn-checkout">ĐẶT HÀNG</button>
             </div>
           </div>
@@ -352,7 +352,7 @@
                 </a>
               </li>
               <li>
-                <a href="Carts.jsp" class="footer-link">
+                <a href="carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
