@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.user.User" %>
+<%
+    User currentUser = (User) session.getAttribute("currentUser");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +40,7 @@
       <div class="container">
         <div class="overlay"></div>
 
-        <a href="Menu.jsp" class="logo">
+        <a href="menu.jsp" class="logo">
           <img
             src="./assets/images/BHD%20LOGO.png"
             width="100"
@@ -60,7 +65,7 @@
 
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="Menu.jsp" class="navbar-link">Trang chủ</a>
+              <a href="menu.jsp" class="navbar-link">Trang chủ</a>
             </li>
 
             <li class="navbar-item">
@@ -68,7 +73,7 @@
             </li>
 
             <li class="navbar-item">
-              <a href="Products.jsp" class="navbar-link">Sản phẩm</a>
+              <a href="products.jsp" class="navbar-link">Sản phẩm</a>
             </li>
 
             <li class="navbar-item">
@@ -88,26 +93,42 @@
               </button>
             </li>
 
-            <li class="nav-action-item nav-action-dropdown">
-              <a href="login.html" class="nav-action-btn">
-                <ion-icon name="person-outline"></ion-icon>
-                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-              </a>
+              <li class="nav-action-item nav-action-dropdown">
+                  <% if (currentUser == null) { %>
+                  <!-- CHƯA ĐĂNG NHẬP -->
+                  <a href="login.jsp" class="nav-action-btn">
+                      <ion-icon name="person-outline"></ion-icon>
+                      <span class="nav-action-text">Đăng nhập / Đăng ký</span>
+                  </a>
 
-              <div class="dropdown-content">
-                <a href="login.html">Đăng nhập</a>
-                <a href="register.jsp">Đăng ký</a>
-              </div>
-            </li>
+                  <div class="dropdown-content">
+                      <a href="login.jsp">Đăng nhập</a>
+                      <a href="register.jsp">Đăng ký</a>
+                  </div>
+                  <% } else { %>
+                  <!-- ĐÃ ĐĂNG NHẬP -->
+                  <a href="account.jsp" class="nav-action-btn">
+                      <ion-icon name="person-circle-outa
+                Xin chào, <%= currentUser.getFullName() %>
+            </span>
+                  </a>
 
-            <li>
-              <a href="WishList.jsp" class="nav-action-btn">
+                  <div class="dropdown-content">
+                      <a href="ccount.jsp">Tài khoản</a>
+                      <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                  </div>
+                  <% } %>
+              </li>
+
+
+              <li>
+              <a href="wishlist.jsp" class="nav-action-btn">
                 <ion-icon name="heart-outline"></ion-icon>
                 <span class="nav-action-text">Yêu thích</span>
               </a>
             </li>
             <li>
-              <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+              <a href="carts.jsp" class="nav-action-btn" title="Giỏ hàng">
                 <ion-icon name="bag-outline"></ion-icon>
                 <span class="nav-action-text">Giỏ hàng</span>
               </a>
@@ -133,7 +154,7 @@
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
 
             <li class="breadcrumb-item active" aria-current="page">
               Đăng nhập
@@ -155,38 +176,48 @@
             </div>
             <div class="rows">
               <div class="cols">
-                <form class="page-auth" id="login">
-                  <fieldset class="form-auth">
-                    <label for="name">Tên đăng nhập</label>
-                    <input
-                      type="text"
-                      id="name"
-                      placeholder="Tên đăng nhập"
-                      required
-                      autocomplete="username"
-                    />
-                  </fieldset>
-                  <fieldset class="form-auth">
-                    <label>Mật khẩu</label>
-                    <input
-                      type="password"
-                      id="password"
-                      placeholder="Mật khẩu"
-                      required
-                      autocomplete="current-password"
-                    />
-                    <small
-                      >Quên mật khẩu ?
-                      <a class="as" href="forgotpass.jsp"> Nhấn vào đây</a>
-                    </small>
-                  </fieldset>
-                  <div>
-                    <button type="button" id="btn-primary" class="btn-primary">
-                      Đăng nhập
-                    </button>
+                  <% if (request.getAttribute("error") != null) { %>
+                  <div class="auth-error">
+                      <%= request.getAttribute("error") %>
                   </div>
-                </form>
-                <div class="social-auth">
+                  <% } %>
+
+                  <form class="page-auth" method="post" action="${pageContext.request.contextPath}/login">
+
+                  <fieldset class="form-auth">
+                          <label for="email">Email</label>
+                          <input
+                                  type="email"
+                                  id="email"
+                                  name="email"
+                                  placeholder="Nhập email"
+                                  required
+                          />
+                      </fieldset>
+
+                      <fieldset class="form-auth">
+                          <label for="password">Mật khẩu</label>
+                          <input
+                                  type="password"
+                                  id="password"
+                                  name="password"
+                                  placeholder="Mật khẩu"
+                                  required
+                          />
+                          <small>
+                              Quên mật khẩu ?
+                              <a class="as" href="forgotpass.jsp"> Nhấn vào đây</a>
+                          </small>
+                      </fieldset>
+
+                      <div>
+                          <button type="submit" id="btn-primary" class="btn-primary">
+                              Đăng nhập
+                          </button>
+                      </div>
+                  </form>
+
+                  <div class="social-auth">
                   <p>Hoặc đăng nhập bằng</p>
                   <div class="wrap-social-auth">
                     <button type="button" id="google-login-btn" aria-label="Đăng nhập bằng Google">
@@ -288,7 +319,7 @@
             <ul class="footer-list">
               <li><p class="footer-list-title">Tài khoản</p></li>
               <li>
-                <a href="Account.jsp" class="footer-link">
+                <a href="account.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">Tài khoản</span>
                 </a>
@@ -302,7 +333,7 @@
               </li>
 
               <li>
-                <a href="WishList.jsp" class="footer-link">
+                <a href="wishlist.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
@@ -401,19 +432,7 @@
         navbar.classList.remove("active");
         overlay.classList.remove("active");
       });
-      document
-        .getElementById("btn-primary")
-        .addEventListener("click", function () {
-          var username = document.getElementById("name").value;
-          var password = document.getElementById("password").value;
-          if (username === "admin" && password === "admin123") {
-            window.location.href = "admin.html";
-          } else if (username === "user" && password === "123") {
-            window.location.href = "menusaulogin.jsp";
-          } else {
-            alert("Sai tên đăng nhập hoặc mật khẩu!");
-          }
-        });
+
     </script>
     <script>
       function showToast(message) {

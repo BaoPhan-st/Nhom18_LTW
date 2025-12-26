@@ -5,33 +5,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BHD - SPORT SHOES</title>
-    <!--
-    - favicon
-  -->
+    <title>Wishlist - BHD SPORT SHOES</title>
+
     <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
-    <!--
-    -  css link
-  -->
     <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <!--
-    - google font link
-  -->
+    <link rel="stylesheet" href="./assets/css/wishlist_content.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+      <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+              integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+              crossorigin="anonymous"
+              referrerpolicy="no-referrer"
+      />
   </head>
 
   <body id="top">
-    <!--
-- #HEADER
--->
-
     <header class="header">
       <div class="container">
         <div class="overlay"></div>
@@ -102,13 +99,13 @@
             </li>
 
             <li>
-              <a href="wishlist.jsp" class="nav-action-btn">
+              <a href="WishList.html" class="nav-action-btn">
                 <ion-icon name="heart-outline"></ion-icon>
                 <span class="nav-action-text">Yêu thích</span>
               </a>
             </li>
             <li>
-              <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+              <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
                 <ion-icon name="bag-outline"></ion-icon>
                 <span class="nav-action-text">Giỏ hàng</span>
               </a>
@@ -130,26 +127,27 @@
         </nav>
       </div>
     </header>
-
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
 
-            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Danh sách yêu thích của bạn
+            </li>
           </ol>
         </nav>
       </div>
     </div>
-    <!--
-   - #CartContent
-   -->
-    <main class="cart-page-content">
-        <div class="container">
-            <h1 class="cart-header">Giỏ hàng</h1>
 
-            <div class="cart-items-list">
+
+
+    <main class="cart-page-content wishlist-page-content">
+        <div class="container">
+            <h1 class="cart-header">Danh sách yêu thích</h1>
+
+            <div class="cart-items-list wishlist-items-list">
 
                 <div class="product-item">
                     <div class="product-details">
@@ -161,37 +159,23 @@
                                 <a href="chitietsanpham.jsp" class="product-link">Nike Air Force 1 '07</a>
                             </h2>
 
-                            <div class="product-attributes-line-2">
-                                <p class="product-size">Size: 40</p>
-                                <div class="product-color">
-                                    <div class="color-box" style="background-color: #e74c3c;" title="Hex: #e74c3c (Đỏ)"></div>
-                                </div>
-                            </div>
-
                             <div class="product-price-line-3c"
                                  data-id="12345"
                                  data-price-raw="1500000"
                                  data-original-raw="1808500"
                                  data-discount-percentage="17">
                                 <div class="discounted-price-group">
-                                    <span class="discounted-price">199.000 VNĐ</span>
-                                    <span class="original-price">250.000 VNĐ</span>
+                                    <span class="discounted-price">650.000 VNĐ</span>
+                                    <span class="original-price" style="display: none;"></span>
                                 </div>
-                                <p class="discount-value">Giảm: 21%</p>
+                                <p class="discount-value" style="display: none;">Giảm: 0%</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="product-actions">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <input type="number" value="1" min="1" class="quantity-input">
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-
+                    <div class="product-actions wishlist-actions">
+                        <button class="action-btn add-to-cart-btn">Thêm vào Giỏ hàng</button>
                         <button class="action-btn delete-btn">Xoá</button>
-
-                        <button class="action-btn buy-now-btn">Mua ngay</button>
                     </div>
                 </div>
 
@@ -204,38 +188,26 @@
                         <div class="product-info">
 
                             <h2 class="product-name">
-                                <a href="#" class="product-link">Nike Air Force 1 '07</a>
+                                <a href="path/to/product/page-2.html" class="product-link">Nike Air Force 1 '07</a>
                             </h2>
 
-                            <div class="product-attributes-line-2">
-                                <p class="product-size">Size: 40</p>
-                                <div class="product-color">
-                                    <div class="color-box" style="background-color: #3498db;" title="Hex: #3498db (Xanh Dương)"></div>
-                                </div>
-                            </div>
-
                             <div class="product-price-line-3c"
-                                data-id="12345"
-                                data-price-raw="1500000"
-                                data-original-raw="1808500"
-                                data-discount-percentage="17">
+                                 data-id="12345"
+                                 data-price-raw="1500000"
+                                 data-original-raw="1808500"
+                                 data-discount-percentage="17">
                                 <div class="discounted-price-group">
-                                    <span class="discounted-price">1.500.000 VNĐ</span>
-                                    <span class="original-price" style="display: none;">1.500.000 VNĐ</span>
+                                    <span class="discounted-price">899.000 VNĐ</span>
+                                    <span class="original-price">1.200.000 VNĐ</span>
                                 </div>
+                                <p class="discount-value">Giảm: 25%</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="product-actions">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <input type="number" value="2" min="1" class="quantity-input">
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-
+                    <div class="product-actions wishlist-actions">
+                        <button class="action-btn add-to-cart-btn">Thêm vào Giỏ hàng</button>
                         <button class="action-btn delete-btn">Xoá</button>
-                        <button class="action-btn buy-now-btn">Mua ngay</button>
                     </div>
                 </div>
 
@@ -243,21 +215,10 @@
 
             </div>
 
-            <div class="cart-summary-section">
-                <div class="total-line">
-                    <span class="total-label">Tổng cộng:</span>
-                    <span class="total-price">3.199.000 VNĐ</span>
-                </div>
-             <button class="checkout-btn"> <a href="checkout.jsp" class="Thanh_toán">Tiến Hành Đặt hàng</a></button>
-            </div>
-
         </div>
     </main>
 
 
-    <!--
-- #FOOTER
--->
     <footer class="footer">
       <div class="footer-top section">
         <div class="container">
@@ -357,7 +318,7 @@
               </li>
 
               <li>
-                <a href="Carts.html" class="footer-link">
+                <a href="Carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -365,7 +326,7 @@
               </li>
 
               <li>
-                <a href="wishlist.jsp" class="footer-link">
+                <a href="WishList.html" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
@@ -442,9 +403,6 @@
         </div>
       </div>
     </footer>
-    <!-
-- ionicon link
--->
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -453,59 +411,237 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <div id="cartPopup" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="cart-close">&times;</span>
+
+            <div class="cart-product-box">
+                <img src="./assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
+
+                <div class="cart-info">
+                    <h2 id="popupName">Running Sneaker Shoes</h2>
+
+                    <div class="price-line">
+                        <span class="price-sale" id="popupPrice">1.500.000đ</span>
+                        <span class="price-original" id="popupOriginal">1.850.000đ</span>
+                        <span class="price-discount" id="popupDiscount">-17%</span>
+                    </div>
+
+
+                    <!-- Màu -->
+                    <div class="popup-option-block">
+                        <label>Màu sắc:</label>
+                        <div class="popup-color-list" id="popupColors">
+                            <div class="popup-color-item selected" data-value="Trắng" style="--c:#ffffff"></div>
+                            <div class="popup-color-item" data-value="Đen" style="--c:#000000"></div>
+                            <div class="popup-color-item" data-value="Xanh" style="--c:#007BFF"></div>
+                        </div>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="popup-option-block">
+                        <label>Kích cỡ:</label>
+                        <div class="popup-size-list" id="popupSizes">
+                            <div class="popup-size-item selected" data-value="38">38</div>
+                            <div class="popup-size-item" data-value="39">39</div>
+                            <div class="popup-size-item" data-value="40">40</div>
+                        </div>
+                    </div>
+
+                    <div class="popup-option-block">
+                        <label>Số lượng:</label>
+                        <div class="qty-group">
+                            <button class="qty-btn minus">−</button>
+                            <input type="number" id="popupQty" value="1" min="1" />
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+
+                    <button class="popup-add-cart"> Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast-message" class="toast-message">
+        <i class="fas fa-check-circle"></i> <span></span>
+    </div>
     <script>
+        // 1. HÀM HIỂN THỊ THÔNG BÁO TOAST
+        function showToast(message) {
+            const toast = document.getElementById("toast-message");
+            if (toast) {
+                toast.querySelector("span").textContent = message;
+                toast.classList.add("show");
+                // Tự động ẩn sau 3 giây
+                setTimeout(() => toast.classList.remove("show"), 3000);
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
-            const searchToggleBtn = document.getElementById("searchToggleBtn");
-            const searchForm = document.getElementById("search-form");
-            const searchInput = document.getElementById("search-input");
+            const overlay = document.querySelector(".overlay");
+            const actionBtns = document.querySelectorAll(".card-action-btn");
 
-            if (searchToggleBtn && searchForm && searchInput) {
-                function toggleSearch(e) {
-                    if (e) e.preventDefault();
-                    searchForm.classList.toggle("active");
+            actionBtns.forEach((btn) => {
+                btn.addEventListener("click", function (e) {
+                    e.preventDefault(); // Chặn thẻ a bao ngoài (nếu có)
 
-                    if (searchForm.classList.contains("active")) {
-                        searchInput.focus();
-                    } else {
-                        searchInput.value = "";
-                    }
-                }
+                    const icon = this.querySelector("ion-icon");
+                    const iconName = icon ? icon.getAttribute("name") : "";
 
-                function handleSearchAction(e) {
-                    toggleSearch(e);
-                }
-
-                searchToggleBtn.addEventListener("click", handleSearchAction);
-
-                searchInput.addEventListener("keydown", function (e) {
-                    if (e.key === "Enter") {
-                        e.preventDefault();
-                        toggleSearch(e);
+                    if (iconName === "heart-outline") {
+                        showToast("Đã thêm sản phẩm vào Yêu thích!");
                     }
                 });
-            }
+            });
         });
     </script>
     <script>
-        const navOpenBtn = document.querySelector(".nav-open-btn");
-        const navCloseBtn = document.querySelector(".nav-close-btn");
-        const navbar = document.querySelector(".navbar");
-        const overlay = document.querySelector(".overlay");
 
-        navOpenBtn.addEventListener("click", () => {
-            navbar.classList.add("active");
-            overlay.classList.add("active");
+        document.addEventListener("DOMContentLoaded", () => {
+            const popup = document.getElementById("cartPopup");
+            const popupClose = document.querySelector(".cart-close");
+            const openButtons = document.querySelectorAll(
+                ".add-to-cart-btn"
+            );
+            // Mở popup
+            openButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    popup.classList.add("active");
+                });
+            });
+
+            // Đóng popup
+            popupClose.addEventListener("click", () => popup.classList.remove("active"));
+            window.addEventListener("click", (e) => {
+                if (e.target === popup) popup.classList.remove("active");
+            });
+
+            // ================== CHỌN MÀU ==================
+            const colorItems = document.querySelectorAll("#popupColors .popup-color-item");
+            colorItems.forEach(item => {
+                item.addEventListener("click", () => {
+                    colorItems.forEach(i => i.classList.remove("selected"));
+                    item.classList.add("selected");
+                });
+            });
+
+            // ================== CHỌN SIZE ==================
+            const sizeItems = document.querySelectorAll("#popupSizes .popup-size-item");
+            sizeItems.forEach(item => {
+                item.addEventListener("click", () => {
+                    sizeItems.forEach(i => i.classList.remove("selected"));
+                    item.classList.add("selected");
+                });
+            });
+
+            // ================== THAY ĐỔI SỐ LƯỢNG ==================
+            const qtyInput = document.getElementById("popupQty");
+            const minusBtn = document.querySelector(".qty-btn.minus");
+            const plusBtn = document.querySelector(".qty-btn.plus");
+
+            minusBtn.addEventListener("click", () => {
+                let val = parseInt(qtyInput.value);
+                if (val > 1) qtyInput.value = val - 1;
+            });
+
+            plusBtn.addEventListener("click", () => {
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            });
+
+            qtyInput.addEventListener("input", () => {
+                if (qtyInput.value < 1) qtyInput.value = 1;
+            });
+
+            // ================== NÚT THÊM VÀO GIỎ ==================
+            const addToCartBtn = document.querySelector(".popup-add-cart");
+
+            addToCartBtn.addEventListener("click", () => {
+                const name  = document.getElementById("popupName").textContent;
+                const color = document.querySelector("#popupColors .selected")?.dataset.value;
+                const size  = document.querySelector("#popupSizes .selected")?.dataset.value;
+                const qty   = document.getElementById("popupQty").value;
+
+                // Gọi toast
+                showToast(`Đã thêm sản phẩm vào Giỏ hàng!`);
+
+                // Đóng popup
+                popup.classList.remove("active");
+            });
+
+
+
+            // ================== HÀM ĐỔ DỮ LIỆU VÀO POPUP ==================
+            window.showProductPopup = (data) => {
+                if (data.image)      document.getElementById("popupImg").src = data.image;
+                if (data.name)       document.getElementById("popupName").textContent = data.name;
+                if (data.original)   document.getElementById("popupOriginal").textContent = data.original;
+                if (data.price)      document.getElementById("popupPrice").textContent = data.price;
+                if (data.discount)   document.getElementById("popupDiscount").textContent = data.discount;
+
+                document.getElementById("popupQty").value = 1;
+
+                popup.classList.add("active");
+            };
+
         });
 
-        navCloseBtn.addEventListener("click", () => {
-            navbar.classList.remove("active");
-            overlay.classList.remove("active");
-        });
 
-        overlay.addEventListener("click", () => {
-            navbar.classList.remove("active");
-            overlay.classList.remove("active");
-        });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchToggleBtn = document.getElementById("searchToggleBtn");
+        const searchForm = document.getElementById("search-form");
+        const searchInput = document.getElementById("search-input");
+
+        if (searchToggleBtn && searchForm && searchInput) {
+          function toggleSearch(e) {
+            if (e) e.preventDefault();
+            searchForm.classList.toggle("active");
+
+            if (searchForm.classList.contains("active")) {
+              searchInput.focus();
+            } else {
+              searchInput.value = "";
+            }
+          }
+
+          function handleSearchAction(e) {
+            toggleSearch(e);
+          }
+
+          searchToggleBtn.addEventListener("click", handleSearchAction);
+
+          searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              toggleSearch(e);
+            }
+          });
+        }
+      });
+    </script>
+    <script>
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
+
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    </script>
+
   </body>
 </html>

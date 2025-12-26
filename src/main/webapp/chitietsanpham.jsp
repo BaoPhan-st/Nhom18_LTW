@@ -40,7 +40,7 @@
     <header class="header">
       <div class="container">
         <div class="overlay"></div>
-        <a href="Menu.jsp" class="logo">
+        <a href="menu.jsp" class="logo">
           <img
             src="./assets/images/BHD%20LOGO.png"
             width="100"
@@ -57,13 +57,13 @@
           </button>
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="Menu.jsp" class="navbar-link">Trang chủ</a>
+              <a href="menu.jsp" class="navbar-link">Trang chủ</a>
             </li>
             <li class="navbar-item">
               <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
             </li>
             <li class="navbar-item">
-              <a href="Products.jsp" class="navbar-link">Sản phẩm</a>
+              <a href="products.jsp" class="navbar-link">Sản phẩm</a>
             </li>
             <li class="navbar-item">
               <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
@@ -87,7 +87,7 @@
               >
             </li>
             <li>
-              <a href="WishList.jsp" class="nav-action-btn"
+              <a href="wishlist.jsp" class="nav-action-btn"
                 ><ion-icon name="heart-outline"></ion-icon
                 ><span class="nav-action-text">Yêu thích</span></a
               >
@@ -124,8 +124,8 @@
       <div class="container">
         <div class="breadcrumb-container">
           <ul class="breadcrumb">
-            <li><a href="Menu.jsp">Trang Chủ</a></li>
-            <li><a href="Products.jsp">Sản Phẩm</a></li>
+            <li><a href="menu.jsp">Trang Chủ</a></li>
+            <li><a href="products.jsp">Sản Phẩm</a></li>
             <li class="current-page">Nike Air Force 1 '07</li>
           </ul>
         </div>
@@ -494,7 +494,7 @@
             <ul class="footer-list">
               <li><p class="footer-list-title">Tài khoản</p></li>
               <li>
-                <a href="Account.jsp" class="footer-link">
+                <a href="account.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">Tài khoản</span>
                 </a>
@@ -508,7 +508,7 @@
               </li>
 
               <li>
-                <a href="WishList.jsp" class="footer-link">
+                <a href="wishlist.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>

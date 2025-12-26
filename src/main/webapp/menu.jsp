@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.user.User" %>
+<%
+    User currentUser = (User) session.getAttribute("currentUser");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +53,7 @@
     <div class="container">
         <div class="overlay"></div>
 
-        <a href="Menu.html" class="logo">
+        <a href="menu.jsp" class="logo">
             <img
                     src="./assets/images/BHD%20LOGO.png"
                     width="100"
@@ -74,7 +78,7 @@
 
             <ul class="navbar-list">
                 <li class="navbar-item">
-                    <a href="Menu.html" class="navbar-link">Trang chủ</a>
+                    <a href="menu.jsp" class="navbar-link">Trang chủ</a>
                 </li>
 
                 <li class="navbar-item">
@@ -82,7 +86,7 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a href="Products.jsp" class="navbar-link">Sản phẩm</a>
+                    <a href="products.jsp" class="navbar-link">Sản phẩm</a>
                 </li>
 
                 <li class="navbar-item">
@@ -103,25 +107,36 @@
                 </li>
 
                 <li class="nav-action-item nav-action-dropdown">
+                    <% if (currentUser == null) { %>
+                    <!-- Chưa đăng nhập -->
                     <a href="login.jsp" class="nav-action-btn">
                         <ion-icon name="person-outline"></ion-icon>
                         <span class="nav-action-text">Đăng nhập / Đăng kí</span>
                     </a>
-
                     <div class="dropdown-content">
                         <a href="login.jsp">Đăng nhập</a>
                         <a href="register.jsp">Đăng ký</a>
                     </div>
+                    <% } else { %>
+                    <!-- Đã đăng nhập -->
+                    <a href="#" class="nav-action-btn">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span class="nav-action-text"><%= currentUser.getFullName() != null ? currentUser.getFullName() : currentUser.getEmail() %></span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="account">Tài khoản của tôi</a>
+                        <a href="logout">Đăng xuất</a>
+                    </div>
+                    <% } %>
                 </li>
-
                 <li>
-                    <a href="WishList.jsp" class="nav-action-btn">
+                    <a href="wishlist.jsp" class="nav-action-btn">
                         <ion-icon name="heart-outline"></ion-icon>
                         <span class="nav-action-text">Yêu thích</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+                    <a href="carts.jsp" class="nav-action-btn" title="Giỏ hàng">
                         <ion-icon name="bag-outline"></ion-icon>
                         <span class="nav-action-text">Giỏ hàng</span>
                     </a>
@@ -162,7 +177,7 @@
                 </p>
 
                 <button class="btn btn-primary">
-                    <a href="Products.jsp" class="Menu_Banner_button">Mua ngay</a>
+                    <a href="products.jsp" class="Menu_Banner_button">Mua ngay</a>
                     <ion-icon
                             name="arrow-forward-outline"
                             aria-hidden="true"
@@ -187,7 +202,7 @@
                         >
                             <h3 class="h4 card-title">Bộ sưu tập Nike</h3>
 
-                            <a href="Products.jsp" class="btn btn-secondary">
+                            <a href="products.jsp" class="btn btn-secondary">
                                 <span>Khám phá ngay</span>
 
                                 <ion-icon
@@ -207,7 +222,7 @@
                         >
                             <h3 class="h4 card-title">Bộ sưu tập Adidas</h3>
 
-                            <a href="Products.jsp" class="btn btn-secondary">
+                            <a href="products.jsp" class="btn btn-secondary">
                                 <span>Khám phá ngay</span>
 
                                 <ion-icon
@@ -227,7 +242,7 @@
                         >
                             <h3 class="h4 card-title">Bộ sưu tập Puma</h3>
 
-                            <a href="Products.jsp" class="btn btn-secondary">
+                            <a href="products.jsp" class="btn btn-secondary">
                                 <span>Khám phá ngay</span>
 
                                 <ion-icon
@@ -1218,7 +1233,7 @@
                 >
                     <h2 class="h3 banner-title">Giày Đẹp – Giá Hời</h2>
 
-                    <a href="Products.jsp" class="btn btn-link">
+                    <a href="products.jsp" class="btn btn-link">
                         <span>Khám phá ngay</span>
 
                         <ion-icon
@@ -1516,7 +1531,7 @@
                 <ul class="footer-list">
                     <li><p class="footer-list-title">Tài khoản</p></li>
                     <li>
-                        <a href="Account.jsp" class="footer-link">
+                        <a href="account.jsp" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                             <span class="footer-link-text">Tài khoản</span>
                         </a>
@@ -1530,7 +1545,7 @@
                     </li>
 
                     <li>
-                        <a href="WishList.jsp" class="footer-link">
+                        <a href="wishlist.jsp" class="footer-link">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
 
                             <span class="footer-link-text">Yêu thích</span>
