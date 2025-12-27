@@ -1,6 +1,6 @@
 package dao;
 
-import model.user.User;
+import model.User;
 import org.jdbi.v3.core.Jdbi;
 
 public class UserDao {
@@ -37,40 +37,42 @@ public class UserDao {
 
     // ===== INSERT USER =====
     public int insertUser(User user) {
-
         String sql = """
-            INSERT INTO users (
-                email,
-                password_hash,
-                phone_number,
-                address,
-                role,
-                is_active,
-                created_at,
-                firebase_uid
-            )
-            VALUES (
-                :email,
-                :passwordHash,
-                :phoneNumber,
-                :address,
-                :role,
-                :isActive,
-                :createdAt,
-                :firebaseUID
-            )
-        """;
+        INSERT INTO users (
+            email,
+            password_hash,
+            phone_number,
+            address,
+            full_name,
+            role,
+            is_active,
+            created_at,
+            firebase_uid
+        )
+        VALUES (
+            :email,
+            :passwordHash,
+            :phoneNumber,
+            :address,
+            :fullName,
+            :role,
+            :isActive,
+            :createdAt,
+            :firebaseUID
+        )
+    """;
 
         return jdbi.withHandle(handle ->
                 handle.createUpdate(sql)
-                        .bind("email", user.getEmail())
-                        .bind("passwordHash", user.getPasswordHash())
-                        .bind("phoneNumber", user.getPhoneNumber())
-                        .bind("address", user.getAddress())
-                        .bind("role", user.getRole())
-                        .bind("isActive", user.isActive())
-                        .bind("createdAt", user.getCreatedAt())
-                        .bind("firebaseUID", user.getFirebaseUID())
+                        .bind("email", user.getEmail())              // "nguyenvana@gmail.com"
+                        .bind("passwordHash", user.getPasswordHash()) // ""
+                        .bind("phoneNumber", user.getPhoneNumber())   // NULL
+                        .bind("address", user.getAddress())           // NULL
+                        .bind("fullName", user.getFullName())         // "Nguyễn Văn A"
+                        .bind("role", user.getRole())                 // "user"
+                        .bind("isActive", user.isActive())            // true
+                        .bind("createdAt", user.getCreatedAt())       // giờ ngày tạo acc
+                        .bind("firebaseUID", user.getFirebaseUID())   // "AbC123XyZ"
                         .execute()
         );
     }

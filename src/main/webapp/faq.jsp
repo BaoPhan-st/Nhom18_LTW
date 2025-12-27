@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="overlay"></div>
 
-            <a href="menu.jsp" class="logo">
+            <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
                 <img
                         src="./assets/images/BHD%20LOGO.png"
                         width="100"
@@ -62,19 +62,19 @@
 
                 <ul class="navbar-list">
                     <li class="navbar-item">
-                        <a href="menu.jsp" class="navbar-link">Trang chủ</a>
+                        <a href="${pageContext.request.contextPath}/menu.jsp" class="navbar-link">Trang chủ</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
+                        <a href="${pageContext.request.contextPath}/gioithieu.jsp" class="navbar-link">Giới thiệu</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="products.jsp" class="navbar-link">Sản phẩm</a>
+                        <a href="${pageContext.request.contextPath}/products.jsp" class="navbar-link">Sản phẩm</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
+                        <a href="${pageContext.request.contextPath}/lienhe.jsp" class="navbar-link">Liên hệ</a>
                     </li>
                 </ul>
 
@@ -91,25 +91,25 @@
                     </li>
 
                     <li class="nav-action-item nav-action-dropdown">
-                        <a href="login.jsp" class="nav-action-btn">
+                        <a href="${pageContext.request.contextPath}/login.jsp" class="nav-action-btn">
                             <ion-icon name="person-outline"></ion-icon>
                             <span class="nav-action-text">Đăng nhập / Đăng kí</span>
                         </a>
 
                         <div class="dropdown-content">
-                            <a href="login.jsp">Đăng nhập</a>
-                            <a href="register.jsp">Đăng ký</a>
+                            <a href="${pageContext.request.contextPath}/login.jsp">Đăng nhập</a>
+                            <a href="${pageContext.request.contextPath}/register.jsp">Đăng ký</a>
                         </div>
                     </li>
 
                     <li>
-                        <a href="wishlist.jsp" class="nav-action-btn">
+                        <a href="${pageContext.request.contextPath}/wishlist.jsp" class="nav-action-btn">
                             <ion-icon name="heart-outline"></ion-icon>
                             <span class="nav-action-text">Yêu thích</span>
                         </a>
                     </li>
                     <li>
-                        <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+                        <a href="carts.jsp" class="nav-action-btn" title="Giỏ hàng">
                             <ion-icon name="bag-outline"></ion-icon>
                             <span class="nav-action-text">Giỏ hàng</span>
                         </a>
@@ -136,7 +136,7 @@
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/menu.jsp">Trang Chủ</a></li>
 
             <li class="breadcrumb-item active" aria-current="page">
               Câu hỏi thường gặp
@@ -429,7 +429,7 @@
               </li>
 
               <li>
-                <a href="account.jsp" class="footer-link">
+                <a href="${pageContext.request.contextPath}/account.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Tài khoản</span>
@@ -437,7 +437,7 @@
               </li>
 
               <li>
-                <a href="carts.jsp" class="footer-link">
+                <a href="${pageContext.request.contextPath}/carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -445,7 +445,7 @@
               </li>
 
               <li>
-                <a href="wishlist.jsp" class="footer-link">
+                <a href="${pageContext.request.contextPath}/wishlist.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
@@ -458,7 +458,7 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoMat.jsp" class="footer-link">
+                <a href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo mật</span>
@@ -466,7 +466,7 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoHanh.jsp" class="footer-link">
+                <a href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo hành</span>
@@ -474,14 +474,14 @@
               </li>
 
               <li>
-                <a href="huongdanmuahang.jsp" class="footer-link">
+                <a href="${pageContext.request.contextPath}/huongdanmuahang.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
               <li>
-                <a href="faq.html" class="footer-link">
+                <a href="faq.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">FAQs</span>

@@ -36,7 +36,7 @@
       <div class="container">
         <div class="overlay"></div>
 
-        <a href="menu.jsp" class="logo">
+        <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
           <img
             src="./assets/images/BHD%20LOGO.png"
             width="100"
@@ -61,19 +61,35 @@
 
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="menu.jsp" class="navbar-link">Trang chủ</a>
+              <a
+                href="${pageContext.request.contextPath}/menu.jsp"
+                class="navbar-link"
+                >Trang chủ</a
+              >
             </li>
 
             <li class="navbar-item">
-              <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
+              <a
+                href="${pageContext.request.contextPath}/gioithieu.jsp"
+                class="navbar-link"
+                >Giới thiệu</a
+              >
             </li>
 
             <li class="navbar-item">
-              <a href="products.jsp" class="navbar-link">Sản phẩm</a>
+              <a
+                href="${pageContext.request.contextPath}/products.jsp"
+                class="navbar-link"
+                >Sản phẩm</a
+              >
             </li>
 
             <li class="navbar-item">
-              <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
+              <a
+                href="${pageContext.request.contextPath}/lienhe.jsp"
+                class="navbar-link"
+                >Liên hệ</a
+              >
             </li>
           </ul>
 
@@ -90,25 +106,39 @@
             </li>
 
             <li class="nav-action-item nav-action-dropdown">
-              <a href="login.jsp" class="nav-action-btn">
+              <a
+                href="${pageContext.request.contextPath}/login.jsp"
+                class="nav-action-btn"
+              >
                 <ion-icon name="person-outline"></ion-icon>
                 <span class="nav-action-text">Đăng nhập / Đăng kí</span>
               </a>
 
               <div class="dropdown-content">
-                <a href="login.jsp">Đăng nhập</a>
-                <a href="register.jsp">Đăng ký</a>
+                <a href="${pageContext.request.contextPath}/login.jsp"
+                  >Đăng nhập</a
+                >
+                <a href="${pageContext.request.contextPath}/register.jsp"
+                  >Đăng ký</a
+                >
               </div>
             </li>
 
             <li>
-              <a href="wishlist.jsp" class="nav-action-btn">
+              <a
+                href="${pageContext.request.contextPath}/wishlist.jsp"
+                class="nav-action-btn"
+              >
                 <ion-icon name="heart-outline"></ion-icon>
                 <span class="nav-action-text">Yêu thích</span>
               </a>
             </li>
             <li>
-              <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
+              <a
+                href="${pageContext.request.contextPath}/carts.jsp"
+                class="nav-action-btn"
+                title="Giỏ hàng"
+              >
                 <ion-icon name="bag-outline"></ion-icon>
                 <span class="nav-action-text">Giỏ hàng</span>
               </a>
@@ -135,7 +165,11 @@
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item">
+              <a href="${pageContext.request.contextPath}/menu.jsp"
+                >Trang Chủ</a
+              >
+            </li>
 
             <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
           </ol>
@@ -146,114 +180,140 @@
    - #CartContent
    -->
     <main class="cart-page-content">
-        <div class="container">
-            <h1 class="cart-header">Giỏ hàng</h1>
+      <div class="container">
+        <h1 class="cart-header">Giỏ hàng</h1>
 
-            <div class="cart-items-list">
+        <div class="cart-items-list">
+          <div class="product-item">
+            <div class="product-details">
+              <img
+                src="assets/images/product-1.jpg"
+                alt="Tên Sản Phẩm 1"
+                class="product-image"
+              />
 
-                <div class="product-item">
-                    <div class="product-details">
-                        <img src="assets/images/product-1.jpg" alt="Tên Sản Phẩm 1" class="product-image">
+              <div class="product-info">
+                <h2 class="product-name">
+                  <a
+                    href="${pageContext.request.contextPath}/chitietsanpham.jsp"
+                    class="product-link"
+                    >Nike Air Force 1 '07</a
+                  >
+                </h2>
 
-                        <div class="product-info">
-
-                            <h2 class="product-name">
-                                <a href="chitietsanpham.jsp" class="product-link">Nike Air Force 1 '07</a>
-                            </h2>
-
-                            <div class="product-attributes-line-2">
-                                <p class="product-size">Size: 40</p>
-                                <div class="product-color">
-                                    <div class="color-box" style="background-color: #e74c3c;" title="Hex: #e74c3c (Đỏ)"></div>
-                                </div>
-                            </div>
-
-                            <div class="product-price-line-3c"
-                                 data-id="12345"
-                                 data-price-raw="1500000"
-                                 data-original-raw="1808500"
-                                 data-discount-percentage="17">
-                                <div class="discounted-price-group">
-                                    <span class="discounted-price">199.000 VNĐ</span>
-                                    <span class="original-price">250.000 VNĐ</span>
-                                </div>
-                                <p class="discount-value">Giảm: 21%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-actions">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <input type="number" value="1" min="1" class="quantity-input">
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-
-                        <button class="action-btn delete-btn">Xoá</button>
-
-                        <button class="action-btn buy-now-btn">Mua ngay</button>
-                    </div>
+                <div class="product-attributes-line-2">
+                  <p class="product-size">Size: 40</p>
+                  <div class="product-color">
+                    <div
+                      class="color-box"
+                      style="background-color: #e74c3c"
+                      title="Hex: #e74c3c (Đỏ)"
+                    ></div>
+                  </div>
                 </div>
 
-                <hr class="separator">
-
-                <div class="product-item">
-                    <div class="product-details">
-                        <img src="assets/images/product-2.jpg" alt="Tên Sản Phẩm 2" class="product-image">
-
-                        <div class="product-info">
-
-                            <h2 class="product-name">
-                                <a href="#" class="product-link">Nike Air Force 1 '07</a>
-                            </h2>
-
-                            <div class="product-attributes-line-2">
-                                <p class="product-size">Size: 40</p>
-                                <div class="product-color">
-                                    <div class="color-box" style="background-color: #3498db;" title="Hex: #3498db (Xanh Dương)"></div>
-                                </div>
-                            </div>
-
-                            <div class="product-price-line-3c"
-                                data-id="12345"
-                                data-price-raw="1500000"
-                                data-original-raw="1808500"
-                                data-discount-percentage="17">
-                                <div class="discounted-price-group">
-                                    <span class="discounted-price">1.500.000 VNĐ</span>
-                                    <span class="original-price" style="display: none;">1.500.000 VNĐ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-actions">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <input type="number" value="2" min="1" class="quantity-input">
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-
-                        <button class="action-btn delete-btn">Xoá</button>
-                        <button class="action-btn buy-now-btn">Mua ngay</button>
-                    </div>
+                <div
+                  class="product-price-line-3c"
+                  data-id="12345"
+                  data-price-raw="1500000"
+                  data-original-raw="1808500"
+                  data-discount-percentage="17"
+                >
+                  <div class="discounted-price-group">
+                    <span class="discounted-price">199.000 VNĐ</span>
+                    <span class="original-price">250.000 VNĐ</span>
+                  </div>
+                  <p class="discount-value">Giảm: 21%</p>
                 </div>
-
-                <hr class="separator">
-
+              </div>
             </div>
 
-            <div class="cart-summary-section">
-                <div class="total-line">
-                    <span class="total-label">Tổng cộng:</span>
-                    <span class="total-price">3.199.000 VNĐ</span>
+            <div class="product-actions">
+              <div class="quantity-control">
+                <button class="quantity-btn minus-btn">-</button>
+                <input type="number" value="1" min="1" class="quantity-input" />
+                <button class="quantity-btn plus-btn">+</button>
+              </div>
+
+              <button class="action-btn delete-btn">Xoá</button>
+
+              <button class="action-btn buy-now-btn">Mua ngay</button>
+            </div>
+          </div>
+
+          <hr class="separator" />
+
+          <div class="product-item">
+            <div class="product-details">
+              <img
+                src="assets/images/product-2.jpg"
+                alt="Tên Sản Phẩm 2"
+                class="product-image"
+              />
+
+              <div class="product-info">
+                <h2 class="product-name">
+                  <a href="#" class="product-link">Nike Air Force 1 '07</a>
+                </h2>
+
+                <div class="product-attributes-line-2">
+                  <p class="product-size">Size: 40</p>
+                  <div class="product-color">
+                    <div
+                      class="color-box"
+                      style="background-color: #3498db"
+                      title="Hex: #3498db (Xanh Dương)"
+                    ></div>
+                  </div>
                 </div>
-             <button class="checkout-btn"> <a href="checkout.jsp" class="Thanh_toán">Tiến Hành Đặt hàng</a></button>
+
+                <div
+                  class="product-price-line-3c"
+                  data-id="12345"
+                  data-price-raw="1500000"
+                  data-original-raw="1808500"
+                  data-discount-percentage="17"
+                >
+                  <div class="discounted-price-group">
+                    <span class="discounted-price">1.500.000 VNĐ</span>
+                    <span class="original-price" style="display: none"
+                      >1.500.000 VNĐ</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
 
+            <div class="product-actions">
+              <div class="quantity-control">
+                <button class="quantity-btn minus-btn">-</button>
+                <input type="number" value="2" min="1" class="quantity-input" />
+                <button class="quantity-btn plus-btn">+</button>
+              </div>
+
+              <button class="action-btn delete-btn">Xoá</button>
+              <button class="action-btn buy-now-btn">Mua ngay</button>
+            </div>
+          </div>
+
+          <hr class="separator" />
         </div>
-    </main>
 
+        <div class="cart-summary-section">
+          <div class="total-line">
+            <span class="total-label">Tổng cộng:</span>
+            <span class="total-price">3.199.000 VNĐ</span>
+          </div>
+          <button class="checkout-btn">
+            <a
+              href="${pageContext.request.contextPath}/checkout.jsp"
+              class="Thanh_toán"
+              >Tiến Hành Đặt hàng</a
+            >
+          </button>
+        </div>
+      </div>
+    </main>
 
     <!--
 - #FOOTER
@@ -349,7 +409,10 @@
               </li>
 
               <li>
-                <a href="account.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/account.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Tài khoản</span>
@@ -357,7 +420,7 @@
               </li>
 
               <li>
-                <a href="Carts.html" class="footer-link">
+                <a href="carts.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -365,7 +428,10 @@
               </li>
 
               <li>
-                <a href="wishlist.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/wishlist.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
@@ -378,7 +444,10 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoMat.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo mật</span>
@@ -386,7 +455,10 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoHanh.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo hành</span>
@@ -394,14 +466,20 @@
               </li>
 
               <li>
-                <a href="huongdanmuahang.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/huongdanmuahang.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
               <li>
-                <a href="faq.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/faq.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">FAQs</span>
@@ -454,58 +532,58 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchToggleBtn = document.getElementById("searchToggleBtn");
-            const searchForm = document.getElementById("search-form");
-            const searchInput = document.getElementById("search-input");
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchToggleBtn = document.getElementById("searchToggleBtn");
+        const searchForm = document.getElementById("search-form");
+        const searchInput = document.getElementById("search-input");
 
-            if (searchToggleBtn && searchForm && searchInput) {
-                function toggleSearch(e) {
-                    if (e) e.preventDefault();
-                    searchForm.classList.toggle("active");
+        if (searchToggleBtn && searchForm && searchInput) {
+          function toggleSearch(e) {
+            if (e) e.preventDefault();
+            searchForm.classList.toggle("active");
 
-                    if (searchForm.classList.contains("active")) {
-                        searchInput.focus();
-                    } else {
-                        searchInput.value = "";
-                    }
-                }
-
-                function handleSearchAction(e) {
-                    toggleSearch(e);
-                }
-
-                searchToggleBtn.addEventListener("click", handleSearchAction);
-
-                searchInput.addEventListener("keydown", function (e) {
-                    if (e.key === "Enter") {
-                        e.preventDefault();
-                        toggleSearch(e);
-                    }
-                });
+            if (searchForm.classList.contains("active")) {
+              searchInput.focus();
+            } else {
+              searchInput.value = "";
             }
-        });
+          }
+
+          function handleSearchAction(e) {
+            toggleSearch(e);
+          }
+
+          searchToggleBtn.addEventListener("click", handleSearchAction);
+
+          searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              toggleSearch(e);
+            }
+          });
+        }
+      });
     </script>
     <script>
-        const navOpenBtn = document.querySelector(".nav-open-btn");
-        const navCloseBtn = document.querySelector(".nav-close-btn");
-        const navbar = document.querySelector(".navbar");
-        const overlay = document.querySelector(".overlay");
+      const navOpenBtn = document.querySelector(".nav-open-btn");
+      const navCloseBtn = document.querySelector(".nav-close-btn");
+      const navbar = document.querySelector(".navbar");
+      const overlay = document.querySelector(".overlay");
 
-        navOpenBtn.addEventListener("click", () => {
-            navbar.classList.add("active");
-            overlay.classList.add("active");
-        });
+      navOpenBtn.addEventListener("click", () => {
+        navbar.classList.add("active");
+        overlay.classList.add("active");
+      });
 
-        navCloseBtn.addEventListener("click", () => {
-            navbar.classList.remove("active");
-            overlay.classList.remove("active");
-        });
+      navCloseBtn.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
 
-        overlay.addEventListener("click", () => {
-            navbar.classList.remove("active");
-            overlay.classList.remove("active");
-        });
+      overlay.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
     </script>
   </body>
 </html>

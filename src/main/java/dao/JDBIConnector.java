@@ -22,8 +22,8 @@ public class JDBIConnector {
         MysqlDataSource ds = new MysqlDataSource();
 
             ds.setUrl("jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh");
-        ds.setUser("root");
-        ds.setPassword("");
+            ds.setUser("root");
+            ds.setPassword("");
 
         try {
             ds.setAutoReconnect(true);
