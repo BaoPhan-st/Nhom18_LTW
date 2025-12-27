@@ -16,10 +16,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-      <!--
+    <!--
           - favicon
         -->
-      <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,109 +30,143 @@
     <link rel="stylesheet" href="assets/css/lienhe.css" />
   </head>
   <body>
-  <header class="header">
+    <header class="header">
       <div class="container">
-          <div class="overlay"></div>
+        <div class="overlay"></div>
 
-          <a href="menu.jsp" class="logo">
-              <img
-                      src="./assets/images/BHD%20LOGO.png"
-                      width="100"
-                      height="50"
-                      alt="BHD logo"
-              />
-          </a>
+        <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
+          <img
+            src="./assets/images/BHD%20LOGO.png"
+            width="100"
+            height="50"
+            alt="BHD logo"
+          />
+        </a>
 
-          <!-- Nút mở menu -->
-          <button class="nav-open-btn">
-              <ion-icon name="menu-outline"></ion-icon>
+        <!-- Nút mở menu -->
+        <button class="nav-open-btn">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <nav class="navbar">
+          <button
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
+          >
+            <ion-icon name="close-outline"></ion-icon>
           </button>
 
-          <nav class="navbar">
-              <button
-                      class="nav-close-btn"
-                      data-nav-close-btn
-                      aria-label="Close Menu"
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/menu.jsp"
+                class="navbar-link"
+                >Trang chủ</a
               >
-                  <ion-icon name="close-outline"></ion-icon>
+            </li>
+
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/gioithieu.jsp"
+                class="navbar-link"
+                >Giới thiệu</a
+              >
+            </li>
+
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/products.jsp"
+                class="navbar-link"
+                >Sản phẩm</a
+              >
+            </li>
+
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/lienhe.jsp"
+                class="navbar-link"
+                >Liên hệ</a
+              >
+            </li>
+          </ul>
+
+          <ul class="nav-action-list">
+            <li>
+              <button
+                class="nav-action-btn"
+                id="searchToggleBtn"
+                data-search-btn
+              >
+                <ion-icon name="search-outline"></ion-icon>
+                <span class="nav-action-text">Tìm kiếm</span>
               </button>
+            </li>
 
-              <ul class="navbar-list">
-                  <li class="navbar-item">
-                      <a href="menu.jsp" class="navbar-link">Trang chủ</a>
-                  </li>
+            <li class="nav-action-item nav-action-dropdown">
+              <a
+                href="${pageContext.request.contextPath}/login.jsp"
+                class="nav-action-btn"
+              >
+                <ion-icon name="person-outline"></ion-icon>
+                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+              </a>
 
-                  <li class="navbar-item">
-                      <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
-                  </li>
+              <div class="dropdown-content">
+                <a href="${pageContext.request.contextPath}/login.jsp"
+                  >Đăng nhập</a
+                >
+                <a href="${pageContext.request.contextPath}/register.jsp"
+                  >Đăng ký</a
+                >
+              </div>
+            </li>
 
-                  <li class="navbar-item">
-                      <a href="products.jsp" class="navbar-link">Sản phẩm</a>
-                  </li>
+            <li>
+              <a
+                href="${pageContext.request.contextPath}/wishlist.jsp"
+                class="nav-action-btn"
+              >
+                <ion-icon name="heart-outline"></ion-icon>
+                <span class="nav-action-text">Yêu thích</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="${pageContext.request.contextPath}/carts.jsp"
+                class="nav-action-btn"
+                title="Giỏ hàng"
+              >
+                <ion-icon name="bag-outline"></ion-icon>
+                <span class="nav-action-text">Giỏ hàng</span>
+              </a>
+            </li>
+          </ul>
+          <form class="search-form" id="search-form" action="#" method="get">
+            <input
+              type="search"
+              name="query"
+              placeholder="Tìm kiếm sản phẩm..."
+              id="search-input"
+              required
+            />
 
-                  <li class="navbar-item">
-                      <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
-                  </li>
-              </ul>
-
-              <ul class="nav-action-list">
-                  <li>
-                      <button
-                              class="nav-action-btn"
-                              id="searchToggleBtn"
-                              data-search-btn
-                      >
-                          <ion-icon name="search-outline"></ion-icon>
-                          <span class="nav-action-text">Tìm kiếm</span>
-                      </button>
-                  </li>
-
-                  <li class="nav-action-item nav-action-dropdown">
-                      <a href="login.jsp" class="nav-action-btn">
-                          <ion-icon name="person-outline"></ion-icon>
-                          <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                      </a>
-
-                      <div class="dropdown-content">
-                          <a href="login.jsp">Đăng nhập</a>
-                          <a href="register.jsp">Đăng ký</a>
-                      </div>
-                  </li>
-
-                  <li>
-                      <a href="wishlist.jsp" class="nav-action-btn">
-                          <ion-icon name="heart-outline"></ion-icon>
-                          <span class="nav-action-text">Yêu thích</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="carts.jsp" class="nav-action-btn" title="Giỏ hàng">
-                          <ion-icon name="bag-outline"></ion-icon>
-                          <span class="nav-action-text">Giỏ hàng</span>
-                      </a>
-                  </li>
-              </ul>
-              <form class="search-form" id="search-form" action="#" method="get">
-                  <input
-                          type="search"
-                          name="query"
-                          placeholder="Tìm kiếm sản phẩm..."
-                          id="search-input"
-                          required
-                  />
-
-                  <button type="button" class="search-close-btn" id="searchCloseBtn">
-                      <ion-icon name="close-outline"></ion-icon>
-                  </button>
-              </form>
-          </nav>
+            <button type="button" class="search-close-btn" id="searchCloseBtn">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </form>
+        </nav>
       </div>
-  </header>
+    </header>
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item">
+              <a href="${pageContext.request.contextPath}/menu.jsp"
+                >Trang Chủ</a
+              >
+            </li>
 
             <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
           </ol>
@@ -258,7 +292,10 @@
             <ul class="footer-list">
               <li><p class="footer-list-title">Tài khoản</p></li>
               <li>
-                <a href="Carts.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/carts.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -266,14 +303,20 @@
               </li>
 
               <li>
-                <a href="wishlist.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/wishlist.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
                 </a>
               </li>
               <li>
-                <a href="account.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/account.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">Yêu thích</span>
                 </a>
@@ -283,25 +326,37 @@
             <ul class="footer-list">
               <li><p class="footer-list-title">Chính sách</p></li>
               <li>
-                <a href="ChinhSachBaoMat.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">Chính sách bảo mật</span>
                 </a>
               </li>
               <li>
-                <a href="ChinhSachBaoHanh.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">Chính sách bảo hành</span>
                 </a>
               </li>
               <li>
-                <a href="huongdanmuahang.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/huongdanmuahang.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
               <li>
-                <a href="faq.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/faq.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                   <span class="footer-link-text">FAQs</span>
                 </a>

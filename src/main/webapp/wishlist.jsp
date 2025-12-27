@@ -19,119 +19,149 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-      <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-              integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-              crossorigin="anonymous"
-              referrerpolicy="no-referrer"
-      />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
 
   <body id="top">
-  <header class="header">
+    <header class="header">
       <div class="container">
-          <div class="overlay"></div>
+        <div class="overlay"></div>
 
-          <a href="menu.jsp" class="logo">
-              <img
-                      src="./assets/images/BHD%20LOGO.png"
-                      width="100"
-                      height="50"
-                      alt="BHD logo"
-              />
-          </a>
+        <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
+          <img
+            src="./assets/images/BHD%20LOGO.png"
+            width="100"
+            height="50"
+            alt="BHD logo"
+          />
+        </a>
 
-          <!-- Nút mở menu -->
-          <button class="nav-open-btn">
-              <ion-icon name="menu-outline"></ion-icon>
+        <!-- Nút mở menu -->
+        <button class="nav-open-btn">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <nav class="navbar">
+          <button
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
+          >
+            <ion-icon name="close-outline"></ion-icon>
           </button>
 
-          <nav class="navbar">
-              <button
-                      class="nav-close-btn"
-                      data-nav-close-btn
-                      aria-label="Close Menu"
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/menu.jsp"
+                class="navbar-link"
+                >Trang chủ</a
               >
-                  <ion-icon name="close-outline"></ion-icon>
+            </li>
+
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/gioithieu.jsp"
+                class="navbar-link"
+                >Giới thiệu</a
+              >
+            </li>
+
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/products.jsp"
+                class="navbar-link"
+                >Sản phẩm</a
+              >
+            </li>
+
+            <li class="navbar-item">
+              <a
+                href="${pageContext.request.contextPath}/lienhe.jsp"
+                class="navbar-link"
+                >Liên hệ</a
+              >
+            </li>
+          </ul>
+
+          <ul class="nav-action-list">
+            <li>
+              <button
+                class="nav-action-btn"
+                id="searchToggleBtn"
+                data-search-btn
+              >
+                <ion-icon name="search-outline"></ion-icon>
+                <span class="nav-action-text">Tìm kiếm</span>
               </button>
+            </li>
 
-              <ul class="navbar-list">
-                  <li class="navbar-item">
-                      <a href="menu.jsp" class="navbar-link">Trang chủ</a>
-                  </li>
+            <li class="nav-action-item nav-action-dropdown">
+              <a
+                href="${pageContext.request.contextPath}/login.jsp"
+                class="nav-action-btn"
+              >
+                <ion-icon name="person-outline"></ion-icon>
+                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+              </a>
 
-                  <li class="navbar-item">
-                      <a href="gioithieu.jsp" class="navbar-link">Giới thiệu</a>
-                  </li>
+              <div class="dropdown-content">
+                <a href="${pageContext.request.contextPath}/login.jsp"
+                  >Đăng nhập</a
+                >
+                <a href="${pageContext.request.contextPath}/register.jsp"
+                  >Đăng ký</a
+                >
+              </div>
+            </li>
 
-                  <li class="navbar-item">
-                      <a href="products.jsp" class="navbar-link">Sản phẩm</a>
-                  </li>
+            <li>
+              <a
+                href="${pageContext.request.contextPath}/wishlist.jsp"
+                class="nav-action-btn"
+              >
+                <ion-icon name="heart-outline"></ion-icon>
+                <span class="nav-action-text">Yêu thích</span>
+              </a>
+            </li>
+            <li>
+              <a href="carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+                <ion-icon name="bag-outline"></ion-icon>
+                <span class="nav-action-text">Giỏ hàng</span>
+              </a>
+            </li>
+          </ul>
+          <form class="search-form" id="search-form" action="#" method="get">
+            <input
+              type="search"
+              name="query"
+              placeholder="Tìm kiếm sản phẩm..."
+              id="search-input"
+              required
+            />
 
-                  <li class="navbar-item">
-                      <a href="lienhe.jsp" class="navbar-link">Liên hệ</a>
-                  </li>
-              </ul>
-
-              <ul class="nav-action-list">
-                  <li>
-                      <button
-                              class="nav-action-btn"
-                              id="searchToggleBtn"
-                              data-search-btn
-                      >
-                          <ion-icon name="search-outline"></ion-icon>
-                          <span class="nav-action-text">Tìm kiếm</span>
-                      </button>
-                  </li>
-
-                  <li class="nav-action-item nav-action-dropdown">
-                      <a href="login.jsp" class="nav-action-btn">
-                          <ion-icon name="person-outline"></ion-icon>
-                          <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                      </a>
-
-                      <div class="dropdown-content">
-                          <a href="login.jsp">Đăng nhập</a>
-                          <a href="register.jsp">Đăng ký</a>
-                      </div>
-                  </li>
-
-                  <li>
-                      <a href="wishlist.jsp" class="nav-action-btn">
-                          <ion-icon name="heart-outline"></ion-icon>
-                          <span class="nav-action-text">Yêu thích</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="Carts.html" class="nav-action-btn" title="Giỏ hàng">
-                          <ion-icon name="bag-outline"></ion-icon>
-                          <span class="nav-action-text">Giỏ hàng</span>
-                      </a>
-                  </li>
-              </ul>
-              <form class="search-form" id="search-form" action="#" method="get">
-                  <input
-                          type="search"
-                          name="query"
-                          placeholder="Tìm kiếm sản phẩm..."
-                          id="search-input"
-                          required
-                  />
-
-                  <button type="button" class="search-close-btn" id="searchCloseBtn">
-                      <ion-icon name="close-outline"></ion-icon>
-                  </button>
-              </form>
-          </nav>
+            <button type="button" class="search-close-btn" id="searchCloseBtn">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </form>
+        </nav>
       </div>
-  </header>
+    </header>
     <div class="container">
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item">
+              <a href="${pageContext.request.contextPath}/menu.jsp"
+                >Trang Chủ</a
+              >
+            </li>
 
             <li class="breadcrumb-item active" aria-current="page">
               Danh sách yêu thích của bạn
@@ -141,83 +171,97 @@
       </div>
     </div>
 
-
-
     <main class="cart-page-content wishlist-page-content">
-        <div class="container">
-            <h1 class="cart-header">Danh sách yêu thích</h1>
+      <div class="container">
+        <h1 class="cart-header">Danh sách yêu thích</h1>
 
-            <div class="cart-items-list wishlist-items-list">
+        <div class="cart-items-list wishlist-items-list">
+          <div class="product-item">
+            <div class="product-details">
+              <img
+                src="assets/images/product-1.jpg"
+                alt="Tên Sản Phẩm 1"
+                class="product-image"
+              />
 
-                <div class="product-item">
-                    <div class="product-details">
-                        <img src="assets/images/product-1.jpg" alt="Tên Sản Phẩm 1" class="product-image">
+              <div class="product-info">
+                <h2 class="product-name">
+                  <a
+                    href="${pageContext.request.contextPath}/chitietsanpham.jsp"
+                    class="product-link"
+                    >Nike Air Force 1 '07</a
+                  >
+                </h2>
 
-                        <div class="product-info">
-
-                            <h2 class="product-name">
-                                <a href="chitietsanpham.jsp" class="product-link">Nike Air Force 1 '07</a>
-                            </h2>
-
-                            <div class="product-price-line-3c"
-                                 data-id="12345"
-                                 data-price-raw="1500000"
-                                 data-original-raw="1808500"
-                                 data-discount-percentage="17">
-                                <div class="discounted-price-group">
-                                    <span class="discounted-price">650.000 VNĐ</span>
-                                    <span class="original-price" style="display: none;"></span>
-                                </div>
-                                <p class="discount-value" style="display: none;">Giảm: 0%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-actions wishlist-actions">
-                        <button class="action-btn add-to-cart-btn">Thêm vào Giỏ hàng</button>
-                        <button class="action-btn delete-btn">Xoá</button>
-                    </div>
+                <div
+                  class="product-price-line-3c"
+                  data-id="12345"
+                  data-price-raw="1500000"
+                  data-original-raw="1808500"
+                  data-discount-percentage="17"
+                >
+                  <div class="discounted-price-group">
+                    <span class="discounted-price">650.000 VNĐ</span>
+                    <span class="original-price" style="display: none"></span>
+                  </div>
+                  <p class="discount-value" style="display: none">Giảm: 0%</p>
                 </div>
-
-                <hr class="separator">
-
-                <div class="product-item">
-                    <div class="product-details">
-                        <img src="assets/images/product-2.jpg" alt="Tên Sản Phẩm 2" class="product-image">
-
-                        <div class="product-info">
-
-                            <h2 class="product-name">
-                                <a href="path/to/product/page-2.html" class="product-link">Nike Air Force 1 '07</a>
-                            </h2>
-
-                            <div class="product-price-line-3c"
-                                 data-id="12345"
-                                 data-price-raw="1500000"
-                                 data-original-raw="1808500"
-                                 data-discount-percentage="17">
-                                <div class="discounted-price-group">
-                                    <span class="discounted-price">899.000 VNĐ</span>
-                                    <span class="original-price">1.200.000 VNĐ</span>
-                                </div>
-                                <p class="discount-value">Giảm: 25%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-actions wishlist-actions">
-                        <button class="action-btn add-to-cart-btn">Thêm vào Giỏ hàng</button>
-                        <button class="action-btn delete-btn">Xoá</button>
-                    </div>
-                </div>
-
-                <hr class="separator">
-
+              </div>
             </div>
 
-        </div>
-    </main>
+            <div class="product-actions wishlist-actions">
+              <button class="action-btn add-to-cart-btn">
+                Thêm vào Giỏ hàng
+              </button>
+              <button class="action-btn delete-btn">Xoá</button>
+            </div>
+          </div>
 
+          <hr class="separator" />
+
+          <div class="product-item">
+            <div class="product-details">
+              <img
+                src="assets/images/product-2.jpg"
+                alt="Tên Sản Phẩm 2"
+                class="product-image"
+              />
+
+              <div class="product-info">
+                <h2 class="product-name">
+                  <a href="products.jsp" class="product-link"
+                    >Nike Air Force 1 '07</a
+                  >
+                </h2>
+
+                <div
+                  class="product-price-line-3c"
+                  data-id="12345"
+                  data-price-raw="1500000"
+                  data-original-raw="1808500"
+                  data-discount-percentage="17"
+                >
+                  <div class="discounted-price-group">
+                    <span class="discounted-price">899.000 VNĐ</span>
+                    <span class="original-price">1.200.000 VNĐ</span>
+                  </div>
+                  <p class="discount-value">Giảm: 25%</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-actions wishlist-actions">
+              <button class="action-btn add-to-cart-btn">
+                Thêm vào Giỏ hàng
+              </button>
+              <button class="action-btn delete-btn">Xoá</button>
+            </div>
+          </div>
+
+          <hr class="separator" />
+        </div>
+      </div>
+    </main>
 
     <footer class="footer">
       <div class="footer-top section">
@@ -310,7 +354,10 @@
               </li>
 
               <li>
-                <a href="Account.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/account.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Tài khoản</span>
@@ -318,7 +365,10 @@
               </li>
 
               <li>
-                <a href="Carts.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/carts.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Xem giỏ hàng</span>
@@ -326,7 +376,7 @@
               </li>
 
               <li>
-                <a href="WishList.html" class="footer-link">
+                <a href="wishlist.jsp" class="footer-link">
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Yêu thích</span>
@@ -339,7 +389,10 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoMat.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo mật</span>
@@ -347,7 +400,10 @@
               </li>
 
               <li>
-                <a href="ChinhSachBaoHanh.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Chính sách bảo hành</span>
@@ -355,14 +411,20 @@
               </li>
 
               <li>
-                <a href="huongdanmuahang.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/huongdanmuahang.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">Hướng dẫn mua hàng</span>
                 </a>
               </li>
               <li>
-                <a href="faq.jsp" class="footer-link">
+                <a
+                  href="${pageContext.request.contextPath}/faq.jsp"
+                  class="footer-link"
+                >
                   <ion-icon name="chevron-forward-outline"></ion-icon>
 
                   <span class="footer-link-text">FAQs</span>
@@ -412,181 +474,201 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <div id="cartPopup" class="cart-modal">
-        <div class="cart-modal-content">
-            <span class="cart-close">&times;</span>
+      <div class="cart-modal-content">
+        <span class="cart-close">&times;</span>
 
-            <div class="cart-product-box">
-                <img src="./assets/images/product-1.jpg" class="cart-product-img" id="popupImg" />
+        <div class="cart-product-box">
+          <img
+            src="./assets/images/product-1.jpg"
+            class="cart-product-img"
+            id="popupImg"
+          />
 
-                <div class="cart-info">
-                    <h2 id="popupName">Running Sneaker Shoes</h2>
+          <div class="cart-info">
+            <h2 id="popupName">Running Sneaker Shoes</h2>
 
-                    <div class="price-line">
-                        <span class="price-sale" id="popupPrice">1.500.000đ</span>
-                        <span class="price-original" id="popupOriginal">1.850.000đ</span>
-                        <span class="price-discount" id="popupDiscount">-17%</span>
-                    </div>
-
-
-                    <!-- Màu -->
-                    <div class="popup-option-block">
-                        <label>Màu sắc:</label>
-                        <div class="popup-color-list" id="popupColors">
-                            <div class="popup-color-item selected" data-value="Trắng" style="--c:#ffffff"></div>
-                            <div class="popup-color-item" data-value="Đen" style="--c:#000000"></div>
-                            <div class="popup-color-item" data-value="Xanh" style="--c:#007BFF"></div>
-                        </div>
-                    </div>
-
-                    <!-- Size -->
-                    <div class="popup-option-block">
-                        <label>Kích cỡ:</label>
-                        <div class="popup-size-list" id="popupSizes">
-                            <div class="popup-size-item selected" data-value="38">38</div>
-                            <div class="popup-size-item" data-value="39">39</div>
-                            <div class="popup-size-item" data-value="40">40</div>
-                        </div>
-                    </div>
-
-                    <div class="popup-option-block">
-                        <label>Số lượng:</label>
-                        <div class="qty-group">
-                            <button class="qty-btn minus">−</button>
-                            <input type="number" id="popupQty" value="1" min="1" />
-                            <button class="qty-btn plus">+</button>
-                        </div>
-                    </div>
-
-
-                    <button class="popup-add-cart"> Thêm vào giỏ hàng</button>
-                </div>
+            <div class="price-line">
+              <span class="price-sale" id="popupPrice">1.500.000đ</span>
+              <span class="price-original" id="popupOriginal">1.850.000đ</span>
+              <span class="price-discount" id="popupDiscount">-17%</span>
             </div>
+
+            <!-- Màu -->
+            <div class="popup-option-block">
+              <label>Màu sắc:</label>
+              <div class="popup-color-list" id="popupColors">
+                <div
+                  class="popup-color-item selected"
+                  data-value="Trắng"
+                  style="--c: #ffffff"
+                ></div>
+                <div
+                  class="popup-color-item"
+                  data-value="Đen"
+                  style="--c: #000000"
+                ></div>
+                <div
+                  class="popup-color-item"
+                  data-value="Xanh"
+                  style="--c: #007bff"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Size -->
+            <div class="popup-option-block">
+              <label>Kích cỡ:</label>
+              <div class="popup-size-list" id="popupSizes">
+                <div class="popup-size-item selected" data-value="38">38</div>
+                <div class="popup-size-item" data-value="39">39</div>
+                <div class="popup-size-item" data-value="40">40</div>
+              </div>
+            </div>
+
+            <div class="popup-option-block">
+              <label>Số lượng:</label>
+              <div class="qty-group">
+                <button class="qty-btn minus">−</button>
+                <input type="number" id="popupQty" value="1" min="1" />
+                <button class="qty-btn plus">+</button>
+              </div>
+            </div>
+
+            <button class="popup-add-cart">Thêm vào giỏ hàng</button>
+          </div>
         </div>
+      </div>
     </div>
     <div id="toast-message" class="toast-message">
-        <i class="fas fa-check-circle"></i> <span></span>
+      <i class="fas fa-check-circle"></i> <span></span>
     </div>
     <script>
-        // 1. HÀM HIỂN THỊ THÔNG BÁO TOAST
-        function showToast(message) {
-            const toast = document.getElementById("toast-message");
-            if (toast) {
-                toast.querySelector("span").textContent = message;
-                toast.classList.add("show");
-                // Tự động ẩn sau 3 giây
-                setTimeout(() => toast.classList.remove("show"), 3000);
-            }
+      // 1. HÀM HIỂN THỊ THÔNG BÁO TOAST
+      function showToast(message) {
+        const toast = document.getElementById("toast-message");
+        if (toast) {
+          toast.querySelector("span").textContent = message;
+          toast.classList.add("show");
+          // Tự động ẩn sau 3 giây
+          setTimeout(() => toast.classList.remove("show"), 3000);
         }
+      }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const overlay = document.querySelector(".overlay");
-            const actionBtns = document.querySelectorAll(".card-action-btn");
+      document.addEventListener("DOMContentLoaded", function () {
+        const overlay = document.querySelector(".overlay");
+        const actionBtns = document.querySelectorAll(".card-action-btn");
 
-            actionBtns.forEach((btn) => {
-                btn.addEventListener("click", function (e) {
-                    e.preventDefault(); // Chặn thẻ a bao ngoài (nếu có)
+        actionBtns.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault(); // Chặn thẻ a bao ngoài (nếu có)
 
-                    const icon = this.querySelector("ion-icon");
-                    const iconName = icon ? icon.getAttribute("name") : "";
+            const icon = this.querySelector("ion-icon");
+            const iconName = icon ? icon.getAttribute("name") : "";
 
-                    if (iconName === "heart-outline") {
-                        showToast("Đã thêm sản phẩm vào Yêu thích!");
-                    }
-                });
-            });
+            if (iconName === "heart-outline") {
+              showToast("Đã thêm sản phẩm vào Yêu thích!");
+            }
+          });
         });
+      });
     </script>
     <script>
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const popup = document.getElementById("cartPopup");
-            const popupClose = document.querySelector(".cart-close");
-            const openButtons = document.querySelectorAll(
-                ".add-to-cart-btn"
-            );
-            // Mở popup
-            openButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    popup.classList.add("active");
-                });
-            });
-
-            // Đóng popup
-            popupClose.addEventListener("click", () => popup.classList.remove("active"));
-            window.addEventListener("click", (e) => {
-                if (e.target === popup) popup.classList.remove("active");
-            });
-
-            // ================== CHỌN MÀU ==================
-            const colorItems = document.querySelectorAll("#popupColors .popup-color-item");
-            colorItems.forEach(item => {
-                item.addEventListener("click", () => {
-                    colorItems.forEach(i => i.classList.remove("selected"));
-                    item.classList.add("selected");
-                });
-            });
-
-            // ================== CHỌN SIZE ==================
-            const sizeItems = document.querySelectorAll("#popupSizes .popup-size-item");
-            sizeItems.forEach(item => {
-                item.addEventListener("click", () => {
-                    sizeItems.forEach(i => i.classList.remove("selected"));
-                    item.classList.add("selected");
-                });
-            });
-
-            // ================== THAY ĐỔI SỐ LƯỢNG ==================
-            const qtyInput = document.getElementById("popupQty");
-            const minusBtn = document.querySelector(".qty-btn.minus");
-            const plusBtn = document.querySelector(".qty-btn.plus");
-
-            minusBtn.addEventListener("click", () => {
-                let val = parseInt(qtyInput.value);
-                if (val > 1) qtyInput.value = val - 1;
-            });
-
-            plusBtn.addEventListener("click", () => {
-                qtyInput.value = parseInt(qtyInput.value) + 1;
-            });
-
-            qtyInput.addEventListener("input", () => {
-                if (qtyInput.value < 1) qtyInput.value = 1;
-            });
-
-            // ================== NÚT THÊM VÀO GIỎ ==================
-            const addToCartBtn = document.querySelector(".popup-add-cart");
-
-            addToCartBtn.addEventListener("click", () => {
-                const name  = document.getElementById("popupName").textContent;
-                const color = document.querySelector("#popupColors .selected")?.dataset.value;
-                const size  = document.querySelector("#popupSizes .selected")?.dataset.value;
-                const qty   = document.getElementById("popupQty").value;
-
-                // Gọi toast
-                showToast(`Đã thêm sản phẩm vào Giỏ hàng!`);
-
-                // Đóng popup
-                popup.classList.remove("active");
-            });
-
-
-
-            // ================== HÀM ĐỔ DỮ LIỆU VÀO POPUP ==================
-            window.showProductPopup = (data) => {
-                if (data.image)      document.getElementById("popupImg").src = data.image;
-                if (data.name)       document.getElementById("popupName").textContent = data.name;
-                if (data.original)   document.getElementById("popupOriginal").textContent = data.original;
-                if (data.price)      document.getElementById("popupPrice").textContent = data.price;
-                if (data.discount)   document.getElementById("popupDiscount").textContent = data.discount;
-
-                document.getElementById("popupQty").value = 1;
-
-                popup.classList.add("active");
-            };
-
+      document.addEventListener("DOMContentLoaded", () => {
+        const popup = document.getElementById("cartPopup");
+        const popupClose = document.querySelector(".cart-close");
+        const openButtons = document.querySelectorAll(".add-to-cart-btn");
+        // Mở popup
+        openButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            popup.classList.add("active");
+          });
         });
 
+        // Đóng popup
+        popupClose.addEventListener("click", () =>
+          popup.classList.remove("active")
+        );
+        window.addEventListener("click", (e) => {
+          if (e.target === popup) popup.classList.remove("active");
+        });
 
+        // ================== CHỌN MÀU ==================
+        const colorItems = document.querySelectorAll(
+          "#popupColors .popup-color-item"
+        );
+        colorItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            colorItems.forEach((i) => i.classList.remove("selected"));
+            item.classList.add("selected");
+          });
+        });
+
+        // ================== CHỌN SIZE ==================
+        const sizeItems = document.querySelectorAll(
+          "#popupSizes .popup-size-item"
+        );
+        sizeItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            sizeItems.forEach((i) => i.classList.remove("selected"));
+            item.classList.add("selected");
+          });
+        });
+
+        // ================== THAY ĐỔI SỐ LƯỢNG ==================
+        const qtyInput = document.getElementById("popupQty");
+        const minusBtn = document.querySelector(".qty-btn.minus");
+        const plusBtn = document.querySelector(".qty-btn.plus");
+
+        minusBtn.addEventListener("click", () => {
+          let val = parseInt(qtyInput.value);
+          if (val > 1) qtyInput.value = val - 1;
+        });
+
+        plusBtn.addEventListener("click", () => {
+          qtyInput.value = parseInt(qtyInput.value) + 1;
+        });
+
+        qtyInput.addEventListener("input", () => {
+          if (qtyInput.value < 1) qtyInput.value = 1;
+        });
+
+        // ================== NÚT THÊM VÀO GIỎ ==================
+        const addToCartBtn = document.querySelector(".popup-add-cart");
+
+        addToCartBtn.addEventListener("click", () => {
+          const name = document.getElementById("popupName").textContent;
+          const color = document.querySelector("#popupColors .selected")
+            ?.dataset.value;
+          const size = document.querySelector("#popupSizes .selected")?.dataset
+            .value;
+          const qty = document.getElementById("popupQty").value;
+
+          // Gọi toast
+          showToast(`Đã thêm sản phẩm vào Giỏ hàng!`);
+
+          // Đóng popup
+          popup.classList.remove("active");
+        });
+
+        // ================== HÀM ĐỔ DỮ LIỆU VÀO POPUP ==================
+        window.showProductPopup = (data) => {
+          if (data.image) document.getElementById("popupImg").src = data.image;
+          if (data.name)
+            document.getElementById("popupName").textContent = data.name;
+          if (data.original)
+            document.getElementById("popupOriginal").textContent =
+              data.original;
+          if (data.price)
+            document.getElementById("popupPrice").textContent = data.price;
+          if (data.discount)
+            document.getElementById("popupDiscount").textContent =
+              data.discount;
+
+          document.getElementById("popupQty").value = 1;
+
+          popup.classList.add("active");
+        };
+      });
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -642,6 +724,5 @@
         overlay.classList.remove("active");
       });
     </script>
-
   </body>
 </html>
