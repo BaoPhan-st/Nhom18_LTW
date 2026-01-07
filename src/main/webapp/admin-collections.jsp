@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -32,21 +33,24 @@
             <div class="form-group">
                 <label>Loại RuleSet</label>
                 <select name="ruleSet_type">
-                    <option value="manual" ${collection.ruleSet_type=='manual'?'selected':''}>Manual</option>
-                    <option value="automatic" ${collection.ruleSet_type=='automatic'?'selected':''}>Automatic</option>
+                    <option value="manual" <c:if test="${collection.ruleSet_type=='manual'}">selected</c:if>>Manual</option>
+                    <option value="automatic" <c:if test="${collection.ruleSet_type=='automatic'}">selected</c:if>>Automatic</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Active</label>
                 <select name="is_active">
-                    <option value="true" ${collection.is_active?'selected':''}>Active</option>
-                    <option value="false" ${!collection.is_active?'selected':''}>Inactive</option>
+                    <option value="true" <c:if test="${collection.is_active}">selected</c:if>>Active</option>
+                    <option value="false" <c:if test="${!collection.is_active}">selected</c:if>>Inactive</option>
                 </select>
             </div>
 
             <button type="submit" class="btn-submit">
-                ${collection.id == null ? "Thêm mới" : "Cập nhật"}
+                <c:choose>
+                    <c:when test="${collection.id == null}">Thêm mới</c:when>
+                    <c:otherwise>Cập nhật</c:otherwise>
+                </c:choose>
             </button>
         </form>
     </div>

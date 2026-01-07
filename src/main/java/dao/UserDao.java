@@ -1,6 +1,6 @@
 package dao;
 
-import model.User;
+import model.user.User;
 import org.jdbi.v3.core.Jdbi;
 
 public class UserDao {

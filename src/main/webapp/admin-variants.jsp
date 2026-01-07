@@ -1,4 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý biến thể</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
+</head>
+<body>
 
 <div class="admin-header">
     <h2>Quản lý biến thể</h2>
@@ -7,8 +15,7 @@
 <!-- Form thêm / chỉnh sửa biến thể -->
 <div class="form-box variant-form-box">
     <form id="variant-form" action="variant" method="post">
-        <!-- Hidden input chỉ dùng khi edit -->
-        <c:if test="${variant != null && variant.productId != null}">
+        <c:if test="${variant != null}">
             <input type="hidden" name="productId" value="${variant.productId}"/>
             <input type="hidden" name="sizeId" value="${variant.sizeId}"/>
             <input type="hidden" name="colorId" value="${variant.colorId}"/>
@@ -18,7 +25,9 @@
             <label>Size:</label>
             <select name="sizeId">
                 <c:forEach var="s" items="${sizes}">
-                    <option value="${s.id}" ${variant != null && variant.sizeId == s.id ? 'selected' : ''}>${s.name}</option>
+                    <option value="${s.id}" <c:if test="${variant != null && variant.sizeId == s.id}">selected</c:if>>
+                            ${s.name}
+                    </option>
                 </c:forEach>
             </select>
         </div>
@@ -27,18 +36,20 @@
             <label>Màu:</label>
             <select name="colorId">
                 <c:forEach var="c" items="${colors}">
-                    <option value="${c.id}" ${variant != null && variant.colorId == c.id ? 'selected' : ''}>${c.name}</option>
+                    <option value="${c.id}" <c:if test="${variant != null && variant.colorId == c.id}">selected</c:if>>
+                            ${c.name}
+                    </option>
                 </c:forEach>
             </select>
         </div>
 
         <div class="form-group">
             <label>Stock:</label>
-            <input type="number" name="stock" min="0" value="${variant != null ? variant.stock : 0}"/>
+            <input type="number" name="stock" min="0" value="<c:out value='${variant != null ? variant.stock : 0}'/>"/>
         </div>
 
         <button type="submit" class="btn-submit">
-            ${variant != null ? "Cập nhật" : "Thêm mới"}
+            <c:out value="${variant != null ? 'Cập nhật' : 'Thêm mới'}"/>
         </button>
     </form>
 </div>
@@ -78,3 +89,6 @@
         </tbody>
     </table>
 </div>
+
+</body>
+</html>

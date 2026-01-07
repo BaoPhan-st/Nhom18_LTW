@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="model.User" %>
+<%@ page import="model.user.User" %>
 <% User currentUser = (User) session.getAttribute("currentUser"); %>
 
 <header class="header">

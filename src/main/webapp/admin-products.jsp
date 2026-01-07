@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -25,15 +26,20 @@
             </div>
 
             <div class="form-group">
+                <label>Mô tả sản phẩm</label>
+                <input name="description" type="text" value="${product.description}" required/>
+            </div>
+
+            <div class="form-group">
                 <label>Giá</label>
                 <input name="price" type="number" step="0.01" value="${product.price}" required/>
             </div>
 
             <div class="form-group">
                 <label>Thương hiệu</label>
-                <select name="brand_id">
+                <select name="brand">
                     <c:forEach var="b" items="${brands}">
-                        <option value="${b.id}" ${product.brand_id == b.id ? 'selected' : ''}>${b.name}</option>
+                        <option value="${b.id}" ${product.brand == b.id ? 'selected' : ''}>${b.name}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -51,6 +57,7 @@
             <tr>
                 <th>ID</th>
                 <th>Tên</th>
+                <th>Mô tả</th>
                 <th>Giá</th>
                 <th>Thương hiệu</th>
                 <th>Hành động</th>
@@ -61,19 +68,23 @@
                 <tr>
                     <td>${p.id}</td>
                     <td>${p.name}</td>
+                    <td>${p.description}</td>
                     <td>${p.price} ₫</td>
                     <td>${p.brandName}</td>
                     <td class="actions">
                         <a href="product?edit=${p.id}" class="btn edit">Sửa</a>
-                        <a href="product?delete=${p.id}" class="btn delete"
-                           onclick="return confirm('Xóa sản phẩm này?')">Xóa</a>
+                        <form method="post" action="product" style="display:inline;"
+                              onsubmit="return confirm('Xóa sản phẩm này?');">
+                            <input type="hidden" name="deleteId" value="${p.id}" />
+                            <button type="submit" class="btn delete">Xóa</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>
 
             <c:if test="${empty products}">
                 <tr>
-                    <td colspan="5" class="empty">Chưa có sản phẩm</td>
+                    <td colspan="6" class="empty">Chưa có sản phẩm</td>
                 </tr>
             </c:if>
             </tbody>

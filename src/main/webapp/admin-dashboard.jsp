@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
 </head>
 <body>
+
 <div class="admin-header">
     <h2>Dashboard</h2>
 </div>
@@ -16,17 +17,17 @@
 <div class="cards-manager">
     <div class="card">
         <h3>Đơn hàng hôm nay</h3>
-        <span class="card-number">${todayOrders}</span>
+        <span class="card-number"><c:out value="${todayOrders}"/></span>
     </div>
 
     <div class="card">
         <h3>Doanh thu hôm nay</h3>
-        <span class="card-number">${todayRevenue} ₫</span>
+        <span class="card-number"><c:out value="${todayRevenue}"/> ₫</span>
     </div>
 
     <div class="card">
         <h3>Khách hàng mới</h3>
-        <span class="card-number">${newCustomers}</span>
+        <span class="card-number"><c:out value="${newCustomers}"/></span>
     </div>
 </div>
 
@@ -47,15 +48,15 @@
         <tbody>
         <c:forEach var="o" items="${recentOrders}">
             <tr>
-                <td>#${o.id}</td>
-                <td>${o.full_name}</td>
-                <td>${o.grand_total} ₫</td>
+                <td><c:out value="${o.id}"/></td>
+                <td><c:out value="${o.full_name}"/></td>
+                <td><c:out value="${o.grand_total}"/> ₫</td>
                 <td>
-                        <span class="status ${o.order_status}">
-                                ${o.order_status}
-                        </span>
+                    <span class="status <c:out value='${o.order_status}'/>">
+                        <c:out value="${o.order_status}"/>
+                    </span>
                 </td>
-                <td>${o.created_at}</td>
+                <td><c:out value="${o.created_at}"/></td>
             </tr>
         </c:forEach>
 
@@ -67,7 +68,6 @@
         </tbody>
     </table>
 </div>
-
 
 </body>
 </html>

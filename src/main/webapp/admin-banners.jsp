@@ -25,7 +25,7 @@
 
             <div class="form-group">
                 <label>Link</label>
-                <input type="text" name="link_url" value="${banner.link_url}"/>
+                <input type="text" name="link_url" value="${banner.link_url}" placeholder="Nhập URL liên kết"/>
             </div>
 
             <div class="form-group">
@@ -35,34 +35,39 @@
 
             <div class="form-group">
                 <label>Vị trí</label>
-                <input type="text" name="position" value="${banner.position}"/>
+                <input type="text" name="position" value="${banner.position}" placeholder="Vị trí hiển thị"/>
             </div>
 
             <div class="form-group">
                 <label>Thứ tự</label>
-                <input type="number" name="sort_order" value="${banner.sort_order}"/>
+                <input type="number" name="sort_order" min="0" value="${banner.sort_order}"/>
             </div>
 
             <div class="form-group">
                 <label>Active</label>
                 <select name="is_active">
-                    <option value="true" ${banner.is_active?'selected':''}>Active</option>
-                    <option value="false" ${!banner.is_active?'selected':''}>Inactive</option>
+                    <option value="true" <c:if test="${banner.is_active}">selected</c:if>>Active</option>
+                    <option value="false" <c:if test="${!banner.is_active}">selected</c:if>>Inactive</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Ngày bắt đầu</label>
-                <input type="datetime-local" name="start_date" value="${banner.start_date}"/>
+                <input type="datetime-local" name="start_date"
+                       value="<c:if test='${banner.start_date != null}'><fmt:formatDate value='${banner.start_date}' pattern='yyyy-MM-dd\'T\'HH:mm'/></c:if>"/>
             </div>
 
             <div class="form-group">
                 <label>Ngày kết thúc</label>
-                <input type="datetime-local" name="end_date" value="${banner.end_date}"/>
+                <input type="datetime-local" name="end_date"
+                       value="<c:if test='${banner.end_date != null}'><fmt:formatDate value='${banner.end_date}' pattern='yyyy-MM-dd\'T\'HH:mm'/></c:if>"/>
             </div>
 
             <button type="submit" class="btn-submit">
-                ${banner.id == null ? "Thêm mới" : "Cập nhật"}
+                <c:choose>
+                    <c:when test="${banner.id == null}">Thêm mới</c:when>
+                    <c:otherwise>Cập nhật</c:otherwise>
+                </c:choose>
             </button>
         </form>
     </div>
@@ -89,13 +94,20 @@
                 <tr>
                     <td>${b.id}</td>
                     <td>${b.title}</td>
-                    <td><img src="${b.img_url}" alt="Banner" style="width:100px;"/></td>
+                    <td>
+                        <img src="${b.img_url}" alt="Banner" style="width:100px;"
+                             onerror="this.src='${pageContext.request.contextPath}/assets/images/no-image.png'"/>
+                    </td>
                     <td>${b.link_url}</td>
                     <td>${b.position}</td>
                     <td>${b.sort_order}</td>
-                    <td>${b.is_active ? 'Active' : 'Inactive'}</td>
-                    <td>${b.start_date}</td>
-                    <td>${b.end_date}</td>
+                    <td><c:choose>
+                        <c:when test="${b.is_active}">Active</c:when>
+                        <c:otherwise>Inactive</c:otherwise>
+                    </c:choose>
+                    </td>
+                    <td><c:if test="${b.start_date != null}"><fmt:formatDate value="${b.start_date}" pattern="dd/MM/yyyy HH:mm"/></c:if></td>
+                    <td><c:if test="${b.end_date != null}"><fmt:formatDate value="${b.end_date}" pattern="dd/MM/yyyy HH:mm"/></c:if></td>
                     <td class="actions">
                         <a href="banner?edit=${b.id}" class="btn edit">Sửa</a>
                         <a href="banner?delete=${b.id}" class="btn delete"
