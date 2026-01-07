@@ -27,8 +27,7 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher("webapp/menu.jsp")
-                .forward(req, resp);
+        req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 
     @Override
@@ -46,11 +45,16 @@ public class LoginController extends HttpServlet {
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
             return;
         }
-
+        User u = userService.getUserDao().findByEmail(email);
+        if (u != null && !u.isActive()) {
+            req.setAttribute("error", "Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email hoặc liên hệ admin.");
+            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            return;
+        }
         // 2. Login
-        User users = userService.loginByEmail(email, password);
+        User user = userService.loginByEmail(email, password);
 
-        if (users == null) {
+        if (user == null) {
             req.setAttribute("error", "Sai email hoặc mật khẩu");
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
             return;
@@ -58,7 +62,7 @@ public class LoginController extends HttpServlet {
 
         // 3. Session
         HttpSession session = req.getSession(true);
-        session.setAttribute("currentUser", users);
+        session.setAttribute("currentUser", user);
         session.setMaxInactiveInterval(30 * 60);
 
 
@@ -68,7 +72,7 @@ public class LoginController extends HttpServlet {
         }
 
 
-        if ("ADMIN".equalsIgnoreCase(users.getRole())) {
+        if ("ADMIN".equalsIgnoreCase(user.getRole())) {
             resp.sendRedirect(req.getContextPath() + "/admin/overview");
         } else {
             resp.sendRedirect(req.getContextPath() + "/menu.jsp");

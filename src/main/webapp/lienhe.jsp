@@ -1,464 +1,75 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="vi">
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập - BHD SPORT SHOES</title>
+    <title>Liên Hệ - BHD SPORT SHOES</title>
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lienhe.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!--
-          - favicon
-        -->
-    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/lienhe.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="container">
-        <div class="overlay"></div>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
 
-        <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
-          <img
-            src="./assets/images/BHD%20LOGO.png"
-            width="100"
-            height="50"
-            alt="BHD logo"
-          />
-        </a>
+<body>
+<jsp:include page="header.jsp" />
 
-        <!-- Nút mở menu -->
-        <button class="nav-open-btn">
-          <ion-icon name="menu-outline"></ion-icon>
-        </button>
-
-        <nav class="navbar">
-          <button
-            class="nav-close-btn"
-            data-nav-close-btn
-            aria-label="Close Menu"
-          >
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
-
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/menu.jsp"
-                class="navbar-link"
-                >Trang chủ</a
-              >
-            </li>
-
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/gioithieu.jsp"
-                class="navbar-link"
-                >Giới thiệu</a
-              >
-            </li>
-
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/products.jsp"
-                class="navbar-link"
-                >Sản phẩm</a
-              >
-            </li>
-
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/lienhe.jsp"
-                class="navbar-link"
-                >Liên hệ</a
-              >
-            </li>
-          </ul>
-
-          <ul class="nav-action-list">
-            <li>
-              <button
-                class="nav-action-btn"
-                id="searchToggleBtn"
-                data-search-btn
-              >
-                <ion-icon name="search-outline"></ion-icon>
-                <span class="nav-action-text">Tìm kiếm</span>
-              </button>
-            </li>
-
-            <li class="nav-action-item nav-action-dropdown">
-              <a
-                href="${pageContext.request.contextPath}/login.jsp"
-                class="nav-action-btn"
-              >
-                <ion-icon name="person-outline"></ion-icon>
-                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-              </a>
-
-              <div class="dropdown-content">
-                <a href="${pageContext.request.contextPath}/login.jsp"
-                  >Đăng nhập</a
-                >
-                <a href="${pageContext.request.contextPath}/register.jsp"
-                  >Đăng ký</a
-                >
-              </div>
-            </li>
-
-            <li>
-              <a
-                href="${pageContext.request.contextPath}/wishlist.jsp"
-                class="nav-action-btn"
-              >
-                <ion-icon name="heart-outline"></ion-icon>
-                <span class="nav-action-text">Yêu thích</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="${pageContext.request.contextPath}/carts.jsp"
-                class="nav-action-btn"
-                title="Giỏ hàng"
-              >
-                <ion-icon name="bag-outline"></ion-icon>
-                <span class="nav-action-text">Giỏ hàng</span>
-              </a>
-            </li>
-          </ul>
-          <form class="search-form" id="search-form" action="#" method="get">
-            <input
-              type="search"
-              name="query"
-              placeholder="Tìm kiếm sản phẩm..."
-              id="search-input"
-              required
-            />
-
-            <button type="button" class="search-close-btn" id="searchCloseBtn">
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-          </form>
-        </nav>
-      </div>
-    </header>
-    <div class="container">
-      <div class="breadcrumb-container">
+<div class="container">
+    <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="${pageContext.request.contextPath}/menu.jsp"
-                >Trang Chủ</a
-              >
-            </li>
-
-            <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
-          </ol>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="${pageContext.request.contextPath}/menu.jsp">Trang Chủ</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+            </ol>
         </nav>
-      </div>
     </div>
-    <div class="contact-wrapper">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2145255159867!2d106.78918677586935!3d10.871281657435231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276398969f7b%3A0x9672b7efd0893fc4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1762058833289!5m2!1svi!2s"
-        class="bando"
-      ></iframe>
+</div>
 
-      <div class="info-container">
+<div class="contact-wrapper">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2312403776427!2d106.8008654145899!3d10.86991836043216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527587e9ad5bf%3A0xafa66f9c8be3c91!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiAtIMSQSFFHIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1679069438063!5m2!1svi!2s"
+            class="bando" allowfullscreen="" loading="lazy"></iframe>
+
+    <div class="info-container">
         <h3>LIÊN HỆ</h3>
-
         <div class="info-item">
-          <i class="fa-solid fa-map"></i>
-          <div class="info-text">
-            <strong>Địa chỉ:</strong><br />
-            Khu phố 6, phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
-          </div>
-        </div>
-
-        <div class="info-item">
-          <i class="fa-solid fa-phone"></i>
-          <div class="info-text">
-            <strong>Hotline:</strong><br />
-            028 3896 6780
-          </div>
-        </div>
-
-        <div class="info-item">
-          <i class="fa-solid fa-clock"></i>
-          <div class="info-text">
-            <strong>Thời gian làm việc:</strong> <br />
-            Thứ 2 - Thứ 7: 7:30 - 17:00
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="footer-top section">
-        <div class="container">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <img
-                src="./assets/images/BHD%20LOGO.png"
-                width="110"
-                height="50"
-                alt="BHD"
-              />
-            </a>
-
-            <ul class="social-list">
-              <li>
-                <a
-                  href="https://www.facebook.com/kcntt.nlu"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.youtube.com/@NongLamUniversity/videos"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-youtube"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.tiktok.com/@nonglam.university"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-tiktok"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-link-box">
-            <ul class="footer-list">
-              <li>
-                <p class="footer-list-title">Thông tin liên hệ</p>
-              </li>
-
-              <li>
-                <address class="footer-link">
-                  <ion-icon name="location"></ion-icon>
-                  <span class="footer-link-text">
-                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
-                  </span>
-                </address>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="call"></ion-icon>
-                  <span class="footer-link-text">0332536387</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="mail"></ion-icon>
-                  <span class="footer-link-text">BHDsport@gmail.com</span>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="footer-list">
-              <li><p class="footer-list-title">Tài khoản</p></li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/carts.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                  <span class="footer-link-text">Xem giỏ hàng</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/wishlist.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                  <span class="footer-link-text">Yêu thích</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/account.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Yêu thích</span>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="footer-list">
-              <li><p class="footer-list-title">Chính sách</p></li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Chính sách bảo mật</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Chính sách bảo hành</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/huongdanmuahang.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/faq.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">FAQs</span>
-                </a>
-              </li>
-            </ul>
-
-            <
-            <div class="footer-list">
-              <p class="footer-list-title">Đăng kí nhận tin</p>
-              <form
-                id="newsletter-form"
-                action=""
-                class="newsletter-form"
-                method="POST"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Email"
-                  class="newsletter-input"
-                />
-                <button type="submit" class="btn btn-primary">
-                  <span>Đăng Kí</span>
-                </button>
-              </form>
+            <i class="fa-solid fa-map"></i>
+            <div class="info-text">
+                <strong>Địa chỉ:</strong><br />
+                Khu phố 6, phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
             </div>
-          </div>
         </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="copyright">
-            &copy; 2025
-            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
-            chinh phục mọi hành trình
-          </p>
+        <div class="info-item">
+            <i class="fa-solid fa-phone"></i>
+            <div class="info-text">
+                <strong>Hotline:</strong><br />
+                028 3896 6780
+            </div>
         </div>
-      </div>
-    </footer>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const searchToggleBtn = document.getElementById("searchToggleBtn");
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search-input");
+        <div class="info-item">
+            <i class="fa-solid fa-clock"></i>
+            <div class="info-text">
+                <strong>Thời gian làm việc:</strong> <br />
+                Thứ 2 - Thứ 7: 7:30 - 17:00
+            </div>
+        </div>
+    </div>
+</div>
 
-        if (searchToggleBtn && searchForm && searchInput) {
-          function toggleSearch(e) {
-            if (e) e.preventDefault();
-            searchForm.classList.toggle("active");
+<jsp:include page="footer.jsp" />
 
-            if (searchForm.classList.contains("active")) {
-              searchInput.focus();
-            } else {
-              searchInput.value = "";
-            }
-          }
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-          function handleSearchAction(e) {
-            toggleSearch(e);
-          }
+<script src="${pageContext.request.contextPath}/assets/script/reponsive.js"></script>
 
-          searchToggleBtn.addEventListener("click", handleSearchAction);
-
-          searchInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              toggleSearch(e);
-            }
-          });
-        }
-      });
-    </script>
-    <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
-
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
-      });
-
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-    </script>
-  </body>
+</body>
 </html>

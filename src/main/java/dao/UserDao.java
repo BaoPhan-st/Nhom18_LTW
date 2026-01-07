@@ -37,43 +37,58 @@ public class UserDao {
 
     // ===== INSERT USER =====
     public int insertUser(User user) {
-        String sql = """
+        String sql = """ 
         INSERT INTO users (
-            email,
-            password_hash,
-            phone_number,
-            address,
-            full_name,
-            role,
-            is_active,
-            created_at,
-            firebase_uid
+            email, password_hash, phone_number, address, full_name, role, is_active, created_at, firebase_uid
         )
         VALUES (
-            :email,
-            :passwordHash,
-            :phoneNumber,
-            :address,
-            :fullName,
-            :role,
-            :isActive,
-            :createdAt,
-            :firebaseUID
+            :email, :passwordHash, :phoneNumber, :address, :fullName, :role, :isActive, :createdAt, :firebaseUID
         )
     """;
 
+        try {
+            int rows = jdbi.withHandle(handle ->
+                    handle.createUpdate(sql)
+                            .bind("email", user.getEmail())
+                            .bind("passwordHash", user.getPasswordHash())
+                            .bind("phoneNumber", user.getPhoneNumber())
+                            .bind("address", user.getAddress())
+                            .bind("fullName", user.getFullName())
+                            .bind("role", user.getRole())
+                            .bind("isActive", user.isActive())
+                            .bind("createdAt", user.getCreatedAt())
+                            .bind("firebaseUID", user.getFirebaseUID())
+                            .execute()
+            );
+
+            System.out.println("insertUser rows = " + rows);
+            return rows;
+        } catch (Exception e) {
+            System.out.println("insertUser FAILED!");
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+
+    // ===== UPDATE PASSWORD (cho quên mật khẩu) =====
+    public boolean updatePassword(String email, String newPasswordHash) {
+        String sql = "UPDATE users SET password_hash = :password WHERE email = :email";
+        
+        return jdbi.withHandle(handle ->
+            handle.createUpdate(sql)
+                .bind("email", email)
+                .bind("password", newPasswordHash)
+                .execute()
+        ) > 0;
+    }
+    public boolean activateByEmail(String email) {
+        String sql = "UPDATE users SET is_active = 1 WHERE email = :email";
         return jdbi.withHandle(handle ->
                 handle.createUpdate(sql)
-                        .bind("email", user.getEmail())              // "nguyenvana@gmail.com"
-                        .bind("passwordHash", user.getPasswordHash()) // ""
-                        .bind("phoneNumber", user.getPhoneNumber())   // NULL
-                        .bind("address", user.getAddress())           // NULL
-                        .bind("fullName", user.getFullName())         // "Nguyễn Văn A"
-                        .bind("role", user.getRole())                 // "user"
-                        .bind("isActive", user.isActive())            // true
-                        .bind("createdAt", user.getCreatedAt())       // giờ ngày tạo acc
-                        .bind("firebaseUID", user.getFirebaseUID())   // "AbC123XyZ"
+                        .bind("email", email)
                         .execute()
-        );
+        ) > 0;
     }
+
 }

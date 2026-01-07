@@ -1,9 +1,9 @@
 package model;
 
-import org.jdbi.v3.core.mapper.reflect.ColumnName;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
 public class User implements Serializable {
 

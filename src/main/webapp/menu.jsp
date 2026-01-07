@@ -46,148 +46,147 @@ session.getAttribute("currentUser"); %>
 - #HEADER
 -->
     <header class="header">
-      <div class="container">
-        <div class="overlay"></div>
+        <div class="container">
+            <div class="overlay"></div>
 
-        <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
-          <img
-            src="./assets/images/BHD%20LOGO.png"
-            width="100"
-            height="50"
-            alt="BHD logo"
-          />
-        </a>
+            <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
+                <img
+                        src="./assets/images/BHD%20LOGO.png"
+                        width="100"
+                        height="50"
+                        alt="BHD logo"
+                />
+            </a>
 
-        <!-- Nút mở menu -->
-        <button class="nav-open-btn">
-          <ion-icon name="menu-outline"></ion-icon>
-        </button>
-
-        <nav class="navbar">
-          <button
-            class="nav-close-btn"
-            data-nav-close-btn
-            aria-label="Close Menu"
-          >
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
-
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/menu.jsp"
-                class="navbar-link"
-                >Trang chủ</a
-              >
-            </li>
-
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/gioithieu.jsp"
-                class="navbar-link"
-                >Giới thiệu</a
-              >
-            </li>
-
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/products.jsp"
-                class="navbar-link"
-                >Sản phẩm</a
-              >
-            </li>
-
-            <li class="navbar-item">
-              <a
-                href="${pageContext.request.contextPath}/lienhe.jsp"
-                class="navbar-link"
-                >Liên hệ</a
-              >
-            </li>
-          </ul>
-
-          <ul class="nav-action-list">
-            <li>
-              <button
-                class="nav-action-btn"
-                id="searchToggleBtn"
-                data-search-btn
-              >
-                <ion-icon name="search-outline"></ion-icon>
-                <span class="nav-action-text">Tìm kiếm</span>
-              </button>
-            </li>
-
-            <li class="nav-action-item nav-action-dropdown">
-              <% if (currentUser == null) { %>
-              <!-- Chưa đăng nhập -->
-              <a
-                href="${pageContext.request.contextPath}/login.jsp"
-                class="nav-action-btn"
-              >
-                <ion-icon name="person-outline"></ion-icon>
-                <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-              </a>
-              <div class="dropdown-content">
-                <a href="${pageContext.request.contextPath}/login.jsp"
-                  >Đăng nhập</a
-                >
-                <a href="${pageContext.request.contextPath}/register.jsp"
-                  >Đăng ký</a
-                >
-              </div>
-              <% } else { %>
-              <!-- Đã đăng nhập -->
-              <a href="#" class="nav-action-btn">
-                <ion-icon name="person-outline"></ion-icon>
-                <span class="nav-action-text"
-                  ><%= currentUser.getFullName() != null ?
-                  currentUser.getFullName() : currentUser.getEmail() %></span
-                >
-              </a>
-              <div class="dropdown-content">
-                <a href="account">Tài khoản của tôi</a>
-                <a href="logout">Đăng xuất</a>
-              </div>
-              <% } %>
-            </li>
-            <li>
-              <a
-                href="${pageContext.request.contextPath}/wishlist.jsp"
-                class="nav-action-btn"
-              >
-                <ion-icon name="heart-outline"></ion-icon>
-                <span class="nav-action-text">Yêu thích</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="${pageContext.request.contextPath}/carts.jsp"
-                class="nav-action-btn"
-                title="Giỏ hàng"
-              >
-                <ion-icon name="bag-outline"></ion-icon>
-                <span class="nav-action-text">Giỏ hàng</span>
-              </a>
-            </li>
-          </ul>
-          <form class="search-form" id="search-form" action="#" method="get">
-            <input
-              type="search"
-              name="query"
-              placeholder="Tìm kiếm sản phẩm..."
-              id="search-input"
-              required
-            />
-
-            <button type="button" class="search-close-btn" id="searchCloseBtn">
-              <ion-icon name="close-outline"></ion-icon>
+            <!-- Nút mở menu -->
+            <button class="nav-open-btn">
+                <ion-icon name="menu-outline"></ion-icon>
             </button>
-          </form>
-        </nav>
-      </div>
-    </header>
 
+            <nav class="navbar">
+                <button
+                        class="nav-close-btn"
+                        data-nav-close-btn
+                        aria-label="Close Menu"
+                >
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a
+                                href="${pageContext.request.contextPath}/menu.jsp"
+                                class="navbar-link"
+                        >Trang chủ</a
+                        >
+                    </li>
+
+                    <li class="navbar-item">
+                        <a
+                                href="${pageContext.request.contextPath}/gioithieu.jsp"
+                                class="navbar-link"
+                        >Giới thiệu</a
+                        >
+                    </li>
+
+                    <li class="navbar-item">
+                        <a
+                                href="${pageContext.request.contextPath}/products.jsp"
+                                class="navbar-link"
+                        >Sản phẩm</a
+                        >
+                    </li>
+
+                    <li class="navbar-item">
+                        <a
+                                href="${pageContext.request.contextPath}/lienhe.jsp"
+                                class="navbar-link"
+                        >Liên hệ</a
+                        >
+                    </li>
+                </ul>
+
+                <ul class="nav-action-list">
+                    <li>
+                        <button
+                                class="nav-action-btn"
+                                id="searchToggleBtn"
+                                data-search-btn
+                        >
+                            <ion-icon name="search-outline"></ion-icon>
+                            <span class="nav-action-text">Tìm kiếm</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-action-item nav-action-dropdown">
+                        <% if (currentUser == null) { %>
+                        <!-- Chưa đăng nhập -->
+                        <a
+                                href="${pageContext.request.contextPath}/login.jsp"
+                                class="nav-action-btn"
+                        >
+                            <ion-icon name="person-outline"></ion-icon>
+                            <span class="nav-action-text">Đăng nhập / Đăng kí</span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="${pageContext.request.contextPath}/login.jsp"
+                            >Đăng nhập</a
+                            >
+                            <a href="${pageContext.request.contextPath}/register.jsp"
+                            >Đăng ký</a
+                            >
+                        </div>
+                        <% } else { %>
+                        <!-- Đã đăng nhập -->
+                        <a href="#" class="nav-action-btn">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <span class="nav-action-text"
+                            ><%= currentUser.getFullName() != null ?
+                                    currentUser.getFullName() : currentUser.getEmail() %></span
+                            >
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="account">Tài khoản của tôi</a>
+                            <a href="logout">Đăng xuất</a>
+                        </div>
+                        <% } %>
+                    </li>
+                    <li>
+                        <a
+                                href="${pageContext.request.contextPath}/wishlist.jsp"
+                                class="nav-action-btn"
+                        >
+                            <ion-icon name="heart-outline"></ion-icon>
+                            <span class="nav-action-text">Yêu thích</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                                href="${pageContext.request.contextPath}/carts.jsp"
+                                class="nav-action-btn"
+                                title="Giỏ hàng"
+                        >
+                            <ion-icon name="bag-outline"></ion-icon>
+                            <span class="nav-action-text">Giỏ hàng</span>
+                        </a>
+                    </li>
+                </ul>
+                <form class="search-form" id="search-form" action="#" method="get">
+                    <input
+                            type="search"
+                            name="query"
+                            placeholder="Tìm kiếm sản phẩm..."
+                            id="search-input"
+                            required
+                    />
+
+                    <button type="button" class="search-close-btn" id="searchCloseBtn">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </form>
+            </nav>
+        </div>
+    </header>
     <main>
       <article>
         <!--
@@ -1684,6 +1683,72 @@ session.getAttribute("currentUser"); %>
         </div>
       </div>
     </footer>
+    <div id="cartPopup" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="cart-close">&times;</span>
+
+            <div class="cart-product-box">
+                <img
+                        src="./assets/images/product-1.jpg"
+                        class="cart-product-img"
+                        id="popupImg"
+                />
+
+                <div class="cart-info">
+                    <h2 id="popupName">Running Sneaker Shoes</h2>
+
+                    <div class="price-line">
+                        <span class="price-sale" id="popupPrice">1.500.000đ</span>
+                        <span class="price-original" id="popupOriginal">1.850.000đ</span>
+                        <span class="price-discount" id="popupDiscount">-17%</span>
+                    </div>
+
+                    <!-- Màu -->
+                    <div class="popup-option-block">
+                        <label>Màu sắc:</label>
+                        <div class="popup-color-list" id="popupColors">
+                            <div
+                                    class="popup-color-item selected"
+                                    data-value="Trắng"
+                                    style="--c: #ffffff"
+                            ></div>
+                            <div
+                                    class="popup-color-item"
+                                    data-value="Đen"
+                                    style="--c: #000000"
+                            ></div>
+                            <div
+                                    class="popup-color-item"
+                                    data-value="Xanh"
+                                    style="--c: #007bff"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="popup-option-block">
+                        <label>Kích cỡ:</label>
+                        <div class="popup-size-list" id="popupSizes">
+                            <div class="popup-size-item selected" data-value="38">38</div>
+                            <div class="popup-size-item" data-value="39">39</div>
+                            <div class="popup-size-item" data-value="40">40</div>
+                        </div>
+                    </div>
+
+                    <div class="popup-option-block">
+                        <label>Số lượng:</label>
+                        <div class="qty-group">
+                            <button class="qty-btn minus">−</button>
+                            <input type="number" id="popupQty" value="1" min="1" />
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <button class="popup-add-cart">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="toast-message" class="toast-message">
       <i class="fas fa-check-circle"></i> <span></span>
     </div>
@@ -1700,257 +1765,10 @@ session.getAttribute("currentUser"); %>
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const searchToggleBtn = document.getElementById("searchToggleBtn");
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search-input");
 
-        if (searchToggleBtn && searchForm && searchInput) {
-          function toggleSearch(e) {
-            if (e) e.preventDefault();
-            searchForm.classList.toggle("active");
+    <script src="${pageContext.request.contextPath}/assets/script/reponsive.js"></script>
 
-            if (searchForm.classList.contains("active")) {
-              searchInput.focus();
-            } else {
-              searchInput.value = "";
-            }
-          }
+    <script src="${pageContext.request.contextPath}/assets/script/product-popup.js"></script>
 
-          function handleSearchAction(e) {
-            toggleSearch(e);
-          }
-
-          searchToggleBtn.addEventListener("click", handleSearchAction);
-
-          searchInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              toggleSearch(e);
-            }
-          });
-        }
-      });
-    </script>
-    <script>
-      const navOpenBtn = document.querySelector(".nav-open-btn");
-      const navCloseBtn = document.querySelector(".nav-close-btn");
-      const navbar = document.querySelector(".navbar");
-      const overlay = document.querySelector(".overlay");
-
-      navOpenBtn.addEventListener("click", () => {
-        navbar.classList.add("active");
-        overlay.classList.add("active");
-      });
-
-      navCloseBtn.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-
-      overlay.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-    </script>
-    <script>
-      // 1. HÀM HIỂN THỊ THÔNG BÁO TOAST
-      function showToast(message) {
-        const toast = document.getElementById("toast-message");
-        if (toast) {
-          toast.querySelector("span").textContent = message;
-          toast.classList.add("show");
-          // Tự động ẩn sau 3 giây
-          setTimeout(() => toast.classList.remove("show"), 3000);
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const overlay = document.querySelector(".overlay");
-        const actionBtns = document.querySelectorAll(".card-action-btn");
-
-        actionBtns.forEach((btn) => {
-          btn.addEventListener("click", function (e) {
-            e.preventDefault(); // Chặn thẻ a bao ngoài (nếu có)
-
-            const icon = this.querySelector("ion-icon");
-            const iconName = icon ? icon.getAttribute("name") : "";
-
-            if (iconName === "heart-outline") {
-              showToast("Đã thêm sản phẩm vào Yêu thích!");
-            }
-          });
-        });
-      });
-    </script>
-    <div id="cartPopup" class="cart-modal">
-      <div class="cart-modal-content">
-        <span class="cart-close">&times;</span>
-
-        <div class="cart-product-box">
-          <img
-            src="./assets/images/product-1.jpg"
-            class="cart-product-img"
-            id="popupImg"
-          />
-
-          <div class="cart-info">
-            <h2 id="popupName">Running Sneaker Shoes</h2>
-
-            <div class="price-line">
-              <span class="price-sale" id="popupPrice">1.500.000đ</span>
-              <span class="price-original" id="popupOriginal">1.850.000đ</span>
-              <span class="price-discount" id="popupDiscount">-17%</span>
-            </div>
-
-            <!-- Màu -->
-            <div class="popup-option-block">
-              <label>Màu sắc:</label>
-              <div class="popup-color-list" id="popupColors">
-                <div
-                  class="popup-color-item selected"
-                  data-value="Trắng"
-                  style="--c: #ffffff"
-                ></div>
-                <div
-                  class="popup-color-item"
-                  data-value="Đen"
-                  style="--c: #000000"
-                ></div>
-                <div
-                  class="popup-color-item"
-                  data-value="Xanh"
-                  style="--c: #007bff"
-                ></div>
-              </div>
-            </div>
-
-            <!-- Size -->
-            <div class="popup-option-block">
-              <label>Kích cỡ:</label>
-              <div class="popup-size-list" id="popupSizes">
-                <div class="popup-size-item selected" data-value="38">38</div>
-                <div class="popup-size-item" data-value="39">39</div>
-                <div class="popup-size-item" data-value="40">40</div>
-              </div>
-            </div>
-
-            <div class="popup-option-block">
-              <label>Số lượng:</label>
-              <div class="qty-group">
-                <button class="qty-btn minus">−</button>
-                <input type="number" id="popupQty" value="1" min="1" />
-                <button class="qty-btn plus">+</button>
-              </div>
-            </div>
-
-            <button class="popup-add-cart">Thêm vào giỏ hàng</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const popup = document.getElementById("cartPopup");
-        const popupClose = document.querySelector(".cart-close");
-        const openButtons = document.querySelectorAll(".card-action-btn");
-
-        openButtons.forEach((btn) => {
-          const icon = btn.querySelector("ion-icon");
-          if (icon && icon.getAttribute("name") === "cart-outline") {
-            btn.addEventListener("click", () => {
-              popup.classList.add("active");
-            });
-          }
-        });
-
-        // Đóng popup
-        popupClose.addEventListener("click", () =>
-          popup.classList.remove("active")
-        );
-        window.addEventListener("click", (e) => {
-          if (e.target === popup) popup.classList.remove("active");
-        });
-
-        // ================== CHỌN MÀU ==================
-        const colorItems = document.querySelectorAll(
-          "#popupColors .popup-color-item"
-        );
-        colorItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            colorItems.forEach((i) => i.classList.remove("selected"));
-            item.classList.add("selected");
-          });
-        });
-
-        // ================== CHỌN SIZE ==================
-        const sizeItems = document.querySelectorAll(
-          "#popupSizes .popup-size-item"
-        );
-        sizeItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            sizeItems.forEach((i) => i.classList.remove("selected"));
-            item.classList.add("selected");
-          });
-        });
-
-        // ================== THAY ĐỔI SỐ LƯỢNG ==================
-        const qtyInput = document.getElementById("popupQty");
-        const minusBtn = document.querySelector(".qty-btn.minus");
-        const plusBtn = document.querySelector(".qty-btn.plus");
-
-        minusBtn.addEventListener("click", () => {
-          let val = parseInt(qtyInput.value);
-          if (val > 1) qtyInput.value = val - 1;
-        });
-
-        plusBtn.addEventListener("click", () => {
-          qtyInput.value = parseInt(qtyInput.value) + 1;
-        });
-
-        qtyInput.addEventListener("input", () => {
-          if (qtyInput.value < 1) qtyInput.value = 1;
-        });
-
-        // ================== NÚT THÊM VÀO GIỎ ==================
-        const addToCartBtn = document.querySelector(".popup-add-cart");
-
-        addToCartBtn.addEventListener("click", () => {
-          const name = document.getElementById("popupName").textContent;
-          const color = document.querySelector("#popupColors .selected")
-            ?.dataset.value;
-          const size = document.querySelector("#popupSizes .selected")?.dataset
-            .value;
-          const qty = document.getElementById("popupQty").value;
-
-          // Gọi toast
-          showToast(`Đã thêm sản phẩm vào Giỏ hàng!`);
-
-          // Đóng popup
-          popup.classList.remove("active");
-        });
-
-        // ================== HÀM ĐỔ DỮ LIỆU VÀO POPUP ==================
-        window.showProductPopup = (data) => {
-          if (data.image) document.getElementById("popupImg").src = data.image;
-          if (data.name)
-            document.getElementById("popupName").textContent = data.name;
-          if (data.original)
-            document.getElementById("popupOriginal").textContent =
-              data.original;
-          if (data.price)
-            document.getElementById("popupPrice").textContent = data.price;
-          if (data.discount)
-            document.getElementById("popupDiscount").textContent =
-              data.discount;
-
-          document.getElementById("popupQty").value = 1;
-
-          popup.classList.add("active");
-        };
-      });
-    </script>
   </body>
 </html>
