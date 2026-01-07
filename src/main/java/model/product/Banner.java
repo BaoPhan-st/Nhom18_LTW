@@ -2,7 +2,7 @@ package model.product;
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
-import java.time.LocalDateTime;
+import java.sql.Time;
 
 public class Banner
 {
@@ -30,12 +30,12 @@ public class Banner
     private boolean isActive;
 
     @ColumnName("start_date")
-    private LocalDateTime startDate;
+    private Time startDate;
 
     @ColumnName("end_date")
-    private LocalDateTime endDate;
+    private Time endDate;
 
-    public Banner (int id, String title, String imgURL, String linkURL, String targetType, int targetEntityID, String position, int sortOrder, boolean isActive, LocalDateTime startDate, LocalDateTime endDate)
+    public Banner (int id, String title, String imgURL, String linkURL, String targetType, int targetEntityID, String position, int sortOrder, boolean isActive, Time startDate, Time endDate)
     {
         this.id = id;
         this.title = title;
@@ -59,8 +59,8 @@ public class Banner
     public String getPosition () { return position; }
     public int getSortOrder () { return sortOrder; }
     public boolean isActive () { return isActive; }
-    public LocalDateTime getStartDate () { return startDate; }
-    public LocalDateTime getEndDate () { return endDate; }
+    public Time getStartDate () { return startDate; }
+    public Time getEndDate () { return endDate; }
 
     public void setId (int id) { this.id = id; }
     public void setTitle (String title) { this.title = title; }
@@ -71,6 +71,6 @@ public class Banner
     public void setPosition (String position) { this.position = position; }
     public void setSortOrder (int sortOrder) { this.sortOrder = sortOrder; }
     public void setActive (boolean active) { isActive = active; }
-    public void setStartDate (LocalDateTime startDate) { this.startDate = startDate; }
-    public void setEndDate (LocalDateTime endDate) { this.endDate = endDate; }
+    public void setStartDate (Time startDate) { this.startDate = startDate; }
+    public void setEndDate (Time endDate) { this.endDate = endDate; }
 }

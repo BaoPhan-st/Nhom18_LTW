@@ -3,17 +3,17 @@ package model.order;
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.sql.Time;
 
 public class Order
 {
     private int id;
 
     @ColumnName("user_id")
-    private int UserID;
+    private int userID;
 
     @ColumnName("create_at")
-    private LocalDateTime createAt;
+    private Time createAt;
 
     @ColumnName("shipping_fee")
     private BigDecimal shippingFee;
@@ -42,10 +42,10 @@ public class Order
     @ColumnName("order_note")
     private String orderNote;
 
-    public Order(int id, int userID, LocalDateTime createAt, BigDecimal shippingFee, BigDecimal subTotal, BigDecimal grandTotal, String shippingAddress, String phoneNumber, String orderStatus, String paymentMethod, String paymentStatus, String orderNote)
+    public Order(int id, int userID, Time createAt, BigDecimal shippingFee, BigDecimal subTotal, BigDecimal grandTotal, String shippingAddress, String phoneNumber, String orderStatus, String paymentMethod, String paymentStatus, String orderNote)
     {
         this.id = id;
-        UserID = userID;
+        this.userID = userID;
         this.createAt = createAt;
         this.shippingFee = shippingFee;
         this.subTotal = subTotal;
@@ -58,8 +58,8 @@ public class Order
         this.orderNote = orderNote;
     }
     public int getId() { return id; }
-    public int getUserID() { return UserID; }
-    public LocalDateTime getCreateAt() { return createAt; }
+    public int getUserID() { return userID; }
+    public Time getCreateAt() { return createAt; }
     public BigDecimal getShippingFee() { return shippingFee; }
     public BigDecimal getSubTotal() { return subTotal; }
     public BigDecimal getGrandTotal() { return grandTotal; }
@@ -71,8 +71,8 @@ public class Order
     public String getOrderNote() { return orderNote; }
 
     public void setId(int id) { this.id = id; }
-    public void setUserID(int userID) { UserID = userID; }
-    public void setCreateAt(LocalDateTime createAt) { this.createAt = createAt; }
+    public void setUserID(int userID) { this.userID = userID; }
+    public void setCreateAt(Time createAt) { this.createAt = createAt; }
     public void setShippingFee(BigDecimal shippingFee) { this.shippingFee = shippingFee; }
     public void setSubTotal(BigDecimal subTotal) { this.subTotal = subTotal; }
     public void setGrandTotal(BigDecimal grandTotal) { this.grandTotal = grandTotal; }

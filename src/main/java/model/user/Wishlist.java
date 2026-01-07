@@ -2,7 +2,6 @@ package model.user;
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
-import javax.swing.plaf.synth.SynthListUI;
 import java.time.LocalDateTime;
 
 public class Wishlist

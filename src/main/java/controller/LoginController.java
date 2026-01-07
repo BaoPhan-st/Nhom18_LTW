@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.CartItem;
-import model.User;
+import model.user.CartItem;
+import model.user.User;
 import services.UserServices;
 
 @WebServlet("/login")

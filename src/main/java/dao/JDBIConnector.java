@@ -5,6 +5,8 @@ import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.CaseStrategy;
 import org.jdbi.v3.core.mapper.reflect.ReflectionMappers;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JDBIConnector {
@@ -47,5 +49,16 @@ public class JDBIConnector {
                     .one();
             System.out.println("Users = " + count);
         });
+    }
+
+    public static Connection getConnection ()
+    {
+        try {
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh", "hung", "");
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
