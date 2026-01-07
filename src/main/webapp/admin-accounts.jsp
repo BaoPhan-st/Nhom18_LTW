@@ -40,7 +40,7 @@
             <label>Role</label>
             <select name="role">
                 <option value="user" <c:if test="${user.role=='user'}">selected</c:if>>User</option>
-                <option value="admin" <c:if test="${user.role=='admin'}">selected</c:if> >Admin</option>
+                <option value="admin" <c:if test="${user.role=='admin'}">selected</c:if>>Admin</option>
             </select>
         </div>
 
@@ -81,7 +81,7 @@
                 <td>${u.phone_number}</td>
                 <td>${u.role}</td>
                 <td>${u.is_active ? 'Active' : 'Inactive'}</td>
-                <td>${u.created_at?string('dd/mm/yyyy')}</td>
+                <td>${u.created_at}</td>
                 <td class="actions">
                     <a href="user?edit=${u.id}" class="btn edit">Sửa</a>
                     <a href="user?delete=${u.id}" class="btn delete"
