@@ -1,10 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Yêu thích</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
+</head>
+<body>
 
 <div class="admin-header">
     <h2>Yêu thích</h2>
 </div>
 
-<%--DATA--%>
+<!-- TABLE DATA -->
 <div class="section">
     <table class="data-table">
         <thead>
@@ -31,3 +39,6 @@
         </tbody>
     </table>
 </div>
+
+</body>
+</html>

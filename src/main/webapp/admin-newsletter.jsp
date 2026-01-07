@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -30,10 +31,12 @@
                 <tr>
                     <td>${n.email}</td>
                     <td>${n.is_active ? 'Active' : 'Inactive'}</td>
-                    <td>${n.subscribed_at}</td>
+                    <td><fmt:formatDate value="${n.subscribed_at}" pattern="dd/MM/yyyy HH:mm"/></td>
                     <td class="actions">
-                        <a href="newsletter?delete=${n.id}" class="btn delete"
-                           onclick="return confirm('Xóa email này?')">Xóa</a>
+                        <form method="post" action="newsletter" onsubmit="return confirm('Xóa email này?');" style="display:inline;">
+                            <input type="hidden" name="deleteId" value="${n.id}" />
+                            <button type="submit" class="btn delete">Xóa</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>

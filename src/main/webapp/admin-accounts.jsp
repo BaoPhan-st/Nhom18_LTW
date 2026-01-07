@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" ${user.id == null ? 'required' : ''}/>
+            <input type="password" name="password" <c:if test="${user.id == null}">required</c:if>/>
         </div>
 
         <div class="form-group">
@@ -39,8 +39,8 @@
         <div class="form-group">
             <label>Role</label>
             <select name="role">
-                <option value="user" ${user.role=='user'?'selected':''}>User</option>
-                <option value="admin" ${user.role=='admin'?'selected':''}>Admin</option>
+                <option value="user" <c:if test="${user.role=='user'}">selected</c:if>>User</option>
+                <option value="admin" <c:if test="${user.role=='admin'}">selected</c:if> >Admin</option>
             </select>
         </div>
 
@@ -81,7 +81,7 @@
                 <td>${u.phone_number}</td>
                 <td>${u.role}</td>
                 <td>${u.is_active ? 'Active' : 'Inactive'}</td>
-                <td>${u.created_at}</td>
+                <td>${u.created_at?string('dd/mm/yyyy')}</td>
                 <td class="actions">
                     <a href="user?edit=${u.id}" class="btn edit">Sửa</a>
                     <a href="user?delete=${u.id}" class="btn delete"

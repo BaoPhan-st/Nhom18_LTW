@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -33,12 +35,18 @@
                     <td>#${order.id}</td>
                     <td>${order.customerName}</td>
                     <td>${order.grand_total} ₫</td>
-                    <td>${order.order_status}</td>
-                    <td>${order.created_at}</td>
+                    <td>
+                        <span class="status ${order.order_status}">
+                                ${order.order_status}
+                        </span>
+                    </td>
+                    <td><fmt:formatDate value="${order.created_at}" pattern="dd/MM/yyyy HH:mm"/></td>
                     <td class="actions">
                         <a href="order?view=${order.id}" class="btn edit">Xem</a>
-                        <a href="order?delete=${order.id}" class="btn delete"
-                           onclick="return confirm('Xóa đơn hàng này?')">Xóa</a>
+                        <form method="post" action="order" style="display:inline;" onsubmit="return confirm('Xóa đơn hàng này?');">
+                            <input type="hidden" name="deleteId" value="${order.id}" />
+                            <button type="submit" class="btn delete">Xóa</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>

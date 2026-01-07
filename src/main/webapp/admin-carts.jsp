@@ -39,8 +39,12 @@
                     <td>${od.colorName}</td>
                     <td>${od.sizeName}</td>
                     <td>${od.quantity}</td>
-                    <td>${od.unit_price} ₫</td>
-                    <td>${od.subtotal} ₫</td>
+                    <td>
+                        <fmt:formatNumber value="${od.unit_price}" type="currency" currencySymbol="₫"/>
+                    </td>
+                    <td>
+                        <fmt:formatNumber value="${od.subtotal}" type="currency" currencySymbol="₫"/>
+                    </td>
                 </tr>
             </c:forEach>
 
