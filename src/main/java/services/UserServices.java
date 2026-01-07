@@ -1,10 +1,11 @@
 package services;
 
-import dao.UserDao;
-import model.user.User;
+import java.time.LocalDateTime;
+
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.time.LocalDateTime;
+import dao.UserDao;
+import model.User;
 
 public class UserServices {
     private final UserDao userDao;
@@ -18,9 +19,22 @@ public class UserServices {
     public UserDao getUserDao() {
         return userDao;
     }
+
+
+
+
+
     public User loginByEmail(String email, String password) {
         User user = userDao.findByEmail(email);
-        if (user != null && BCrypt.checkpw(password, user.getPasswordHash())) {
+        if (user == null) {
+            return null;
+        }
+        if(!user.isActive()){
+            return null;
+        }
+        if ( user.getPasswordHash() != null
+            && !user.getPasswordHash().isEmpty() 
+            && BCrypt.checkpw(password, user.getPasswordHash())) {
             return user;
         }
         return null;
@@ -40,24 +54,43 @@ public class UserServices {
         user.setEmail(email);
         user.setPasswordHash(BCrypt.hashpw(password, BCrypt.gensalt(12)));
         user.setRole("user");
-        user.setActive(true);
+        user.setActive(false);
         user.setCreatedAt(LocalDateTime.now());
         user.setFirebaseUID(null);
 
         return userDao.insertUser(user) > 0;
     }
+    
     public User processSocialLogin(String email, String name, String firebase_uid, String provider) {
+
+        // TÌM USER TRONG DB THEO EMAIL
         User user = userDao.findByEmail(email);
+        //                  ↑
+        //          Query: SELECT * FROM users WHERE email = 'nguyenvana@gmail.com'
+
         if (user != null) {
+            // USER ĐÃ TỒN TẠI → Trả về luôn
+            System.out.println("User đã tồn tại: " + user.getId());
             return user;
         } else {
+            // USER CHƯA TỒN TẠI → Tạo mới
+            System.out.println("Tạo user mới...");
+
+            // TẠO OBJECT USER MỚI
             User newUser = new User();
-            newUser.setEmail(email);
-            newUser.setFullName(name);
-            newUser.setFirebaseUID(firebase_uid);
-            newUser.setRole("user");
+            newUser.setEmail(email);                    // "nguyenvana@gmail.com"
+            newUser.setFullName(name);                  // "Nguyễn Văn A"
+            newUser.setFirebaseUID(firebase_uid);       // "AbC123XyZ"
+            newUser.setRole("user");                    // Role mặc định
+            newUser.setActive(true);                    // Kích hoạt ngay
+            newUser.setPasswordHash("");                // Google login không cần password
+            newUser.setCreatedAt(LocalDateTime.now());  // Thời gian hiện tại
+
+            //LƯU VÀO DATABASE
             userDao.insertUser(newUser);
-            return newUser;
+
+            //LẤY LẠI USER VỪA TẠO (để có ID)
+            return userDao.findByEmail(email);
         }
     }
 }

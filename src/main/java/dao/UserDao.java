@@ -1,6 +1,6 @@
 package dao;
 
-import model.user.User;
+import model.User;
 import org.jdbi.v3.core.Jdbi;
 
 public class UserDao {
@@ -37,41 +37,58 @@ public class UserDao {
 
     // ===== INSERT USER =====
     public int insertUser(User user) {
+        String sql = """ 
+        INSERT INTO users (
+            email, password_hash, phone_number, address, full_name, role, is_active, created_at, firebase_uid
+        )
+        VALUES (
+            :email, :passwordHash, :phoneNumber, :address, :fullName, :role, :isActive, :createdAt, :firebaseUID
+        )
+    """;
 
-        String sql = """
-            INSERT INTO users (
-                email,
-                password_hash,
-                phone_number,
-                address,
-                role,
-                is_active,
-                created_at,
-                firebase_uid
-            )
-            VALUES (
-                :email,
-                :passwordHash,
-                :phoneNumber,
-                :address,
-                :role,
-                :isActive,
-                :createdAt,
-                :firebaseUID
-            )
-        """;
+        try {
+            int rows = jdbi.withHandle(handle ->
+                    handle.createUpdate(sql)
+                            .bind("email", user.getEmail())
+                            .bind("passwordHash", user.getPasswordHash())
+                            .bind("phoneNumber", user.getPhoneNumber())
+                            .bind("address", user.getAddress())
+                            .bind("fullName", user.getFullName())
+                            .bind("role", user.getRole())
+                            .bind("isActive", user.isActive())
+                            .bind("createdAt", user.getCreatedAt())
+                            .bind("firebaseUID", user.getFirebaseUID())
+                            .execute()
+            );
 
+            System.out.println("insertUser rows = " + rows);
+            return rows;
+        } catch (Exception e) {
+            System.out.println("insertUser FAILED!");
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+
+    // ===== UPDATE PASSWORD (cho quên mật khẩu) =====
+    public boolean updatePassword(String email, String newPasswordHash) {
+        String sql = "UPDATE users SET password_hash = :password WHERE email = :email";
+        
+        return jdbi.withHandle(handle ->
+            handle.createUpdate(sql)
+                .bind("email", email)
+                .bind("password", newPasswordHash)
+                .execute()
+        ) > 0;
+    }
+    public boolean activateByEmail(String email) {
+        String sql = "UPDATE users SET is_active = 1 WHERE email = :email";
         return jdbi.withHandle(handle ->
                 handle.createUpdate(sql)
-                        .bind("email", user.getEmail())
-                        .bind("passwordHash", user.getPasswordHash())
-                        .bind("phoneNumber", user.getPhoneNumber())
-                        .bind("address", user.getAddress())
-                        .bind("role", user.getRole())
-                        .bind("isActive", user.isActive())
-                        .bind("createdAt", user.getCreatedAt())
-                        .bind("firebaseUID", user.getFirebaseUID())
+                        .bind("email", email)
                         .execute()
-        );
+        ) > 0;
     }
+
 }
