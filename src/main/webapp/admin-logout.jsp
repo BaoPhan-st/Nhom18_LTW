@@ -4,7 +4,7 @@
     // Xử lý khi admin bấm "Có"
     if ("POST".equalsIgnoreCase(request.getMethod())) {
         String confirm = request.getParameter("confirm");
-        if ("yes".equals(confirm)) {
+        if ("yes-logout".equals(confirm)) {
             if (session != null) {
                 session.invalidate(); // Xóa session admin
             }
@@ -19,16 +19,15 @@
     <meta charset="UTF-8">
     <title>Đăng xuất Admin</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        h2,
-        .button-container {
+        .h2-logout,
+        .button-container-logout {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-top: 50px;
         }
 
-        .btn {
+        .btn-logout {
             padding: 10px 25px;
             font-size: 16px;
             cursor: pointer;
@@ -36,12 +35,12 @@
             border-radius: 5px;
         }
 
-        .btn-yes {
+        .btn-logout btn-yes {
             background-color: #d9534f;
             color: white;
         }
 
-        .btn-no {
+        .btn-logout btn-no {
             background-color: #5bc0de;
             color: white;
         }
@@ -50,14 +49,14 @@
 <body>
 
 <div class="form">
-    <h2>Bạn có muốn thoát trang admin không?</h2>
-    <div class="button-container">
+    <h2 class="h2-logout">Bạn có muốn thoát trang admin không?</h2>
+    <div class="button-container-logout">
         <form method="post" action="logout.jsp">
-            <input type="hidden" name="confirm" value="yes">
-            <button type="submit" class="btn btn-yes">Có</button>
+            <input type="hidden" name="confirm" value="yes-logout">
+            <button type="submit" class="btn-logout btn-yes">Có</button>
         </form>
         <form action="Admin.jsp">
-            <button type="submit" class="btn btn-no">Không</button>
+            <button type="submit" class="btn-logout btn-no">Không</button>
         </form>
     </div>
 </div>

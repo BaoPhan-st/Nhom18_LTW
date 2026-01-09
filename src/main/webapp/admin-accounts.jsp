@@ -28,7 +28,9 @@
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" <c:if test="${user.id == null}">required</c:if>/>
+            <input type="password" name="password"
+                    placeholder="${user.id == null ? 'Enter password' : 'Leave blank to keep current password'}"
+                    ${user.id == null ? 'required' : ''}/>
         </div>
 
         <div class="form-group">
@@ -39,8 +41,8 @@
         <div class="form-group">
             <label>Role</label>
             <select name="role">
-                <option value="user" <c:if test="${user.role=='user'}">selected</c:if>>User</option>
-                <option value="admin" <c:if test="${user.role=='admin'}">selected</c:if>>Admin</option>
+                <option value="user" <c:if test="${user.role=='user'}"></c:if>>User</option>
+                <option value="admin" <c:if test="${user.role=='admin'}"></c:if>>Admin</option>
             </select>
         </div>
 

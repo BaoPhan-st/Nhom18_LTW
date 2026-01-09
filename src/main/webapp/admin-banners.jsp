@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
 </head>
 <body>
+
 <div class="container">
     <div class="admin-header">
         <h2>Quản lý banner</h2>
@@ -46,8 +47,8 @@
             <div class="form-group">
                 <label>Active</label>
                 <select name="is_active">
-                    <option value="true" <c:if test="${banner.is_active}">selected</c:if>>Active</option>
-                    <option value="false" <c:if test="${!banner.is_active}">selected</c:if>>Inactive</option>
+                    <option value="true" <c:if test="${banner.is_active}"></c:if>>Active</option>
+                    <option value="false" <c:if test="${!banner.is_active}"></c:if>>Inactive</option>
                 </select>
             </div>
 

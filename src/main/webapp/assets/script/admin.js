@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(res => res.text())
             .then(html => {
                 container.innerHTML = html;
+                window.scrollTo(0, 0);
 
                 // Cập nhật active menu
                 menuItems.forEach(item => {
@@ -23,12 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Lưu page hiện tại vào localStorage
                 localStorage.setItem("currentPage", page);
             })
-            .catch(e => console.error(e));
+            .catch(e => {
+                container.innerHTML = "<p style ='color; red;text-align:center;'>Khong the tai trang. Vui long thu lai.</p>";
+                console.error(e)
+            });
     }
 
     // Gán sự kiện click cho menu
     menuItems.forEach(item => {
-        item.addEventListener("click", () => {
+        item.addEventListener("click", (e) => {
+            e.preventDefault();
             const page = item.getAttribute("data-page");
             if (page && page !== "admin-logout.jsp") {
                 loadPage(page);
