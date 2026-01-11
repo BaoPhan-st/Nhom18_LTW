@@ -1,12 +1,19 @@
 package controller.admin;
 
+import dao.ProductDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import model.product.Product;
+
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet({"/admin/products", "/admin/variants"})
 public class AdminProductController extends HttpServlet {
+    private ProductDao productDao = new ProductDao();
+    List<Product> products = productDao.findAll();
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();

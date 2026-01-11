@@ -9,8 +9,6 @@
 </head>
 <body>
 
-<div class="container">
-
     <div class="admin-header">
         <h2>Đăng ký nhận tin</h2>
     </div>
@@ -49,8 +47,6 @@
             </tbody>
         </table>
     </div>
-
-</div>
 
 </body>
 </html>
