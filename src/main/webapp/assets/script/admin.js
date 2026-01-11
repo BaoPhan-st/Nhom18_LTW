@@ -46,3 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load page đầu tiên khi trang reload
     loadPage(currentPage);
 });
+
+const links = document.querySelectorAll('.menu li a');
+const container = document.getElementById('content-container');
+links.forEach(link => {
+    link.addEventListener('click', function (e){
+        e.preventDefault();
+        links.forEach(l => l.parentElement.classList.remove('active'));
+        this.parentElement.classList.add('active');
+
+        fetch(this.href)
+            .then(resizeBy => resizeBy.text())
+            .then(html => container.innerHTML = html)
+            .catch(err => console.error(err));
+    });
+});

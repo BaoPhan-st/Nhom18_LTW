@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="jakarta.servlet.http.*, jakarta.servlet.*" %>
-<%
-    // Xử lý khi admin bấm "Có"
-    if ("POST".equalsIgnoreCase(request.getMethod())) {
-        String confirm = request.getParameter("confirm");
-        if ("yes-logout".equals(confirm)) {
-            if (session != null) {
-                session.invalidate(); // Xóa session admin
-            }
-            response.sendRedirect("login.jsp"); // Chuyển về trang login
-            return; // Dừng tiếp tục render page
-        }
-    }
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +23,12 @@
             border-radius: 5px;
         }
 
-        .btn-logout btn-yes {
+        .btn-yes {
             background-color: #d9534f;
             color: white;
         }
 
-        .btn-logout btn-no {
+        .btn-no {
             background-color: #5bc0de;
             color: white;
         }
@@ -51,11 +39,13 @@
 <div class="form">
     <h2 class="h2-logout">Bạn có muốn thoát trang admin không?</h2>
     <div class="button-container-logout">
-        <form method="post" action="logout.jsp">
-            <input type="hidden" name="confirm" value="yes-logout">
+        <!-- Gửi request POST tới servlet AdminLogoutController -->
+        <form method="post" action="<%= request.getContextPath() %>/admin/logout">
             <button type="submit" class="btn-logout btn-yes">Có</button>
         </form>
-        <form action="Admin.jsp">
+
+        <!-- Quay lại trang Admin nếu không logout -->
+        <form method="get" action="Admin.jsp">
             <button type="submit" class="btn-logout btn-no">Không</button>
         </form>
     </div>

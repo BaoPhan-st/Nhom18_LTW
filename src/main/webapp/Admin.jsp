@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -33,13 +33,13 @@
         <li data-page="admin-wishlist.jsp" class="link"><a href="admin-wishlist.jsp">Yêu thích</a></li>
         <li data-page="admin-newsletter.jsp" class="link"><a href="admin-newsletter.jsp">Đăng ký nhận tin</a></li>
         <li data-page="admin-statistics.jsp" class="link"><a href="admin-statistics.jsp">Thống kê</a></li>
+        <li data-page="admin-setting.jsp" class="link"><a href="admin-setting.jsp">Cài đặt</a></li>
         <li data-page="admin-logout.jsp" class="link"><a href="admin-logout.jsp">Đăng xuất</a></li>
     </ul>
 </div>
 
 <div class="main">
     <div id="content-container">
-<%--        <jsp:include page="admin-dashboard.jsp "/>--%>
         <%@ include file="admin-dashboard.jsp" %>
     </div>
 </div>
@@ -50,7 +50,7 @@
     const container = document.getElementById('content-container');
     links.forEach(link => {
         link.addEventListener('click', function (e){
-            a.preventDefault();
+            e.preventDefault();
             links.forEach(l => l.parentElement.classList.remove('active'));
             this.parentElement.classList.add('active');
 
