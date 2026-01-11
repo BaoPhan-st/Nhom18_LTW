@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -8,8 +9,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
 </head>
 <body>
-
-<div class="container">
 
     <div class="admin-header">
         <h2>Quản lý giỏ hàng</h2>
@@ -56,8 +55,6 @@
             </tbody>
         </table>
     </div>
-
-</div>
 
 </body>
 </html>

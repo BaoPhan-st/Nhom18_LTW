@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -25,7 +27,7 @@
             <label>Size:</label>
             <select name="sizeId">
                 <c:forEach var="s" items="${sizes}">
-                    <option value="${s.id}" <c:if test="${variant != null && variant.sizeId == s.id}">selected</c:if>>
+                    <option value="${s.id}" ${variant != null && variant.sizeId == s.id ? 'select' : ''}>
                             ${s.name}
                     </option>
                 </c:forEach>
@@ -36,7 +38,7 @@
             <label>Màu:</label>
             <select name="colorId">
                 <c:forEach var="c" items="${colors}">
-                    <option value="${c.id}" <c:if test="${variant != null && variant.colorId == c.id}">selected</c:if>>
+                    <option value="${c.id}" ${variant != null && variant.sizeId == s.id ? 'select' : ''}>
                             ${c.name}
                     </option>
                 </c:forEach>
@@ -48,7 +50,7 @@
             <input type="number" name="stock" min="0" value="<c:out value='${variant != null ? variant.stock : 0}'/>"/>
         </div>
 
-        <button type="submit" class="btn-submit">
+        <button type="submit" class="btn-submit" style="padding: 10px;">
             <c:out value="${variant != null ? 'Cập nhật' : 'Thêm mới'}"/>
         </button>
     </form>
