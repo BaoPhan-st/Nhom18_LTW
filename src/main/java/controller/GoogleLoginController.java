@@ -92,8 +92,7 @@ public class GoogleLoginController extends HttpServlet {
         resp.getWriter().write(gson.toJson(jsonResponse));
     }
 
-    // Class nội bộ để map dữ liệu JSON từ auth.js
-    // auth.js gửi: { email, name, uid, photoURL }
+
     private static class GoogleLoginRequest {
         String email;
         String name;

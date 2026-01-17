@@ -41,25 +41,38 @@
               </p>
             </div>
             <div class="rows">
-              <div class="cols">
-                <form class="page-auth" id="forgot-password">
-                  <fieldset class="form-auth">
-                    <label for="email">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      placeholder="Nhập địa chỉ email của bạn"
-                      required
-                      autocomplete="email"
-                    />
-                  </fieldset>
-                  <div>
-                    <button type="submit" class="btn-primary">
-                      Gửi yêu cầu
-                    </button>
+
+                  <% String msg = (String) request.getAttribute("msg"); %>
+                  <% if (msg != null) { %>
+                  <div class="alert-msg" style="margin-bottom: 14px; padding: 10px 12px; border-radius: 8px; background:#fff3cd; border:1px solid #ffeeba; color:#856404;">
+                      <%= msg %>
                   </div>
-                </form>
-                <p>Quay lại <a class="as" href="${pageContext.request.contextPath}/login.jsp">Đăng nhập</a></p>
+                  <% } %>
+
+
+                  <form class="page-auth"
+                        action="${pageContext.request.contextPath}/forgot-password"
+                        method="post">
+
+                      <input type="hidden" name="action" value="send-otp"/>
+
+                      <fieldset class="form-auth">
+                          <label for="email">Email</label>
+                          <input
+                                  type="email"
+                                  id="email"
+                                  name="email"
+                                  placeholder="Nhập địa chỉ email của bạn"
+                                  required
+                          />
+                      </fieldset>
+
+                      <button type="submit" class="btn-primary">
+                          Gửi yêu cầu
+                      </button>
+                  </form>
+
+                  <p>Quay lại <a class="as" href="${pageContext.request.contextPath}/login.jsp">Đăng nhập</a></p>
               </div>
             </div>
           </div>

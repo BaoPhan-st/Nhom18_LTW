@@ -26,7 +26,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="${pageContext.request.contextPath}/menu.jsp">Trang Chủ</a>
+                    <a href="${pageContext.request.contextPath}/menu">Trang Chủ</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
             </ol>

@@ -6,7 +6,7 @@
     <div class="container">
         <div class="overlay"></div>
 
-        <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
+        <a href="${pageContext.request.contextPath}/menu" class="logo">
             <img
                     src="./assets/images/BHD%20LOGO.png"
                     width="100"
@@ -26,16 +26,16 @@
 
             <ul class="navbar-list">
                 <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/menu.jsp" class="navbar-link">Trang chủ</a>
+                    <a href="${pageContext.request.contextPath}/menu" class="navbar-link">Trang chủ</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/gioithieu.jsp" class="navbar-link">Giới thiệu</a>
+                    <a href="${pageContext.request.contextPath}/gioithieu" class="navbar-link">Giới thiệu</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/products.jsp" class="navbar-link">Sản phẩm</a>
+                    <a href="${pageContext.request.contextPath}/products" class="navbar-link">Sản phẩm</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/lienhe.jsp" class="navbar-link">Liên hệ</a>
+                    <a href="${pageContext.request.contextPath}/lienhe" class="navbar-link">Liên hệ</a>
                 </li>
             </ul>
 
@@ -54,8 +54,8 @@
                         <span class="nav-action-text">Đăng nhập / Đăng kí</span>
                     </a>
                     <div class="dropdown-content">
-                        <a href="${pageContext.request.contextPath}/login.jsp">Đăng nhập</a>
-                        <a href="${pageContext.request.contextPath}/register.jsp">Đăng ký</a>
+                        <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
+                        <a href="${pageContext.request.contextPath}/register">Đăng ký</a>
                     </div>
                     <% } else { %>
                     <a href="#" class="nav-action-btn">
@@ -71,13 +71,13 @@
                     <% } %>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/wishlist.jsp" class="nav-action-btn">
+                    <a href="${pageContext.request.contextPath}/wishlist" class="nav-action-btn">
                         <ion-icon name="heart-outline"></ion-icon>
                         <span class="nav-action-text">Yêu thích</span>
                     </a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+                    <a href="${pageContext.request.contextPath}/carts" class="nav-action-btn" title="Giỏ hàng">
                         <ion-icon name="bag-outline"></ion-icon>
                         <span class="nav-action-text">Giỏ hàng</span>
                     </a>

@@ -43,8 +43,8 @@
       <div class="container">
         <div class="breadcrumb-container">
           <ul class="breadcrumb">
-            <li><a href="${pageContext.request.contextPath}/menu.jsp">Trang Chủ</a></li>
-            <li><a href="${pageContext.request.contextPath}/products.jsp">Sản Phẩm</a></li>
+            <li><a href="${pageContext.request.contextPath}/menu">Trang Chủ</a></li>
+            <li><a href="${pageContext.request.contextPath}/products">Sản Phẩm</a></li>
             <li class="current-page">Nike Air Force 1 '07</li>
           </ul>
         </div>

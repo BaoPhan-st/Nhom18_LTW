@@ -46,7 +46,7 @@
       <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/menu.jsp">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/menu">Trang Chủ</a></li>
 
             <li class="breadcrumb-item active" aria-current="page">
               Đăng nhập
@@ -63,7 +63,7 @@
               <h1>Đăng nhập tài khoản</h1>
               <p>
                 Bạn chưa có tài khoản ?
-                <a class="as" href="${pageContext.request.contextPath}/register.jsp">Đăng ký tại đây</a>
+                <a class="as" href="${pageContext.request.contextPath}/register">Đăng ký tại đây</a>
               </p>
             </div>
             <div class="rows">
@@ -121,7 +121,7 @@
                             />
                             <small>
                                 Quên mật khẩu ?
-                                <a class="as" href="${pageContext.request.contextPath}/forgotpass.jsp"> Nhấn vào đây</a>
+                                <a class="as" href="${pageContext.request.contextPath}/forgotpass"> Nhấn vào đây</a>
                             </small>
                         </fieldset>
 

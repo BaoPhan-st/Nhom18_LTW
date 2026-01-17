@@ -5,6 +5,6 @@ public class EmailProperties {
     public static final int SSL_PORT = 465;
     public static final int TSL_PORT = 587;
 
-    public static final String APP_EMAIL = System.getenv("APP_EMAIL");
-    public static final String APP_PASSWORD = System.getenv("APP_PASSWORD");
+    public static final String APP_EMAIL = ("quy231653@gmail.com");
+    public static final String APP_PASSWORD = ("sigy scei mpmd wczd");
 }

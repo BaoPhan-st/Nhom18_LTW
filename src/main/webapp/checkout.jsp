@@ -19,9 +19,9 @@
         <div class="breadcrumb-container">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/menu.jsp">Trang Chủ</a></li>
+              <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/menu">Trang Chủ</a></li>
               <li class="breadcrumb-item">
-                <a href="${pageContext.request.contextPath}/carts.jsp">Giỏ hàng </a>
+                <a href="${pageContext.request.contextPath}/carts">Giỏ hàng </a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Thanh toán
@@ -153,7 +153,7 @@
             </div>
 
             <div class="order-actions">
-              <a href="${pageContext.request.contextPath}/carts.jsp" class="btn-back"> Quay về giỏ hàng</a>
+              <a href="${pageContext.request.contextPath}/carts" class="btn-back"> Quay về giỏ hàng</a>
               <button class="btn-checkout">ĐẶT HÀNG</button>
             </div>
           </div>

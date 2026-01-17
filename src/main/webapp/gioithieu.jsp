@@ -44,7 +44,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="${pageContext.request.contextPath}/menu.jsp"
+              <a href="${pageContext.request.contextPath}/menu"
                 >Trang Chủ</a
               >
             </li>

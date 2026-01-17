@@ -40,12 +40,13 @@ public class RegisterController extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
         String password = req.getParameter("password");
+        String address = req.getParameter("address");
         String confirmPassword = req.getParameter("confirmPassword");
 
         // 1. Validate dữ liệu
         if (fullName == null || email == null || phone == null ||
                 password == null || confirmPassword == null ||
-                fullName.isBlank() || email.isBlank() || phone.isBlank() ||
+                fullName.isBlank() || email.isBlank() || phone.isBlank() || address.isBlank() ||
                 password.isBlank() || confirmPassword.isBlank()) {
 
             req.setAttribute("error", "Vui lòng điền đầy đủ thông tin");
@@ -61,14 +62,18 @@ public class RegisterController extends HttpServlet {
         }
 
         // 3. Kiểm tra độ dài mật khẩu
-        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        password = password.trim();
+        confirmPassword = confirmPassword.trim();
+
+        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9])\\S{8,}$";
 
         if (!password.matches(passwordRegex)) {
             req.setAttribute("error",
-                    "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.");
+                    "Mật khẩu >= 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt (không chứa khoảng trắng).");
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
             return;
         }
+
 
 
         // 4. Validate email format (phải có domain đầy đủ như @gmail.com)
@@ -86,7 +91,7 @@ public class RegisterController extends HttpServlet {
         }
 
         // 6. Đăng ký user
-        boolean success = userService.register(fullName, phone, email, password);
+        boolean success = userService.register(fullName, phone, email, password,address);
 
         if (success) {
             // 1) Tạo session + lưu thông tin chờ kích hoạt

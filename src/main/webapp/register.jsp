@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng ký - BHD SPORT SHOES</title>
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" />
 
-    <link rel="stylesheet" href="assets/css/dangnhapvadangki.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/dangnhapvadangki.css" />
     <!--
           - favicon
         -->
-    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico" />
 
     <link
       rel="stylesheet"
@@ -136,7 +136,17 @@
                       autocomplete="tel"
                     />
                   </fieldset>
-
+                    <fieldset class="form-auth">
+                        <label for="address">Địa chỉ</label>
+                        <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                placeholder="Nhập địa chỉ của bạn"
+                                required
+                                autocomplete="street-address"
+                        />
+                    </fieldset>
                   <fieldset class="form-auth">
                     <label>Mật khẩu</label>
                     <input

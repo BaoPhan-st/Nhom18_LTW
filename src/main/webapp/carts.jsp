@@ -39,7 +39,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="${pageContext.request.contextPath}/menu.jsp"
+              <a href="${pageContext.request.contextPath}/menu"
                 >Trang Chủ</a
               >
             </li>
@@ -68,7 +68,7 @@
               <div class="product-info">
                 <h2 class="product-name">
                   <a
-                    href="${pageContext.request.contextPath}/chitietsanpham.jsp"
+                    href="${pageContext.request.contextPath}/chitietsanpham"
                     class="product-link"
                     >Nike Air Force 1 '07</a
                   >
@@ -179,7 +179,7 @@
           </div>
           <button class="checkout-btn">
             <a
-              href="${pageContext.request.contextPath}/checkout.jsp"
+              href="${pageContext.request.contextPath}/checkout"
               class="Thanh_toán"
               >Tiến Hành Đặt hàng</a
             >

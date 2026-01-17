@@ -1,0 +1,43 @@
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+/* CSS cho Modal Đăng Xuất (để đảm bảo hiển thị đẹp) */
+#logoutModal .modal-content {
+    text-align: center;
+    max-width: 400px;
+    padding: 30px;
+}
+#logoutModal .modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+#logoutModal .btn-confirm-logout {
+    background-color: #ff4d4f; /* Màu đỏ cho nút đăng xuất */
+    color: white;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+#logoutModal .btn-confirm-logout:hover {
+    background-color: #d9363e;
+}
