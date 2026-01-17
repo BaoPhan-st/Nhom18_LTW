@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
 </head>
 <body>
@@ -13,7 +14,6 @@
     <h2>Dashboard</h2>
 </div>
 
-<!-- Statistic Cards -->
 <div class="cards-manager">
     <div class="card">
         <h3>Đơn hàng hôm nay</h3>
@@ -22,7 +22,7 @@
 
     <div class="card">
         <h3>Doanh thu hôm nay</h3>
-        <span class="card-number"><c:out value="${todayRevenue}"/> ₫</span>
+        <span class="card-number"><c:out value="${todayRevenue}"/>₫</span>
     </div>
 
     <div class="card">

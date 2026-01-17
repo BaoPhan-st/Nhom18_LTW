@@ -1,50 +1,32 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Thống kê Admin</title>
+    <title>Thống kê</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-    <style>
-        .stats-container {
-            display: flex;
-            gap: 30px;
-            padding: 20px;
-        }
-        .stat-card {
-            flex: 1;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-        .stat-card h3 {
-            margin-bottom: 10px;
-        }
-        .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-    </style>
 </head>
 <body>
-
 <div class="admin-header">
     <h2>Thống kê</h2>
 </div>
 
-<div class="stats-container">
-    <div class="stat-card">
+<div class="cards-manager">
+    <div class="card">
         <h3>Tổng số đơn</h3>
-        <div class="stat-number" id="total-orders">${totalOrders}</div>
+        <span class="card-number" id="total-orders">
+            <c:out value="${totalOrders}"/>
+        </span>
     </div>
 
-    <div class="stat-card">
+    <div class="card">
         <h3>Doanh thu</h3>
-        <div class="stat-number" id="revenue">${revenue} ₫</div>
+        <span class="card-number" id="revenue">
+            <c:out value="${totalRevenue}"/>₫
+        </span>
     </div>
 </div>
-
 </body>
 </html>

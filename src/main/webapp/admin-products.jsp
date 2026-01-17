@@ -9,8 +9,6 @@
 </head>
 <body>
 
-<div class="container">
-
     <div class="admin-header">
         <h2>Quản lý sản phẩm</h2>
     </div>
@@ -90,8 +88,6 @@
             </tbody>
         </table>
     </div>
-
-</div>
 
 </body>
 </html>

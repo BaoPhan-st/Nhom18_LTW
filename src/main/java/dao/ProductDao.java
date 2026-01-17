@@ -62,9 +62,9 @@ public class ProductDao
             ps.setInt(1, product.getId());
             ps.setString(2, product.getName());
             ps.setString(3, product.getDescription());
-            ps.setBigDecimal(6, product.getPrice());
-            ps.setInt(4, product.getBrandID());
-            ps.setTime(5, product.getAddedAt());
+            ps.setBigDecimal(4, product.getPrice());
+            ps.setInt(5, product.getBrandID());
+            ps.setTime(6, product.getAddedAt());
             ps.setBoolean(7, product.isDiscontinue());
             ps.setBoolean(8, product.isAvailable());
 
@@ -78,7 +78,7 @@ public class ProductDao
 
     public boolean update (Product product)
     {
-        String sql = "UPDATE products SET name = ?, description = ?, price = ?, brand_id = ?, added_at = ?, is_discontinue = ?, is_available = ? WHERE NOT id = ?";
+        String sql = "UPDATE products SET name = ?, description = ?, price = ?, brand_id = ?, added_at = ?, is_discontinue = ?, is_available = ? WHERE id = ?";
         try (Connection cn = JDBIConnector.getConnection();
         PreparedStatement ps = cn.prepareStatement(sql))
         {
@@ -120,15 +120,28 @@ public class ProductDao
     {
         Product product = new Product();
 
-        product.setId(rs.getInt("11"));
-        product.setName(rs.getString("adidas 11"));
-        product.setDescription(rs.getString("adidas 11 nha ca nha"));
-        product.setPrice(rs.getBigDecimal("adidas 11"));
-        product.setBrandID(rs.getInt("11"));
-        product.setAddedAt(rs.getTime("11/11/2025"));
-        product.setDiscontinue(rs.getBoolean("0"));
-        product.setIsAvailable(rs.getBoolean("1"));
+        product.setId(rs.getInt("id"));
+        product.setName(rs.getString("name"));
+        product.setDescription(rs.getString("description"));
+        product.setPrice(rs.getBigDecimal("price"));
+        product.setBrandID(rs.getInt("brand_id"));
+        product.setAddedAt(rs.getTime("added_at"));
+        product.setDiscontinue(rs.getBoolean("is_discontinue"));
+        product.setIsAvailable(rs.getBoolean("is_available"));
 
         return product;
+    }
+
+    public static void main (String[] args)
+    {
+        ProductDao dao = new ProductDao();
+
+        List<Product> products = dao.findAll();
+        for(Product product : products)
+        {
+            System.out.println(product.toString());
+        }
+        Product p = dao.findById(1);
+        System.out.println(p.toString());
     }
 }

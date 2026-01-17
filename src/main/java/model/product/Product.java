@@ -55,4 +55,18 @@ public class Product implements Serializable
     public void setAddedAt(Time addedAt) { this.addedAt = addedAt; }
     public void setDiscontinue(boolean discontinue) { isDiscontinue = discontinue; }
     public void setIsAvailable(boolean isAvailable) { this.isAvailable = isAvailable; }
+
+    @Override
+    public String toString()
+    {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description +'\''+
+                ", price=" + price +
+                ", brandID=" + brandID +
+                ", addedAt=" + addedAt +
+                ", isDiscontinue=" + isDiscontinue +
+                ", isAvailable=" + isAvailable + '}';
+    }
 }

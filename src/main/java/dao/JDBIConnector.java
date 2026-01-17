@@ -54,7 +54,7 @@ public class JDBIConnector {
     public static Connection getConnection ()
     {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh", "hung", "");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh", "root", "");
         } catch (Exception e)
         {
             e.printStackTrace();

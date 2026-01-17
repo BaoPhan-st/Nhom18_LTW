@@ -1,34 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="jakarta.servlet.http.*, jakarta.servlet.*" %>
-<%
-    // Xử lý khi admin bấm "Có"
-    if ("POST".equalsIgnoreCase(request.getMethod())) {
-        String confirm = request.getParameter("confirm");
-        if ("yes".equals(confirm)) {
-            if (session != null) {
-                session.invalidate(); // Xóa session admin
-            }
-            response.sendRedirect("login.jsp"); // Chuyển về trang login
-            return; // Dừng tiếp tục render page
-        }
-    }
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Đăng xuất Admin</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        h2,
-        .button-container {
+        .h2-logout,
+        .button-container-logout {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-top: 50px;
         }
 
-        .btn {
+        .btn-logout {
             padding: 10px 25px;
             font-size: 16px;
             cursor: pointer;
@@ -50,14 +37,16 @@
 <body>
 
 <div class="form">
-    <h2>Bạn có muốn thoát trang admin không?</h2>
-    <div class="button-container">
-        <form method="post" action="logout.jsp">
-            <input type="hidden" name="confirm" value="yes">
-            <button type="submit" class="btn btn-yes">Có</button>
+    <h2 class="h2-logout">Bạn có muốn thoát trang admin không?</h2>
+    <div class="button-container-logout">
+        <!-- Gửi request POST tới servlet AdminLogoutController -->
+        <form method="post" action="<%= request.getContextPath() %>/admin/logout">
+            <button type="submit" class="btn-logout btn-yes">Có</button>
         </form>
-        <form action="Admin.jsp">
-            <button type="submit" class="btn btn-no">Không</button>
+
+        <!-- Quay lại trang Admin nếu không logout -->
+        <form method="get" action="Admin.jsp">
+            <button type="submit" class="btn-logout btn-no">Không</button>
         </form>
     </div>
 </div>
