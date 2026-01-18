@@ -1,4 +1,4 @@
 package model.product;
 
-public class Product {
+public class Color {
 }
