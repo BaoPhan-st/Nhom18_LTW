@@ -1,0 +1,20 @@
+package controller; // 1. Phải có package
+
+import java.io.IOException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+// 2. Đường dẫn truy cập (Lưu ý: không có .jsp)
+@WebServlet("/menu")
+public class MenuController extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        req.getRequestDispatcher("/menu.jsp").forward(req, resp);
+    }
+}
