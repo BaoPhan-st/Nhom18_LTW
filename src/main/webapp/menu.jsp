@@ -45,148 +45,7 @@ session.getAttribute("currentUser"); %>
     <!--
 - #HEADER
 -->
-    <header class="header">
-        <div class="container">
-            <div class="overlay"></div>
-
-            <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
-                <img
-                        src="./assets/images/BHD%20LOGO.png"
-                        width="100"
-                        height="50"
-                        alt="BHD logo"
-                />
-            </a>
-
-            <!-- Nút mở menu -->
-            <button class="nav-open-btn">
-                <ion-icon name="menu-outline"></ion-icon>
-            </button>
-
-            <nav class="navbar">
-                <button
-                        class="nav-close-btn"
-                        data-nav-close-btn
-                        aria-label="Close Menu"
-                >
-                    <ion-icon name="close-outline"></ion-icon>
-                </button>
-
-                <ul class="navbar-list">
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/menu.jsp"
-                                class="navbar-link"
-                        >Trang chủ</a
-                        >
-                    </li>
-
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/gioithieu.jsp"
-                                class="navbar-link"
-                        >Giới thiệu</a
-                        >
-                    </li>
-
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/products.jsp"
-                                class="navbar-link"
-                        >Sản phẩm</a
-                        >
-                    </li>
-
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/lienhe.jsp"
-                                class="navbar-link"
-                        >Liên hệ</a
-                        >
-                    </li>
-                </ul>
-
-                <ul class="nav-action-list">
-                    <li>
-                        <button
-                                class="nav-action-btn"
-                                id="searchToggleBtn"
-                                data-search-btn
-                        >
-                            <ion-icon name="search-outline"></ion-icon>
-                            <span class="nav-action-text">Tìm kiếm</span>
-                        </button>
-                    </li>
-
-                    <li class="nav-action-item nav-action-dropdown">
-                        <% if (currentUser == null) { %>
-                        <!-- Chưa đăng nhập -->
-                        <a
-                                href="${pageContext.request.contextPath}/login.jsp"
-                                class="nav-action-btn"
-                        >
-                            <ion-icon name="person-outline"></ion-icon>
-                            <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="${pageContext.request.contextPath}/login.jsp"
-                            >Đăng nhập</a
-                            >
-                            <a href="${pageContext.request.contextPath}/register.jsp"
-                            >Đăng ký</a
-                            >
-                        </div>
-                        <% } else { %>
-                        <!-- Đã đăng nhập -->
-                        <a href="#" class="nav-action-btn">
-                            <ion-icon name="person-outline"></ion-icon>
-                            <span class="nav-action-text"
-                            ><%= currentUser.getFullName() != null ?
-                                    currentUser.getFullName() : currentUser.getEmail() %></span
-                            >
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="account">Tài khoản của tôi</a>
-                            <a href="logout">Đăng xuất</a>
-                        </div>
-                        <% } %>
-                    </li>
-                    <li>
-                        <a
-                                href="${pageContext.request.contextPath}/wishlist.jsp"
-                                class="nav-action-btn"
-                        >
-                            <ion-icon name="heart-outline"></ion-icon>
-                            <span class="nav-action-text">Yêu thích</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                                href="${pageContext.request.contextPath}/carts.jsp"
-                                class="nav-action-btn"
-                                title="Giỏ hàng"
-                        >
-                            <ion-icon name="bag-outline"></ion-icon>
-                            <span class="nav-action-text">Giỏ hàng</span>
-                        </a>
-                    </li>
-                </ul>
-                <form class="search-form" id="search-form" action="#" method="get">
-                    <input
-                            type="search"
-                            name="query"
-                            placeholder="Tìm kiếm sản phẩm..."
-                            id="search-input"
-                            required
-                    />
-
-                    <button type="button" class="search-close-btn" id="searchCloseBtn">
-                        <ion-icon name="close-outline"></ion-icon>
-                    </button>
-                </form>
-            </nav>
-        </div>
-    </header>
+    <jsp:include page="header.jsp" />
     <main>
       <article>
         <!--
@@ -206,7 +65,7 @@ session.getAttribute("currentUser"); %>
 
             <button class="btn btn-primary">
               <a
-                href="${pageContext.request.contextPath}/products.jsp"
+                href="${pageContext.request.contextPath}/products"
                 class="Menu_Banner_button"
                 >Mua ngay</a
               >
@@ -235,7 +94,7 @@ session.getAttribute("currentUser"); %>
                   <h3 class="h4 card-title">Bộ sưu tập Nike</h3>
 
                   <a
-                    href="${pageContext.request.contextPath}/products.jsp"
+                    href="${pageContext.request.contextPath}/products"
                     class="btn btn-secondary"
                   >
                     <span>Khám phá ngay</span>
@@ -258,7 +117,7 @@ session.getAttribute("currentUser"); %>
                   <h3 class="h4 card-title">Bộ sưu tập Adidas</h3>
 
                   <a
-                    href="${pageContext.request.contextPath}/products.jsp"
+                    href="${pageContext.request.contextPath}/products"
                     class="btn btn-secondary"
                   >
                     <span>Khám phá ngay</span>
@@ -281,7 +140,7 @@ session.getAttribute("currentUser"); %>
                   <h3 class="h4 card-title">Bộ sưu tập Puma</h3>
 
                   <a
-                    href="${pageContext.request.contextPath}/products.jsp"
+                    href="${pageContext.request.contextPath}/products"
                     class="btn btn-secondary"
                   >
                     <span>Khám phá ngay</span>
@@ -364,7 +223,7 @@ session.getAttribute("currentUser"); %>
                   <div class="card-content">
                     <h3 class="h3 card-title">
                       <a
-                        href="${pageContext.request.contextPath}/chitietsanpham.jsp"
+                        href="${pageContext.request.contextPath}/chitietsanpham"
                         >Running Sneaker Shoes</a
                       >
                     </h3>
@@ -1278,7 +1137,7 @@ session.getAttribute("currentUser"); %>
               <h2 class="h3 banner-title">Giày Đẹp – Giá Hời</h2>
 
               <a
-                href="${pageContext.request.contextPath}/products.jsp"
+                href="${pageContext.request.contextPath}/products"
                 class="btn btn-link"
               >
                 <span>Khám phá ngay</span>
@@ -1493,196 +1352,7 @@ session.getAttribute("currentUser"); %>
     <!--
 - #FOOTER
 -->
-    <footer class="footer">
-      <div class="footer-top section">
-        <div class="container">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <img
-                src="./assets/images/BHD%20LOGO.png"
-                width="110"
-                height="50"
-                alt="BHD"
-              />
-            </a>
-
-            <ul class="social-list">
-              <li>
-                <a
-                  href="https://www.facebook.com/kcntt.nlu"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.youtube.com/@NongLamUniversity/videos"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-youtube"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.tiktok.com/@nonglam.university"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-tiktok"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-link-box">
-            <ul class="footer-list">
-              <li>
-                <p class="footer-list-title">Thông tin liên hệ</p>
-              </li>
-
-              <li>
-                <address class="footer-link">
-                  <ion-icon name="location"></ion-icon>
-                  <span class="footer-link-text">
-                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
-                  </span>
-                </address>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="call"></ion-icon>
-                  <span class="footer-link-text">0332536387</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="mail"></ion-icon>
-                  <span class="footer-link-text">BHDsport@gmail.com</span>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="footer-list">
-              <li><p class="footer-list-title">Tài khoản</p></li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/account.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Tài khoản</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/carts.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                  <span class="footer-link-text">Xem giỏ hàng</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/wishlist.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                  <span class="footer-link-text">Yêu thích</span>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="footer-list">
-              <li><p class="footer-list-title">Chính sách</p></li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Chính sách bảo mật</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Chính sách bảo hành</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/huongdanmuahang.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/faq.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">FAQs</span>
-                </a>
-              </li>
-            </ul>
-
-            <div class="footer-list">
-              <p class="footer-list-title">Đăng kí nhận tin</p>
-              <form
-                id="newsletter-form"
-                action=""
-                class="newsletter-form"
-                method="POST"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Email"
-                  class="newsletter-input"
-                />
-                <button type="submit" class="btn btn-primary">
-                  <span>Đăng Kí</span>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="copyright">
-            &copy; 2025
-            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
-            chinh phục mọi hành trình
-          </p>
-        </div>
-      </div>
-    </footer>
+    <jsp:include page="footer.jsp" />
     <div id="cartPopup" class="cart-modal">
         <div class="cart-modal-content">
             <span class="cart-close">&times;</span>
