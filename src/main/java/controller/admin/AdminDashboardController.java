@@ -119,7 +119,7 @@ public class AdminDashboardController extends HttpServlet
             return;
         } else if (uri.endsWith("/statistics")) {
 
-            // POST cho statistics (nếu có filter)
+            // POST cho statistics
             response.sendRedirect(request.getContextPath() + "/statistics");
             return;
         }
