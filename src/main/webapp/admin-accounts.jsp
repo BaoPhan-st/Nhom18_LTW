@@ -1,25 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Quản lý tài khoản</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-</head>
-<body>
 <div class="admin-header">
     <h2>Quản lý tài khoản</h2>
 </div>
 
 <div class="form-box account-form-box">
-    <form action="user" method="post">
+    <form action="${pageContext.request.contextPath}/admin/accounts" method="post">
         <input type="hidden" name="id" value="${user.id}"/>
 
         <div class="form-group">
             <label>Họ tên</label>
-            <input type="text" name="full_name" value="${user.full_name}" required/>
+            <input type="text" name="full_name" value="${user.fullName}" required/>
         </div>
 
         <div class="form-group">
@@ -36,22 +28,22 @@
 
         <div class="form-group">
             <label>Số điện thoại</label>
-            <input type="text" name="phone_number" value="${user.phone_number}"/>
+            <input type="text" name="phone_number" value="${user.phoneNumber}"/>
         </div>
 
         <div class="form-group">
             <label>Role</label>
             <select name="role">
-                <option value="user" <c:if test="${user.role=='user'}"></c:if>>User</option>
-                <option value="admin" <c:if test="${user.role=='admin'}"></c:if>>Admin</option>
+                <option value="user" ${user.role == 'user' ? 'selected' : ''}>User</option>
+                <option value="admin" ${user.role == 'admin' ? 'selected' : ''}>Admin</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>Active</label>
             <select name="is_active">
-                <option value="true" ${user.is_active?'selected':''}>Active</option>
-                <option value="false" ${!user.is_active?'selected':''}>Inactive</option>
+                <option value="true" ${user.active ? 'selected' : ''}>Active</option>
+                <option value="false" ${!user.active ? 'selected' : ''}>Inactive</option>
             </select>
         </div>
 
@@ -79,15 +71,18 @@
         <c:forEach var="u" items="${users}">
             <tr>
                 <td>${u.id}</td>
-                <td>${u.full_name}</td>
+                <td>${u.fullName}</td>
                 <td>${u.email}</td>
-                <td>${u.phone_number}</td>
+                <td>${u.phoneNumber}</td>
                 <td>${u.role}</td>
-                <td>${u.is_active ? 'Active' : 'Inactive'}</td>
-                <td>${u.created_at}</td>
+                <td>${u.active ? 'Active' : 'Inactive'}</td>
+                <td>${u.createdAt}</td>
                 <td class="actions">
-                    <a href="user?edit=${u.id}" class="btn edit">Sửa</a>
-                    <a href="user?delete=${u.id}" class="btn delete"
+                    <a href="${pageContext.request.contextPath}/admin/accounts?edit=${u.id}"
+                       class="btn edit">Sửa</a>
+
+                    <a href="${pageContext.request.contextPath}/admin/accounts?delete=${u.id}"
+                       class="btn delete"
                        onclick="return confirm('Xóa user này?')">Xóa</a>
                 </td>
             </tr>
@@ -101,5 +96,3 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>

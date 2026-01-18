@@ -1,18 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Thống kê</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-</head>
-<body>
-<div class="admin-header">
-    <h2>Thống kê</h2>
-</div>
-
 <div class="cards-manager">
     <div class="card">
         <h3>Tổng số đơn</h3>
@@ -28,5 +16,3 @@
         </span>
     </div>
 </div>
-</body>
-</html>

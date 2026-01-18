@@ -14,4 +14,17 @@ public class Password
     {
         return BCrypt.checkpw(plainPassword, hashedPassword);
     }
+    public static boolean isValidPassword(String password)
+    {
+        if (password == null || password.length() < 8) return false;
+        boolean upper = false;
+        boolean lower = false;
+
+        for(char c : password.toCharArray())
+        {
+            if (Character.isUpperCase(c)) upper = true;
+            if (Character.isLowerCase(c)) lower = true;
+        }
+        return upper && lower;
+    }
 }

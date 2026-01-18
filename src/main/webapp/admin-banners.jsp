@@ -2,14 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Quản lý Banner</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-</head>
-<body>
 <div class="admin-header">
     <h2>Quản lý banner</h2>
 </div>
@@ -144,5 +136,3 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>

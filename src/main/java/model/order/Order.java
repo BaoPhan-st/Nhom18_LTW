@@ -42,6 +42,7 @@ public class Order
     @ColumnName("order_note")
     private String orderNote;
 
+    public Order() {}
     public Order(int id, int userID, Time createAt, BigDecimal shippingFee, BigDecimal subTotal, BigDecimal grandTotal, String shippingAddress, String phoneNumber, String orderStatus, String paymentMethod, String paymentStatus, String orderNote)
     {
         this.id = id;

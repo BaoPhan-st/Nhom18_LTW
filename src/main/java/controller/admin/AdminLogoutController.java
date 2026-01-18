@@ -36,11 +36,6 @@ public class AdminLogoutController extends HttpServlet {
 
 
 
-
-
-
-
-
 //package controller.admin;
 //
 //import jakarta.servlet.ServletException;

@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet({"/admin/banners", "/admin/collections", "/admin/newsletter"})
+@WebServlet({"/banners", "/collections", "/newsletter"})
 public class AdminMarketingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,5 +1,6 @@
-package dao;
+package dao.admin.user;
 
+import dao.JDBIConnector;
 import model.product.Product;
 
 import java.sql.Connection;
@@ -141,7 +142,8 @@ public class ProductDao
         {
             System.out.println(product.toString());
         }
-        Product p = dao.findById(1);
+        Product p = dao.findById(1011);
+        if (p == null) return;
         System.out.println(p.toString());
     }
 }

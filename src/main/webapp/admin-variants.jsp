@@ -1,15 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Quản lý biến thể</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-</head>
-<body>
-
 <div class="admin-header">
     <h2>Quản lý biến thể</h2>
 </div>
@@ -76,7 +67,8 @@
                 <td>${v.colorName}</td>
                 <td>${v.stock}</td>
                 <td class="actions">
-                    <a href="variant?edit=${v.productId}&sizeId=${v.sizeId}&colorId=${v.colorId}" class="btn edit">Sửa</a>
+                    <a href="variant?edit=${v.productId}&sizeId=${v.sizeId}&colorId=${v.colorId}"
+                       class="btn edit">Sửa</a>
                     <a href="variant?delete=${v.productId}&sizeId=${v.sizeId}&colorId=${v.colorId}" class="btn delete"
                        onclick="return confirm('Xóa biến thể này?')">Xóa</a>
                 </td>
@@ -91,6 +83,3 @@
         </tbody>
     </table>
 </div>
-
-</body>
-</html>

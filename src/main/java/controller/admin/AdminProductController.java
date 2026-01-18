@@ -1,6 +1,6 @@
 package controller.admin;
 
-import dao.ProductDao;
+import dao.admin.user.ProductDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -9,7 +9,7 @@ import model.product.Product;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet({"/admin/products", "/admin/variants"})
+@WebServlet({"/products", "/variants"})
 public class AdminProductController extends HttpServlet {
     private ProductDao productDao = new ProductDao();
     List<Product> products = productDao.findAll();

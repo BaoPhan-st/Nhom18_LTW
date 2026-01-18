@@ -51,7 +51,7 @@ public class UserDao {
 
     public List<User> findAll()
     {
-        String sql = "SELECT * FROM users ORDER BY create_at DESC";
+        String sql = "SELECT * FROM users ORDER BY created_at DESC";
         return jdbi.withHandle(handle ->
                 handle.createQuery(sql)
                         .mapToBean(User.class)
@@ -93,7 +93,6 @@ public class UserDao {
             return 0;
         }
     }
-
 
     // ===== UPDATE PASSWORD (cho quên mật khẩu) =====
     public boolean updatePassword(String email, String newPasswordHash) {
@@ -150,4 +149,25 @@ public class UserDao {
         }
     }
 
+    public void delete (Integer id)
+    {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("DELETE FROM users WHERE NOT id = :id")
+                        .bind("id",id)
+                        .execute()
+        );
+    }
+    public Integer todayCustomers()
+    {
+        String sql = """
+                SELECT COUNT(*) AS total
+                FROM users u 
+                WHERE u.created_at >= CURDATE()
+                AND u.created_at < CURDATE() + INTERVAL 1 DAY;
+                """;
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one());
+    }
 }
