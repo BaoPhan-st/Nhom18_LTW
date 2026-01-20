@@ -144,7 +144,7 @@ session.getAttribute("currentUser"); %>
                     <!-- IMAGE -->
                     <figure class="card-banner">
                       <img
-                              src="${pageContext.request.contextPath}${p.mainImageUrl}"
+                              src="${p.mainImageUrl}"
                               class="image-contain"
                               alt="${p.name}"
                       />

@@ -71,7 +71,7 @@ public class AdminUserController extends HttpServlet {
         u.setAddress(request.getParameter("address"));
         u.setRole(request.getParameter("role"));
         u.setEmail(request.getParameter("email"));
-        u.setActive(Boolean.parseBoolean(request.getParameter("is_active")));
+
         u.setCreatedAt(LocalDateTime.now());
 
         String onPassword = request.getParameter("password");

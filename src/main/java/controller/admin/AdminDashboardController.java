@@ -12,7 +12,7 @@ import services.admin.SettingService;
 
 import java.io.IOException;
 
-@WebServlet({"/dashboard", "/statistics", "/setting"})
+@WebServlet({"/admin/dashboard", "/admin/statistics", "/admin/setting"})
 public class AdminDashboardController extends HttpServlet
 {
 
