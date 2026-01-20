@@ -4,7 +4,6 @@ import DTO.ProductDTO;
 import dao.Product.ProductDao;
 import model.product.Product;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,7 +13,7 @@ public class ProductService {
     PromotionService promotionService = new PromotionService();
    ProductImgService productImgService = new ProductImgService();
 
-    public List<ProductDTO> findTop3CheapestProductsInPromotion() {
+    public List<ProductDTO> findTopCheapestProductsInPromotion() {
         List<Product> products = productDao.findProductsInPromotion();
         List<ProductDTO> result = new ArrayList<>();
         for (Product product : products) {
@@ -40,8 +39,8 @@ public class ProductService {
         }
         result.sort(Comparator.comparing(ProductDTO::getFinalPrice));
 
-        if (result.size() > 3) {
-            return result.subList(0, 3);
+        if (result.size() > 9) {
+            return result.subList(0, 9);
         }
         return result;
     }

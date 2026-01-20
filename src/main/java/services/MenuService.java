@@ -14,7 +14,7 @@ public class MenuService {
         MenuDTO dto = new MenuDTO();
         dto.setBannerMenu(bannerDao.findByPosition("menu_top"));
         dto.setBannerSpecialP(bannerDao.findByPosition("menu_special-product"));
-        dto.setSpecialProduct(productService.findTop3CheapestProductsInPromotion());
+        dto.setSpecialProduct(productService.findTopCheapestProductsInPromotion());
         dto.setBannerCollection(bannerDao.findByPositions("menu_collection"));
         dto.setBestSeller(productService.getProductsByBrand(1));
         dto.setBrandList(brandDao.findAllActive());

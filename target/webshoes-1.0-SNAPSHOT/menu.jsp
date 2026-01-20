@@ -18,7 +18,7 @@
     <!--
     - favicon
   -->
-    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico" />
 
     <!--
     -  css link
@@ -255,7 +255,7 @@
 
               <ul class="has-scrollbar">
 
-                  <c:forEach items="${menu.bestSeller}" var="p">
+                  <c:forEach items="${menu.specialProduct}" var="p">
                       <li class="product-item">
                           <div class="product-card" tabindex="0">
 
