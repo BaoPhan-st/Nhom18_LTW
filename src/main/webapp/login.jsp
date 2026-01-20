@@ -121,7 +121,7 @@
                             />
                             <small>
                                 Quên mật khẩu ?
-                                <a class="as" href="${pageContext.request.contextPath}/forgotpass"> Nhấn vào đây</a>
+                                <a class="as" href="${pageContext.request.contextPath}/forgot-password"> Nhấn vào đây</a>
                             </small>
                         </fieldset>
 
