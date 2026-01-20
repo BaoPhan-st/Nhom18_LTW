@@ -1,9 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%-- Created by IntelliJ IDEA. User: quy23 Date: 16/12/2025 Time: 5:46 CH To
-change this template use File | Settings | File Templates. --%> <%@ page
-contentType="text/html;charset=UTF-8" language="java" %> <%@ page
-import="model.user.User" %> <% User currentUser = (User)
-session.getAttribute("currentUser"); %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,7 +50,7 @@ session.getAttribute("currentUser"); %>
       -->
         <section
           class="section hero"
-          style="background-image: url('${pageContext.request.contextPath}${menu.bannerMenu.imgUrl}')"
+          style="background-image: url('${menu.bannerMenu.imgUrl}')"
         >
           <div class="container">
             <h2 class="h1 hero-title">${menu.bannerMenu.title}</h2>
@@ -65,7 +61,7 @@ session.getAttribute("currentUser"); %>
 
             <button class="btn btn-primary">
               <a
-                  href="${pageContext.request.contextPath}${menu.bannerMenu.linkUrl}"
+                  href="${menu.bannerMenu.linkUrl}"
                 class="Menu_Banner_button"
                 >Mua ngay</a
               >
@@ -90,7 +86,7 @@ session.getAttribute("currentUser"); %>
                   <div
                           class="collection-card"
                           style="
-                                  background-image: url('${pageContext.request.contextPath}${banner.imgUrl}');
+                                  background-image: url('${banner.imgUrl}');
                                   "
                   >
                     <h3 class="h4 card-title">
@@ -98,7 +94,7 @@ session.getAttribute("currentUser"); %>
                     </h3>
 
                     <a
-                            href="${pageContext.request.contextPath}${banner.linkUrl}"
+                            href="$${pageContext.request.contextPath}{banner.linkUrl}"
                             class="btn btn-secondary"
                     >
                       <span>Khám phá ngay</span>
@@ -136,60 +132,91 @@ session.getAttribute("currentUser"); %>
               </c:forEach>
             </ul>
 
-            <ul class="product-list" id="productList">
-              <c:forEach items="${menu.bestSeller}" var="p">
-                <li class="product-item">
-                  <div class="product-card">
+              <ul class="product-list" id="productList">
+                  <c:forEach items="${menu.bestSeller}" var="p">
+                      <li class="product-item">
+                          <div class="product-card" tabindex="0">
 
-                    <!-- IMAGE -->
-                    <figure class="card-banner">
-                      <img
-                              src="${p.mainImageUrl}"
-                              class="image-contain"
-                              alt="${p.name}"
-                      />
+                              <!-- IMAGE -->
+                              <figure class="card-banner">
+                                  <img
+                                          src="${p.mainImageUrl}"
+                                          width="312"
+                                          height="350"
+                                          loading="lazy"
+                                          alt="${p.name}"
+                                          class="image-contain"
+                                  />
 
-                      <!-- NEW BADGE -->
-                      <c:if test="${p.isNew}">
-                        <div class="card-badge">New</div>
-                      </c:if>
-                    </figure>
+                                  <!-- BADGE NEW -->
+                                  <c:if test="${p.isNew}">
+                                      <div class="card-badge">New</div>
+                                  </c:if>
 
-                    <!-- CONTENT -->
-                      <div class="card-content">
-                          <h3 class="h3 card-title">
-                              <a href="${pageContext.request.contextPath}/product?id=${p.id}">
-                                      ${p.name}
-                              </a>
-                          </h3>
-
-                          <div class="product-card-price">
-                              <c:choose>
-                                  <%-- KHÔNG GIẢM GIÁ --%>
-                                  <c:when test="${p.price eq p.finalPrice}">
-                                      <span class="discounted-price">${p.price}</span>
-                                  </c:when>
-
-                                  <%-- CÓ GIẢM GIÁ --%>
-                                  <c:otherwise>
-                                      <div class="price-row">
-                                          <span class="discounted-price">${p.finalPrice}</span>
-                                          <span class="original-price">${p.price}</span>
-                                      </div>
-
-                                      <c:if test="${not empty p.discountValue}">
-                                          <div class="discount-badge-wrapper">
-                                              <span class="discount-value">Giảm: ${p.discountValue}</span>
+                                  <!-- ACTION BUTTONS -->
+                                  <ul class="card-action-list">
+                                      <li class="card-action-item">
+                                          <button
+                                                  class="card-action-btn"
+                                                  aria-labelledby="cart-${p.id}"
+                                          >
+                                              <ion-icon name="cart-outline"></ion-icon>
+                                          </button>
+                                          <div class="card-action-tooltip" id="cart-${p.id}">
+                                              Thêm vào giỏ hàng
                                           </div>
-                                      </c:if>
-                                  </c:otherwise>
-                              </c:choose>
+                                      </li>
+
+                                      <li class="card-action-item">
+                                          <button
+                                                  class="card-action-btn"
+                                                  aria-labelledby="wish-${p.id}"
+                                          >
+                                              <ion-icon name="heart-outline"></ion-icon>
+                                          </button>
+                                          <div class="card-action-tooltip" id="wish-${p.id}">
+                                              Thêm vào mục yêu thích
+                                          </div>
+                                      </li>
+                                  </ul>
+
+                              </figure>
+
+                              <!-- CONTENT -->
+                              <div class="card-content">
+                                  <h3 class="h3 card-title">
+                                      <a href="${pageContext.request.contextPath}/product?id=${p.id}">
+                                              ${p.name}
+                                      </a>
+                                  </h3>
+
+                                  <div class="product-card-price">
+                                      <c:choose>
+                                          <c:when test="${p.price eq p.finalPrice}">
+                                              <span class="discounted-price">${p.price}</span>
+                                          </c:when>
+                                          <c:otherwise>
+                                              <div class="price-row">
+                                                  <span class="discounted-price">${p.finalPrice}</span>
+                                                  <span class="original-price">${p.price}</span>
+                                              </div>
+
+                                              <c:if test="${not empty p.discountValue}">
+                                                  <div class="discount-badge-wrapper">
+                    <span class="discount-value">
+                      Giảm: ${p.discountValue}
+                    </span>
+                                                  </div>
+                                              </c:if>
+                                          </c:otherwise>
+                                      </c:choose>
+                                  </div>
+                              </div>
+
                           </div>
-                      </div>
-                  </div>
-                </li>
-              </c:forEach>
-            </ul>
+                      </li>
+                  </c:forEach>
+              </ul>
 
           </div>
         </section>
@@ -207,7 +234,7 @@ session.getAttribute("currentUser"); %>
               <h2 class="h3 banner-title">${menu.bannerSpecialP.slogan}</h2>
 
               <a
-                href="${pageContext.request.contextPath}${menu.bannerSpecialP.linkUrl}"
+                href="${menu.bannerSpecialP.linkUrl}"
                 class="btn btn-link"
               >
                 <span>Khám phá ngay</span>
@@ -227,22 +254,54 @@ session.getAttribute("currentUser"); %>
               </h2>
 
               <ul class="has-scrollbar">
-                  <c:forEach items="${menu.specialProduct}" var="p">
+
+                  <c:forEach items="${menu.bestSeller}" var="p">
                       <li class="product-item">
-                          <div class="product-card">
+                          <div class="product-card" tabindex="0">
 
                               <!-- IMAGE -->
                               <figure class="card-banner">
                                   <img
-                                          src="${pageContext.request.contextPath}${p.mainImageUrl}"
-                                          class="image-contain"
+                                          src="${p.mainImageUrl}"
+                                          width="312"
+                                          height="350"
+                                          loading="lazy"
                                           alt="${p.name}"
+                                          class="image-contain"
                                   />
 
-                                  <!-- NEW BADGE -->
+                                  <!-- BADGE NEW -->
                                   <c:if test="${p.isNew}">
                                       <div class="card-badge">New</div>
                                   </c:if>
+
+                                  <!-- ACTION BUTTONS -->
+                                  <ul class="card-action-list">
+                                      <li class="card-action-item">
+                                          <button
+                                                  class="card-action-btn"
+                                                  aria-labelledby="cart-${p.id}"
+                                          >
+                                              <ion-icon name="cart-outline"></ion-icon>
+                                          </button>
+                                          <div class="card-action-tooltip" id="cart-${p.id}">
+                                              Thêm vào giỏ hàng
+                                          </div>
+                                      </li>
+
+                                      <li class="card-action-item">
+                                          <button
+                                                  class="card-action-btn"
+                                                  aria-labelledby="wish-${p.id}"
+                                          >
+                                              <ion-icon name="heart-outline"></ion-icon>
+                                          </button>
+                                          <div class="card-action-tooltip" id="wish-${p.id}">
+                                              Thêm vào mục yêu thích
+                                          </div>
+                                      </li>
+                                  </ul>
+
                               </figure>
 
                               <!-- CONTENT -->
@@ -255,12 +314,9 @@ session.getAttribute("currentUser"); %>
 
                                   <div class="product-card-price">
                                       <c:choose>
-                                          <%-- KHÔNG GIẢM GIÁ --%>
                                           <c:when test="${p.price eq p.finalPrice}">
                                               <span class="discounted-price">${p.price}</span>
                                           </c:when>
-
-                                          <%-- CÓ GIẢM GIÁ --%>
                                           <c:otherwise>
                                               <div class="price-row">
                                                   <span class="discounted-price">${p.finalPrice}</span>
@@ -269,13 +325,16 @@ session.getAttribute("currentUser"); %>
 
                                               <c:if test="${not empty p.discountValue}">
                                                   <div class="discount-badge-wrapper">
-                                                      <span class="discount-value">Giảm: ${p.discountValue}</span>
+                    <span class="discount-value">
+                      Giảm: ${p.discountValue}
+                    </span>
                                                   </div>
                                               </c:if>
                                           </c:otherwise>
                                       </c:choose>
                                   </div>
                               </div>
+
                           </div>
                       </li>
                   </c:forEach>
