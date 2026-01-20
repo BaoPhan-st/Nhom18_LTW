@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<div class="admin-header">
+    <h2>Thống kê</h2>
+</div>
+
 <div class="cards-manager">
     <div class="card">
         <h3>Tổng số đơn</h3>

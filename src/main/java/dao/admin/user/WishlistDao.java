@@ -3,48 +3,41 @@ package dao.admin.user;
 import dao.JDBIConnector;
 import model.user.Wishlist;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
-public class WishlistDao {
-
-    public List<Wishlist> findAll() {
-        List<Wishlist> list = new ArrayList<>();
-
+public class WishlistDao
+{
+    public List<Wishlist> findAll()
+    {
         String sql = """
-            SELECT w.user_id, w.product_id, w.created_at
-            FROM wishlists w
-            JOIN users u ON w.user_id = w.user_id
-            JOIN products p ON w.product_id = p.product_id
-            ORDER BY  w.created_at DESC;
+            SELECT
+                w.user_id AS idUser,
+                w.product_id AS idProduct,
+                w.added_At as addedAt
+            FROM wishlist w
+            JOIN users u ON w.user_id = u.id
+            JOIN products p ON w.product_id = p.id
         """;
 
-        try (Connection con = JDBIConnector.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                Wishlist w = new Wishlist();
-                w.setIdUser(rs.getInt("user_id"));
-                w.setIdProduct(rs.getInt("product_id"));
-                w.setAddedAt(rs.getTimestamp("added_at").toLocalDateTime());
-                list.add(w);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(Wishlist.class)
+                        .list()
+        );
     }
 
-    public void delete(int id) {
-        String sql = "DELETE FROM wishlists WHERE id = ?";
-        try (Connection con = JDBIConnector.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void delete(int userId, int productId)
+    {
+        String sql = """
+            DELETE FROM wishlists
+            WHERE user_id = :userId AND product_id = :productId
+        """;
+
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("userId", userId)
+                        .bind("productId", productId)
+                        .execute()
+        );
     }
 }

@@ -14,14 +14,13 @@
     box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
     min-width: 360px;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    display: flex;
     background: var(--bg);
-    overflow-y: scroll;
 }
 
 /* ===== Sidebar ===== */
@@ -107,7 +106,6 @@ body {
 /* ===== Main ===== */
 .main {
     display: flex !important;
-    flex: 1;
     flex-direction: column;
     margin-left: 200px;
     padding: 20px;
@@ -116,20 +114,22 @@ body {
 
 /* Header */
 .admin-header {
+    display: flex;
     background: linear-gradient(90deg, #ffffff, #f8fbff);
     padding: 15px 20px;
-    border-radius: 8px;
-    margin: 0 0 20px 0;
+
+    margin: 20px 0;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+
     align-items: center;
-    box-shadow: 0 2px 6px rgba(13,71,161,0.06);
+    justify-content: space-between;
+    border-radius: 8px;
     border-left: 4px solid var(--brand);
+    box-shadow: 0 2px 6px rgba(13,71,161,0.06);
 }
 
-.admin-header h2 {
-    margin : 0;
+h2 {
+    margin-bottom: 20px;
 }
 
 /* FORM */
@@ -256,7 +256,7 @@ table,
     border-collapse: separate;
     border-spacing: 0;
     background: var(--card);
-    table-layout: fixed;
+    table-layout: auto;
     font-size: 14px;
 }
 
@@ -266,14 +266,11 @@ table thead th,
     position: sticky;
     top: 0;
     z-index: 2;
-
     padding: 12px 14px;
     text-align: left;
-
     background: linear-gradient(180deg, #f4f7fd, #e9eff9);
     color: #1f2937;
     font-weight: 600;
-
     border-bottom: 2px solid #cfd9e8;
     border-right: 1px solid #dbe3f1;
     white-space: nowrap;
@@ -328,7 +325,31 @@ table tbody tr:hover td,
 
 .section {
     margin-top: 30px;
-    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    max-height: none;
+}
+
+.dashboard-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dashboard-section-header h3 {
+    margin: 0;
+}
+
+.view-all {
+    font-size: 14px;
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.view-all:hover {
+    text-decoration: underline;
 }
 
 /* ===== STATUS BADGE ===== */
@@ -396,4 +417,56 @@ table tbody tr:hover td,
 
 .btn-save:hover {
     background: #45a049;
+}
+/* ===== LOGOUT ===== */
+.logout-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 420px;
+    margin: 60px auto;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logout-text {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #374151;
+}
+
+.logout-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-logout {
+    padding: 10px 22px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-logout.btn-yes {
+    background: var(--danger);
+    color: #fff;
+}
+
+.btn-logout.btn-yes:hover {
+    background: #b72839;
+}
+
+.btn-logout.btn-no {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.btn-logout.btn-no:hover {
+    background: #d1d5db;
 }

@@ -5,35 +5,65 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet({"/banners", "/collections", "/newsletter"})
-public class AdminMarketingController extends HttpServlet {
+@WebServlet({"/admin/banners", "/admin/collections", "/admin/newsletter"})
+public class AdminMarketingController extends HttpServlet
+{
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/collections")) {
-            // Load collections data
+        if (uri.endsWith("/admin/collections"))
+        {
+            // TODO: load collections
 
 
-            request.getRequestDispatcher("/admin-collections.jsp").forward(request, response);
-        } else if (uri.endsWith("/newsletter")) {
-            // Load newsletter data
+            request.setAttribute("contentPage", "/admin-collections.jsp");
+            request.setAttribute("active", "admin/collections");
+
+        } else if (uri.endsWith("/admin/newsletter"))
+        {
+            // TODO: load newsletter
 
 
-            request.getRequestDispatcher("/admin-newsletter.jsp").forward(request, response);
+            request.setAttribute("contentPage", "/admin-newsletter.jsp");
+            request.setAttribute("active", "admin/newsletter");
+
         } else {
-            // Default banners
+            // TODO: load banners
 
 
-            request.getRequestDispatcher("/admin-banners.jsp").forward(request, response);
+            request.setAttribute("contentPage", "/admin-banners.jsp");
+            request.setAttribute("active", "admin/banners");
         }
+        request.getRequestDispatcher("/Admin.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Handle marketing CRUD according to URL
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        request.setCharacterEncoding("UTF-8");
+        String uri = request.getRequestURI();
+
+        if (uri.endsWith("/admin/collections"))
+        {
+            // Handle collections CRUD
 
 
-        response.sendRedirect(request.getRequestURI());
+            response.sendRedirect(request.getContextPath() + "/admin/collections");
+        } else if (uri.endsWith("/admin/newsletter"))
+        {
+            // Handle newsletter CRUD
+
+
+            response.sendRedirect(request.getContextPath() + "/admin/newsletter");
+        } else
+        {
+            // Handle banners CRUD
+
+
+            response.sendRedirect(request.getContextPath() + "/admin/banners");
+        }
     }
 }

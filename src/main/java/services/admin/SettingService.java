@@ -2,77 +2,56 @@ package services.admin;
 
 import dao.JDBIConnector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class SettingService {
+
     /* ========== SETTING ========== */
     public void settingUpdate(String key, String value) {
         String sql = """
-            UPDATE settings
-            SET value = ?
-            WHERE key_name = ?
+            UPDATE setting
+            SET value = :value
+            WHERE key_name = :key
         """;
 
-        try (Connection conn = JDBIConnector.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("value", value)
+                        .bind("key", key)
+                        .execute()
+        );
 
-            ps.setString(1, value);
-            ps.setString(2, key);
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     // ===== GET A SETTING ===== //
     public String settingGet(String key) {
         String sql = """
             SELECT value
-            FROM settings
-            WHERE key_name = ?
+            FROM setting
+            WHERE key_name = :key
         """;
-
-        try (Connection conn = JDBIConnector.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setString(1, key);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return rs.getString("value");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("key",key)
+                        .mapTo(String.class)
+                        .findOne()
+                        .orElse(null)
+        );
     }
 
     // ===== CHECK EXIST ===== //
     public boolean settingExists(String key) {
         String sql = """
-            SELECT 1 
-            FROM settings 
-            WHERE key_name = ?
+            SELECT 1
+            FROM setting
+            WHERE key_name = :key
         """;
 
-        try (Connection conn = JDBIConnector.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setString(1, key);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("key", key)
+                        .mapTo(Integer.class)
+                        .findOne()
+                        .isPresent()
+        );
     }
 
     // ===== INSERT IF NOT EXISTS ===== //
@@ -83,19 +62,15 @@ public class SettingService {
         }
 
         String sql = """
-            INSERT INTO settings (key_name, value) 
-            VALUES (?, ?)
+            INSERT INTO setting (key_name, value)
+            VALUES (:key, :value)
         """;
 
-        try (Connection conn = JDBIConnector.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setString(1, key);
-            ps.setString(2, value);
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        JDBIConnector.getJdbi().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("key", key)
+                        .bind("value", value)
+                        .execute()
+        );
     }
 }

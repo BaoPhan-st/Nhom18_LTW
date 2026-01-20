@@ -1,6 +1,6 @@
 package services;
 
-import dao.admin.user.ProductDao;
+import dao.admin.product.ProductDao;
 import model.product.Product;
 
 import java.util.List;

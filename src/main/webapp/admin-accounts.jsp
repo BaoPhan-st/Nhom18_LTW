@@ -22,8 +22,8 @@
         <div class="form-group">
             <label>Password</label>
             <input type="password" name="password"
-                    placeholder="${user.id == null ? 'Enter password' : 'Leave blank to keep current password'}"
-                    ${user.id == null ? 'required' : ''}/>
+                   placeholder="${user.id == null ? 'Enter password' : 'Leave blank to keep current password'}"
+            ${user.id == null ? 'required' : ''}/>
         </div>
 
         <div class="form-group">
@@ -53,46 +53,65 @@
     </form>
 </div>
 
+<%--    TABLE    --%>
 <div class="section">
-    <table class="data-table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Họ tên</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Role</th>
-            <th>Active</th>
-            <th>Created At</th>
-            <th>Hành động</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="u" items="${users}">
-            <tr>
-                <td>${u.id}</td>
-                <td>${u.fullName}</td>
-                <td>${u.email}</td>
-                <td>${u.phoneNumber}</td>
-                <td>${u.role}</td>
-                <td>${u.active ? 'Active' : 'Inactive'}</td>
-                <td>${u.createdAt}</td>
-                <td class="actions">
-                    <a href="${pageContext.request.contextPath}/admin/accounts?edit=${u.id}"
-                       class="btn edit">Sửa</a>
 
-                    <a href="${pageContext.request.contextPath}/admin/accounts?delete=${u.id}"
-                       class="btn delete"
-                       onclick="return confirm('Xóa user này?')">Xóa</a>
-                </td>
-            </tr>
-        </c:forEach>
+    <%--    FILTER    --%>
+    <div class="table-toolbar">
+        <input type="text" data-filter="0" placeholder="ID">
+        <input type="text" data-filter="1" placeholder="Họ tên">
+        <input type="text" data-filter="2" placeholder="Email">
 
-        <c:if test="${empty users}">
+        <button class="btn-search">Tìm</button>
+        <button class="btn-reset">Reset</button>
+    </div>
+
+    <%--    SCROLL    --%>
+    <div class="table-scroll-top">
+        <div class="scroll-inner"></div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
             <tr>
-                <td colspan="8" class="empty">Chưa có user nào</td>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Active</th>
+                <th>Created At</th>
+                <th>Hành động</th>
             </tr>
-        </c:if>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <c:forEach var="u" items="${users}">
+                <tr>
+                    <td>${u.id}</td>
+                    <td>${u.fullName}</td>
+                    <td>${u.email}</td>
+                    <td>${u.phoneNumber}</td>
+                    <td>${u.role}</td>
+                    <td>${u.active ? 'Active' : 'Inactive'}</td>
+                    <td>${u.createdAt}</td>
+                    <td class="actions">
+                        <a href="${pageContext.request.contextPath}/admin/accounts?edit=${u.id}"
+                           class="btn edit">Sửa</a>
+
+                        <a href="${pageContext.request.contextPath}/admin/accounts?delete=${u.id}"
+                           class="btn delete"
+                           onclick="return confirm('Xóa user này?')">Xóa</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <c:if test="${empty users}">
+                <tr>
+                    <td colspan="8" class="empty">Chưa có user nào</td>
+                </tr>
+            </c:if>
+            </tbody>
+        </table>
+    </div>
 </div>

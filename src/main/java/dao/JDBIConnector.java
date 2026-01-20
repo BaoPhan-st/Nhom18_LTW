@@ -1,12 +1,9 @@
 package dao;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.core.mapper.CaseStrategy;
-import org.jdbi.v3.core.mapper.reflect.ReflectionMappers;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import org.jdbi.v3.core.Jdbi;
+
 import java.sql.SQLException;
 
 public class JDBIConnector {
@@ -49,16 +46,5 @@ public class JDBIConnector {
                     .one();
             System.out.println("Users = " + count);
         });
-    }
-
-    public static Connection getConnection ()
-    {
-        try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh", "root", "");
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

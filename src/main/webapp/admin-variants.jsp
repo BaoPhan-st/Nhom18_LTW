@@ -5,20 +5,22 @@
     <h2>Quản lý biến thể</h2>
 </div>
 
-<!-- Form thêm / chỉnh sửa biến thể -->
+<!-- FORM -->
 <div class="form-box variant-form-box">
-    <form id="variant-form" action="variant" method="post">
+    <form action="${pageContext.request.contextPath}/admin/variants" method="post">
+
         <c:if test="${variant != null}">
             <input type="hidden" name="productId" value="${variant.productId}"/>
-            <input type="hidden" name="sizeId" value="${variant.sizeId}"/>
-            <input type="hidden" name="colorId" value="${variant.colorId}"/>
+            <input type="hidden" name="sizeIdOld" value="${variant.sizeId}"/>
+            <input type="hidden" name="colorIdOld" value="${variant.colorId}"/>
         </c:if>
 
         <div class="form-group">
-            <label>Size:</label>
-            <select name="sizeId">
+            <label>Size</label>
+            <select name="sizeId" required>
                 <c:forEach var="s" items="${sizes}">
-                    <option value="${s.id}" ${variant != null && variant.sizeId == s.id ? 'select' : ''}>
+                    <option value="${s.id}"
+                        ${variant != null && variant.sizeId == s.id ? 'selected' : ''}>
                             ${s.name}
                     </option>
                 </c:forEach>
@@ -26,10 +28,11 @@
         </div>
 
         <div class="form-group">
-            <label>Màu:</label>
-            <select name="colorId">
+            <label>Màu</label>
+            <select name="colorId" required>
                 <c:forEach var="c" items="${colors}">
-                    <option value="${c.id}" ${variant != null && variant.sizeId == s.id ? 'select' : ''}>
+                    <option value="${c.id}"
+                        ${variant != null && variant.colorId == c.id ? 'selected' : ''}>
                             ${c.name}
                     </option>
                 </c:forEach>
@@ -37,17 +40,21 @@
         </div>
 
         <div class="form-group">
-            <label>Stock:</label>
-            <input type="number" name="stock" min="0" value="<c:out value='${variant != null ? variant.stock : 0}'/>"/>
+            <label>Stock</label>
+            <input type="number"
+                   name="stock"
+                   min="0"
+                   value="${variant != null ? variant.stock : 0}"
+                   required/>
         </div>
 
-        <button type="submit" class="btn-submit" style="padding: 10px;">
-            <c:out value="${variant != null ? 'Cập nhật' : 'Thêm mới'}"/>
+        <button type="submit" class="btn-submit">
+            ${variant != null ? 'Cập nhật' : 'Thêm mới'}
         </button>
     </form>
 </div>
 
-<!-- Danh sách biến thể -->
+<!-- TABLE -->
 <div class="section">
     <table class="data-table">
         <thead>
@@ -67,9 +74,19 @@
                 <td>${v.colorName}</td>
                 <td>${v.stock}</td>
                 <td class="actions">
-                    <a href="variant?edit=${v.productId}&sizeId=${v.sizeId}&colorId=${v.colorId}"
+                    <a href="${pageContext.request.contextPath}/admin/variants
+                        ?edit=true
+                        &productId=${v.productId}
+                        &sizeId=${v.sizeId}
+                        &colorId=${v.colorId}"
                        class="btn edit">Sửa</a>
-                    <a href="variant?delete=${v.productId}&sizeId=${v.sizeId}&colorId=${v.colorId}" class="btn delete"
+
+                    <a href="${pageContext.request.contextPath}/admin/variants
+                        ?delete=true
+                        &productId=${v.productId}
+                        &sizeId=${v.sizeId}
+                        &colorId=${v.colorId}"
+                       class="btn delete"
                        onclick="return confirm('Xóa biến thể này?')">Xóa</a>
                 </td>
             </tr>

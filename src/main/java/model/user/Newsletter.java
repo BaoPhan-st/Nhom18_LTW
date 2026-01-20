@@ -15,6 +15,8 @@ public class Newsletter
     @ColumnName("subscribed_at")
     private LocalDateTime subscribedAt;
 
+    public Newsletter () { }
+
     public Newsletter (int id, String email, boolean isActive, LocalDateTime subscribedAt)
     {
         this.id = id;

@@ -4,7 +4,7 @@ import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Time;
+import java.time.LocalDateTime;
 
 public class Product implements Serializable
 {
@@ -17,7 +17,7 @@ public class Product implements Serializable
     private int brandID;
 
     @ColumnName("added_at")
-    private Time addedAt;
+    private LocalDateTime addedAt;
 
     @ColumnName("is_discontinue")
     private boolean isDiscontinue;
@@ -26,7 +26,7 @@ public class Product implements Serializable
     private boolean isAvailable;
 
     public Product(){}
-    public Product (int id, String name, String description, BigDecimal price, int brandID, Time addedAt, boolean isDiscontinue, boolean isAvailable)
+    public Product (int id, String name, String description, BigDecimal price, int brandID, LocalDateTime addedAt, boolean isDiscontinue, boolean isAvailable)
     {
         this.id = id;
         this.name = name;
@@ -43,7 +43,7 @@ public class Product implements Serializable
     public String getDescription() { return description; }
     public BigDecimal getPrice() { return price; }
     public int getBrandID() { return brandID; }
-    public Time getAddedAt() { return addedAt; }
+    public LocalDateTime getAddedAt() { return addedAt; }
     public boolean isDiscontinue() { return isDiscontinue; }
     public boolean isAvailable () { return isAvailable; }
 
@@ -52,7 +52,7 @@ public class Product implements Serializable
     public void setDescription(String description) { this.description = description; }
     public void setPrice(BigDecimal price) { this.price = price; }
     public void setBrandID(int brandID) { this.brandID = brandID; }
-    public void setAddedAt(Time addedAt) { this.addedAt = addedAt; }
+    public void setAddedAt(LocalDateTime addedAt) { this.addedAt = addedAt; }
     public void setDiscontinue(boolean discontinue) { isDiscontinue = discontinue; }
     public void setIsAvailable(boolean isAvailable) { this.isAvailable = isAvailable; }
 

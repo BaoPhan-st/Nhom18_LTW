@@ -48,43 +48,77 @@
     </form>
 </div>
 
-<!-- TABLE -->
+<%--    TABLE    --%>
 <div class="section">
-    <table class="data-table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Slug</th>
-            <th>Loại RuleSet</th>
-            <th>Active</th>
-            <th>Hành động</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="c" items="${collections}">
-            <tr>
-                <td>${c.id}</td>
-                <td>${c.name}</td>
-                <td>${c.slug}</td>
-                <td>${c.ruleSet_type}</td>
-                <td><c:choose>
-                    <c:when test="${c.is_active}">Active</c:when>
-                    <c:otherwise>Inactive</c:otherwise>
-                </c:choose></td>
-                <td class="actions">
-                    <a href="${pageContext.request.contextPath}/collection?edit=${c.id}" class="btn edit">Sửa</a>
-                    <a href="${pageContext.request.contextPath}/collection?delete=${c.id}" class="btn delete"
-                       onclick="return confirm('Xóa bộ sưu tập này?')">Xóa</a>
-                </td>
-            </tr>
-        </c:forEach>
 
-        <c:if test="${empty collections}">
+    <%--    FILTER    --%>
+    <div class="table-toolbar">
+        <input type="text" data-filter="0" placeholder="ID">
+        <input type="text" data-filter="1" placeholder="Tên bộ sưu tập">
+
+        <select data-filter="3">
+            <option value="">-- RuleSet --</option>
+            <option value="manual">Manual</option>
+            <option value="automatic">Automatic</option>
+        </select>
+
+        <select data-filter="4">
+            <option value="">-- Trạng thái --</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+
+        <button class="btn-search">Tìm</button>
+        <button class="btn-reset">Reset</button>
+    </div>
+
+    <%--    SCROLL    --%>
+    <div class="table-scroll-top">
+        <div class="scroll-inner"></div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
             <tr>
-                <td colspan="6" class="empty">Chưa có bộ sưu tập</td>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Slug</th>
+                <th>Loại RuleSet</th>
+                <th>Active</th>
+                <th>Hành động</th>
             </tr>
-        </c:if>
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+            <c:forEach var="c" items="${collections}">
+                <tr>
+                    <td>${c.id}</td>
+                    <td>${c.name}</td>
+                    <td>${c.slug}</td>
+                    <td>${c.ruleSet_type}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${c.is_active}">Active</c:when>
+                            <c:otherwise>Inactive</c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td class="actions">
+                        <a href="${pageContext.request.contextPath}/collection?edit=${c.id}"
+                           class="btn edit">Sửa</a>
+                        <a href="${pageContext.request.contextPath}/collection?delete=${c.id}"
+                           class="btn delete"
+                           onclick="return confirm('Xóa bộ sưu tập này?')">Xóa</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <c:if test="${empty collections}">
+                <tr>
+                    <td colspan="6" class="empty">Chưa có bộ sưu tập</td>
+                </tr>
+            </c:if>
+            </tbody>
+        </table>
+    </div>
 </div>
