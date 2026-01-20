@@ -23,7 +23,7 @@ public class JDBIConnector {
     private static void connect() {
         MysqlDataSource ds = new MysqlDataSource();
 
-            ds.setUrl("jdbc:mysql://localhost:3306/ltw_sportshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh");
+            ds.setUrl("jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh");
             ds.setUser("root");
             ds.setPassword("");
 
