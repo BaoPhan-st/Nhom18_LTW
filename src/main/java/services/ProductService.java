@@ -1,53 +1,85 @@
 package services;
 
 import dao.admin.product.ProductDao;
+import DTO.ProductDTO;
 import model.product.Product;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class ProductService
-{
-    private final ProductDao productDao;
+public class ProductService {
+    ProductDao productDao = new ProductDao();
+    PromotionService promotionService = new PromotionService();
+    ProductImgService productImgService = new ProductImgService();
 
-    public ProductService()
-    {
-        this.productDao = new ProductDao();
-    }
-
-    public List<Product> getAllProducts()
-    {
-        return productDao.findAll();
-    }
-
-    public Product getProductById(int id)
-    {
-        return productDao.findById(id);
-    }
-
-    public boolean addProduct(Product product)
-    {
-        if (product == null)
-        {
-            return false;
+    public List<ProductDTO> findTop3CheapestProductsInPromotion() {
+        List<Product> products = productDao.findProductsInPromotion();
+        List<ProductDTO> result = new ArrayList<>();
+        for (Product product : products) {
+            boolean isNew = productDao.isNew(product.getId());
+            PromotionResult pr =
+                    promotionService.calculateBestPromotion(product.getId());
+            String finalPrice = promotionService.formatVND(pr.getFinalPrice());
+            String price = promotionService.formatVND(product.getPrice());
+            String mainImgURL =
+                    productImgService.getMainImg(product.getId());
+            String discountValue =
+                    promotionService.getDiscountValueString(pr.getBestPromotion());
+            ProductDTO dto = new ProductDTO(
+                    product.getId(),
+                    product.getName(),
+                    price,
+                    finalPrice,
+                    mainImgURL,
+                    discountValue,
+                    isNew
+            );
+            result.add(dto);
         }
-        return productDao.insert(product);
+        result.sort(Comparator.comparing(ProductDTO::getFinalPrice));
+
+        if (result.size() > 3) {
+            return result.subList(0, 3);
+        }
+        return result;
+    }
+    public List<ProductDTO> getProductsByBrand(int brandId) {
+        int limit = 16;
+
+        List<Product> products =
+                productDao.findByBrandLimit(brandId, limit);
+
+        List<ProductDTO> result = new ArrayList<>();
+
+        for (Product p : products) {
+            boolean isNew= productDao.isNew(p.getId());
+            PromotionResult pr =
+                    promotionService.calculateBestPromotion(p.getId());
+            String finalPrice = promotionService.formatVND(pr.getFinalPrice());
+            String price = promotionService.formatVND(p.getPrice());
+            String mainImgURL =
+                    productImgService.getMainImg(p.getId());
+            String discountValue =
+                    promotionService.getDiscountValueString(pr.getBestPromotion());
+
+            ProductDTO dto = new ProductDTO(
+                    p.getId(),
+                    p.getName(),
+                    price,
+                    finalPrice,
+                    mainImgURL,
+                    discountValue,
+                    isNew
+            );
+            result.add(dto);
+        }
+
+        return result;
     }
 
-    public boolean updateProduct(Product product)
-    {
-        if (product == null || product.getId() <= 0)
-        {
-            return false;
-        }
-        return productDao.update(product);
-    }
-
-    public boolean deleteProduct(int id)
-    {
-        if (id <= 0)
-        {
-            return false;
-        }
-        return productDao.delete(id);
-    }
 }
+
+
+
+

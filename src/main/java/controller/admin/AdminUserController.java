@@ -16,7 +16,6 @@ public class AdminUserController extends HttpServlet
 {
     private final UserDao userDao = new UserDao();
     private final WishlistDao wishlistDao = new WishlistDao();
-
     @Override
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -86,6 +85,8 @@ public class AdminUserController extends HttpServlet
         u.setRole(request.getParameter("role"));
         u.setEmail(request.getParameter("email"));
         u.setIsActive(Boolean.parseBoolean(request.getParameter("is_active")));
+
+        u.setCreatedAt(LocalDateTime.now());
 
         String rawPassword = request.getParameter("password");
         if (rawPassword != null && !rawPassword.isBlank())

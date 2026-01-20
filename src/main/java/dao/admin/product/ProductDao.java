@@ -94,4 +94,8 @@ public class ProductDao
            return query.mapToBean(Product.class).list();
         });
     }
+
+    public List<Product> findProductsInPromotion () {
+        return null;
+    }
 }

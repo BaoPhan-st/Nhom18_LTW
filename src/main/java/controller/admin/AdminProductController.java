@@ -10,25 +10,19 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet({"/admin/products", "/admin/variants"})
-public class AdminProductController extends HttpServlet
-{
+public class AdminProductController extends HttpServlet {
     private final ProductDao productDao = new ProductDao();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+    protected void doGet (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/admin/variants"))
-        {
+        if (uri.endsWith("/admin/variants")) {
             request.setAttribute("contentPage", "/admin-variants.jsp");
             request.setAttribute("active", "admin/variants");
-        }
-        else
-        {
-            try
-            {
+        } else {
+            try {
                 String idParam = request.getParameter("id");
                 String nameParam = request.getParameter("name");
                 String brandIdParam = request.getParameter("brandId");
@@ -36,33 +30,27 @@ public class AdminProductController extends HttpServlet
                 Integer id = null;
                 Integer brandId = null;
 
-                try
-                {
+                try {
                     if (idParam != null && !idParam.isBlank())
                         id = Integer.parseInt(idParam);
 
                     if (brandIdParam != null && !brandIdParam.isBlank())
                         brandId = Integer.parseInt(brandIdParam);
+                } catch (NumberFormatException ignored) {
                 }
-                catch (NumberFormatException ignored) {}
 
                 List<Product> products;
 
                 if (id != null ||
                         (nameParam != null && !nameParam.isBlank()) ||
-                        brandId != null)
-                {
+                        brandId != null) {
                     products = productDao.findWithFilter(id, nameParam, brandId);
-                }
-                else
-                {
+                } else {
                     products = productDao.findAll();
                 }
 
                 request.setAttribute("products", products);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
                 request.setAttribute("error", e.getMessage());
             }
@@ -72,13 +60,10 @@ public class AdminProductController extends HttpServlet
 
             // ===== EDIT =====
             String editId = request.getParameter("edit");
-            if (editId != null)
-            {
+            if (editId != null) {
                 Product p = productDao.findById(Integer.parseInt(editId));
                 request.setAttribute("product", p);
-            }
-            else
-            {
+            } else {
                 request.setAttribute("product", new Product());
             }
 
@@ -90,19 +75,16 @@ public class AdminProductController extends HttpServlet
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/admin/variants"))
-        {
+        if (uri.endsWith("/admin/variants")) {
             // Handle variant CRUD
 
 
             response.sendRedirect(request.getContextPath() + "/admin/variants");
-        } else
-        {
+        } else {
             // Handle product CRUD
 
 
