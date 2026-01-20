@@ -1,72 +1,94 @@
 package model.product;
 
-import org.jdbi.v3.core.mapper.reflect.ColumnName;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Time;
+import java.time.LocalDateTime;
 
-public class Product implements Serializable
-{
+public class Product implements Serializable {
     private int id;
     private String name;
     private String description;
-    private BigDecimal price;
+    private java.math.BigDecimal price;
+    private int brand_id;
+    private LocalDateTime added_at;
+    private boolean is_discontinue;
+    private boolean is_available;
 
-    @ColumnName("brand_id")
-    private int brandID;
+    public Product() {
+    }
 
-    @ColumnName("added_at")
-    private Time addedAt;
-
-    @ColumnName("is_discontinue")
-    private boolean isDiscontinue;
-
-    @ColumnName("is_available")
-    private boolean isAvailable;
-
-    public Product(){}
-    public Product (int id, String name, String description, BigDecimal price, int brandID, Time addedAt, boolean isDiscontinue, boolean isAvailable)
-    {
+    public Product(int id, String name, String description, BigDecimal price, int brand_id, LocalDateTime added_at, boolean is_discontinue, boolean is_available) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.brandID = brandID;
-        this.addedAt = addedAt;
-        this.isDiscontinue = isDiscontinue;
-        this.isAvailable = isAvailable;
+        this.brand_id = brand_id;
+        this.added_at = added_at;
+        this.is_discontinue = is_discontinue;
+        this.is_available = is_available;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getDescription() { return description; }
-    public BigDecimal getPrice() { return price; }
-    public int getBrandID() { return brandID; }
-    public Time getAddedAt() { return addedAt; }
-    public boolean isDiscontinue() { return isDiscontinue; }
-    public boolean isAvailable () { return isAvailable; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
-    public void setDescription(String description) { this.description = description; }
-    public void setPrice(BigDecimal price) { this.price = price; }
-    public void setBrandID(int brandID) { this.brandID = brandID; }
-    public void setAddedAt(Time addedAt) { this.addedAt = addedAt; }
-    public void setDiscontinue(boolean discontinue) { isDiscontinue = discontinue; }
-    public void setIsAvailable(boolean isAvailable) { this.isAvailable = isAvailable; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    @Override
-    public String toString()
-    {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description +'\''+
-                ", price=" + price +
-                ", brandID=" + brandID +
-                ", addedAt=" + addedAt +
-                ", isDiscontinue=" + isDiscontinue +
-                ", isAvailable=" + isAvailable + '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public int getBrandId() {
+        return brand_id;
+    }
+
+    public void setBrandId(int brand_id) {
+        this.brand_id = brand_id;
+    }
+
+    public LocalDateTime getAddedAt() {
+        return added_at;
+    }
+
+    public void setAddedAt(LocalDateTime added_at) {
+        this.added_at = added_at;
+    }
+
+    public boolean isDiscontinue() {
+        return is_discontinue;
+    }
+
+    public void setDiscontinue(boolean is_discontinue) {
+        this.is_discontinue = is_discontinue;
+    }
+
+    public boolean isAvailable() {
+        return is_available;
+    }
+
+    public void setAvailable(boolean is_available) {
+        this.is_available = is_available;
     }
 }
