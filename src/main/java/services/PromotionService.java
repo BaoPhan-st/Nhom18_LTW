@@ -74,7 +74,7 @@ public class PromotionService {
         symbols.setGroupingSeparator('.');
 
         DecimalFormat formatter = new DecimalFormat("#,###", symbols);
-        return formatter.format(value) + "đ";
+        return formatter.format(value) + "₫";
     }
 
 }

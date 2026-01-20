@@ -167,19 +167,19 @@ session.getAttribute("currentUser"); %>
                               <c:choose>
                                   <%-- KHÔNG GIẢM GIÁ --%>
                                   <c:when test="${p.price eq p.finalPrice}">
-                                      <span class="discounted-price">${p.price}₫</span>
+                                      <span class="discounted-price">${p.price}</span>
                                   </c:when>
 
                                   <%-- CÓ GIẢM GIÁ --%>
                                   <c:otherwise>
                                       <div class="price-row">
-                                          <span class="discounted-price">${p.finalPrice}₫</span>
-                                          <span class="original-price">${p.price}₫</span>
+                                          <span class="discounted-price">${p.finalPrice}</span>
+                                          <span class="original-price">${p.price}</span>
                                       </div>
 
                                       <c:if test="${not empty p.discountValue}">
                                           <div class="discount-badge-wrapper">
-                                              <span class="discount-value">Giảm: ${p.discountValue}đ</span>
+                                              <span class="discount-value">Giảm: ${p.discountValue}</span>
                                           </div>
                                       </c:if>
                                   </c:otherwise>
@@ -257,19 +257,19 @@ session.getAttribute("currentUser"); %>
                                       <c:choose>
                                           <%-- KHÔNG GIẢM GIÁ --%>
                                           <c:when test="${p.price eq p.finalPrice}">
-                                              <span class="discounted-price">${p.price}₫</span>
+                                              <span class="discounted-price">${p.price}</span>
                                           </c:when>
 
                                           <%-- CÓ GIẢM GIÁ --%>
                                           <c:otherwise>
                                               <div class="price-row">
-                                                  <span class="discounted-price">${p.finalPrice}₫</span>
-                                                  <span class="original-price">${p.price}₫</span>
+                                                  <span class="discounted-price">${p.finalPrice}</span>
+                                                  <span class="original-price">${p.price}</span>
                                               </div>
 
                                               <c:if test="${not empty p.discountValue}">
                                                   <div class="discount-badge-wrapper">
-                                                      <span class="discount-value">Giảm: ${p.discountValue}đ</span>
+                                                      <span class="discount-value">Giảm: ${p.discountValue}</span>
                                                   </div>
                                               </c:if>
                                           </c:otherwise>

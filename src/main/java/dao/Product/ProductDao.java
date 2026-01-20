@@ -83,6 +83,9 @@ public class ProductDao {
                         .execute()
         );
     }
+
+
+
     public List<Product> findProductsInPromotion() {
 
         String sql = """
@@ -102,7 +105,7 @@ public class ProductDao {
                         .list()
         );
     }
-    public List<Product> findByBrandLimit(Integer brandId, int limit) {
+    public List<Product> findByBrandLimit(int brandId, int limit) {
         String sql = """
     
                 SELECT p.* FROM product p
