@@ -11,7 +11,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-@WebServlet({"/accounts", "/wishlist"})
+@WebServlet({"/admin/accounts", "/admin/wishlist"})
 public class AdminUserController extends HttpServlet {
     private UserDao userDao = new UserDao();
     private WishlistDao wishlistDao = new WishlistDao();
@@ -71,7 +71,7 @@ public class AdminUserController extends HttpServlet {
         u.setAddress(request.getParameter("address"));
         u.setRole(request.getParameter("role"));
         u.setEmail(request.getParameter("email"));
-
+        u.setIsActive(Boolean.parseBoolean(request.getParameter("is_active")));
         u.setCreatedAt(LocalDateTime.now());
 
         String onPassword = request.getParameter("password");
