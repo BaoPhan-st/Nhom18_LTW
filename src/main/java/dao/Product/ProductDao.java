@@ -14,77 +14,32 @@ public class ProductDao {
         this.jdbi = JDBIConnector.getJdbi();
     }
 
-    // ===== FIND =====
+
     public Product findById(int id) {
         String sql = "SELECT * FROM product WHERE id = :id AND is_available = 1";
         return jdbi.withHandle(h ->
                 h.createQuery(sql)
                         .bind("id", id)
                         .mapToBean(Product.class)
-                        .findOne()
-                        .orElse(null)
+                        .one()
         );
     }
 
-    public List<Product> findAllActive() {
+    public List<Product> getAllBestSeller(int limit) {
         String sql = """
             SELECT * FROM product
             WHERE is_available = 1 AND is_discontinue = 0
             ORDER BY added_at DESC
+            LIMIT :limit
         """;
 
         return jdbi.withHandle(h ->
                 h.createQuery(sql)
+                        .bind("limit", limit)
                         .mapToBean(Product.class)
                         .list()
         );
     }
-
-    // ===== INSERT =====
-    public void insert(Product product) {
-        String sql = """
-            INSERT INTO product(name, description, price, brand_id,
-                                added_at, is_discontinue, is_available)
-            VALUES(:name, :description, :price, :brandId,
-                   NOW(), 0, 1)
-        """;
-
-        jdbi.useHandle(h ->
-                h.createUpdate(sql)
-                        .bindBean(product)
-                        .execute()
-        );
-    }
-
-    // ===== UPDATE =====
-    public void update(Product product) {
-        String sql = """
-            UPDATE product
-            SET name = :name,
-                description = :description,
-                price = :price,
-                brand_id = :brandId
-            WHERE id = :id
-        """;
-
-        jdbi.useHandle(h ->
-                h.createUpdate(sql)
-                        .bindBean(product)
-                        .execute()
-        );
-    }
-
-    // ===== DELETE =====
-    public void delete(int id) {
-        String sql = "UPDATE product SET is_discontinue = 1 WHERE id = :id";
-        jdbi.useHandle(h ->
-                h.createUpdate(sql)
-                        .bind("id", id)
-                        .execute()
-        );
-    }
-
-
 
     public List<Product> findProductsInPromotion() {
 
@@ -112,7 +67,7 @@ public class ProductDao {
                 JOIN brand b ON p.brand_id = b.id
                 WHERE (:brandId IS NULL OR p.brand_id = :brandId)
                   AND b.is_active = 1
-                  AND is_active = 1
+                  AND p.is_available = 1
                 ORDER BY p.id DESC
                 LIMIT :limit
     """;
@@ -130,6 +85,7 @@ public class ProductDao {
         SELECT COUNT(*)
         FROM product
         WHERE id = :id
+          AND is_available = 1
           AND added_at >= NOW() - INTERVAL 7 DAY
     """;
         return jdbi.withHandle(handle ->

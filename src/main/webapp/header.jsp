@@ -72,9 +72,6 @@
                 <li class="nav-action-item">
                     <a href="${pageContext.request.contextPath}/wishlist" class="nav-action-btn">
                         <ion-icon name="heart-outline"></ion-icon>
-                        <span class="header-badge" id="wishlist-count">
-                            ${wishlistCount}
-                        </span>
                     </a>
                 </li>
 
@@ -82,9 +79,6 @@
                 <li class="nav-action-item">
                     <a href="${pageContext.request.contextPath}/carts" class="nav-action-btn">
                         <ion-icon name="bag-outline"></ion-icon>
-                        <span class="header-badge" id="cart-count">
-                            ${cartCount}
-                        </span>
                     </a>
                 </li>
             </ul>

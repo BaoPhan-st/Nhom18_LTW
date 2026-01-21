@@ -93,10 +93,8 @@
                         ${banner.title}
                     </h3>
 
-                    <a
-                            href="$${pageContext.request.contextPath}{banner.linkUrl}"
-                            class="btn btn-secondary"
-                    >
+                      <a href="${pageContext.request.contextPath}${banner.linkUrl}"
+                         class="btn btn-secondary">
                       <span>Khám phá ngay</span>
                       <ion-icon
                               name="arrow-forward-outline"
@@ -119,18 +117,23 @@
           <div class="container">
             <h2 class="h2 section-title">Sản phẩm bán chạy</h2>
 
-            <ul class="filter-list">
-              <li>
-                <button class="filter-btn active" data-id="all">All</button>
-              </li>
-              <c:forEach items="${menu.brandList}" var="b">
-                <li>
-                  <button class="filter-btn" data-id="${b.id}">
-                      ${b.name}
-                  </button>
-                </li>
-              </c:forEach>
-            </ul>
+              <ul class="filter-list">
+                  <li>
+                      <a href="${pageContext.request.contextPath}/menufilter?brandId=all"
+                         class="filter-btn ${param.brandId == 'all' || empty param.brandId ? 'active' : ''}">
+                          All
+                      </a>
+                  </li>
+
+                  <c:forEach items="${menu.brandList}" var="b">
+                      <li>
+                          <a href="${pageContext.request.contextPath}/menufilter?brandId=${b.id}"
+                             class="filter-btn ${param.brandId == b.id.toString() ? 'active' : ''}">
+                                  ${b.name}
+                          </a>
+                      </li>
+                  </c:forEach>
+              </ul>
 
               <ul class="product-list" id="productList">
                   <c:forEach items="${menu.bestSeller}" var="p">
@@ -141,45 +144,16 @@
                               <figure class="card-banner">
                                   <img
                                           src="${p.mainImageUrl}"
-                                          width="312"
-                                          height="350"
                                           loading="lazy"
                                           alt="${p.name}"
                                           class="image-contain"
                                   />
 
+
                                   <!-- BADGE NEW -->
                                   <c:if test="${p.isNew}">
                                       <div class="card-badge">New</div>
                                   </c:if>
-
-                                  <!-- ACTION BUTTONS -->
-                                  <ul class="card-action-list">
-                                      <li class="card-action-item">
-                                          <button
-                                                  class="card-action-btn"
-                                                  aria-labelledby="cart-${p.id}"
-                                          >
-                                              <ion-icon name="cart-outline"></ion-icon>
-                                          </button>
-                                          <div class="card-action-tooltip" id="cart-${p.id}">
-                                              Thêm vào giỏ hàng
-                                          </div>
-                                      </li>
-
-                                      <li class="card-action-item">
-                                          <button
-                                                  class="card-action-btn"
-                                                  aria-labelledby="wish-${p.id}"
-                                          >
-                                              <ion-icon name="heart-outline"></ion-icon>
-                                          </button>
-                                          <div class="card-action-tooltip" id="wish-${p.id}">
-                                              Thêm vào mục yêu thích
-                                          </div>
-                                      </li>
-                                  </ul>
-
                               </figure>
 
                               <!-- CONTENT -->
@@ -217,7 +191,6 @@
                       </li>
                   </c:forEach>
               </ul>
-
           </div>
         </section>
         <!--
@@ -269,39 +242,10 @@
                                           alt="${p.name}"
                                           class="image-contain"
                                   />
-
                                   <!-- BADGE NEW -->
                                   <c:if test="${p.isNew}">
                                       <div class="card-badge">New</div>
                                   </c:if>
-
-                                  <!-- ACTION BUTTONS -->
-                                  <ul class="card-action-list">
-                                      <li class="card-action-item">
-                                          <button
-                                                  class="card-action-btn"
-                                                  aria-labelledby="cart-${p.id}"
-                                          >
-                                              <ion-icon name="cart-outline"></ion-icon>
-                                          </button>
-                                          <div class="card-action-tooltip" id="cart-${p.id}">
-                                              Thêm vào giỏ hàng
-                                          </div>
-                                      </li>
-
-                                      <li class="card-action-item">
-                                          <button
-                                                  class="card-action-btn"
-                                                  aria-labelledby="wish-${p.id}"
-                                          >
-                                              <ion-icon name="heart-outline"></ion-icon>
-                                          </button>
-                                          <div class="card-action-tooltip" id="wish-${p.id}">
-                                              Thêm vào mục yêu thích
-                                          </div>
-                                      </li>
-                                  </ul>
-
                               </figure>
 
                               <!-- CONTENT -->
@@ -348,76 +292,6 @@
 - #FOOTER
 -->
     <jsp:include page="footer.jsp" />
-    <div id="cartPopup" class="cart-modal">
-        <div class="cart-modal-content">
-            <span class="cart-close">&times;</span>
-
-            <div class="cart-product-box">
-                <img
-                        src="./assets/images/product-1.jpg"
-                        class="cart-product-img"
-                        id="popupImg"
-                />
-
-                <div class="cart-info">
-                    <h2 id="popupName">Running Sneaker Shoes</h2>
-
-                    <div class="price-line">
-                        <span class="price-sale" id="popupPrice">1.500.000đ</span>
-                        <span class="price-original" id="popupOriginal">1.850.000đ</span>
-                        <span class="price-discount" id="popupDiscount">-17%</span>
-                    </div>
-
-                    <!-- Màu -->
-                    <div class="popup-option-block">
-                        <label>Màu sắc:</label>
-                        <div class="popup-color-list" id="popupColors">
-                            <div
-                                    class="popup-color-item selected"
-                                    data-value="Trắng"
-                                    style="--c: #ffffff"
-                            ></div>
-                            <div
-                                    class="popup-color-item"
-                                    data-value="Đen"
-                                    style="--c: #000000"
-                            ></div>
-                            <div
-                                    class="popup-color-item"
-                                    data-value="Xanh"
-                                    style="--c: #007bff"
-                            ></div>
-                        </div>
-                    </div>
-
-                    <!-- Size -->
-                    <div class="popup-option-block">
-                        <label>Kích cỡ:</label>
-                        <div class="popup-size-list" id="popupSizes">
-                            <div class="popup-size-item selected" data-value="38">38</div>
-                            <div class="popup-size-item" data-value="39">39</div>
-                            <div class="popup-size-item" data-value="40">40</div>
-                        </div>
-                    </div>
-
-                    <div class="popup-option-block">
-                        <label>Số lượng:</label>
-                        <div class="qty-group">
-                            <button class="qty-btn minus">−</button>
-                            <input type="number" id="popupQty" value="1" min="1" />
-                            <button class="qty-btn plus">+</button>
-                        </div>
-                    </div>
-
-                    <button class="popup-add-cart">Thêm vào giỏ hàng</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="toast-message" class="toast-message">
-      <i class="fas fa-check-circle"></i> <span></span>
-    </div>
-
     <!--
 - ionicon link
 -->

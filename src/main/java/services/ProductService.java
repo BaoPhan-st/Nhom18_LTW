@@ -78,6 +78,39 @@ public class ProductService {
         return result;
     }
 
+    public List<ProductDTO> getAllBestSellers() {
+        int limit = 16;
+
+        List<Product> products =
+                productDao.getAllBestSeller(limit);
+
+        List<ProductDTO> result = new ArrayList<>();
+
+        for (Product p : products) {
+            boolean isNew= productDao.isNew(p.getId());
+            PromotionResult pr =
+                    promotionService.calculateBestPromotion(p.getId());
+            String finalPrice = promotionService.formatVND(pr.getFinalPrice());
+            String price = promotionService.formatVND(p.getPrice());
+            String mainImgURL =
+                    productImgService.getMainImg(p.getId());
+            String discountValue =
+                    promotionService.getDiscountValueString(pr.getBestPromotion());
+
+            ProductDTO dto = new ProductDTO(
+                    p.getId(),
+                    p.getName(),
+                    price,
+                    finalPrice,
+                    mainImgURL,
+                    discountValue,
+                    isNew
+            );
+            result.add(dto);
+        }
+
+        return result;
+    }
 }
 
 
