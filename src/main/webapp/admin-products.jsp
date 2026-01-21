@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label>Tên sản phẩm</label>
-            <input name="name" type="text" value="${product.name}" required/>
+            <input name="name" type="text" value="${product != null ? product.name : ''}" required/>
         </div>
 
         <div class="form-group">
@@ -34,7 +34,10 @@
             <label>Thương hiệu</label>
             <select name="brand">
                 <c:forEach var="b" items="${brands}">
-                    <option value="${b.id}" ${product.brandID == b.id ? 'selected' : ''}>
+                    <option value="${b.id}"
+                        <c:if test="${param.brandId == b.id}">
+                                selected
+                        </c:if>
                             ${b.name}
                     </option>
                 </c:forEach>
@@ -67,8 +70,12 @@
             <select name="brandId">
                 <option value="">-- Thương hiệu --</option>
                 <c:forEach var="b" items="${brands}">
-                    <option value="${b.id}" ${param.brandId == b.id ? 'selected' : ''}>
-                            ${b.name}
+                    <option value="${b.id}"
+                        <c:if test="${param.brandId == b.id}">
+                            selected
+                        </c:if>
+                    >
+                        ${b.name}
                     </option>
                 </c:forEach>
             </select>
@@ -102,10 +109,19 @@
                     <td>${p.id}</td>
                     <td>${p.name}</td>
                     <td title="${p.description}">
-                        ${fn:substring(p.description, 0, 80)}...
+                        <c:choose>
+                            <c:when test="${not empty p.description}">
+                                ${fn:length(p.description) > 80
+                                ? fn:substring(p.description, 0, 80)
+                                : p.description}
+                            </c:when>
+                            <c:otherwise>
+                                <em>Không có mô tả</em>
+                            </c:otherwise>
+                        </c:choose>
                     </td>
                     <td>${p.price} ₫</td>
-                    <td>${p.brandID}</td>
+                    <td>${p.brandId}</td>
                     <td class="actions">
                         <a href="${pageContext.request.contextPath}/admin/products?edit=${p.id}"
                            class="btn edit">Sửa</a>

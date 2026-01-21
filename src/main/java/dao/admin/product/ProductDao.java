@@ -67,7 +67,12 @@ public class ProductDao
 
     public boolean delete(int id)
     {
-        String sql = "DELETE FROM products WHERE id = :id";
+        String sql = """
+            UPDATE products
+            SET is_available = false,
+                is_discontinue = true
+            WHERE id = :id
+        """;
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
                         .bind("id", id)
@@ -79,11 +84,11 @@ public class ProductDao
         StringBuilder sbSQL = new StringBuilder("""
                 SELECT *
                 FROM products
-                WHERE 1=1
+                WHERE is_avaiable = true
                 """);
-        if (id != null) sbSQL.append(" AND id =: id");
+        if (id != null) sbSQL.append(" AND id = :id");
         if (name != null) sbSQL.append(" AND name = :name");
-        if (brandId != null) sbSQL.append(" AND brandId = :brandId");
+        if (brandId != null) sbSQL.append(" AND brand_id = :brandId");
 
         return JDBIConnector.getJdbi().withHandle(handle -> {
            var query = handle.createQuery(sbSQL.toString());
@@ -93,9 +98,5 @@ public class ProductDao
 
            return query.mapToBean(Product.class).list();
         });
-    }
-
-    public List<Product> findProductsInPromotion () {
-        return null;
     }
 }

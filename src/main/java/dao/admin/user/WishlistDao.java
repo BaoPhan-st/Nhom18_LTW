@@ -11,13 +11,11 @@ public class WishlistDao
     {
         String sql = """
             SELECT
-                w.user_id AS idUser,
-                w.product_id AS idProduct,
-                w.added_At as addedAt
-            FROM wishlist w
-            JOIN users u ON w.user_id = u.id
-            JOIN products p ON w.product_id = p.id
-        """;
+                user_id AS idUser,
+                product_id AS idProduct,
+                added_At as addedAt
+            FROM wishlist
+           """;
 
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
@@ -26,17 +24,11 @@ public class WishlistDao
         );
     }
 
-    public void delete(int userId, int productId)
+    public void deleteByUserId(int userId)
     {
-        String sql = """
-            DELETE FROM wishlists
-            WHERE user_id = :userId AND product_id = :productId
-        """;
-
         JDBIConnector.getJdbi().useHandle(handle ->
-                handle.createUpdate(sql)
+                handle.createUpdate("DELETE FROM wishlist WHERE user_id = :userId")
                         .bind("userId", userId)
-                        .bind("productId", productId)
                         .execute()
         );
     }

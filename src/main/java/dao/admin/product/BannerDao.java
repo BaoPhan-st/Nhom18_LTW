@@ -1,7 +1,7 @@
 package dao.admin.product;
 
 import dao.JDBIConnector;
-import model.product.Banner;
+import model.Banner;
 
 import java.util.List;
 

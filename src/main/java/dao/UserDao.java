@@ -151,11 +151,15 @@ public class UserDao {
 
     public void delete (Integer id)
     {
-        jdbi.useHandle(handle ->
-                handle.createUpdate("DELETE FROM users WHERE NOT id = :id")
-                        .bind("id",id)
-                        .execute()
-        );
+        jdbi.useHandle(handle -> {
+            handle.createUpdate("DELETE FROM wishlist WHERE user_id = :id")
+                    .bind("id", id)
+                    .execute();
+
+            handle.createUpdate("DELETE FROM users WHERE id = :id")
+                    .bind("id", id)
+                    .execute();
+        });
     }
     public Integer todayCustomers()
     {

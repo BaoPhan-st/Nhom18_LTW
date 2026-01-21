@@ -1,6 +1,6 @@
 package services;
 
-import dao.admin.product.ProductDao;
+import dao.Product.ProductDao;
 import DTO.ProductDTO;
 import model.product.Product;
 

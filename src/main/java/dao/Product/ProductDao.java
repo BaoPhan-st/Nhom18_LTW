@@ -16,7 +16,7 @@ public class ProductDao {
 
     // ===== FIND =====
     public Product findById(int id) {
-        String sql = "SELECT * FROM product WHERE id = :id AND is_available = 1";
+        String sql = "SELECT * FROM products WHERE id = :id AND is_available = 1";
         return jdbi.withHandle(h ->
                 h.createQuery(sql)
                         .bind("id", id)
@@ -28,7 +28,7 @@ public class ProductDao {
 
     public List<Product> findAllActive() {
         String sql = """
-            SELECT * FROM product
+            SELECT * FROM products
             WHERE is_available = 1 AND is_discontinue = 0
             ORDER BY added_at DESC
         """;
@@ -43,7 +43,7 @@ public class ProductDao {
     // ===== INSERT =====
     public void insert(Product product) {
         String sql = """
-            INSERT INTO product(name, description, price, brand_id,
+            INSERT INTO products(name, description, price, brand_id,
                                 added_at, is_discontinue, is_available)
             VALUES(:name, :description, :price, :brandId,
                    NOW(), 0, 1)
@@ -59,7 +59,7 @@ public class ProductDao {
     // ===== UPDATE =====
     public void update(Product product) {
         String sql = """
-            UPDATE product
+            UPDATE products
             SET name = :name,
                 description = :description,
                 price = :price,
@@ -76,7 +76,7 @@ public class ProductDao {
 
     // ===== DELETE =====
     public void delete(int id) {
-        String sql = "UPDATE product SET is_discontinue = 1 WHERE id = :id";
+        String sql = "UPDATE products SET is_discontinue = 1 WHERE id = :id";
         jdbi.useHandle(h ->
                 h.createUpdate(sql)
                         .bind("id", id)
@@ -90,7 +90,7 @@ public class ProductDao {
 
         String sql = """
         SELECT DISTINCT p.*
-        FROM product p
+        FROM products p
         JOIN promotion_product pp ON p.id = pp.product_id
         JOIN promotion pr ON pr.id = pp.promotion_id
         WHERE p.is_available = 1
@@ -108,7 +108,7 @@ public class ProductDao {
     public List<Product> findByBrandLimit(int brandId, int limit) {
         String sql = """
     
-                SELECT p.* FROM product p
+                SELECT p.* FROM products p
                 JOIN brand b ON p.brand_id = b.id
                 WHERE (:brandId IS NULL OR p.brand_id = :brandId)
                   AND b.is_active = 1
@@ -128,7 +128,7 @@ public class ProductDao {
     public boolean isNew(int id) {
         String sql = """
         SELECT COUNT(*)
-        FROM product
+        FROM products
         WHERE id = :id
           AND added_at >= NOW() - INTERVAL 7 DAY
     """;

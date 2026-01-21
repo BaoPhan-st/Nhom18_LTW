@@ -29,11 +29,13 @@ public class AdminUserController extends HttpServlet
             request.setAttribute("active", "admin/wishlist");
         } else
         {
-            // DELETTE BUTTON
+            // DELETE BUTTON
             String deleteId = request.getParameter("delete");
             if (deleteId != null)
             {
+                wishlistDao.deleteByUserId(Integer.parseInt(deleteId));
                 userDao.delete(Integer.parseInt(deleteId));
+
                 response.sendRedirect(request.getContextPath() + "/admin/accounts");
                 return;
             }
