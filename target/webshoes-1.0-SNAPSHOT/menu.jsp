@@ -203,9 +203,9 @@
 
                                               <c:if test="${not empty p.discountValue}">
                                                   <div class="discount-badge-wrapper">
-                    <span class="discount-value">
-                      Giảm: ${p.discountValue}
-                    </span>
+                                                 <span class="discount-value">
+                                                     Giảm: ${p.discountValue}
+                                                 </span>
                                                   </div>
                                               </c:if>
                                           </c:otherwise>
@@ -325,9 +325,9 @@
 
                                               <c:if test="${not empty p.discountValue}">
                                                   <div class="discount-badge-wrapper">
-                    <span class="discount-value">
-                      Giảm: ${p.discountValue}
-                    </span>
+                                                   <span class="discount-value">
+                                                        Giảm: ${p.discountValue}
+                                                   </span>
                                                   </div>
                                               </c:if>
                                           </c:otherwise>
