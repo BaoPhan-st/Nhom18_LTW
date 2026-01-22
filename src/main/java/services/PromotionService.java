@@ -60,11 +60,9 @@ public class PromotionService {
         BigDecimal value = promo.getDiscountValue();
 
         if ("PERCENT".equalsIgnoreCase(promo.getDiscountType())) {
-            // Ví dụ: 20%
             return value.stripTrailingZeros().toPlainString() + "%";
         }
         if ("FIXED".equalsIgnoreCase(promo.getDiscountType())) {
-            // Ví dụ: 500.000₫
             return formatVND(value);
         }
         return "";

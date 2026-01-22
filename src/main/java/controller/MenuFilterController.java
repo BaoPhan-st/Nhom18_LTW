@@ -18,14 +18,25 @@ public class MenuFilterController extends HttpServlet {
     public void init() {
         homeService = new MenuService();
     }
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
         String brandId = req.getParameter("brandId");
-        if (brandId == null) {
+
+        if (brandId == null || brandId.isBlank()) {
             brandId = "all";
         }
-        MenuDTO homePage = homeService.buildMenuPage(brandId);
+
+        MenuDTO homePage;
+        try {
+            homePage = homeService.buildMenuPage(brandId);
+        } catch (Exception e) {
+            homePage = homeService.buildMenuPage("all");
+        }
+
         req.setAttribute("menu", homePage);
         req.getRequestDispatcher("/menu.jsp").forward(req, resp);
     }

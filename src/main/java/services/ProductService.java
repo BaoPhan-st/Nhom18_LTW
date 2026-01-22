@@ -5,112 +5,128 @@ import dao.Product.ProductDao;
 import model.product.Product;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class ProductService {
     ProductDao productDao = new ProductDao();
     PromotionService promotionService = new PromotionService();
-   ProductImgService productImgService = new ProductImgService();
+    ProductImgService productImgService = new ProductImgService();
 
-    public List<ProductDTO> findTopCheapestProductsInPromotion() {
-        List<Product> products = productDao.findProductsInPromotion();
+    private ProductDTO mapToProductDTO(Product p) {
+
+        boolean isNew = productDao.isNew(p.getId());
+
+        PromotionResult pr =
+                promotionService.calculateBestPromotion(p.getId());
+
+        String finalPrice =
+                promotionService.formatVND(pr.getFinalPrice());
+
+        String price =
+                promotionService.formatVND(p.getPrice());
+
+        String mainImgURL =
+                productImgService.getMainImg(p.getId());
+
+        String discountValue =
+                promotionService.getDiscountValueString(
+                        pr.getBestPromotion()
+                );
+
+        return new ProductDTO(
+                p.getId(),
+                p.getName(),
+                price,
+                finalPrice,
+                mainImgURL,
+                discountValue,
+                isNew
+        );
+    }
+
+    private List<ProductDTO> mapToProductDTOList(List<Product> products) {
         List<ProductDTO> result = new ArrayList<>();
-        for (Product product : products) {
-            boolean isNew = productDao.isNew(product.getId());
-            PromotionResult pr =
-                    promotionService.calculateBestPromotion(product.getId());
-            String finalPrice = promotionService.formatVND(pr.getFinalPrice());
-            String price = promotionService.formatVND(product.getPrice());
-            String mainImgURL =
-                    productImgService.getMainImg(product.getId());
-            String discountValue =
-                    promotionService.getDiscountValueString(pr.getBestPromotion());
-            ProductDTO dto = new ProductDTO(
-                    product.getId(),
-                    product.getName(),
-                    price,
-                    finalPrice,
-                    mainImgURL,
-                    discountValue,
-                    isNew
-            );
-            result.add(dto);
-        }
-        result.sort(Comparator.comparing(ProductDTO::getFinalPrice));
-
-        if (result.size() > 9) {
-            return result.subList(0, 9);
+        for (Product p : products) {
+            result.add(mapToProductDTO(p));
         }
         return result;
     }
-    public List<ProductDTO> getProductsByBrand(int brandId) {
-        int limit = 16;
+
+    public List<ProductDTO> findTopCheapestProductsInPromotion(int limit) {
+
+        List<Product> products =
+                productDao.findProductsInPromotion();
+
+        List<ProductDTO> result =
+                mapToProductDTOList(products);
+
+        result.sort(Comparator.comparing(ProductDTO::getFinalPrice));
+
+        if (result.size() > limit) {
+            return result.subList(0, limit);
+        }
+
+        return result;
+    }
+
+    public List<ProductDTO> getProductsByBrand(int brandId, int limit) {
 
         List<Product> products =
                 productDao.findByBrandLimit(brandId, limit);
 
-        List<ProductDTO> result = new ArrayList<>();
-
-        for (Product p : products) {
-            boolean isNew= productDao.isNew(p.getId());
-            PromotionResult pr =
-                    promotionService.calculateBestPromotion(p.getId());
-            String finalPrice = promotionService.formatVND(pr.getFinalPrice());
-            String price = promotionService.formatVND(p.getPrice());
-            String mainImgURL =
-                    productImgService.getMainImg(p.getId());
-            String discountValue =
-                    promotionService.getDiscountValueString(pr.getBestPromotion());
-
-            ProductDTO dto = new ProductDTO(
-                    p.getId(),
-                    p.getName(),
-                    price,
-                    finalPrice,
-                    mainImgURL,
-                    discountValue,
-                    isNew
-            );
-            result.add(dto);
-        }
-
-        return result;
+        return mapToProductDTOList(products);
     }
 
-    public List<ProductDTO> getAllBestSellers() {
-        int limit = 16;
+    public List<ProductDTO> getAllBestSellers(int limit) {
 
         List<Product> products =
                 productDao.getAllBestSeller(limit);
 
-        List<ProductDTO> result = new ArrayList<>();
+        return mapToProductDTOList(products);
+    }
 
-        for (Product p : products) {
-            boolean isNew= productDao.isNew(p.getId());
-            PromotionResult pr =
-                    promotionService.calculateBestPromotion(p.getId());
-            String finalPrice = promotionService.formatVND(pr.getFinalPrice());
-            String price = promotionService.formatVND(p.getPrice());
-            String mainImgURL =
-                    productImgService.getMainImg(p.getId());
-            String discountValue =
-                    promotionService.getDiscountValueString(pr.getBestPromotion());
+    public ProductDTO getProductById(int id) {
 
-            ProductDTO dto = new ProductDTO(
-                    p.getId(),
-                    p.getName(),
-                    price,
-                    finalPrice,
-                    mainImgURL,
-                    discountValue,
-                    isNew
-            );
-            result.add(dto);
+        Product p = productDao.findById(id);
+
+        if (p == null) {
+            return null;
         }
 
-        return result;
+        return mapToProductDTO(p);
     }
+
+    public String getDes(int productId) {
+        return productDao.getDes(productId);
+    }
+
+    public List<ProductDTO> getRelatedProduct(int productId, int limit) {
+
+        Product currentProduct = productDao.findById(productId);
+
+        if (currentProduct == null) {
+            return Collections.emptyList();
+        }
+        List<Product> products =
+                productDao.getRelatedProduct(
+                        currentProduct.getId(),
+                        currentProduct.getBrandId(),
+                        currentProduct.getPrice(),
+                        limit
+                );
+
+        return mapToProductDTOList(products);
+    }
+
+
+
+
+
+
+
+
 }
 
 

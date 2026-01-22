@@ -14,15 +14,15 @@ public class MenuService {
         MenuDTO dto = new MenuDTO();
         dto.setBannerMenu(bannerDao.findByPosition("menu_top"));
         dto.setBannerSpecialP(bannerDao.findByPosition("menu_special-product"));
-        dto.setSpecialProduct(productService.findTopCheapestProductsInPromotion());
+        dto.setSpecialProduct(productService.findTopCheapestProductsInPromotion(9));
         dto.setBannerCollection(bannerDao.findByPositions("menu_collection"));
         dto.setBrandList(brandDao.findAllActive());
 
         if ("all".equalsIgnoreCase(brandId)) {
-            dto.setBestSeller(productService.getAllBestSellers());
+            dto.setBestSeller(productService.getAllBestSellers(16));
         } else {
             int id = Integer.parseInt(brandId);
-            dto.setBestSeller(productService.getProductsByBrand(id));
+            dto.setBestSeller(productService.getProductsByBrand(id,16));
         }
         return dto;
     }

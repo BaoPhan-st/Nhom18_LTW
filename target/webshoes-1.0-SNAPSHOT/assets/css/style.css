@@ -1897,6 +1897,68 @@ a.footer-link:is(:hover, :focus) {
     margin-left: 0;
   }
 }
+.wishlist-page-content .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* gọn, dễ nhìn */
+}
+
+/* Ẩn Size + Màu */
+.wishlist-page-content .product-attributes-line-2 {
+  display: none;
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 2px solid #ececec; /* divider rõ ràng */
+}
+
+.wishlist-item:last-child {
+  border-bottom: none;
+}
+.wishlist-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-basis: 260px;
+  flex-shrink: 0;
+}
+
+/* Nút chung */
+.wishlist-actions .action-btn {
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.wishlist-actions .add-to-cart-btn {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+}
+
+.wishlist-actions .add-to-cart-btn:hover {
+  background-color: #e85050;
+  transform: translateY(-2px);
+}
+.wishlist-actions .delete-btn {
+  background-color: #fff;
+  color: #ff6b6b;
+  border: 1px solid #ffcccc;
+}
+
+.wishlist-actions .delete-btn:hover {
+  background-color: #fff0f0;
+  transform: translateY(-2px);
+}
+
+
 /*-----------------------------------*\
  * #GIOITHIEU PAGE
 \*-----------------------------------*/
@@ -3567,6 +3629,29 @@ a.footer-link:is(:hover, :focus) {
   border-radius: 50%;
   padding: 0 4px;
 }
+/* Nút Xem sản phẩm  */
+.view-product-btn {
+  background: #fff;
+  color: #ff5757;
+  border: 1.5px solid #ff5757;
+  padding: 12px 22px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.view-product-btn:hover {
+  background: #ff5757;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+
 
 
 
