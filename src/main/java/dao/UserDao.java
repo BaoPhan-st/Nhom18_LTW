@@ -3,6 +3,8 @@ package dao;
 import model.user.User;
 import org.jdbi.v3.core.Jdbi;
 
+import java.util.List;
+
 public class UserDao {
 
     private final Jdbi jdbi;
@@ -32,6 +34,28 @@ public class UserDao {
                         .mapToBean(User.class)
                         .findOne()
                         .orElse(null)
+        );
+    }
+    // ===== FIND BY ID =====
+    public User findById(Integer id)
+    {
+        String sql = "SELECT * FROM users WHERE id = :id";
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("id", id)
+                        .mapToBean(User.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+
+    public List<User> findAll()
+    {
+        String sql = "SELECT * FROM users ORDER BY created_at DESC";
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(User.class)
+                        .list()
         );
     }
 
@@ -70,7 +94,6 @@ public class UserDao {
         }
     }
 
-
     // ===== UPDATE PASSWORD (cho quên mật khẩu) =====
     public boolean updatePassword(String email, String newPasswordHash) {
         String sql = "UPDATE users SET password_hash = :password WHERE email = :email";
@@ -91,4 +114,60 @@ public class UserDao {
         ) > 0;
     }
 
+    public int update(User user)
+    {
+        String sql = """
+            UPDATE users set
+                email = :email,
+                password_hash = :passwordHash,
+                phone_number = :phoneNumber,
+                address = :address,
+                full_name = :fullName,
+                role = :role,
+                is_active = :isActive,
+                firebase_uid = :firebaseUID
+            WHERE id = :id
+        """;
+        try {
+            return jdbi.withHandle(handle ->
+                    handle.createUpdate(sql)
+                            .bind("email", user.getEmail())
+                            .bind("passwordHash", user.getPasswordHash())
+                            .bind("phoneNumber", user.getPhoneNumber())
+                            .bind("address", user.getAddress())
+                            .bind("fullName", user.getFullName())
+                            .bind("role", user.getRole())
+                            .bind("isActive", user.isActive())
+                            .bind("firebaseUID", user.getFirebaseUID())
+                            .bind("id", user.getId())
+                            .execute()
+            );
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public void delete (Integer id)
+    {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("DELETE FROM users WHERE NOT id = :id")
+                        .bind("id",id)
+                        .execute()
+        );
+    }
+    public Integer todayCustomers()
+    {
+        String sql = """
+                SELECT COUNT(*) AS total
+                FROM users u 
+                WHERE u.created_at >= CURDATE()
+                AND u.created_at < CURDATE() + INTERVAL 1 DAY;
+                """;
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one());
+    }
 }

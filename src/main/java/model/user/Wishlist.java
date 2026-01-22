@@ -7,27 +7,28 @@ import java.time.LocalDateTime;
 public class Wishlist
 {
     @ColumnName("user_id")
-    private int userID;
+    private int idUser;
 
     @ColumnName("product_id")
-    private int productID;
+    private int idProduct;
 
     @ColumnName("added_at")
     private LocalDateTime addedAt;
 
-    public Wishlist(int userID, int productID, LocalDateTime addedAt)
+    public Wishlist() {}
+    public Wishlist(int idUser, int idProduct, LocalDateTime addedAt)
     {
-        this.userID = userID;
-        this.productID = productID;
+        this.idUser = idUser;
+        this.idProduct = idProduct;
         this.addedAt = addedAt;
     }
 
-    public int getUserID(){ return userID; }
-    public int getProductID() { return productID; }
+    public int getIdUser(){ return idUser; }
+    public int getIdProduct() { return idProduct; }
     public LocalDateTime getAddedAt() { return addedAt; }
 
-    public void setUserID(int userID) { this.userID = userID; }
-    public void setProductID(int productID) { this.productID = productID; }
+    public void setIdUser(int idUser) { this.idUser = idUser; }
+    public void setIdProduct(int idProduct) { this.idProduct = idProduct; }
     public void setAddedAt(LocalDateTime addedAt) { this.addedAt = addedAt; }
 
 }

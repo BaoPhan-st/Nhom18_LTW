@@ -92,7 +92,7 @@
                     <li><p class="footer-list-title">Tài khoản</p></li>
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/account.jsp"
+                                href="${pageContext.request.contextPath}/account"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -101,7 +101,7 @@
                     </li>
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/carts.jsp"
+                                href="${pageContext.request.contextPath}/carts"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -112,7 +112,7 @@
 
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/wishlist.jsp"
+                                href="${pageContext.request.contextPath}/wishlist"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -126,7 +126,7 @@
                     <li><p class="footer-list-title">Chính sách</p></li>
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp"
+                                href="${pageContext.request.contextPath}/ChinhSachBaoMat"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -135,7 +135,7 @@
                     </li>
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp"
+                                href="${pageContext.request.contextPath}/ChinhSachBaoHanh"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -144,7 +144,7 @@
                     </li>
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/huongdanmuahang.jsp"
+                                href="${pageContext.request.contextPath}/huongdanmuahang"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -153,7 +153,7 @@
                     </li>
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/faq.jsp"
+                                href="${pageContext.request.contextPath}/faq"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>

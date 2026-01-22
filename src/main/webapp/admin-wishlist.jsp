@@ -1,12 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Quản lý Yêu thích</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-</head>
-<body>
 
 <div class="admin-header">
     <h2>Yêu thích</h2>
@@ -17,17 +10,17 @@
     <table class="data-table">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Sản phẩm</th>
-            <th>Khách hàng</th>
+            <th>Mã người dùng</th>
+            <th>Mã sản phẩm</th>
+            <th>Ngày thêm</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="w" items="${wishlists}">
             <tr>
-                <td>${w.id}</td>
-                <td>${w.productName}</td>
-                <td>${w.customerName}</td>
+                <td>${w.idUser}</td>
+                <td>${w.idProduct}</td>
+                <td>${w.addedAt}</td>
             </tr>
         </c:forEach>
 
@@ -39,6 +32,3 @@
         </tbody>
     </table>
 </div>
-
-</body>
-</html>

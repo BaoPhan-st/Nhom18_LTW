@@ -1,4 +1,7 @@
 package controller.admin;
 
-public class AdminProductController {
+
+
+public class AdminProductController   {
+
 }

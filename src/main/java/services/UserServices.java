@@ -40,7 +40,7 @@ public class UserServices {
         return null;
     }
 
-    public boolean register(String fullName, String phone, String email, String password) {
+    public boolean register(String fullName, String phone, String email, String password,String address) {
 
         // check trùng email / phone
         if (userDao.findByEmail(email) != null ||
@@ -53,8 +53,9 @@ public class UserServices {
         user.setPhoneNumber(phone);
         user.setEmail(email);
         user.setPasswordHash(BCrypt.hashpw(password, BCrypt.gensalt(12)));
+        user.setAddress(address);
         user.setRole("user");
-        user.setActive(false);
+        user.setIsActive(false);
         user.setCreatedAt(LocalDateTime.now());
         user.setFirebaseUID(null);
 
@@ -82,8 +83,10 @@ public class UserServices {
             newUser.setFullName(name);                  // "Nguyễn Văn A"
             newUser.setFirebaseUID(firebase_uid);       // "AbC123XyZ"
             newUser.setRole("user");                    // Role mặc định
-            newUser.setActive(true);                    // Kích hoạt ngay
-            newUser.setPasswordHash("");                // Google login không cần password
+            newUser.setIsActive(true);                    // Kích hoạt ngay
+            newUser.setPasswordHash("");
+            newUser.setAddress("");
+            // Google login không cần password
             newUser.setCreatedAt(LocalDateTime.now());  // Thời gian hiện tại
 
             //LƯU VÀO DATABASE

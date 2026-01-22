@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%-- Created by IntelliJ IDEA. User: quy23 Date: 16/12/2025 Time: 5:46 CH To
 change this template use File | Settings | File Templates. --%> <%@ page
 contentType="text/html;charset=UTF-8" language="java" %> <%@ page
@@ -45,148 +46,7 @@ session.getAttribute("currentUser"); %>
     <!--
 - #HEADER
 -->
-    <header class="header">
-        <div class="container">
-            <div class="overlay"></div>
-
-            <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
-                <img
-                        src="./assets/images/BHD%20LOGO.png"
-                        width="100"
-                        height="50"
-                        alt="BHD logo"
-                />
-            </a>
-
-            <!-- Nút mở menu -->
-            <button class="nav-open-btn">
-                <ion-icon name="menu-outline"></ion-icon>
-            </button>
-
-            <nav class="navbar">
-                <button
-                        class="nav-close-btn"
-                        data-nav-close-btn
-                        aria-label="Close Menu"
-                >
-                    <ion-icon name="close-outline"></ion-icon>
-                </button>
-
-                <ul class="navbar-list">
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/menu.jsp"
-                                class="navbar-link"
-                        >Trang chủ</a
-                        >
-                    </li>
-
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/gioithieu.jsp"
-                                class="navbar-link"
-                        >Giới thiệu</a
-                        >
-                    </li>
-
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/products.jsp"
-                                class="navbar-link"
-                        >Sản phẩm</a
-                        >
-                    </li>
-
-                    <li class="navbar-item">
-                        <a
-                                href="${pageContext.request.contextPath}/lienhe.jsp"
-                                class="navbar-link"
-                        >Liên hệ</a
-                        >
-                    </li>
-                </ul>
-
-                <ul class="nav-action-list">
-                    <li>
-                        <button
-                                class="nav-action-btn"
-                                id="searchToggleBtn"
-                                data-search-btn
-                        >
-                            <ion-icon name="search-outline"></ion-icon>
-                            <span class="nav-action-text">Tìm kiếm</span>
-                        </button>
-                    </li>
-
-                    <li class="nav-action-item nav-action-dropdown">
-                        <% if (currentUser == null) { %>
-                        <!-- Chưa đăng nhập -->
-                        <a
-                                href="${pageContext.request.contextPath}/login.jsp"
-                                class="nav-action-btn"
-                        >
-                            <ion-icon name="person-outline"></ion-icon>
-                            <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="${pageContext.request.contextPath}/login.jsp"
-                            >Đăng nhập</a
-                            >
-                            <a href="${pageContext.request.contextPath}/register.jsp"
-                            >Đăng ký</a
-                            >
-                        </div>
-                        <% } else { %>
-                        <!-- Đã đăng nhập -->
-                        <a href="#" class="nav-action-btn">
-                            <ion-icon name="person-outline"></ion-icon>
-                            <span class="nav-action-text"
-                            ><%= currentUser.getFullName() != null ?
-                                    currentUser.getFullName() : currentUser.getEmail() %></span
-                            >
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="account">Tài khoản của tôi</a>
-                            <a href="logout">Đăng xuất</a>
-                        </div>
-                        <% } %>
-                    </li>
-                    <li>
-                        <a
-                                href="${pageContext.request.contextPath}/wishlist.jsp"
-                                class="nav-action-btn"
-                        >
-                            <ion-icon name="heart-outline"></ion-icon>
-                            <span class="nav-action-text">Yêu thích</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                                href="${pageContext.request.contextPath}/carts.jsp"
-                                class="nav-action-btn"
-                                title="Giỏ hàng"
-                        >
-                            <ion-icon name="bag-outline"></ion-icon>
-                            <span class="nav-action-text">Giỏ hàng</span>
-                        </a>
-                    </li>
-                </ul>
-                <form class="search-form" id="search-form" action="#" method="get">
-                    <input
-                            type="search"
-                            name="query"
-                            placeholder="Tìm kiếm sản phẩm..."
-                            id="search-input"
-                            required
-                    />
-
-                    <button type="button" class="search-close-btn" id="searchCloseBtn">
-                        <ion-icon name="close-outline"></ion-icon>
-                    </button>
-                </form>
-            </nav>
-        </div>
-    </header>
+    <jsp:include page="header.jsp" />
     <main>
       <article>
         <!--
@@ -194,19 +54,18 @@ session.getAttribute("currentUser"); %>
       -->
         <section
           class="section hero"
-          style="background-image: url('./assets/images/hero-banner.png')"
+          style="background-image: url('${pageContext.request.contextPath}${menu.bannerMenu.imgUrl}')"
         >
           <div class="container">
-            <h2 class="h1 hero-title">Bộ sưu tập <strong>Mùa hè</strong></h2>
+            <h2 class="h1 hero-title">${menu.bannerMenu.title}</h2>
 
             <p class="hero-text">
-              Không chỉ là đôi giày, đó là phong cách khẳng định cá tính qua
-              từng bước đi, chạm tới đỉnh cao của sự tự tin.
+              ${menu.bannerMenu.slogan}
             </p>
 
             <button class="btn btn-primary">
               <a
-                href="${pageContext.request.contextPath}/products.jsp"
+                  href="${pageContext.request.contextPath}${menu.bannerMenu.linkUrl}"
                 class="Menu_Banner_button"
                 >Mua ngay</a
               >
@@ -225,1043 +84,113 @@ session.getAttribute("currentUser"); %>
         <section class="section collection">
           <div class="container">
             <ul class="collection-list has-scrollbar">
-              <li>
-                <div
-                  class="collection-card"
-                  style="
-                    background-image: url('./assets/images/collection-1.jpg');
-                  "
-                >
-                  <h3 class="h4 card-title">Bộ sưu tập Nike</h3>
 
-                  <a
-                    href="${pageContext.request.contextPath}/products.jsp"
-                    class="btn btn-secondary"
+              <c:forEach var="banner" items="${menu.bannerCollection}">
+                <li>
+                  <div
+                          class="collection-card"
+                          style="
+                                  background-image: url('${pageContext.request.contextPath}${banner.imgUrl}');
+                                  "
                   >
-                    <span>Khám phá ngay</span>
+                    <h3 class="h4 card-title">
+                        ${banner.title}
+                    </h3>
 
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      aria-hidden="true"
-                    ></ion-icon>
-                  </a>
-                </div>
-              </li>
+                    <a
+                            href="${pageContext.request.contextPath}${banner.linkUrl}"
+                            class="btn btn-secondary"
+                    >
+                      <span>Khám phá ngay</span>
+                      <ion-icon
+                              name="arrow-forward-outline"
+                              aria-hidden="true"
+                      ></ion-icon>
+                    </a>
+                  </div>
+                </li>
+              </c:forEach>
 
-              <li>
-                <div
-                  class="collection-card"
-                  style="
-                    background-image: url('./assets/images/collection-2.jpg');
-                  "
-                >
-                  <h3 class="h4 card-title">Bộ sưu tập Adidas</h3>
-
-                  <a
-                    href="${pageContext.request.contextPath}/products.jsp"
-                    class="btn btn-secondary"
-                  >
-                    <span>Khám phá ngay</span>
-
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      aria-hidden="true"
-                    ></ion-icon>
-                  </a>
-                </div>
-              </li>
-
-              <li>
-                <div
-                  class="collection-card"
-                  style="
-                    background-image: url('./assets/images/collection-3.jpg');
-                  "
-                >
-                  <h3 class="h4 card-title">Bộ sưu tập Puma</h3>
-
-                  <a
-                    href="${pageContext.request.contextPath}/products.jsp"
-                    class="btn btn-secondary"
-                  >
-                    <span>Khám phá ngay</span>
-
-                    <ion-icon
-                      name="arrow-forward-outline"
-                      aria-hidden="true"
-                    ></ion-icon>
-                  </a>
-                </div>
-              </li>
             </ul>
           </div>
         </section>
 
+
         <!--
         - #PRODUCT
       -->
-
         <section class="section product">
           <div class="container">
             <h2 class="h2 section-title">Sản phẩm bán chạy</h2>
 
             <ul class="filter-list">
               <li>
-                <button class="filter-btn active">All</button>
+                <button class="filter-btn active" data-id="all">All</button>
               </li>
-
-              <li>
-                <button class="filter-btn">Nike</button>
-              </li>
-
-              <li>
-                <button class="filter-btn">Adidas</button>
-              </li>
-
-              <li>
-                <button class="filter-btn">Puma</button>
-              </li>
+              <c:forEach items="${menu.brandList}" var="b">
+                <li>
+                  <button class="filter-btn" data-id="${b.id}">
+                      ${b.name}
+                  </button>
+                </li>
+              </c:forEach>
             </ul>
 
-            <ul class="product-list">
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-1.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card1-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card1-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a
-                        href="${pageContext.request.contextPath}/chitietsanpham.jsp"
-                        >Running Sneaker Shoes</a
-                      >
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                        <span class="original-price">1.808.500đ</span>
+            <ul class="product-list" id="productList">
+              <c:forEach items="${menu.bestSeller}" var="p">
+                <li class="product-item">
+                  <div class="product-card">
+
+                    <!-- IMAGE -->
+                    <figure class="card-banner">
+                      <img
+                              src="${pageContext.request.contextPath}${p.mainImageUrl}"
+                              class="image-contain"
+                              alt="${p.name}"
+                      />
+
+                      <!-- NEW BADGE -->
+                      <c:if test="${p.isNew}">
+                        <div class="card-badge">New</div>
+                      </c:if>
+                    </figure>
+
+                    <!-- CONTENT -->
+                      <div class="card-content">
+                          <h3 class="h3 card-title">
+                              <a href="${pageContext.request.contextPath}/product?id=${p.id}">
+                                      ${p.name}
+                              </a>
+                          </h3>
+
+                          <div class="product-card-price">
+                              <c:choose>
+                                  <%-- KHÔNG GIẢM GIÁ --%>
+                                  <c:when test="${p.price eq p.finalPrice}">
+                                      <span class="discounted-price">${p.price}</span>
+                                  </c:when>
+
+                                  <%-- CÓ GIẢM GIÁ --%>
+                                  <c:otherwise>
+                                      <div class="price-row">
+                                          <span class="discounted-price">${p.finalPrice}</span>
+                                          <span class="original-price">${p.price}</span>
+                                      </div>
+
+                                      <c:if test="${not empty p.discountValue}">
+                                          <div class="discount-badge-wrapper">
+                                              <span class="discount-value">Giảm: ${p.discountValue}</span>
+                                          </div>
+                                      </c:if>
+                                  </c:otherwise>
+                              </c:choose>
+                          </div>
                       </div>
-                      <p class="discount-value">Giảm: 17%</p>
-                    </div>
                   </div>
-                </div>
-              </li>
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-2.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card2-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card2-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-3.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card3-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card3-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-
-                        <span class="original-price">1.808.500đ</span>
-                      </div>
-
-                      <p class="discount-value">Giảm: 17%</p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-4.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card4label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card4-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-
-                        <span class="original-price">1.808.500đ</span>
-                      </div>
-
-                      <p class="discount-value">Giảm: 17%</p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-1.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card5-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card5-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-
-                        <span class="original-price">1.808.500đ</span>
-                      </div>
-
-                      <p class="discount-value">Giảm: 17%</p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-2.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card6-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card6-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-
-                        <span class="original-price">1.808.500đ</span>
-                      </div>
-
-                      <p class="discount-value">Giảm: 17%</p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-3.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card7-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card7-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-4.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card8-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card8-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-1.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card9-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card9-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-2.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card10-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card10-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-
-                        <span class="original-price">1.808.500đ</span>
-                      </div>
-
-                      <p class="discount-value">Giảm: 17%</p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-3.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card11-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card11-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-4.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card12-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card12-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-1.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card13-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card13-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-2.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card14-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card14-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-3.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card15-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card15-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/product-4.jpg"
-                      width="312"
-                      height="350"
-                      loading="lazy"
-                      alt="Running Sneaker Shoes"
-                      class="image-contain"
-                    />
-                    <div class="card-badge">New</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-1"
-                        >
-                          <ion-icon name="cart-outline"></ion-icon>
-                        </button>
-
-                        <div class="card-action-tooltip" id="card16-label-C">
-                          Thêm vào giỏ hàng
-                        </div>
-                      </li>
-                      <li class="card-action-item">
-                        <button
-                          class="card-action-btn"
-                          aria-labelledby="card-label-2"
-                        >
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card16-label-W">
-                          Thêm vào mục yêu thích
-                        </div>
-                      </li>
-                    </ul>
-                  </figure>
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      <a href="#">Running Sneaker Shoes</a>
-                    </h3>
-
-                    <div
-                      class="product-price-line-3 product-card-price"
-                      data-id="12345"
-                      data-price-raw="1500000"
-                      data-original-raw="1808500"
-                      data-discount-percentage="17"
-                    >
-                      <div class="discounted-price-group">
-                        <span class="discounted-price">1.500.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
+                </li>
+              </c:forEach>
             </ul>
+
           </div>
         </section>
         <!--
@@ -1275,10 +204,10 @@ session.getAttribute("currentUser"); %>
                 background-image: url('./assets/images/special-banner.jpg');
               "
             >
-              <h2 class="h3 banner-title">Giày Đẹp – Giá Hời</h2>
+              <h2 class="h3 banner-title">${menu.bannerSpecialP.slogan}</h2>
 
               <a
-                href="${pageContext.request.contextPath}/products.jsp"
+                href="${pageContext.request.contextPath}${menu.bannerSpecialP.linkUrl}"
                 class="btn btn-link"
               >
                 <span>Khám phá ngay</span>
@@ -1292,198 +221,64 @@ session.getAttribute("currentUser"); %>
 
             <div class="special-product">
               <h2 class="h2 section-title">
-                <span class="text">Ưu Đãi Đặc Biệt</span>
+                <span class="text">${menu.bannerSpecialP.title}</span>
 
                 <span class="line"></span>
               </h2>
 
               <ul class="has-scrollbar">
-                <li class="product-item">
-                  <div class="product-card" tabindex="0">
-                    <figure class="card-banner">
-                      <img
-                        src="./assets/images/product-1.jpg"
-                        width="312"
-                        height="350"
-                        alt="Running Sneaker Shoes"
-                        class="image-contain"
-                      />
+                  <c:forEach items="${menu.specialProduct}" var="p">
+                      <li class="product-item">
+                          <div class="product-card">
 
-                      <div class="card-badge">New</div>
+                              <!-- IMAGE -->
+                              <figure class="card-banner">
+                                  <img
+                                          src="${pageContext.request.contextPath}${p.mainImageUrl}"
+                                          class="image-contain"
+                                          alt="${p.name}"
+                                  />
 
-                      <ul class="card-action-list">
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-1"
-                          >
-                            <ion-icon name="cart-outline"></ion-icon>
-                          </button>
+                                  <!-- NEW BADGE -->
+                                  <c:if test="${p.isNew}">
+                                      <div class="card-badge">New</div>
+                                  </c:if>
+                              </figure>
 
-                          <div class="card-action-tooltip" id="card17-label-C">
-                            Thêm vào giỏ hàng
+                              <!-- CONTENT -->
+                              <div class="card-content">
+                                  <h3 class="h3 card-title">
+                                      <a href="${pageContext.request.contextPath}/product?id=${p.id}">
+                                              ${p.name}
+                                      </a>
+                                  </h3>
+
+                                  <div class="product-card-price">
+                                      <c:choose>
+                                          <%-- KHÔNG GIẢM GIÁ --%>
+                                          <c:when test="${p.price eq p.finalPrice}">
+                                              <span class="discounted-price">${p.price}</span>
+                                          </c:when>
+
+                                          <%-- CÓ GIẢM GIÁ --%>
+                                          <c:otherwise>
+                                              <div class="price-row">
+                                                  <span class="discounted-price">${p.finalPrice}</span>
+                                                  <span class="original-price">${p.price}</span>
+                                              </div>
+
+                                              <c:if test="${not empty p.discountValue}">
+                                                  <div class="discount-badge-wrapper">
+                                                      <span class="discount-value">Giảm: ${p.discountValue}</span>
+                                                  </div>
+                                              </c:if>
+                                          </c:otherwise>
+                                      </c:choose>
+                                  </div>
+                              </div>
                           </div>
-                        </li>
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-2"
-                          >
-                            <ion-icon name="heart-outline"></ion-icon>
-                          </button>
-                          <div class="card-action-tooltip" id="card17-label-W">
-                            Thêm vào mục yêu thích
-                          </div>
-                        </li>
-                      </ul>
-                    </figure>
-                    <div class="card-content">
-                      <h3 class="h3 card-title">
-                        <a href="#">Running Sneaker Shoes</a>
-                      </h3>
-                      <div
-                        class="product-price-line-3 product-card-price"
-                        data-id="12345"
-                        data-price-raw="1500000"
-                        data-original-raw="1808500"
-                        data-discount-percentage="17"
-                      >
-                        <div class="discounted-price-group">
-                          <span class="discounted-price">1.500.000đ</span>
-
-                          <span class="original-price">1.808.500đ</span>
-                        </div>
-
-                        <p class="discount-value">Giảm: 60%</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="product-item">
-                  <div class="product-card" tabindex="0">
-                    <figure class="card-banner">
-                      <img
-                        src="./assets/images/product-1.jpg"
-                        width="312"
-                        height="350"
-                        alt="Running Sneaker Shoes"
-                        class="image-contain"
-                      />
-
-                      <div class="card-badge">New</div>
-
-                      <ul class="card-action-list">
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-1"
-                          >
-                            <ion-icon name="cart-outline"></ion-icon>
-                          </button>
-
-                          <div class="card-action-tooltip" id="card18-label-C">
-                            Thêm vào giỏ hàng
-                          </div>
-                        </li>
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-2"
-                          >
-                            <ion-icon name="heart-outline"></ion-icon>
-                          </button>
-                          <div class="card-action-tooltip" id="card18-label-W">
-                            Thêm vào mục yêu thích
-                          </div>
-                        </li>
-                      </ul>
-                    </figure>
-                    <div class="card-content">
-                      <h3 class="h3 card-title">
-                        <a href="#">Running Sneaker Shoes</a>
-                      </h3>
-                      <div
-                        class="product-price-line-3 product-card-price"
-                        data-id="12345"
-                        data-price-raw="1500000"
-                        data-original-raw="1808500"
-                        data-discount-percentage="17"
-                      >
-                        <div class="discounted-price-group">
-                          <span class="discounted-price">1.500.000đ</span>
-
-                          <span class="original-price">1.808.500đ</span>
-                        </div>
-
-                        <p class="discount-value">Giảm: 50%</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="product-item">
-                  <div class="product-card" tabindex="0">
-                    <figure class="card-banner">
-                      <img
-                        src="./assets/images/product-1.jpg"
-                        width="312"
-                        height="350"
-                        alt="Running Sneaker Shoes"
-                        class="image-contain"
-                      />
-
-                      <div class="card-badge">New</div>
-
-                      <ul class="card-action-list">
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-1"
-                          >
-                            <ion-icon name="cart-outline"></ion-icon>
-                          </button>
-
-                          <div class="card-action-tooltip" id="card-label-1">
-                            Thêm vào giỏ hàng
-                          </div>
-                        </li>
-
-                        <li class="card-action-item">
-                          <button
-                            class="card-action-btn"
-                            aria-labelledby="card-label-2"
-                          >
-                            <ion-icon name="heart-outline"></ion-icon>
-                          </button>
-
-                          <div class="card-action-tooltip" id="card-label-2">
-                            Thêm vào mục yêu thích
-                          </div>
-                        </li>
-                      </ul>
-                    </figure>
-                    <div class="card-content">
-                      <h3 class="h3 card-title">
-                        <a href="#">Running Sneaker Shoes</a>
-                      </h3>
-                      <div
-                        class="product-price-line-3 product-card-price"
-                        data-id="12345"
-                        data-price-raw="1500000"
-                        data-origi
-                        nal-raw="1808500"
-                        data-discount-percentage="17"
-                      >
-                        <div class="discounted-price-group">
-                          <span class="discounted-price">1.500.000đ</span>
-
-                          <span class="original-price">1.808.500đ</span>
-                        </div>
-
-                        <p class="discount-value">Giảm: 40%</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                      </li>
+                  </c:forEach>
               </ul>
             </div>
           </div>
@@ -1493,196 +288,7 @@ session.getAttribute("currentUser"); %>
     <!--
 - #FOOTER
 -->
-    <footer class="footer">
-      <div class="footer-top section">
-        <div class="container">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <img
-                src="./assets/images/BHD%20LOGO.png"
-                width="110"
-                height="50"
-                alt="BHD"
-              />
-            </a>
-
-            <ul class="social-list">
-              <li>
-                <a
-                  href="https://www.facebook.com/kcntt.nlu"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.youtube.com/@NongLamUniversity/videos"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-youtube"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.tiktok.com/@nonglam.university"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-tiktok"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.instagram.com/daihocnonglamtphcm.hcmuaf1955/"
-                  class="social-link"
-                >
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-link-box">
-            <ul class="footer-list">
-              <li>
-                <p class="footer-list-title">Thông tin liên hệ</p>
-              </li>
-
-              <li>
-                <address class="footer-link">
-                  <ion-icon name="location"></ion-icon>
-                  <span class="footer-link-text">
-                    Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh
-                  </span>
-                </address>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="call"></ion-icon>
-                  <span class="footer-link-text">0332536387</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link">
-                  <ion-icon name="mail"></ion-icon>
-                  <span class="footer-link-text">BHDsport@gmail.com</span>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="footer-list">
-              <li><p class="footer-list-title">Tài khoản</p></li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/account.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Tài khoản</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/carts.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                  <span class="footer-link-text">Xem giỏ hàng</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/wishlist.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                  <span class="footer-link-text">Yêu thích</span>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="footer-list">
-              <li><p class="footer-list-title">Chính sách</p></li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/ChinhSachBaoMat.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Chính sách bảo mật</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/ChinhSachBaoHanh.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Chính sách bảo hành</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/huongdanmuahang.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">Hướng dẫn mua hàng</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="${pageContext.request.contextPath}/faq.jsp"
-                  class="footer-link"
-                >
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <span class="footer-link-text">FAQs</span>
-                </a>
-              </li>
-            </ul>
-
-            <div class="footer-list">
-              <p class="footer-list-title">Đăng kí nhận tin</p>
-              <form
-                id="newsletter-form"
-                action=""
-                class="newsletter-form"
-                method="POST"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Email"
-                  class="newsletter-input"
-                />
-                <button type="submit" class="btn btn-primary">
-                  <span>Đăng Kí</span>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="copyright">
-            &copy; 2025
-            <a href="#" class="copyright-link">BHD-SPORT SHOES</a>. Cùng bạn
-            chinh phục mọi hành trình
-          </p>
-        </div>
-      </div>
-    </footer>
+    <jsp:include page="footer.jsp" />
     <div id="cartPopup" class="cart-modal">
         <div class="cart-modal-content">
             <span class="cart-close">&times;</span>

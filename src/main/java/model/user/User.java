@@ -26,13 +26,16 @@ public class User implements Serializable {
     @ColumnName("is_active")
     private boolean isActive;
 
+
     @ColumnName("created_at")
     private LocalDateTime createdAt;
 
     @ColumnName("firebase_uid")
     private String firebaseUID;
 
-    public User() {}
+    public User() {
+
+    }
 
     public int getId() {
         return id;
@@ -102,8 +105,8 @@ public class User implements Serializable {
         this.fullName = fullName;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {

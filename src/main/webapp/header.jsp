@@ -1,18 +1,14 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="model.user.User" %>
-<% User currentUser = (User) session.getAttribute("currentUser"); %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <header class="header">
     <div class="container">
         <div class="overlay"></div>
 
-        <a href="${pageContext.request.contextPath}/menu.jsp" class="logo">
-            <img
-                    src="./assets/images/BHD%20LOGO.png"
-                    width="100"
-                    height="50"
-                    alt="BHD logo"
-            />
+        <!-- LOGO -->
+        <a href="${pageContext.request.contextPath}/menu" class="logo">
+            <img src="${pageContext.request.contextPath}/assets/images/BHD%20LOGO.png"
+                 width="100" height="50" alt="BHD logo"/>
         </a>
 
         <button class="nav-open-btn">
@@ -20,76 +16,89 @@
         </button>
 
         <nav class="navbar">
-            <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+
+            <button class="nav-close-btn" data-nav-close-btn>
                 <ion-icon name="close-outline"></ion-icon>
             </button>
 
+            <!-- MENU -->
             <ul class="navbar-list">
-                <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/menu.jsp" class="navbar-link">Trang chủ</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/gioithieu.jsp" class="navbar-link">Giới thiệu</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/products.jsp" class="navbar-link">Sản phẩm</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/lienhe.jsp" class="navbar-link">Liên hệ</a>
-                </li>
+                <li><a href="${pageContext.request.contextPath}/menu" class="navbar-link">Trang chủ</a></li>
+                <li><a href="${pageContext.request.contextPath}/gioithieu" class="navbar-link">Giới thiệu</a></li>
+                <li><a href="${pageContext.request.contextPath}/products" class="navbar-link">Sản phẩm</a></li>
+                <li><a href="${pageContext.request.contextPath}/lienhe" class="navbar-link">Liên hệ</a></li>
             </ul>
 
+            <!-- ACTION -->
             <ul class="nav-action-list">
+
+                <!-- SEARCH -->
                 <li>
-                    <button class="nav-action-btn" id="searchToggleBtn" data-search-btn>
+                    <button class="nav-action-btn" id="searchToggleBtn">
                         <ion-icon name="search-outline"></ion-icon>
                         <span class="nav-action-text">Tìm kiếm</span>
                     </button>
                 </li>
 
+                <!-- USER -->
                 <li class="nav-action-item nav-action-dropdown">
-                    <% if (currentUser == null) { %>
-                    <a href="${pageContext.request.contextPath}/login.jsp" class="nav-action-btn">
-                        <ion-icon name="person-outline"></ion-icon>
-                        <span class="nav-action-text">Đăng nhập / Đăng kí</span>
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="${pageContext.request.contextPath}/login.jsp">Đăng nhập</a>
-                        <a href="${pageContext.request.contextPath}/register.jsp">Đăng ký</a>
-                    </div>
-                    <% } else { %>
-                    <a href="#" class="nav-action-btn">
-                        <ion-icon name="person-outline"></ion-icon>
-                        <span class="nav-action-text">
-                            <%= currentUser.getFullName() != null ? currentUser.getFullName() : currentUser.getEmail() %>
+                    <c:choose>
+                        <c:when test="${empty sessionScope.currentUser}">
+                            <a href="${pageContext.request.contextPath}/login" class="nav-action-btn">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span class="nav-action-text">Đăng nhập / Đăng ký</span>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
+                                <a href="${pageContext.request.contextPath}/register">Đăng ký</a>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="#" class="nav-action-btn">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span class="nav-action-text">
+                                        ${sessionScope.currentUser.fullName}
+                                </span>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="${pageContext.request.contextPath}/account">Tài khoản</a>
+                                <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+
+                <!-- WISHLIST -->
+                <li class="nav-action-item">
+                    <a href="${pageContext.request.contextPath}/wishlist" class="nav-action-btn">
+                        <ion-icon name="heart-outline"></ion-icon>
+                        <span class="header-badge" id="wishlist-count">
+                            ${wishlistCount}
                         </span>
                     </a>
-                    <div class="dropdown-content">
-                        <a href="account">Tài khoản của tôi</a>
-                        <a href="logout">Đăng xuất</a>
-                    </div>
-                    <% } %>
                 </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/wishlist.jsp" class="nav-action-btn">
-                        <ion-icon name="heart-outline"></ion-icon>
-                        <span class="nav-action-text">Yêu thích</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/carts.jsp" class="nav-action-btn" title="Giỏ hàng">
+
+                <!-- CART -->
+                <li class="nav-action-item">
+                    <a href="${pageContext.request.contextPath}/carts" class="nav-action-btn">
                         <ion-icon name="bag-outline"></ion-icon>
-                        <span class="nav-action-text">Giỏ hàng</span>
+                        <span class="header-badge" id="cart-count">
+                            ${cartCount}
+                        </span>
                     </a>
                 </li>
             </ul>
 
-            <form class="search-form" id="search-form" action="#" method="get">
-                <input type="search" name="query" placeholder="Tìm kiếm sản phẩm..." id="search-input" required />
+            <!-- SEARCH FORM -->
+            <form class="search-form" id="search-form"
+                  action="${pageContext.request.contextPath}/products"
+                  method="get">
+                <input type="search" name="q" placeholder="Tìm kiếm sản phẩm..." required/>
                 <button type="button" class="search-close-btn" id="searchCloseBtn">
                     <ion-icon name="close-outline"></ion-icon>
                 </button>
             </form>
+
         </nav>
     </div>
 </header>
