@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import org.mindrot.jbcrypt.BCrypt;
 
 import dao.UserDao;
-import model.User;
+import model.user.User;
 
 public class UserServices {
     private final UserDao userDao;

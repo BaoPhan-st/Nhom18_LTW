@@ -1,5 +1,5 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ page
-import="model.User" %> <% User user = (User) request.getAttribute("user"); if
+import="model.user.User" %> <% User user = (User) request.getAttribute("user"); if
 (user == null) { response.sendRedirect("login.jsp"); return; } %>
 <!DOCTYPE html>
 <html lang="en">
