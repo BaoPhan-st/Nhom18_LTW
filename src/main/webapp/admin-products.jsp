@@ -12,8 +12,26 @@
 
 <%--    FORM    --%>
 <div class="form-box">
+    <h3>
+        <c:choose>
+            <c:when test="${isEdit}">
+                Chỉnh sửa sản phẩm (ID: ${product.id})
+            </c:when>
+            <c:otherwise>
+                Thêm sản phẩm mới
+            </c:otherwise>
+        </c:choose>
+    </h3>
+    <c:if test="${product.discontinue}">
+        <div style="color: red; margin-bottom: 10px;">
+            Sản phẩm đã bị xoá và không thể chỉnh sửa.
+        </div>
+    </c:if>
     <form action="${pageContext.request.contextPath}/admin/products" method="post">
-        <input type="hidden" name="id" value="${product.id}"/>
+        <c:if test="${isEdit}">
+            <input type="hidden" name="id" value="${product.id}"/>
+        </c:if>
+
 
         <div class="form-group">
             <label>Tên sản phẩm</label>
@@ -32,20 +50,45 @@
 
         <div class="form-group">
             <label>Thương hiệu</label>
-            <select name="brand">
+            <select name="brandId">
                 <c:forEach var="b" items="${brands}">
                     <option value="${b.id}"
-                        <c:if test="${param.brandId == b.id}">
+                        <c:if test="${isEdit && product.brandId == b.id}">
                                 selected
-                        </c:if>
+                        </c:if>>
                             ${b.name}
                     </option>
                 </c:forEach>
             </select>
         </div>
 
-        <button type="submit" class="btn-submit">
-            ${product.id == null ? "Thêm mới" : "Cập nhật"}
+        <div class="form-group">
+            <label>Trạng thái bán</label>
+            <c:choose>
+                <c:when test="${product.discontinue}">
+                    <input type="hidden" name="available" value="${product.available ? 'true' : 'false'}" />
+                    <select disabled>
+                        <option> ${product.available ? "Đang bán" : "Ngừng bán"}</option>
+                    </select>
+                </c:when>
+                <c:otherwise>
+                    <select name="available">
+                        <option value="true"
+                                <c:if test="${!isEdit || product.available}">selected</c:if>>
+                            Đang bán
+                        </option>
+                        <option value="false"
+                                <c:if test="${isEdit && !product.available}">selected</c:if>>
+                            Ngừng bán
+                        </option>
+                    </select>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
+        <button type="submit" class="btn-submit"
+            <c:if test="${product.discontinue}">disabled</c:if>>
+            ${isEdit ? "Cập nhật" : "Thêm mới"}
         </button>
     </form>
 </div>
@@ -100,6 +143,7 @@
                 <th>Mô tả</th>
                 <th>Giá</th>
                 <th>Thương hiệu</th>
+                <th>Trạng thái</th>
                 <th class="actions">Hành động</th>
             </tr>
             </thead>
@@ -122,17 +166,36 @@
                     </td>
                     <td>${p.price} ₫</td>
                     <td>${p.brandId}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${p.discontinue}">
+                                <span style="color: red">Đã xoá</span>
+                            </c:when>
+                            <c:when test="${!p.available}">
+                                <span style="color: orange">Ngừng bán</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span style="color: green">Đang bán</span>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
                     <td class="actions">
-                        <a href="${pageContext.request.contextPath}/admin/products?edit=${p.id}"
-                           class="btn edit">Sửa</a>
+                        <c:if test="${!p.discontinue}">
+                            <a href="${pageContext.request.contextPath}/admin/products?edit=${p.id}"
+                               class="btn edit">Sửa</a>
 
-                        <form method="post"
-                              action="${pageContext.request.contextPath}/admin/products"
-                              style="display:inline;"
-                              onsubmit="return confirm('Xóa sản phẩm này?');">
-                            <input type="hidden" name="deleteId" value="${p.id}"/>
-                            <button type="submit" class="btn delete">Xóa</button>
-                        </form>
+                            <form method="post"
+                                  action="${pageContext.request.contextPath}/admin/products"
+                                  style="display:inline;"
+                                  onsubmit="return confirm('Xóa sản phẩm này?');">
+                                <input type="hidden" name="deleteId" value="${p.id}"/>
+                                <button type="submit" class="btn delete">Xóa</button>
+                            </form>
+                        </c:if>
+
+                        <c:if test="${p.discontinue}">
+                            <span style="color: #fff">Đã xoá</span>
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>

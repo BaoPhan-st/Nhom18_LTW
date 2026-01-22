@@ -3,17 +3,18 @@ package model.order;
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
 import java.math.BigDecimal;
-import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Order
 {
     private int id;
 
     @ColumnName("user_id")
-    private int userID;
+    private int userId;
 
-    @ColumnName("create_at")
-    private Time createAt;
+    @ColumnName("created_at")
+    private LocalDateTime createdAt;
 
     @ColumnName("shipping_fee")
     private BigDecimal shippingFee;
@@ -43,11 +44,11 @@ public class Order
     private String orderNote;
 
     public Order() {}
-    public Order(int id, int userID, Time createAt, BigDecimal shippingFee, BigDecimal subTotal, BigDecimal grandTotal, String shippingAddress, String phoneNumber, String orderStatus, String paymentMethod, String paymentStatus, String orderNote)
+    public Order(int id, int userId, LocalDateTime createdAt, BigDecimal shippingFee, BigDecimal subTotal, BigDecimal grandTotal, String shippingAddress, String phoneNumber, String orderStatus, String paymentMethod, String paymentStatus, String orderNote)
     {
         this.id = id;
-        this.userID = userID;
-        this.createAt = createAt;
+        this.userId = userId;
+        this.createdAt = createdAt;
         this.shippingFee = shippingFee;
         this.subTotal = subTotal;
         this.grandTotal = grandTotal;
@@ -59,8 +60,8 @@ public class Order
         this.orderNote = orderNote;
     }
     public int getId() { return id; }
-    public int getUserID() { return userID; }
-    public Time getCreateAt() { return createAt; }
+    public int getUserId() { return userId; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
     public BigDecimal getShippingFee() { return shippingFee; }
     public BigDecimal getSubTotal() { return subTotal; }
     public BigDecimal getGrandTotal() { return grandTotal; }
@@ -72,8 +73,8 @@ public class Order
     public String getOrderNote() { return orderNote; }
 
     public void setId(int id) { this.id = id; }
-    public void setUserID(int userID) { this.userID = userID; }
-    public void setCreateAt(Time createAt) { this.createAt = createAt; }
+    public void setUserId(int userId) { this.userId = userId; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     public void setShippingFee(BigDecimal shippingFee) { this.shippingFee = shippingFee; }
     public void setSubTotal(BigDecimal subTotal) { this.subTotal = subTotal; }
     public void setGrandTotal(BigDecimal grandTotal) { this.grandTotal = grandTotal; }
@@ -83,4 +84,9 @@ public class Order
     public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
     public void setPaymentStatus(String paymentStatus) { this.paymentStatus = paymentStatus; }
     public void setOrderNote(String orderNote) { this.orderNote = orderNote; }
+
+    public Timestamp getCreatedAtTimestamp()
+    {
+        return createdAt == null ? null : Timestamp.valueOf(createdAt);
+    }
 }

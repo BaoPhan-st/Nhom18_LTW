@@ -93,6 +93,60 @@ public class OrderDao
                         .one()
         );
     }
+    public List<Order> findWithFilter(
+            Integer orderId,
+            Integer userId,
+            String status
+    ) {
+        StringBuilder sql = new StringBuilder("""
+        SELECT
+            id,
+            user_id,
+            created_at,
+            shipping_fee,
+            sub_total,
+            grand_total,
+            shipping_address,
+            phone_number,
+            order_status,
+            payment_method,
+            payment_status,
+            order_note
+        FROM orders
+        WHERE 1=1
+    """);
+
+        // ---- build SQL ----
+        if (orderId != null) {
+            sql.append(" AND id = :orderId");
+        }
+        if (userId != null) {
+            sql.append(" AND user_id = :userId");
+        }
+        if (status != null && !status.isBlank()) {
+            sql.append(" AND order_status = :status");
+        }
+
+        sql.append(" ORDER BY id DESC");
+
+        // ---- execute safely ----
+        return jdbi.withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+
+            if (orderId != null) {
+                query.bind("orderId", orderId);
+            }
+            if (userId != null) {
+                query.bind("userId", userId);
+            }
+            if (status != null && !status.isBlank()) {
+                query.bind("status", status);
+            }
+
+            return query.mapToBean(Order.class).list();
+        });
+    }
+
 
     public static void main (String[] args) {
         OrderDao orderDao = new OrderDao();

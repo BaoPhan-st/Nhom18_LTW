@@ -56,15 +56,15 @@
             <c:forEach var="order" items="${orders}">
                 <tr>
                     <td>#${order.id}</td>
-                    <td>${order.user_id}</td>
-                    <td>${order.grand_total} ₫</td>
+                    <td>${order.userId}</td>
+                    <td>${order.grandTotal} ₫</td>
                     <td>
-                        <span class="status ${order.order_status}">
-                                ${order.order_status}
+                        <span class="status ${order.orderStatus}">
+                                ${order.orderStatus}
                         </span>
                     </td>
                     <td>
-                        <fmt:formatDate value="${order.created_at}" pattern="dd/MM/yyyy HH:mm"/>
+                        <fmt:formatDate value="${order.createdAtTimestamp}" pattern="dd/MM/yyyy HH:mm"/>
                     </td>
                 </tr>
             </c:forEach>

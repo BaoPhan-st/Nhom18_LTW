@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import model.product.Product;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 @WebServlet({"/admin/products", "/admin/variants"})
@@ -29,7 +30,7 @@ public class AdminProductController extends HttpServlet
         }
         else
         {
-            List<Product> products = List.of();
+            List<Product> products = productDao.findAll();
 
             try
             {
@@ -93,7 +94,7 @@ public class AdminProductController extends HttpServlet
                     }
                 } catch (NumberFormatException e)
                 {
-                    request.setAttribute("product", new Product());
+                    request.setAttribute("product", new Product().setAvailable(true));
                     request.setAttribute("isEdit", false);
                     request.setAttribute("error", "Invalid product ID");
                 }
@@ -125,7 +126,7 @@ public class AdminProductController extends HttpServlet
             response.sendRedirect(request.getContextPath() + "/admin/variants");
         } else
         {
-            // Handle product CRUD
+            // ====== DELETE (available) ======
             String deleteId = request.getParameter("deleteId");
             if (deleteId != null && !deleteId.isBlank())
             {
@@ -136,25 +137,57 @@ public class AdminProductController extends HttpServlet
                 response.sendRedirect(request.getContextPath() + "/admin/products");
                 return;
             }
-            // ADD && DELETTE
+            // ADD && DELETE
             String idParam = request.getParameter("id");
             String name = request.getParameter("name");
             String description = request.getParameter("description");
             String priceParam = request.getParameter("price");
             String brandIdParam = request.getParameter("brandId");
 
-            Product product = new Product();
-            if (idParam != null && !idParam.isBlank())
+            if (name == null || priceParam == null || brandIdParam == null)
             {
-                product.setId(Integer.parseInt(idParam));
+                response.sendRedirect(request.getContextPath() + "/admin/products");
+                return;
             }
+
+            BigDecimal price;
+            try
+            {
+                price = new BigDecimal(priceParam);
+            } catch (NumberFormatException ignored)
+            {
+                response.sendRedirect(request.getContextPath() + "/admin/products?error=price");
+                return;
+            }
+            int brandId = Integer.parseInt(brandIdParam);
+
+            boolean available = !"false".equalsIgnoreCase(request.getParameter("available"));
+
+            Product product;
+            if (idParam != null && !idParam.isBlank() && !"0".equals(idParam))
+            {
+                product = productDao.findById(Integer.parseInt(idParam));
+                if (product == null || product.isDiscontinue())
+                {
+                    response.sendRedirect(request.getContextPath() + "/admin/products");
+                    return;
+                }
+                product.setAvailable(available);
+            } else
+            {
+                // ====== INSERT ======
+                product = new Product();
+                product.setAddedAt(java.time.LocalDateTime.now());
+                product.setDiscontinue(false);
+                product.setAvailable(available);
+            }
+
             product.setName(name);
             product.setDescription(description);
-            product.setPrice(new java.math.BigDecimal(priceParam));
-            product.setBrandId(Integer.parseInt(brandIdParam));
-            product.setAddedAt(java.time.LocalDateTime.now());
-            product.setDiscontinue(false);
-            product.setAvailable(true);
+            product.setPrice(price);
+            product.setBrandId(brandId);
+
+            // ====== SAVE ======
             if (product.getId() > 0) productDao.update(product);
             else productDao.insert(product);
 

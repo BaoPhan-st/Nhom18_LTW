@@ -5,18 +5,42 @@ import model.user.CartItem;
 
 import java.util.List;
 
-public class CartDao {
+public class CartDao
+{
 
-    // LẤY TOÀN BỘ GIỎ HÀNG
-    public List<CartItem> findByUserId(int userId) {
+    // LẤY TOÀN BỘ GIỎ HÀNG CỦA HỆ THỐNG
+    public List<CartItem> findAll()
+    {
         String sql = """
             SELECT
-                product_id   AS productId,
-                product_name AS productName,
-                size_id      AS sizeId,
-                color_id     AS colorId,
+                user_id AS userId,
+                product_id AS productId,
+                color_id AS colorId,
+                size_id AS sizeId,
+                quantity,
                 price,
-                quantity
+                total_price AS totalPrice
+            FROM cart_items
+        """;
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(CartItem.class)
+                        .list()
+        );
+    }
+
+    // LẤY GIỎ HÀNG CỦA MỘT NGƯỜI DÙNG
+    public List<CartItem> findByUserId(int userId)
+    {
+        String sql = """
+            SELECT
+                user_id AS userId,
+                product_id AS productId,
+                color_id AS colorId,
+                size_id AS sizeId,
+                quantity,
+                price,
+                total_price AS totalPrice
             FROM cart_items
             WHERE user_id = :userId
         """;
@@ -30,27 +54,33 @@ public class CartDao {
     }
 
     // CHÈN DƯ LIỆU
-    public boolean insert(int userId, CartItem item) {
+    public boolean insert(CartItem item)
+    {
         String sql = """
             INSERT INTO cart_items
-            (user_id, product_id, product_name, size_id, color_id, price, quantity)
+            (user_id, product_id, color_id, size_id, price, quantity)
             VALUES
-            (:userId, :productId, :productName, :sizeId, :colorId, :price, :quantity)
+            (:userId, :productId, :colorId, :sizeId, :price, :quantity)
         """;
 
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
-                        .bind("userId", userId)
                         .bindBean(item)
                         .execute() > 0
         );
     }
 
     // CẬP NHẬT SỐ LƯỢNG
-    public boolean updateQuantity(int userId, int productId, int sizeId, int colorId, int quantity) {
+    public boolean updateQuantity(
+            int userId,
+            int productId,
+            int colorId,
+            int sizeId,
+            int quantity
+    ){
         String sql = """
-            UPDATE cart_items SET
-                quantity = :quantity
+            UPDATE cart_items 
+            SET quantity = :quantity
             WHERE user_id = :userId
               AND product_id = :productId
               AND size_id = :sizeId
@@ -68,14 +98,19 @@ public class CartDao {
         );
     }
 
-    /* ===== Xoá 1 item khỏi cart ===== */
-    public boolean delete(int userId, int productId, int sizeId, int colorId) {
+    // XOÁ ITEM
+    public boolean delete(
+            int userId,
+            int productId,
+            int sizeId,
+            int colorId
+    ) {
         String sql = """
             DELETE FROM cart_items
             WHERE user_id = :userId
               AND product_id = :productId
-              AND size_id = :sizeId
               AND color_id = :colorId
+              AND size_id = :sizeId
         """;
 
         return JDBIConnector.getJdbi().withHandle(handle ->
@@ -89,8 +124,12 @@ public class CartDao {
     }
 
     /* ===== Xoá toàn bộ cart của user ===== */
-    public boolean clearCart(int userId) {
-        String sql = "DELETE FROM cart_items WHERE user_id = :userId";
+    public boolean clearCart(int userId)
+    {
+        String sql = """
+            DELETE FROM cart_items 
+            WHERE user_id = :userId
+        """;
 
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)

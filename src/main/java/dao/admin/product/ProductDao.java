@@ -34,7 +34,7 @@ public class ProductDao
         String sql = """
             INSERT INTO products
             (name, description, price, brand_id, added_at, is_discontinue, is_available)
-            VALUES (:name, :description, :price, :brandID, :addedAt, :discontinue, :available)
+            VALUES (:name, :description, :price, :brandId, :addedAt, :discontinue, :available)
         """;
 
         return JDBIConnector.getJdbi().withHandle(handle ->
@@ -51,9 +51,7 @@ public class ProductDao
                 name = :name,
                 description = :description,
                 price = :price,
-                brand_id = :brandID,
-                added_at = :addedAt,
-                is_discontinue = :discontinue,
+                brand_id = :brandId,
                 is_available = :available
             WHERE id = :id
         """;
@@ -84,16 +82,16 @@ public class ProductDao
         StringBuilder sbSQL = new StringBuilder("""
                 SELECT *
                 FROM products
-                WHERE is_avaiable = true
+                WHERE 1 = 1
                 """);
         if (id != null) sbSQL.append(" AND id = :id");
-        if (name != null) sbSQL.append(" AND name = :name");
+        if (name != null) sbSQL.append(" AND name LIKE :name");
         if (brandId != null) sbSQL.append(" AND brand_id = :brandId");
 
         return JDBIConnector.getJdbi().withHandle(handle -> {
            var query = handle.createQuery(sbSQL.toString());
            if (id != null) query.bind("id", id);
-           if (name != null) query.bind("name", name);
+           if (name != null) query.bind("name", "%" + name + "%");
            if (brandId != null) query.bind("brandId", brandId);
 
            return query.mapToBean(Product.class).list();

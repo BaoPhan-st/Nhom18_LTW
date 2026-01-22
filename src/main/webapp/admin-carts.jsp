@@ -9,29 +9,18 @@
 <%--    TABLE    --%>
 <div class="section">
 
-    <%--    FILTER    --%>
-    <div class="table-toolbar">
-        <input type="text" data-filter="0" placeholder="ID đơn hàng">
-        <input type="text" data-filter="1" placeholder="Khách hàng">
-        <input type="text" data-filter="2" placeholder="Sản phẩm">
-
-        <select data-filter="3">
-            <option value="">-- Màu sắc --</option>
-            <c:forEach var="od" items="${orders}">
-                <option value="${od.colorName}">${od.colorName}</option>
-            </c:forEach>
-        </select>
-
-        <select data-filter="4">
-            <option value="">-- Size --</option>
-            <c:forEach var="od" items="${orders}">
-                <option value="${od.sizeName}">${od.sizeName}</option>
-            </c:forEach>
-        </select>
-
-        <button class="btn-search">Tìm</button>
-        <button class="btn-reset">Reset</button>
-    </div>
+    <%--    SEARCH & FILTER    --%>
+    <form method="get"
+            action="${pageContext.request.contextPath}/admin/carts"
+            class="table-toolbar">
+        <input type="text"
+            name="userId"
+            placeholder="User ID"
+            value="${param.userId}"/>
+        <button type="submit" class="btn-search">Tìm</button>
+        <a href="${pageContext.request.contextPath}/admin/carts"
+            class="btn-reset" style="color: #49c2db; margin-left: 5px;">Reset</a>
+    </form>
 
     <%--    SCROLL   --%>
     <div class="table-scroll-top">
@@ -42,11 +31,10 @@
         <table class="data-table">
             <thead>
             <tr>
-                <th>ID Đơn hàng</th>
-                <th>Khách hàng</th>
-                <th>Sản phẩm</th>
-                <th>Màu sắc</th>
-                <th>Size</th>
+                <th>ID Khách hàng</th>
+                <th>ID Sản phẩm</th>
+                <th>ID Màu sắc</th>
+                <th>ID Size</th>
                 <th>Số lượng</th>
                 <th>Đơn giá</th>
                 <th>Tổng</th>
@@ -54,30 +42,29 @@
             </thead>
 
             <tbody>
-            <c:forEach var="od" items="${orders}">
+            <c:forEach var="item" items="${cartItems}">
                 <tr>
-                    <td>${od.order_id}</td>
-                    <td>${od.userFullName}</td>
-                    <td>${od.productName}</td>
-                    <td>${od.colorName}</td>
-                    <td>${od.sizeName}</td>
-                    <td>${od.quantity}</td>
+                    <td>${item.userId}</td>
+                    <td>${item.productId}</td>
+                    <td>${item.colorId}</td>
+                    <td>${item.sizeId}</td>
+                    <td>${item.quantity}</td>
                     <td>
-                        <fmt:formatNumber value="${od.unit_price}"
+                        <fmt:formatNumber value="${item.price}"
                                           type="currency"
                                           currencySymbol="₫"/>
                     </td>
                     <td>
-                        <fmt:formatNumber value="${od.subtotal}"
+                        <fmt:formatNumber value="${item.totalPrice}"
                                           type="currency"
                                           currencySymbol="₫"/>
                     </td>
                 </tr>
             </c:forEach>
 
-            <c:if test="${empty orders}">
+            <c:if test="${empty cartItems}">
                 <tr>
-                    <td colspan="8" class="empty">Chưa có đơn hàng</td>
+                    <td colspan="7" class="empty">Giỏ hàng trống.</td>
                 </tr>
             </c:if>
             </tbody>
