@@ -75,4 +75,10 @@ public class PromotionService {
         return formatter.format(value) + "₫";
     }
 
+    public BigDecimal parsePrice(String price) {
+        if (price == null) return BigDecimal.ZERO;
+        return new BigDecimal(price.replaceAll("[^0-9]", ""));
+    }
+
+
 }

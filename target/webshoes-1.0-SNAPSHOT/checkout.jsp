@@ -1,175 +1,99 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang Đặt Hàng - Hoàn thiện</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" />
-      <!--
-    - favicon
-  -->
-      <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
-  </head>
-  <body>
-    <div class="checkout-container">
-        <jsp:include page="header.jsp" />
+<head>
+  <meta charset="UTF-8"/>
+  <title>Thanh toán</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/checkout.css"/>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
+  <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico"/>
+</head>
 
-      <div class="container">
-        <div class="breadcrumb-container">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/menu">Trang Chủ</a></li>
-              <li class="breadcrumb-item">
-                <a href="${pageContext.request.contextPath}/carts">Giỏ hàng </a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                Thanh toán
-              </li>
-            </ol>
-          </nav>
+<body>
+
+<jsp:include page="header.jsp"/>
+
+<div class="checkout-container container">
+
+  <form action="${pageContext.request.contextPath}/order/place"
+        method="post"
+        class="checkout-form">
+
+    <div class="checkout-main-content">
+      <div class="col-info">
+        <h2>Thông tin nhận hàng</h2>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" name="email" value="${currentUser.email}" required/>
+        </div>
+        <div class="form-group">
+          <label>Họ và tên</label>
+          <input type="text" name="fullName" value="${currentUser.fullName}" required/>
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại</label>
+          <input type="text" name="phone" value="${currentUser.phoneNumber}" required/>
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ giao hàng</label>
+          <input type="text" name="address" value="${currentUser.address}" required/>
+        </div>
+        <div class="form-group">
+          <label>Ghi chú</label>
+          <input type="text" name="note"/>
         </div>
       </div>
-      <div class="checkout-main-content">
-        <div class="checkout-left">
-          <div class="info-payment-wrapper">
-            <div class="info-column">
-              <section class="shipping-info-section">
-                <h2>Thông tin nhận hàng</h2>
-                <a href="#" class="btn-login-logout">Đăng xuất</a>
 
-                <form class="shipping-form">
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" value="" required />
-                  </div>
-
-                  <div class="form-group">
-                    <label>Họ và tên</label>
-                    <input type="text" value="" required />
-                  </div>
-
-                  <div class="form-group phone-group">
-                    <label>Số điện thoại</label>
-                    <div class="phone-input-wrapper">
-                      <input
-                        type="text"
-                        value=""
-                        required
-                        class="phone-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Địa chỉ</label>
-                    <input type="text" value="" required />
-                  </div>
-
-                  <div class="form-group">
-                    <label>Tỉnh/thành</label>
-                    <input type="text" value="" required />
-                  </div>
-
-                  <div class="form-group">
-                    <label>Quận/huyện</label>
-                    <input type="text" value="" required />
-                  </div>
-
-                  <div class="form-group textarea-group">
-                    <label>Ghi chú (tùy chọn)</label>
-                    <input type="text" value="" required />
-                  </div>
-                </form>
-              </section>
-            </div>
-
-            <div class="shipping-payment-column">
-              <section class="shipping-method-section">
-                <h2>Vận chuyển</h2>
-
-                <div class="info-pure-block">
-                  <h3>Giao hàng toàn quốc</h3>
-                  <p><strong>Phí vận chuyển:</strong> 50.000₫</p>
-                  <p class="text-detail">
-                    Thời gian giao hàng tiêu chuẩn là 3-5 ngày làm việc (có thể
-                    thay đổi tùy khu vực và tình hình vận chuyển).
-                  </p>
-                </div>
-              </section>
-
-              <hr class="separator" />
-
-              <section class="payment-method-section">
-                <h2>Thanh toán</h2>
-
-                <div class="info-pure-block">
-                  <h3>Ship COD</h3>
-                  <p>
-                    <strong>Phương thức:</strong> Thanh toán tiền mặt khi nhận
-                    hàng.
-                  </p>
-                  <p class="text-detail">
-                    Khách hàng kiểm tra hàng và thanh toán trực tiếp cho nhân
-                    viên giao hàng. Không cần trả trước.
-                  </p>
-                </div>
-              </section>
-            </div>
-          </div>
-        </div>
-
-        <div class="checkout-right">
-          <div class="order-summary-box">
-            <h3>Đơn hàng (1 sản phẩm)</h3>
-
+      <div class="col-products">
+        <h3>Đơn hàng (${cart.size()} sản phẩm)</h3>
+        <div class="order-items-list">
+          <c:forEach var="item" items="${cart.values()}">
             <div class="order-item">
-              <img
-                src="assets/images/product-2.jpg"
-                alt="Giày Nike Nam Chính hãng"
-                class="item-image"
-              />
-              <div class="item-details">
-                <p class="item-name">
-                  Giày Nike Nam Chính hãng - Rival Fly 4 Men's Road Running
-                  Shoes - Màu đen | JapanSport PV6040-001
-                </p>
+              <img src="${item.image}" class="item-image"/>
+              <div class="item-info">
+                <p class="item-name">${item.name}</p>
+                <p class="item-variant">${item.colorName} / ${item.sizeName}</p>
+                <p class="item-qty">Số lượng: ${item.quantity}</p>
               </div>
+              <div class="item-price">${item.finalPrice}</div>
             </div>
+          </c:forEach>
+        </div>
+      </div>
 
-            <div class="order-totals">
-              <div class="total-row">
-                <span>Tạm tính</span>
-                <span class="amount">1.500.000₫</span>
-              </div>
-              <div class="total-row">
-                <span>Phí vận chuyển</span>
-                <span class="amount">50.000₫</span>
-              </div>
-              <div class="total-row total-grand">
-                <span>Tổng cộng</span>
-                <span class="amount grand-total">1.550.000₫</span>
-              </div>
+      <div class="col-summary">
+        <h3>Thanh toán</h3>
+        <div class="payment-box">
+          <div class="payment-method-container">
+            <label>
+              <input type="radio" name="paymentMethod" value="COD" checked/>
+              Thanh toán khi nhận hàng (COD)
+            </label>
+          </div>
+
+          <div class="summary-details">
+            <div class="summary-row">
+              <span>Tạm tính</span>
+              <span>${subTotal}</span>
             </div>
-
-            <div class="order-actions">
-              <a href="${pageContext.request.contextPath}/carts" class="btn-back"> Quay về giỏ hàng</a>
-              <button class="btn-checkout">ĐẶT HÀNG</button>
+            <div class="summary-row">
+              <span>Phí vận chuyển</span>
+              <span>${shippingFee}</span>
+            </div>
+            <div class="summary-row total">
+              <strong>Tổng cộng</strong>
+              <strong>${grandTotal}</strong>
             </div>
           </div>
+          <button type="submit" class="btn-submit">ĐẶT HÀNG</button>
+          <a href="${pageContext.request.contextPath}/cart" class="btn-link">Quay lại giỏ hàng</a>
         </div>
       </div>
     </div>
-    <jsp:include page="footer.jsp" />
-  </body>
+  </form>
+</div>
 
-  <script
-    type="module"
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-  ></script>
-  <script src="${pageContext.request.contextPath}/assets/script/reponsive.js"></script>
+<jsp:include page="footer.jsp"/>
+</body>
 </html>

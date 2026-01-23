@@ -1,4 +1,4 @@
-package controller; // 1. Phải có package
+package controller;
 
 import java.io.IOException;
 

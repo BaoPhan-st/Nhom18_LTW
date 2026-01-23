@@ -130,4 +130,33 @@
     checkboxes.forEach(other => { if (other !== this) other.checked = false; });
 }
 }));
-});
+        document.addEventListener("DOMContentLoaded", () => {
+            const actionButtons = document.querySelectorAll("[data-require-size]");
+            const sizeButtons = document.querySelectorAll(".size-btn");
+            const warning = document.querySelector(".size-warning");
+
+            function triggerSizeError() {
+                sizeButtons.forEach(btn => {
+                    btn.classList.add("size-error");
+                });
+
+                if (warning) warning.classList.add("show");
+
+                setTimeout(() => {
+                    sizeButtons.forEach(btn => btn.classList.remove("size-error"));
+                }, 900);
+            }
+
+            actionButtons.forEach(btn => {
+                btn.addEventListener("click", e => {
+                    const selectedSize = document.querySelector(".size-btn.selected");
+
+                    if (!selectedSize) {
+                        e.preventDefault();
+                        triggerSizeError();
+                    }
+                });
+            });
+        });
+
+    });

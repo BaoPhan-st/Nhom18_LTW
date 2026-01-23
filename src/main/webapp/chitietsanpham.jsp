@@ -88,7 +88,6 @@
             </span>
           </c:if>
         </div>
-
         <!-- COLOR -->
         <div class="option-block">
           <label>Màu sắc:</label>
@@ -132,53 +131,58 @@
           </div>
         </div>
         <!-- ACTION -->
-        <div class="action-area">
+        <form action="${pageContext.request.contextPath}/cart/add"
+              method="post"
+              class="action-area">
+
+          <input type="hidden" name="productId" value="${product.productDTO.id}" />
+          <input type="hidden" name="colorId" value="${product.currentColorId}" />
+
+          <c:if test="${not empty product.currentSizeId}">
+            <input type="hidden" name="sizeId" value="${product.currentSizeId}" />
+          </c:if>
+
+          <!-- QUANTITY -->
           <div class="qty-row">
-            <label class="qty-label">Số lượng:</label>
+            <label>Số lượng:</label>
             <div class="qty-input-group">
-              <button class="qty-btn minus" type="button">-</button>
-              <input type="number" id="popupQty" value="1" min="1" />
-              <button class="qty-btn plus" type="button">+</button>
+              <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+              <input type="number" name="quantity" value="1" min="1" />
+              <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
           </div>
-
-          <div class="buttons-row">
-            <button id="btn-add-cart" class="btn-main">
-              <ion-icon name="cart-outline"></ion-icon> THÊM GIỎ
+          <!-- BUTTONS -->
+          <div class="action-buttons">
+            <button type="submit"
+                    class="btn-main btn-add-cart"
+                    <c:if test="${empty product.currentSizeId}">disabled</c:if>>
+              <ion-icon name="cart-outline"></ion-icon> THÊM VÀO GIỎ HÀNG
             </button>
 
-            <button id="btn-buy-now" class="btn-main">
+            <button type="submit"
+                    formaction="${pageContext.request.contextPath}/buy-now"
+                    class="btn-main btn-buy-now"
+                    <c:if test="${empty product.currentSizeId}">disabled</c:if>>
               MUA NGAY
             </button>
 
+            <!-- WISHLIST -->
             <c:choose>
               <c:when test="${isInWishlist}">
-                <button class="btn-wishlist active" disabled title="Đã yêu thích">
+                <button class="btn-wishlist active" disabled>
                   <ion-icon name="heart"></ion-icon>
                 </button>
               </c:when>
               <c:otherwise>
-                <form action="${pageContext.request.contextPath}/wishlist"
-                      method="post"
-                      style="display:inline">
-                  <input type="hidden" name="productId"
-                         value="${product.productDTO.id}" />
-                  <input type="hidden" name="colorId"
-                         value="${product.currentColorId}" />
-                  <c:if test="${not empty product.currentSizeId}">
-                    <input type="hidden" name="sizeId"
-                           value="${product.currentSizeId}" />
-                  </c:if>
-                  <button type="submit"
-                          class="btn-wishlist"
-                          title="Thêm vào yêu thích">
-                    <ion-icon name="heart-outline"></ion-icon>
-                  </button>
-                </form>
+                <button type="submit"
+                        formaction="${pageContext.request.contextPath}/wishlist"
+                        class="btn-wishlist">
+                  <ion-icon name="heart-outline"></ion-icon>
+                </button>
               </c:otherwise>
             </c:choose>
           </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -211,8 +215,6 @@
                         alt="${p.name}"
                         class="image-contain"
                 />
-
-
                 <!-- BADGE NEW -->
                 <c:if test="${p.isNew}">
                   <div class="card-badge">New</div>
@@ -237,19 +239,15 @@
                         <span class="discounted-price">${p.finalPrice}</span>
                         <span class="original-price">${p.price}</span>
                       </div>
-
                       <c:if test="${not empty p.discountValue}">
                         <div class="discount-badge-wrapper">
-                                                 <span class="discount-value">
-                                                     Giảm: ${p.discountValue}
-                                                 </span>
+                          <span class="discount-value">Giảm: ${p.discountValue}</span>
                         </div>
                       </c:if>
                     </c:otherwise>
                   </c:choose>
                 </div>
               </div>
-
             </div>
           </li>
         </c:forEach>

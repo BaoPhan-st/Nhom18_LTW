@@ -3,6 +3,7 @@ package dao.Product;
 import dao.JDBIConnector;
 import model.product.Color;
 import model.product.Size;
+import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 
 import java.util.Collections;
@@ -90,36 +91,6 @@ import java.util.List;
             }
         }
 
-        public boolean isValidVariant(int productId, int colorId, int sizeId, int qty) {
-
-            String sql = """
-            SELECT COUNT(*)
-            FROM product_variant v
-            JOIN product p ON v.product_id = p.id
-            WHERE v.product_id = :productId
-              AND v.color_id = :colorId
-              AND v.size_id = :sizeId
-              AND v.is_discontinue_variant = 0
-              AND p.is_available = 1
-              AND v.stock >= :qty
-        """;
-
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("productId", productId)
-                                .bind("colorId", colorId)
-                                .bind("sizeId", sizeId)
-                                .bind("qty", qty)
-                                .mapTo(int.class)
-                                .one() > 0
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
-
         public int getTotalStockByColor(int productId, int colorId) {
             String sql = """
         SELECT COALESCE(SUM(stock), 0)
@@ -170,11 +141,7 @@ import java.util.List;
             }
         }
 
-        public boolean existsProductVariant(
-                int productId,
-                Integer colorId,
-                Integer sizeId
-        ) {
+        public boolean existsProductVariant(int productId, Integer colorId, Integer sizeId) {
             if (colorId == null || sizeId == null) {
                 return false;
             }
@@ -200,5 +167,83 @@ import java.util.List;
                 return false;
             }
         }
+
+        public String getColorName(int colorId) {
+
+            String sql = """
+        SELECT name
+        FROM color
+        WHERE id = :colorId
+    """;
+            try {
+                return jdbi.withHandle(h ->
+                        h.createQuery(sql)
+                                .bind("colorId", colorId)
+                                .mapTo(String.class)
+                                .findOne()
+                                .orElse("")
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        }
+
+        public String getSizeName(int sizeId) {
+
+            String sql = """
+        SELECT name
+        FROM size
+        WHERE id = :sizeId
+    """;
+            try {
+                return jdbi.withHandle(h ->
+                        h.createQuery(sql)
+                                .bind("sizeId", sizeId)
+                                .mapTo(String.class)
+                                .findOne()
+                                .orElse("")
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        }
+
+        public int lockAndGetStock(Handle handle, int productId, int colorId, int sizeId) {
+            String sql = """
+        SELECT stock
+        FROM product_variant
+        WHERE product_id = :productId
+          AND color_id = :colorId
+          AND size_id = :sizeId
+        FOR UPDATE
+    """;
+
+            return handle.createQuery(sql)
+                    .bind("productId", productId)
+                    .bind("colorId", colorId)
+                    .bind("sizeId", sizeId)
+                    .mapTo(int.class)
+                    .one();
+        }
+
+        public void updateStock(Handle handle, int productId, int colorId, int sizeId, int newStock) {
+            String sql = """
+        UPDATE product_variant
+        SET stock = :stock
+        WHERE product_id = :productId
+          AND color_id = :colorId
+          AND size_id = :sizeId
+    """;
+
+            handle.createUpdate(sql)
+                    .bind("stock", newStock)
+                    .bind("productId", productId)
+                    .bind("colorId", colorId)
+                    .bind("sizeId", sizeId)
+                    .execute();
+        }
+
     }
 

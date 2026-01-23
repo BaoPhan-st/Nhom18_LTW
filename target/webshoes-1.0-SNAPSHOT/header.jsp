@@ -23,11 +23,31 @@
 
             <!-- MENU -->
             <ul class="navbar-list">
-                <li><a href="${pageContext.request.contextPath}/menu" class="navbar-link">Trang chủ</a></li>
-                <li><a href="${pageContext.request.contextPath}/gioithieu" class="navbar-link">Giới thiệu</a></li>
-                <li><a href="${pageContext.request.contextPath}/products" class="navbar-link">Sản phẩm</a></li>
-                <li><a href="${pageContext.request.contextPath}/lienhe" class="navbar-link">Liên hệ</a></li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/menu" class="navbar-link">
+                        Trang chủ
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/gioi-thieu" class="navbar-link">
+                        Giới thiệu
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/products" class="navbar-link">
+                        Sản phẩm
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/lien-he" class="navbar-link">
+                        Liên hệ
+                    </a>
+                </li>
             </ul>
+
 
             <!-- ACTION -->
             <ul class="nav-action-list">
@@ -77,7 +97,7 @@
 
                 <!-- CART -->
                 <li class="nav-action-item">
-                    <a href="${pageContext.request.contextPath}/carts" class="nav-action-btn">
+                    <a href="${pageContext.request.contextPath}/cart" class="nav-action-btn">
                         <ion-icon name="bag-outline"></ion-icon>
                     </a>
                 </li>

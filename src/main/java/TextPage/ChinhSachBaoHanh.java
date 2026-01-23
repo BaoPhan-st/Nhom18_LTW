@@ -8,14 +8,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("/chinh-sach-bao-hanh")
+public class ChinhSachBaoHanh extends HttpServlet {
 
-@WebServlet("/ChinhSachBaoMat")
-public class ChínhSáchBảoHành extends HttpServlet{
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-        @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-                throws ServletException, IOException {
-            req.getRequestDispatcher("/ChinhSachBaoHanh.jsp").forward(req, resp);
-        }
+        request.getRequestDispatcher("/ChinhSachBaoHanh.jsp")
+                .forward(request, response);
     }
-
+}

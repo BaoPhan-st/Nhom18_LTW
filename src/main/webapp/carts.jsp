@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +11,7 @@
     <!--
     - favicon
   -->
-    <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico" />
 
     <!--
     -  css link
@@ -57,134 +59,106 @@
         <h1 class="cart-header">Giỏ hàng</h1>
 
         <div class="cart-items-list">
-          <div class="product-item">
-            <div class="product-details">
-              <img
-                src="assets/images/product-1.jpg"
-                alt="Tên Sản Phẩm 1"
-                class="product-image"
-              />
+          <c:if test="${empty cartItems}">
+            <p style="text-align:center">Giỏ hàng của bạn đang trống</p>
+          </c:if>
+          <c:forEach var="item" items="${cartItems}">
+            <div class="product-item">
 
-              <div class="product-info">
-                <h2 class="product-name">
-                  <a
-                    href="${pageContext.request.contextPath}/chitietsanpham"
-                    class="product-link"
-                    >Nike Air Force 1 '07</a
-                  >
-                </h2>
+              <div class="product-details">
+                <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                        class="product-image"
+                />
+                <div class="product-info">
+                  <h2 class="product-name">
+                    <a href="${pageContext.request.contextPath}/product?id=${item.productId}"
+                       class="product-link">
+                        ${item.name}
+                    </a>
+                  </h2>
+                  <div class="product-attributes-line-2">
+                    <p class="product-size">Size: ${item.sizeName}</p>
 
-                <div class="product-attributes-line-2">
-                  <p class="product-size">Size: 40</p>
-                  <div class="product-color">
-                    <div
-                      class="color-box"
-                      style="background-color: #e74c3c"
-                      title="Hex: #e74c3c (Đỏ)"
-                    ></div>
+                    <div class="product-color">
+                      <span class="color-name">${item.colorName}</span>
+                    </div>
                   </div>
-                </div>
-
-                <div
-                  class="product-price-line-3c"
-                  data-id="12345"
-                  data-price-raw="1500000"
-                  data-original-raw="1808500"
-                  data-discount-percentage="17"
-                >
-                  <div class="discounted-price-group">
-                    <span class="discounted-price">199.000 VNĐ</span>
-                    <span class="original-price">250.000 VNĐ</span>
-                  </div>
-                  <p class="discount-value">Giảm: 21%</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-actions">
-              <div class="quantity-control">
-                <button class="quantity-btn minus-btn">-</button>
-                <input type="number" value="1" min="1" class="quantity-input" />
-                <button class="quantity-btn plus-btn">+</button>
-              </div>
-
-              <button class="action-btn delete-btn">Xoá</button>
-
-              <button class="action-btn buy-now-btn">Mua ngay</button>
-            </div>
-          </div>
-
-          <hr class="separator" />
-
-          <div class="product-item">
-            <div class="product-details">
-              <img
-                src="assets/images/product-2.jpg"
-                alt="Tên Sản Phẩm 2"
-                class="product-image"
-              />
-
-              <div class="product-info">
-                <h2 class="product-name">
-                  <a href="#" class="product-link">Nike Air Force 1 '07</a>
-                </h2>
-
-                <div class="product-attributes-line-2">
-                  <p class="product-size">Size: 40</p>
-                  <div class="product-color">
-                    <div
-                      class="color-box"
-                      style="background-color: #3498db"
-                      title="Hex: #3498db (Xanh Dương)"
-                    ></div>
-                  </div>
-                </div>
-
-                <div
-                  class="product-price-line-3c"
-                  data-id="12345"
-                  data-price-raw="1500000"
-                  data-original-raw="1808500"
-                  data-discount-percentage="17"
-                >
-                  <div class="discounted-price-group">
-                    <span class="discounted-price">1.500.000 VNĐ</span>
-                    <span class="original-price" style="display: none"
-                      >1.500.000 VNĐ</span
-                    >
+                  <div class="product-price-line-3c">
+                    <div class="discounted-price-group">
+            <span class="discounted-price">
+                ${item.finalPrice}
+            </span>
+                      <c:if test="${not empty item.discountValue}">
+              <span class="original-price">
+                  ${item.originalPrice}
+              </span>
+                      </c:if>
+                    </div>
+                    <c:if test="${not empty item.discountValue}">
+                      <p class="discount-value">
+                        Giảm: ${item.discountValue}
+                      </p>
+                    </c:if>
                   </div>
                 </div>
               </div>
-            </div>
+              <div class="product-actions">
+                <div class="quantity-control">
+                  <form action="${pageContext.request.contextPath}/cart/update"
+                        method="post">
 
-            <div class="product-actions">
-              <div class="quantity-control">
-                <button class="quantity-btn minus-btn">-</button>
-                <input type="number" value="2" min="1" class="quantity-input" />
-                <button class="quantity-btn plus-btn">+</button>
+                    <input type="hidden" name="key"
+                           value="${item.productId}-${item.colorId}-${item.sizeId}" />
+
+                    <button type="submit"
+                            name="action"
+                            value="minus"
+                            class="quantity-btn minus-btn">-</button>
+
+                    <input type="number"
+                           value="${item.quantity}"
+                           min="1"
+                           readonly
+                           class="quantity-input" />
+
+                    <button type="submit"
+                            name="action"
+                            value="plus"
+                            class="quantity-btn plus-btn">+</button>
+                  </form>
+                </div>
+                <form action="${pageContext.request.contextPath}/cart/remove"
+                      method="post">
+                  <input type="hidden" name="key"
+                         value="${item.productId}-${item.colorId}-${item.sizeId}" />
+                  <button class="action-btn delete-btn">Xoá</button>
+                </form>
+                <form action="${pageContext.request.contextPath}/buy-now"
+                      method="post">
+                  <input type="hidden" name="productId" value="${item.productId}" />
+                  <input type="hidden" name="colorId" value="${item.colorId}" />
+                  <input type="hidden" name="sizeId" value="${item.sizeId}" />
+                  <input type="hidden" name="quantity" value="${item.quantity}" />
+                  <button class="action-btn buy-now-btn">Mua ngay</button>
+                </form>
+
               </div>
-
-              <button class="action-btn delete-btn">Xoá</button>
-              <button class="action-btn buy-now-btn">Mua ngay</button>
             </div>
-          </div>
-
-          <hr class="separator" />
-        </div>
-
-        <div class="cart-summary-section">
+            <hr class="separator" />
+          </c:forEach>
+          <div class="cart-summary-section">
           <div class="total-line">
             <span class="total-label">Tổng cộng:</span>
-            <span class="total-price">3.199.000 VNĐ</span>
+            <span class="total-price">${cartTotal}</span>
           </div>
-          <button class="checkout-btn">
-            <a
-              href="${pageContext.request.contextPath}/checkout"
-              class="Thanh_toán"
-              >Tiến Hành Đặt hàng</a
-            >
-          </button>
-        </div>
+            <form action="${pageContext.request.contextPath}/buy-all"
+                  method="get">
+              <button class="checkout-btn">Tiến Hành Đặt hàng</button>
+            </form>
+          </div>
+      </div>
       </div>
     </main>
 
