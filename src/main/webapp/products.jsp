@@ -70,134 +70,116 @@
 
             <div class="shop-layout">
                 <aside class="filter-sidebar">
-                    <div class="sidebar-header">
-                        <h2>Bộ Lọc</h2>
-                        <button class="clear-all">XÓA TẤT CẢ</button>
-                    </div>
-
-                    <div class="filter-group">
-                        <form class="filter-search-wrapper" action="${pageContext.request.contextPath}/products"
-                            method="get">
-                            <input type="search" name="q" placeholder="Tìm kiếm theo tên..." class="filter-search"
-                                id="filter-search-input" value="${searchQuery}" />
-                        </form>
-                        <div class="filter-group-header">
-                            <h3>Hãng</h3>
-                            <button class="toggle-btn">-</button>
+                    <form id="filter-form" action="${pageContext.request.contextPath}/products" method="get">
+                        <div class="sidebar-header">
+                            <h2>Bộ Lọc</h2>
+                            <button type="button" class="clear-all" id="clear-all-btn">XÓA TẤT CẢ</button>
                         </div>
-                        <div class="filter-group-body">
-                            <ul class="filter-list scrollable">
-                                <li>
-                                    <input type="checkbox" id="brand-nike" />
-                                    <label for="brand-nike" class="brand-label">
-                                        <img src="assets/images/nike_logo.png" alt="Nike" class="brand-icon" />
-                                        <span>Nike</span>
-                                    </label>
-                                </li>
 
-                                <li>
-                                    <input type="checkbox" id="brand-adidas" />
-                                    <label for="brand-adidas" class="brand-label">
-                                        <img src="assets/images/adidas_logo.png" alt="Adidas" class="brand-icon" />
-                                        <span>Adidas</span>
-                                    </label>
-                                </li>
+                        <div class="filter-group">
+                            <div class="filter-search-wrapper">
+                                <input type="search" name="q" placeholder="Tìm kiếm theo tên..." class="filter-search"
+                                    id="filter-search-input" value="${searchQuery}" />
+                            </div>
+                            <div class="filter-group-header">
+                                <h3>Hãng</h3>
+                                <button type="button" class="toggle-btn">-</button>
+                            </div>
+                            <div class="filter-group-body">
+                                <ul class="filter-list scrollable">
+                                    <c:forEach var="brand" items="${brands}">
+                                        <li>
+                                            <input type="checkbox" id="brand-${brand.id}" name="brand"
+                                                value="${brand.id}" <c:if
+                                                test="${selectedBrands != null && selectedBrands.contains(brand.id)}">checked
+                                            </c:if> />
+                                            <label for="brand-${brand.id}" class="brand-label">
+                                                <img src="${pageContext.request.contextPath}/assets/images/${brand.logoUrl}"
+                                                    alt="${brand.name}" class="brand-icon"
+                                                    onerror="this.style.display='none'" />
+                                                <span>${brand.name}</span>
+                                            </label>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </div>
 
-                                <li>
-                                    <input type="checkbox" id="brand-puma" />
-                                    <label for="brand-puma" class="brand-label">
-                                        <img src="assets/images/puma_logo.jpg" alt="Puma" class="brand-icon" />
-                                        <span>Puma</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="filter-group">
-                        <div class="filter-group-header">
-                            <h3>Size</h3>
-                            <button class="toggle-btn">-</button>
+                        <div class="filter-group">
+                            <div class="filter-group-header">
+                                <h3>Size</h3>
+                                <button type="button" class="toggle-btn">-</button>
+                            </div>
+                            <div class="filter-group-body">
+                                <ul class="filter-list-grid" id="size-filter-list">
+                                    <c:forEach var="size" items="${sizes}">
+                                        <li>
+                                            <input type="checkbox" id="size-${size.id}" name="size" value="${size.id}"
+                                                <c:if
+                                                test="${selectedSizes != null && selectedSizes.contains(size.id)}">checked
+                                            </c:if> />
+                                            <label for="size-${size.id}">${size.name}</label>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="filter-group-body">
-                            <ul class="filter-list-grid" id="size-filter-list">
-                                <li>
-                                    <input type="checkbox" id="size-38" /><label for="size-38">38</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="size-39" /><label for="size-39">39</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="size-40" /><label for="size-40">40</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="size-41" /><label for="size-41">41</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="size-42" /><label for="size-42">42</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="size-43" /><label for="size-43">43</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="filter-group">
-                        <div class="filter-group-header">
-                            <h3>Khoảng giá</h3>
-                            <button class="toggle-btn">-</button>
-                        </div>
-                        <div class="filter-group-body">
-                            <div class="price-filter">
-                                <div class="slider-container">
-                                    <div class="slider-track"></div>
-                                    <input type="range" min="0" max="10000000" value="0" id="slider-1"
-                                        oninput="slideOne()" />
-                                    <input type="range" min="0" max="10000000" value="10000000" id="slider-2"
-                                        oninput="slideTwo()" />
-                                </div>
-                                <div class="price-input">
-                                    <div class="field">
-                                        <span>Từ</span>
-                                        <input type="text" id="range1" value="0đ" readonly />
+                        <div class="filter-group">
+                            <div class="filter-group-header">
+                                <h3>Khoảng giá</h3>
+                                <button type="button" class="toggle-btn">-</button>
+                            </div>
+                            <div class="filter-group-body">
+                                <div class="price-filter">
+                                    <div class="slider-container">
+                                        <div class="slider-track"></div>
+                                        <input type="range" min="0" max="10000000"
+                                            value="${minPrice != null ? minPrice : 0}" id="slider-1"
+                                            oninput="slideOne()" />
+                                        <input type="range" min="0" max="10000000"
+                                            value="${maxPrice != null ? maxPrice : 10000000}" id="slider-2"
+                                            oninput="slideTwo()" />
                                     </div>
-                                    <div class="separator">-</div>
-                                    <div class="field">
-                                        <span>Đến</span>
-                                        <input type="text" id="range2" value="10.000.000đ" readonly />
+                                    <div class="price-input">
+                                        <div class="field">
+                                            <span>Từ</span>
+                                            <input type="text" id="range1" value="0đ" readonly />
+                                        </div>
+                                        <div class="separator">-</div>
+                                        <div class="field">
+                                            <span>Đến</span>
+                                            <input type="text" id="range2" value="10.000.000đ" readonly />
+                                        </div>
                                     </div>
+                                    <!-- Hidden inputs để submit giá -->
+                                    <input type="hidden" name="minPrice" id="minPriceInput" value="${minPrice}" />
+                                    <input type="hidden" name="maxPrice" id="maxPriceInput" value="${maxPrice}" />
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="filter-group">
-                        <div class="filter-group-header">
-                            <h3>Màu sắc</h3>
-                            <button class="toggle-btn">-</button>
+                        <div class="filter-group">
+                            <div class="filter-group-header">
+                                <h3>Màu sắc</h3>
+                                <button type="button" class="toggle-btn">-</button>
+                            </div>
+                            <div class="filter-group-body">
+                                <ul class="filter-list-color">
+                                    <c:forEach var="color" items="${colors}">
+                                        <li style="--color-swatch: ${color.hexcode};">
+                                            <input type="checkbox" id="color-${color.id}" name="color"
+                                                value="${color.id}" <c:if
+                                                test="${selectedColors != null && selectedColors.contains(color.id)}">checked
+                                            </c:if> />
+                                            <label for="color-${color.id}">${color.name}</label>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="filter-group-body">
-                            <ul class="filter-list-color">
-                                <li id="filter-color-black">
-                                    <input type="checkbox" id="color-black" />
-                                    <label for="color-black">Đen</label>
-                                </li>
-                                <li id="filter-color-white">
-                                    <input type="checkbox" id="color-white" />
-                                    <label for="color-white">Trắng</label>
-                                </li>
-                                <li id="filter-color-red">
-                                    <input type="checkbox" id="color-red" />
-                                    <label for="color-red">Đỏ</label>
-                                </li>
-                                <li id="filter-color-blue">
-                                    <input type="checkbox" id="color-blue" />
-                                    <label for="color-blue">Xanh dương</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </form>
                 </aside>
 
                 <main class="product-content">
@@ -209,12 +191,16 @@
                     </c:if>
                     <div class="sort-toolbar">
                         <label for="sort-select">Sắp xếp theo:</label>
-                        <select id="sort-select" class="sort-dropdown">
-                            <option value="default">Mặc định</option>
-                            <option value="newest">Sản phẩm mới nhất</option>
-                            <option value="bestseller">Sản phẩm bán chạy</option>
-                            <option value="price-asc">Giá từ thấp đến cao</option>
-                            <option value="price-desc">Giá từ cao đến thấp</option>
+                        <select id="sort-select" name="sort" class="sort-dropdown">
+                            <option value="default" ${sortBy=='default' || sortBy==null ? 'selected' : '' }>Mặc định
+                            </option>
+                            <option value="newest" ${sortBy=='newest' ? 'selected' : '' }>Sản phẩm mới nhất</option>
+                            <option value="bestseller" ${sortBy=='bestseller' ? 'selected' : '' }>Sản phẩm bán chạy
+                            </option>
+                            <option value="price-asc" ${sortBy=='price-asc' ? 'selected' : '' }>Giá từ thấp đến cao
+                            </option>
+                            <option value="price-desc" ${sortBy=='price-desc' ? 'selected' : '' }>Giá từ cao đến thấp
+                            </option>
                         </select>
                     </div>
                     <div id="productsContainer">
@@ -241,6 +227,7 @@
 
             <script src="${pageContext.request.contextPath}/assets/script/product-popup.js"></script>
             <script src="${pageContext.request.contextPath}/assets/script/SliderBanner.js"></script>
+            <script src="${pageContext.request.contextPath}/assets/script/filter.js"></script>
 
         </body>
 

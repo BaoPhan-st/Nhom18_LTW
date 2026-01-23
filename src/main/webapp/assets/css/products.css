@@ -119,21 +119,26 @@
   padding: 20px 24px;
   border-bottom: 1px solid #e0e0e0;
 }
+
 .sidebar-header h2 {
   margin: 0;
   font-size: 1.35rem;
 }
+
 .sidebar-header .clear-all {
   font-size: 0.9rem;
   color: #888;
 }
+
 .sidebar-header .clear-all:hover {
   text-decoration: none;
 }
+
 .filter-group {
   padding: 20px 24px;
   border-bottom: 1px solid #e0e0e0;
 }
+
 .filter-group:last-child {
   border-bottom: none;
 }
@@ -145,11 +150,13 @@
   margin-bottom: 16px;
   cursor: pointer;
 }
+
 .filter-group-header h3 {
   margin: 0;
   font-size: 1.15rem;
   font-weight: 600;
 }
+
 .toggle-btn {
   background: none;
   border: none;
@@ -164,6 +171,7 @@
 .filter-search-wrapper {
   margin-bottom: 16px;
 }
+
 .filter-search {
   width: 100%;
   padding: 10px 14px;
@@ -206,6 +214,7 @@
   grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
   gap: 8px;
 }
+
 .filter-list-grid li label {
   display: flex;
   justify-content: center;
@@ -223,7 +232,7 @@
   display: none;
 }
 
-.filter-list-grid li input[type="checkbox"]:checked + label {
+.filter-list-grid li input[type="checkbox"]:checked+label {
   background-color: #000000;
   color: #ffffff;
   border-color: #000000;
@@ -237,11 +246,13 @@
   flex-wrap: wrap;
   gap: 16px;
 }
+
 .filter-list-color li {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .filter-list-color label {
   cursor: pointer;
   font-size: 1rem;
@@ -262,22 +273,8 @@
 .filter-list-color input[type="checkbox"]:checked {
   box-shadow: 0 0 0 3px #fff, 0 0 0 5px #000;
 }
-#filter-color-black {
-  --color-swatch: #000000;
-}
 
-#filter-color-white {
-  --color-swatch: #ffffff;
-  --border: 1px solid #e0e0e0;
-}
-
-#filter-color-red {
-  --color-swatch: #d90429;
-}
-
-#filter-color-blue {
-  --color-swatch: #0077b6;
-}
+/* Màu sắc được set từ inline style với --color-swatch */
 
 .product-card {
   background-color: #fff;
@@ -350,6 +347,7 @@
   color: #333;
   margin: 0;
 }
+
 .pagination {
   display: flex;
   gap: 10px;
@@ -379,6 +377,7 @@
   color: white;
   border-color: #007bff;
 }
+
 /* --- CSS CHO THANH KÉO GIÁ (SLIDER) --- */
 .price-filter {
   width: 100%;
@@ -422,7 +421,8 @@
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background: #d90429; /* Màu đỏ */
+  background: #d90429;
+  /* Màu đỏ */
   cursor: pointer;
   pointer-events: auto;
   border: 2px solid #fff;
@@ -449,16 +449,19 @@
   align-items: center;
   margin-top: 10px;
 }
+
 .price-input .field {
   display: flex;
   flex-direction: column;
   width: 45%;
 }
+
 .price-input span {
   font-size: 12px;
   color: #888;
   margin-bottom: 4px;
 }
+
 .price-input input {
   width: 100%;
   padding: 5px;
@@ -467,6 +470,7 @@
   font-size: 13px;
   outline: none;
 }
+
 .sidebar-header {
   display: flex;
   justify-content: space-between;
@@ -482,6 +486,7 @@
   margin: 0;
   text-transform: uppercase;
 }
+
 .clear-all {
   font-size: 30px;
 
@@ -494,45 +499,54 @@
   color: #b00220;
   text-decoration: underline;
 }
+
 .product-list.grid-list {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Tự động chia cột */
+  grid-template-columns: repeat(auto-fill,
+      minmax(250px, 1fr));
+  /* Tự động chia cột */
   gap: 30px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .filter-list li {
-  display: flex; /* Xếp ngang */
-  align-items: center; /* Căn giữa dọc */
-  gap: 10px; /* Khoảng cách giữa ô Checkbox và Logo */
-  margin-bottom: 12px; /* Khoảng cách giữa các dòng */
+  display: flex;
+  /* Xếp ngang */
+  align-items: center;
+  /* Căn giữa dọc */
+  gap: 10px;
+  /* Khoảng cách giữa ô Checkbox và Logo */
+  margin-bottom: 12px;
+  /* Khoảng cách giữa các dòng */
 }
 
 /* 2. Phần nhãn chứa (Logo + Tên chữ) */
 .brand-label {
   display: flex;
   align-items: center;
-  gap: 8px; /* Khoảng cách giữa Logo và Tên chữ */
+  gap: 8px;
+  /* Khoảng cách giữa Logo và Tên chữ */
   cursor: pointer;
-  line-height: 1; /* Giúp chữ không bị lệch dòng */
+  line-height: 1;
+  /* Giúp chữ không bị lệch dòng */
 }
 
 /* 3. Hình ảnh Logo */
 .brand-icon {
   width: 30px;
   height: 30px;
-  object-fit: contain; /* Giữ tỉ lệ ảnh */
-  filter: grayscale(100%); /* Mặc định đen trắng cho đồng bộ */
+  object-fit: contain;
+  /* Giữ tỉ lệ ảnh */
+  filter: grayscale(100%);
+  /* Mặc định đen trắng cho đồng bộ */
   transition: all 0.3s ease;
 }
 
 /* 4. Hiệu ứng: Khi di chuột hoặc Đã chọn -> Hiện màu gốc + Phóng to */
 .brand-label:hover .brand-icon,
-input:checked + .brand-label .brand-icon {
+input:checked+.brand-label .brand-icon {
   filter: grayscale(0%);
   transform: scale(1.1);
 }
@@ -541,9 +555,11 @@ input:checked + .brand-label .brand-icon {
   .shop-layout {
     flex-direction: column;
   }
+
   .filter-sidebar {
     width: 100%;
   }
+
   .filter-sidebar .filter-group {
     display: inline-block;
     width: 48%;
@@ -551,15 +567,18 @@ input:checked + .brand-label .brand-icon {
     border-right: 1px solid #eee;
   }
 }
+
 @media (max-width: 576px) {
   .filter-sidebar .filter-group {
     width: 100%;
     border-right: none;
   }
+
   .product-list.grid-list {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
+
 /* ================================================= */
 /* # Banner Slider
 /* ================================================= */
@@ -608,46 +627,87 @@ input:checked + .brand-label .brand-icon {
 .swiper-button-next {
   right: 20px;
 }
+
 .swiper-button-prev {
   left: 20px;
 }
+
 /* Thông báo kết quả tìm kiếm */
 .search-result-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-    color: white;
-    padding: 20px 30px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
 }
 
 .search-result-info p {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 600;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .search-result-info strong {
-    color: #fff200;
-    font-size: 24px;
+  color: #fff200;
+  font-size: 24px;
 }
 
 .clear-search {
-    color: white;
-    background: rgba(255,255,255,0.25);
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .clear-search:hover {
-    background: rgba(255,255,255,0.4);
-    transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Nút áp dụng bộ lọc */
+.filter-actions {
+  padding: 20px 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.btn-apply-filter {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+}
+
+.btn-apply-filter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
+}
+
+#clear-all-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+#clear-all-btn:hover {
+  color: #ee5a24;
 }

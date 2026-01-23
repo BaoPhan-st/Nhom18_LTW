@@ -30,7 +30,7 @@ public class ColorDao {
     }
 
     public java.util.List<Color> findAllActive() {
-        String sql = "SELECT * FROM color WHERE is_active = 1 ORDER BY name";
+        String sql = "SELECT * FROM color ORDER BY name";
         return jdbi.withHandle(h -> h.createQuery(sql)
                 .mapToBean(Color.class)
                 .list());
