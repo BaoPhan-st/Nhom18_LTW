@@ -23,7 +23,6 @@
 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/order-success.css"/>
-/>
 <!--
 - google font link
 -->
