@@ -23,6 +23,7 @@ public class CheckoutPrepareController extends HttpServlet {
     private final CartService cartService = new CartService();
     private final PromotionService promotionService =new PromotionService();
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

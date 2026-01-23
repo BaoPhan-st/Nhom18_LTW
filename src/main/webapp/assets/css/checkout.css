@@ -425,3 +425,30 @@ body {
     background: var(--primary-hover);
     box-shadow: 0 5px 15px rgba(255, 90, 95, 0.3);
 }
+.col-info h2 {
+    font-size: 1.5rem; /* từ 1.4 → 1.5 */
+}
+
+.form-group input {
+    font-size: 1.1rem;        /* tăng nhẹ cho cân chữ label */
+    padding: 14px 16px;       /* giữ chiều cao thoáng */
+    line-height: 1.5;
+}
+
+.form-group label {
+    font-size: 1.1rem;        /* tăng nhẹ từ 1rem → 1.1 */
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.4;         /* giữ cân với input */
+}
+.checkout-alert {
+    background: #fff1f0;
+    color: #cf1322;
+    border-left: 5px solid #ff4d4f;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+

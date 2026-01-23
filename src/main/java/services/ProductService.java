@@ -71,18 +71,18 @@ public class ProductService {
         return result;
     }
 
-    public List<ProductDTO> getProductsByBrand(int brandId, int limit) {
+    public List<ProductDTO> getNewestByBrandLimit(int brandId, int limit) {
 
         List<Product> products =
-                productDao.findByBrandLimit(brandId, limit);
+                productDao.findNewestByBrandLimit(brandId, limit);
 
         return mapToProductDTOList(products);
     }
 
-    public List<ProductDTO> getAllBestSellers(int limit) {
+    public List<ProductDTO> getNewestProducts(int limit) {
 
         List<Product> products =
-                productDao.getAllBestSeller(limit);
+                productDao.getNewestProducts(limit);
 
         return mapToProductDTOList(products);
     }

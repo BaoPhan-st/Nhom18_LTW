@@ -115,7 +115,7 @@
       -->
         <section class="section product">
           <div class="container">
-            <h2 class="h2 section-title">Sản phẩm bán chạy</h2>
+            <h2 class="h2 section-title">Sản phẩm mới</h2>
 
               <ul class="filter-list">
                   <li>

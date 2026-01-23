@@ -19,10 +19,10 @@ public class MenuService {
         dto.setBrandList(brandDao.findAllActive());
 
         if ("all".equalsIgnoreCase(brandId)) {
-            dto.setBestSeller(productService.getAllBestSellers(16));
+            dto.setBestSeller(productService.getNewestProducts(16));
         } else {
             int id = Integer.parseInt(brandId);
-            dto.setBestSeller(productService.getProductsByBrand(id,16));
+            dto.setBestSeller(productService.getNewestByBrandLimit(id,16));
         }
         return dto;
     }

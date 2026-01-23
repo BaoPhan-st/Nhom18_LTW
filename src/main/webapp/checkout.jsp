@@ -7,6 +7,7 @@
   <title>Thanh toán</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/checkout.css"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/order-success.css"/>
   <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico"/>
 </head>
 
@@ -14,9 +15,16 @@
 
 <jsp:include page="header.jsp"/>
 
+<c:if test="${not empty errorMessage}">
+  <div class="checkout-alert">
+  <strong>Không thể đặt hàng:</strong><br>
+  ${errorMessage}
+  </div>
+</c:if>
+
 <div class="checkout-container container">
 
-  <form action="${pageContext.request.contextPath}/order/place"
+  <form action="${pageContext.request.contextPath}/checkout"
         method="post"
         class="checkout-form">
 
@@ -25,19 +33,19 @@
         <h2>Thông tin nhận hàng</h2>
         <div class="form-group">
           <label>Email</label>
-          <input type="text" name="email" value="${currentUser.email}" required/>
+          <input type="text" name="email" value="${currentUser.email}"/>
         </div>
         <div class="form-group">
           <label>Họ và tên</label>
-          <input type="text" name="fullName" value="${currentUser.fullName}" required/>
+          <input type="text" name="fullName" value="${currentUser.fullName}"/>
         </div>
         <div class="form-group">
           <label>Số điện thoại</label>
-          <input type="text" name="phone" value="${currentUser.phoneNumber}" required/>
+          <input type="text" name="phone" value="${currentUser.phoneNumber}"/>
         </div>
         <div class="form-group">
           <label>Địa chỉ giao hàng</label>
-          <input type="text" name="address" value="${currentUser.address}" required/>
+          <input type="text" name="address" value="${currentUser.address}"/>
         </div>
         <div class="form-group">
           <label>Ghi chú</label>
@@ -87,7 +95,7 @@
             </div>
           </div>
           <button type="submit" class="btn-submit">ĐẶT HÀNG</button>
-          <a href="${pageContext.request.contextPath}/cart" class="btn-link">Quay lại giỏ hàng</a>
+          <a href="${pageContext.request.contextPath}/menu" class="btn-link">Quay lại</a>
         </div>
       </div>
     </div>

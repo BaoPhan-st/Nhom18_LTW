@@ -12,27 +12,23 @@ import java.util.Map;
 
 public class OrderDao {
 
-    private PromotionService promotionService;
+    private final PromotionService promotionService = new PromotionService();
 
-    public int insertOrder(Handle handle, int userId, Map<String, CartItem> cart) {
-
-        BigDecimal subTotal = BigDecimal.ZERO;
-
-        for (CartItem item : cart.values()) {
-            subTotal = subTotal.add(promotionService.parsePrice(item.getFinalPrice()));
-        }
-
-        BigDecimal shippingFee = BigDecimal.ZERO;
-        BigDecimal grandTotal = subTotal.add(shippingFee);
-
+    public int insertOrder(
+            Handle handle,
+            int userId,
+            BigDecimal subTotal,
+            BigDecimal shippingFee,
+            BigDecimal grandTotal
+    ) {
         return handle.createUpdate("""
-            INSERT INTO orders
-            (user_id, sub_total, shipping_fee, grand_total,
-             order_status, payment_status)
-            VALUES
-            (:user_id, :sub_total, :shipping_fee, :grand_total,
-             'NEW', 'UNPAID')
-        """)
+        INSERT INTO orders
+        (user_id, sub_total, shipping_fee, grand_total,
+         order_status, payment_status)
+        VALUES
+        (:user_id, :sub_total, :shipping_fee, :grand_total,
+         'NEW', 'UNPAID')
+    """)
                 .bind("user_id", userId)
                 .bind("sub_total", subTotal)
                 .bind("shipping_fee", shippingFee)
@@ -41,4 +37,5 @@ public class OrderDao {
                 .mapTo(Integer.class)
                 .one();
     }
+
 }

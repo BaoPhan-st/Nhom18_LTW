@@ -3710,3 +3710,4 @@ a.footer-link:is(:hover, :focus) {
 .quantity-btn:hover {
   filter: brightness(0.95);
 }
+

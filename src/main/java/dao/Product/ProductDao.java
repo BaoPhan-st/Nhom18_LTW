@@ -40,19 +40,20 @@ public class ProductDao {
         }
     }
 
-    public List<Product> getAllBestSeller(int limit) {
+    public List<Product> getNewestProducts(int limit) {
         String sql = """
-            SELECT *
-            FROM product
-            WHERE is_available = 1
-              AND is_discontinue = 0
-            ORDER BY added_at DESC
-            LIMIT :limit
-        """;
+        SELECT *
+        FROM product
+        WHERE is_available = 1
+          AND is_discontinue = 0
+          AND added_at IS NOT NULL
+        ORDER BY added_at DESC
+        LIMIT :limit
+    """;
 
         try {
-            return jdbi.withHandle(h ->
-                    h.createQuery(sql)
+            return jdbi.withHandle(handle ->
+                    handle.createQuery(sql)
                             .bind("limit", limit)
                             .mapToBean(Product.class)
                             .list()
@@ -62,6 +63,7 @@ public class ProductDao {
             return Collections.emptyList();
         }
     }
+
 
     public List<Product> findProductsInPromotion() {
         String sql = """
@@ -87,21 +89,23 @@ public class ProductDao {
         }
     }
 
-    public List<Product> findByBrandLimit(int brandId, int limit) {
+    public List<Product> findNewestByBrandLimit(int brandId, int limit) {
         String sql = """
-            SELECT p.*
-            FROM product p
-            JOIN brand b ON p.brand_id = b.id
-            WHERE (:brandId IS NULL OR p.brand_id = :brandId)
-              AND b.is_active = 1
-              AND p.is_available = 1
-            ORDER BY p.id DESC
-            LIMIT :limit
-        """;
+        SELECT p.*
+        FROM product p
+        JOIN brand b ON p.brand_id = b.id
+        WHERE p.brand_id = :brandId
+          AND b.is_active = 1
+          AND p.is_available = 1
+          AND p.is_discontinue = 0
+          AND p.added_at IS NOT NULL
+        ORDER BY p.added_at DESC, p.id DESC
+        LIMIT :limit
+    """;
 
         try {
-            return jdbi.withHandle(h ->
-                    h.createQuery(sql)
+            return jdbi.withHandle(handle ->
+                    handle.createQuery(sql)
                             .bind("brandId", brandId)
                             .bind("limit", limit)
                             .mapToBean(Product.class)
@@ -112,6 +116,7 @@ public class ProductDao {
             return Collections.emptyList();
         }
     }
+
 
     public boolean isNew(int id) {
         String sql = """

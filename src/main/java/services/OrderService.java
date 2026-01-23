@@ -7,6 +7,8 @@ import dao.Product.ProductVariantDao;
 import model.user.CartItem;
 import org.jdbi.v3.core.Jdbi;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -15,6 +17,8 @@ public class OrderService {
     private final ProductVariantDao variantDao = new ProductVariantDao();
     private final OrderDao orderDao = new OrderDao();
     private final OrderDetailDao orderDetailDao = new OrderDetailDao();
+    private final PromotionService promotionService = new PromotionService();
+
     private final Jdbi jdbi;
 
     public OrderService() {
@@ -24,6 +28,9 @@ public class OrderService {
     public void placeOrder(int userId, Map<String, CartItem> cart) {
 
         jdbi.useTransaction(handle -> {
+
+            BigDecimal subTotal = BigDecimal.ZERO;
+            Map<String, BigDecimal> unitPrices = new HashMap<>();
 
             for (CartItem item : cart.values()) {
 
@@ -39,17 +46,36 @@ public class OrderService {
                             "Sản phẩm " + item.getName() + " không đủ hàng"
                     );
                 }
+
+                BigDecimal unitPrice =
+                        promotionService.parsePrice(item.getFinalPrice());
+
+                unitPrices.put(item.getKey(), unitPrice);
+
+                subTotal = subTotal.add(
+                        unitPrice.multiply(BigDecimal.valueOf(item.getQuantity()))
+                );
             }
 
-            //  INSERT ORDER
-            int orderId = orderDao.insertOrder(handle, userId, cart);
+            BigDecimal shippingFee = BigDecimal.ZERO;
+            BigDecimal grandTotal = subTotal.add(shippingFee);
 
-            //  INSERT ORDER DETAIL
-            orderDetailDao.insertOrderDetails(handle, orderId, cart);
+            int orderId = orderDao.insertOrder(
+                    handle,
+                    userId,
+                    subTotal,
+                    shippingFee,
+                    grandTotal
+            );
 
-            //  UPDATE STOCK
+            orderDetailDao.insertOrderDetails(
+                    handle,
+                    orderId,
+                    cart,
+                    unitPrices
+            );
+
             for (CartItem item : cart.values()) {
-
                 int stock = variantDao.lockAndGetStock(
                         handle,
                         item.getProductId(),
