@@ -30,14 +30,32 @@ public class ProductsController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        String searchQuery = req.getParameter("q");
         int page = parseInt(req.getParameter("page"), 1);
-        int totalPages = Math.max(1, productService.getTotalPages(PAGE_SIZE));
 
-        // chặn page vượt quá
-        if (page < 1) page = 1;
-        if (page > totalPages) page = totalPages;
+        List<ProductDTO> productList;
+        int totalPages;
 
-        List<ProductDTO> productList = productService.getProductsPage(page, PAGE_SIZE);
+        // Kiểm tra xem có từ khóa tìm kiếm không
+        if (searchQuery != null && !searchQuery.trim().isEmpty()) {
+            // CÓ từ khóa -> tìm kiếm
+            searchQuery = searchQuery.trim();
+            totalPages = Math.max(1, productService.getSearchTotalPages(searchQuery, PAGE_SIZE));
+
+            if (page < 1) page = 1;
+            if (page > totalPages) page = totalPages;
+
+            productList = productService.searchProducts(searchQuery, page, PAGE_SIZE);
+            req.setAttribute("searchQuery", searchQuery);  // Truyền từ khóa ra JSP
+        } else {
+            // KHÔNG có từ khóa -> hiển thị tất cả
+            totalPages = Math.max(1, productService.getTotalPages(PAGE_SIZE));
+
+            if (page < 1) page = 1;
+            if (page > totalPages) page = totalPages;
+
+            productList = productService.getProductsPage(page, PAGE_SIZE);
+        }
 
         req.setAttribute("productList", productList);
         req.setAttribute("page", page);

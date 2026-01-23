@@ -94,6 +94,9 @@
                   action="${pageContext.request.contextPath}/products"
                   method="get">
                 <input type="search" name="q" placeholder="Tìm kiếm sản phẩm..." required/>
+                <button type="submit" class="search-submit-btn">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
                 <button type="button" class="search-close-btn" id="searchCloseBtn">
                     <ion-icon name="close-outline"></ion-icon>
                 </button>

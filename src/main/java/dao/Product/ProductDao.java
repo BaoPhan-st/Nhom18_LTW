@@ -120,7 +120,7 @@ public class ProductDao {
 
     public List<Product> findByBrandLimit(int brandId, int limit) {
         String sql = """
-
+                
                             SELECT p.* FROM product p
                             JOIN brand b ON p.brand_id = b.id
                             WHERE (:brandId IS NULL OR p.brand_id = :brandId)
@@ -136,14 +136,15 @@ public class ProductDao {
                 .mapToBean(Product.class)
                 .list());
     }
+
     public int countActive() {
         return JDBIConnector.getJdbi().withHandle(h ->
                 h.createQuery("""
-            SELECT COUNT(*)
-            FROM product
-            WHERE is_available = 1
-              AND is_discontinue = 0
-        """)
+                                    SELECT COUNT(*)
+                                    FROM product
+                                    WHERE is_available = 1
+                                      AND is_discontinue = 0
+                                """)
                         .mapTo(int.class)
                         .one()
         );
@@ -152,13 +153,13 @@ public class ProductDao {
     public List<Product> findActivePage(int limit, int offset) {
         return JDBIConnector.getJdbi().withHandle(h ->
                 h.createQuery("""
-            SELECT *
-            FROM product
-            WHERE is_available = 1
-              AND is_discontinue = 0
-            ORDER BY added_at DESC
-            LIMIT :limit OFFSET :offset
-        """)
+                                    SELECT *
+                                    FROM product
+                                    WHERE is_available = 1
+                                      AND is_discontinue = 0
+                                    ORDER BY added_at DESC
+                                    LIMIT :limit OFFSET :offset
+                                """)
                         .bind("limit", limit)
                         .bind("offset", offset)
                         .mapToBean(Product.class)
@@ -180,4 +181,32 @@ public class ProductDao {
                 .one() > 0);
     }
 
+    // Tìm kiếm sản phẩm theo tên
+    public List<Product> searchByName(String keyword, int limit, int offset) {
+        String sql = """
+        SELECT * FROM product
+        WHERE is_available = 1 AND is_discontinue = 0
+          AND name LIKE :keyword
+        ORDER BY added_at DESC
+        LIMIT :limit OFFSET :offset
+    """;
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("keyword", "%" + keyword + "%")
+                .bind("limit", limit)
+                .bind("offset", offset)
+                .mapToBean(Product.class)
+                .list());
+    }
+    // Đếm kết quả tìm kiếm
+    public int countSearchResults(String keyword) {
+        String sql = """
+        SELECT COUNT(*) FROM product
+        WHERE is_available = 1 AND is_discontinue = 0
+          AND name LIKE :keyword
+    """;
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("keyword", "%" + keyword + "%")
+                .mapTo(int.class)
+                .one());
+    }
 }

@@ -71,7 +71,7 @@ public class GoogleLoginController extends HttpServlet {
                 if ("ADMIN".equalsIgnoreCase(user.getRole())) {
                     jsonResponse.addProperty("redirect", req.getContextPath() + "/admin/overview");
                 } else {
-                    jsonResponse.addProperty("redirect", req.getContextPath() + "/menu.jsp");
+                    jsonResponse.addProperty("redirect", req.getContextPath() + "/menu");
                 }
 
                 resp.getWriter().write(gson.toJson(jsonResponse));

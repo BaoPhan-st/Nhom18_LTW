@@ -611,3 +611,43 @@ input:checked + .brand-label .brand-icon {
 .swiper-button-prev {
   left: 20px;
 }
+/* Thông báo kết quả tìm kiếm */
+.search-result-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+}
+
+.search-result-info p {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.search-result-info strong {
+    color: #fff200;
+    font-size: 24px;
+}
+
+.clear-search {
+    color: white;
+    background: rgba(255,255,255,0.25);
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.clear-search:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+}

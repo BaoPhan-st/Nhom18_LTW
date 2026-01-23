@@ -76,9 +76,11 @@
                     </div>
 
                     <div class="filter-group">
-                        <div class="filter-search-wrapper">
-                            <input type="search" placeholder="Tìm kiếm theo tên..." class="filter-search" />
-                        </div>
+                        <form class="filter-search-wrapper" action="${pageContext.request.contextPath}/products"
+                            method="get">
+                            <input type="search" name="q" placeholder="Tìm kiếm theo tên..." class="filter-search"
+                                id="filter-search-input" value="${searchQuery}" />
+                        </form>
                         <div class="filter-group-header">
                             <h3>Hãng</h3>
                             <button class="toggle-btn">-</button>
@@ -150,9 +152,9 @@
                             <div class="price-filter">
                                 <div class="slider-container">
                                     <div class="slider-track"></div>
-                                    <input type="range" min="0" max="5000000" value="0" id="slider-1"
+                                    <input type="range" min="0" max="10000000" value="0" id="slider-1"
                                         oninput="slideOne()" />
-                                    <input type="range" min="0" max="5000000" value="5000000" id="slider-2"
+                                    <input type="range" min="0" max="10000000" value="10000000" id="slider-2"
                                         oninput="slideTwo()" />
                                 </div>
                                 <div class="price-input">
@@ -163,7 +165,7 @@
                                     <div class="separator">-</div>
                                     <div class="field">
                                         <span>Đến</span>
-                                        <input type="text" id="range2" value="5.000.000đ" readonly />
+                                        <input type="text" id="range2" value="10.000.000đ" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -199,6 +201,12 @@
                 </aside>
 
                 <main class="product-content">
+                    <c:if test="${not empty searchQuery}">
+                        <div class="search-result-info">
+                            <p>Kết quả tìm kiếm cho: <strong>"${searchQuery}"</strong></p>
+                            <a href="${pageContext.request.contextPath}/products" class="clear-search">Xóa tìm kiếm</a>
+                        </div>
+                    </c:if>
                     <div class="sort-toolbar">
                         <label for="sort-select">Sắp xếp theo:</label>
                         <select id="sort-select" class="sort-dropdown">

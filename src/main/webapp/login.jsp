@@ -3,7 +3,7 @@
 <%
     User currentUser = (User) session.getAttribute("currentUser");
     if (currentUser != null) {
-        response.sendRedirect(request.getContextPath() + "/menu.jsp");
+        response.sendRedirect(request.getContextPath() + "/menu");
         return;
     }
 %>

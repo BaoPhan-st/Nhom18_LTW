@@ -107,7 +107,6 @@ public class ProductService {
         for (Product p : products) {
             boolean isNew = productDao.isNew(p.getId());
             PromotionResult pr = promotionService.calculateBestPromotion(p.getId());
-
             String finalPrice = promotionService.formatVND(pr.getFinalPrice());
             String price = promotionService.formatVND(p.getPrice());
             String mainImgURL = productImgService.getMainImg(p.getId());
@@ -123,5 +122,27 @@ public class ProductService {
     public int getTotalPages(int pageSize) {
         int total = productDao.countActive(); // ví dụ 100
         return (int) Math.ceil(total * 1.0 / pageSize); // 12 => 9 trang
+    }
+    public List<ProductDTO> searchProducts(String keyword, int page, int pageSize) {
+        int safePage = Math.max(page, 1);
+        int offset = (safePage - 1) * pageSize;
+        List<Product> products = productDao.searchByName(keyword, pageSize, offset);
+        List<ProductDTO> result = new ArrayList<>();
+        for (Product p : products) {
+            boolean isNew = productDao.isNew(p.getId());
+            PromotionResult pr = promotionService.calculateBestPromotion(p.getId());
+            String finalPrice = promotionService.formatVND(pr.getFinalPrice());
+            String price = promotionService.formatVND(p.getPrice());
+            String mainImgURL = productImgService.getMainImg(p.getId());
+            String discountValue = promotionService.getDiscountValueString(pr.getBestPromotion());
+            result.add(new ProductDTO(
+                    p.getId(), p.getName(), price, finalPrice, mainImgURL, discountValue, isNew
+            ));
+        }
+        return result;
+    }
+    public int getSearchTotalPages(String keyword, int pageSize) {
+        int total = productDao.countSearchResults(keyword);
+        return (int) Math.ceil(total * 1.0 / pageSize);
     }
 }
