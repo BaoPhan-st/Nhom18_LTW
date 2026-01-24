@@ -21,43 +21,40 @@ document.addEventListener("DOMContentLoaded", function () {
     if (navOpenBtn) navOpenBtn.addEventListener("click", toggleNavbar);
     if (navCloseBtn) navCloseBtn.addEventListener("click", toggleNavbar);
     if (overlay) overlay.addEventListener("click", toggleNavbar);
+    /* ==================================================
+       2. XỬ LÝ TOGGLE SEARCH FORM
+    ================================================== */
+    const searchToggleBtn = document.getElementById("searchToggleBtn");
+    const searchCloseBtn = document.getElementById("searchCloseBtn");
+    const searchForm = document.getElementById("search-form");
 
+    if (searchToggleBtn && searchForm) {
+        searchToggleBtn.addEventListener("click", function () {
+            searchForm.classList.toggle("active");
+            searchForm.querySelector("input").focus();
+        });
+    }
+    if (searchCloseBtn && searchForm) {
+        searchCloseBtn.addEventListener("click", function () {
+            searchForm.classList.remove("active");
+        });
+    }
 
     /* ==================================================
-       2. XỬ LÝ THANH TÌM KIẾM (SEARCH)
+       3. ĐỒNG BỘ Ô TÌM KIẾM HEADER VÀ FILTER
     ================================================== */
-    const searchToggleBtn = document.getElementById("searchToggleBtn"); // Nút kính lúp (nếu có)
-    const searchForm = document.getElementById("search-form");
-    const searchInput = document.getElementById("search-input");
-    const searchCloseBtn = document.getElementById("searchCloseBtn"); // Nút X đóng tìm kiếm
+    const headerSearchInput = searchForm ? searchForm.querySelector("input[name='q']") : null;
+    const filterSearchInput = document.getElementById("filter-search-input");
 
-    // Chỉ chạy khi các phần tử này tồn tại trên trang
-    if (searchForm && searchInput) {
+    // Đồng bộ: khi nhập ở header -> cập nhật filter
+    if (headerSearchInput && filterSearchInput) {
+        headerSearchInput.addEventListener("input", function () {
+            filterSearchInput.value = this.value;
+        });
 
-        const toggleSearch = function (e) {
-            if (e) e.preventDefault();
-            searchForm.classList.toggle("active");
-
-            if (searchForm.classList.contains("active")) {
-                searchInput.focus(); // Tự động trỏ chuột vào ô nhập
-            } else {
-                searchInput.value = ""; // Xóa chữ khi đóng
-            }
-        };
-
-        // Nếu có nút mở tìm kiếm thì gán sự kiện
-        if (searchToggleBtn) searchToggleBtn.addEventListener("click", toggleSearch);
-
-        // Nếu có nút đóng tìm kiếm thì gán sự kiện
-        if (searchCloseBtn) searchCloseBtn.addEventListener("click", toggleSearch);
-
-        // Nhấn Enter để tìm
-        searchInput.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-                // e.preventDefault(); // Bỏ comment dòng này nếu muốn chặn reload trang
-                // Xử lý logic tìm kiếm ở đây nếu cần
-                // toggleSearch(e);
-            }
+        // Đồng bộ: khi nhập ở filter -> cập nhật header
+        filterSearchInput.addEventListener("input", function () {
+            headerSearchInput.value = this.value;
         });
     }
 });

@@ -16,7 +16,7 @@
 <jsp:include page="header.jsp"/>
 
 <c:if test="${not empty errorMessage}">
-  <<div class="checkout-alert">
+  <div class="checkout-alert">
   <strong>Không thể đặt hàng:</strong><br>
   ${errorMessage}
   </div>

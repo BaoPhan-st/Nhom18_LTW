@@ -14,16 +14,20 @@ import java.util.Locale;
 
 public class PromotionService {
     ProductDao productDao = new ProductDao();
-    PromotionDao promotionDao= new PromotionDao();
+    PromotionDao promotionDao = new PromotionDao();
 
     public PromotionResult calculateBestPromotion(int productId) {
         Product product = productDao.findById(productId);
         if (product == null) {
             return new PromotionResult(BigDecimal.ZERO, null);
         }
+        if (product == null) {
+            return new PromotionResult(BigDecimal.ZERO, null);
+        }
         BigDecimal originalPrice = product.getPrice();
-        List<Promotion> promotions =
-                promotionDao.findPromotionForProduct(productId);
+        if (originalPrice == null)
+            originalPrice = BigDecimal.ZERO;
+        List<Promotion> promotions = promotionDao.findPromotionForProduct(productId);
         if (promotions == null || promotions.isEmpty()) {
             return new PromotionResult(originalPrice, null);
         }
@@ -67,7 +71,10 @@ public class PromotionService {
         }
         return "";
     }
+
     public String formatVND(BigDecimal value) {
+        if (value == null)
+            return "0₫";
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
         symbols.setGroupingSeparator('.');
 
@@ -76,9 +83,9 @@ public class PromotionService {
     }
 
     public BigDecimal parsePrice(String price) {
-        if (price == null) return BigDecimal.ZERO;
+        if (price == null)
+            return BigDecimal.ZERO;
         return new BigDecimal(price.replaceAll("[^0-9]", ""));
     }
-
 
 }

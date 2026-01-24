@@ -200,7 +200,195 @@ public class ProductDao {
             return Collections.emptyList();
         }
     }
+    public List<Product> findActivePage(int limit, int offset) {
+        return JDBIConnector.getJdbi().withHandle(h -> h.createQuery("""
+                    SELECT *
+                    FROM product
+                    WHERE is_available = 1
+                      AND is_discontinue = 0
+                    ORDER BY added_at DESC
+                    LIMIT :limit OFFSET :offset
+                """)
+                .bind("limit", limit)
+                .bind("offset", offset)
+                .mapToBean(Product.class)
+                .list());
+    }
+    public int countActive() {
+        return JDBIConnector.getJdbi().withHandle(h -> h.createQuery("""
+                    SELECT COUNT(*)
+                    FROM product
+                    WHERE is_available = 1
+                      AND is_discontinue = 0
+                """)
+                .mapTo(int.class)
+                .one());
+    }
 
+    public List<Product> searchByName(String keyword, int limit, int offset) {
+        String sql = """
+                    SELECT * FROM product
+                    WHERE is_available = 1 AND is_discontinue = 0
+                      AND name LIKE :keyword
+                    ORDER BY added_at DESC
+                    LIMIT :limit OFFSET :offset
+                """;
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("keyword", "%" + keyword + "%")
+                .bind("limit", limit)
+                .bind("offset", offset)
+                .mapToBean(Product.class)
+                .list());
+    }
+
+    // Đếm kết quả tìm kiếm
+    public int countSearchResults(String keyword) {
+        String sql = """
+                    SELECT COUNT(*) FROM product
+                    WHERE is_available = 1 AND is_discontinue = 0
+                      AND name LIKE :keyword
+                """;
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("keyword", "%" + keyword + "%")
+                .mapTo(int.class)
+                .one());
+    }
+
+    // Lọc sản phẩm theo nhiều tiêu chí
+    public List<Product> filterProducts(String keyword, List<Integer> brandIds,
+                                        List<Integer> sizeIds, List<Integer> colorIds,
+                                        java.math.BigDecimal minPrice, java.math.BigDecimal maxPrice,
+                                        String sortBy, int limit, int offset) {
+        StringBuilder sql = new StringBuilder("""
+                    SELECT DISTINCT p.* FROM product p
+                    LEFT JOIN product_variant pv ON p.id = pv.product_id
+                    WHERE p.is_available = 1 AND p.is_discontinue = 0
+                """);
+
+        // Keyword filter
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            sql.append(" AND p.name LIKE :keyword ");
+        }
+
+        // Brand filter
+        if (brandIds != null && !brandIds.isEmpty()) {
+            sql.append(" AND p.brand_id IN (<brandIds>) ");
+        }
+
+        // Size filter
+        if (sizeIds != null && !sizeIds.isEmpty()) {
+            sql.append(" AND pv.size_id IN (<sizeIds>) ");
+        }
+
+        // Color filter
+        if (colorIds != null && !colorIds.isEmpty()) {
+            sql.append(" AND pv.color_id IN (<colorIds>) ");
+        }
+
+        // Price filter
+        if (minPrice != null) {
+            sql.append(" AND p.price >= :minPrice ");
+        }
+        if (maxPrice != null) {
+            sql.append(" AND p.price <= :maxPrice ");
+        }
+
+        // Sort
+        String orderBy = switch (sortBy != null ? sortBy : "default") {
+            case "newest" -> " ORDER BY p.added_at DESC ";
+            case "price-asc" -> " ORDER BY p.price ASC ";
+            case "price-desc" -> " ORDER BY p.price DESC ";
+            default -> " ORDER BY p.added_at DESC ";
+        };
+        sql.append(orderBy);
+        sql.append(" LIMIT :limit OFFSET :offset ");
+
+        String finalSql = sql.toString();
+
+        return jdbi.withHandle(h -> {
+            var query = h.createQuery(finalSql);
+
+            if (keyword != null && !keyword.trim().isEmpty()) {
+                query.bind("keyword", "%" + keyword + "%");
+            }
+            if (brandIds != null && !brandIds.isEmpty()) {
+                query.bindList("brandIds", brandIds);
+            }
+            if (sizeIds != null && !sizeIds.isEmpty()) {
+                query.bindList("sizeIds", sizeIds);
+            }
+            if (colorIds != null && !colorIds.isEmpty()) {
+                query.bindList("colorIds", colorIds);
+            }
+            if (minPrice != null) {
+                query.bind("minPrice", minPrice);
+            }
+            if (maxPrice != null) {
+                query.bind("maxPrice", maxPrice);
+            }
+            query.bind("limit", limit);
+            query.bind("offset", offset);
+
+            return query.mapToBean(Product.class).list();
+        });
+    }
+
+    // Đếm số sản phẩm sau khi lọc
+    public int countFilteredProducts(String keyword, List<Integer> brandIds,
+                                     List<Integer> sizeIds, List<Integer> colorIds,
+                                     java.math.BigDecimal minPrice, java.math.BigDecimal maxPrice) {
+        StringBuilder sql = new StringBuilder("""
+                    SELECT COUNT(DISTINCT p.id) FROM product p
+                    LEFT JOIN product_variant pv ON p.id = pv.product_id
+                    WHERE p.is_available = 1 AND p.is_discontinue = 0
+                """);
+
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            sql.append(" AND p.name LIKE :keyword ");
+        }
+        if (brandIds != null && !brandIds.isEmpty()) {
+            sql.append(" AND p.brand_id IN (<brandIds>) ");
+        }
+        if (sizeIds != null && !sizeIds.isEmpty()) {
+            sql.append(" AND pv.size_id IN (<sizeIds>) ");
+        }
+        if (colorIds != null && !colorIds.isEmpty()) {
+            sql.append(" AND pv.color_id IN (<colorIds>) ");
+        }
+        if (minPrice != null) {
+            sql.append(" AND p.price >= :minPrice ");
+        }
+        if (maxPrice != null) {
+            sql.append(" AND p.price <= :maxPrice ");
+        }
+
+        String finalSql = sql.toString();
+
+        return jdbi.withHandle(h -> {
+            var query = h.createQuery(finalSql);
+
+            if (keyword != null && !keyword.trim().isEmpty()) {
+                query.bind("keyword", "%" + keyword + "%");
+            }
+            if (brandIds != null && !brandIds.isEmpty()) {
+                query.bindList("brandIds", brandIds);
+            }
+            if (sizeIds != null && !sizeIds.isEmpty()) {
+                query.bindList("sizeIds", sizeIds);
+            }
+            if (colorIds != null && !colorIds.isEmpty()) {
+                query.bindList("colorIds", colorIds);
+            }
+            if (minPrice != null) {
+                query.bind("minPrice", minPrice);
+            }
+            if (maxPrice != null) {
+                query.bind("maxPrice", maxPrice);
+            }
+
+            return query.mapTo(int.class).one();
+        });
+    }
 }
 
 

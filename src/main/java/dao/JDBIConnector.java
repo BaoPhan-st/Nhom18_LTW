@@ -2,8 +2,6 @@ package dao;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.core.mapper.CaseStrategy;
-import org.jdbi.v3.core.mapper.reflect.ReflectionMappers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,9 +21,9 @@ public class JDBIConnector {
     private static void connect() {
         MysqlDataSource ds = new MysqlDataSource();
 
-            ds.setUrl("jdbc:mysql://localhost:3306/ltw_sportshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh");
-            ds.setUser("root");
-            ds.setPassword("");
+        ds.setUrl("jdbc:mysql://localhost:3306/ltw_sportshoess?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh");
+        ds.setUser("root");
+        ds.setPassword("");
 
         try {
             ds.setAutoReconnect(true);
@@ -35,8 +33,6 @@ public class JDBIConnector {
         }
 
         jdbi = Jdbi.create(ds);
-
-
 
     }
 
@@ -51,12 +47,11 @@ public class JDBIConnector {
         });
     }
 
-    public static Connection getConnection ()
-    {
+    public static Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh", "root", "");
-        } catch (Exception e)
-        {
+            return DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/shopshoes?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh", "root", "");
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
