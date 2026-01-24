@@ -61,11 +61,6 @@
                 Đơn hàng
             </a>
         </li>
-        <li class="${active == 'admin/carts' ? 'active' : ''}">
-            <a href="${pageContext.request.contextPath}/admin/carts">
-                Giỏ hàng
-            </a>
-        </li>
 
         <li class="${active == 'admin/wishlist' ? 'active' : ''}">
             <a href="${pageContext.request.contextPath}/admin/wishlist">

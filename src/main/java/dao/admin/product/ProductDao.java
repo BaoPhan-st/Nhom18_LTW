@@ -9,7 +9,7 @@ public class ProductDao
 {
     public List<Product> findAll()
     {
-        String sql = "SELECT * FROM products";
+        String sql = "SELECT * FROM product";
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .mapToBean(Product.class)
@@ -19,7 +19,7 @@ public class ProductDao
 
     public Product findById(int id)
     {
-        String sql = "SELECT * FROM products WHERE id = :id";
+        String sql = "SELECT * FROM product WHERE id = :id";
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("id", id)
@@ -32,7 +32,7 @@ public class ProductDao
     public boolean insert(Product product)
     {
         String sql = """
-            INSERT INTO products
+            INSERT INTO product
             (name, description, price, brand_id, added_at, is_discontinue, is_available)
             VALUES (:name, :description, :price, :brandId, :addedAt, :discontinue, :available)
         """;
@@ -47,7 +47,7 @@ public class ProductDao
     public boolean update(Product product)
     {
         String sql = """
-            UPDATE products SET
+            UPDATE product SET
                 name = :name,
                 description = :description,
                 price = :price,
@@ -66,7 +66,7 @@ public class ProductDao
     public boolean delete(int id)
     {
         String sql = """
-            UPDATE products
+            UPDATE product
             SET is_available = false,
                 is_discontinue = true
             WHERE id = :id
@@ -81,7 +81,7 @@ public class ProductDao
     {
         StringBuilder sbSQL = new StringBuilder("""
                 SELECT *
-                FROM products
+                FROM product
                 WHERE 1 = 1
                 """);
         if (id != null) sbSQL.append(" AND id = :id");

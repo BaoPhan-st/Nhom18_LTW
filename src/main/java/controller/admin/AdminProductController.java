@@ -1,11 +1,15 @@
 package controller.admin;
 
+import dao.Product.ColorDao;
+import dao.Product.ProductVariantDao;
+import dao.Product.SizeDao;
 import dao.admin.product.BrandDao;
 import dao.admin.product.ProductDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.product.Product;
+import model.product.ProductVariant;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -16,6 +20,9 @@ public class AdminProductController extends HttpServlet
 {
     private final ProductDao productDao = new ProductDao();
     private final BrandDao brandDao = new BrandDao();
+    private final ProductVariantDao variantDao = new ProductVariantDao();
+    private final ColorDao colorDao = new ColorDao();
+    private final SizeDao sizeDao = new SizeDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,6 +32,29 @@ public class AdminProductController extends HttpServlet
 
         if (uri.endsWith("/admin/variants"))
         {
+            request.setAttribute("variants", variantDao.findAllActive());
+            request.setAttribute("sizes", sizeDao.findAll());
+            request.setAttribute("colors", colorDao.findAll());
+            if ("true".equals(request.getParameter("edit")))
+            {
+                Integer productId = null;
+                Integer sizeId = null;
+                Integer colorId = null;
+                try {
+                    if (request.getParameter("productId") != null &&
+                        !request.getParameter("productId").isBlank())
+                        productId = Integer.parseInt(request.getParameter("productId"));
+                    if (request.getParameter("sizeId") != null &&
+                            !request.getParameter("sizeId").isBlank())
+                        productId = Integer.parseInt(request.getParameter("sizeId"));
+                    if (request.getParameter("colorId") != null &&
+                            !request.getParameter("colorId").isBlank())
+                        productId = Integer.parseInt(request.getParameter("colorId"));
+
+                }
+                request.setAttribute("variant", variantDao.findByProduct(productId));
+            }
+
             request.setAttribute("contentPage", "/admin-variants.jsp");
             request.setAttribute("active", "admin/variants");
         }

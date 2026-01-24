@@ -1,43 +1,57 @@
 package model.user;
 
-import org.jdbi.v3.core.mapper.reflect.ColumnName;
-
 import java.io.Serializable;
-import java.math.BigDecimal;
 
-public class CartItem implements Serializable {
-
-    @ColumnName("user_id")
-    private int userId;
-    @ColumnName("product_id")
+public class CartItem implements Serializable
+{
     private int productId;
-    @ColumnName("color_id")
-    private int colorId;
-    @ColumnName("size_id")
+    private String productName;
     private int sizeId;
-
+    private int colorId;
+    private double price;
     private int quantity;
-    private BigDecimal price;
-    @ColumnName("total_price")
-    private BigDecimal totalPrice; // generated column
 
-    public CartItem() {}
+    public CartItem () {}
 
-    // ===== GETTERS =====
-    public int getUserId() { return userId; }
+    public CartItem (int productId, String productName, int sizeId, int colorId, double price, int quantity)
+    {
+        this.productId = productId;
+        this.productName = productName;
+        this.sizeId = sizeId;
+        this.colorId = colorId;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    // GET
     public int getProductId() { return productId; }
-    public int getColorId() { return colorId; }
+    public String getProductName() { return productName; }
     public int getSizeId() { return sizeId; }
+    public int getColorId() { return colorId; }
+    public double getPrice() { return price; }
     public int getQuantity() { return quantity; }
-    public BigDecimal getPrice() { return price; }
-    public BigDecimal getTotalPrice() { return totalPrice; }
 
-    // ===== SETTERS =====
-    public void setUserId(int userId) { this.userId = userId; }
+    // SET
     public void setProductId(int productId) { this.productId = productId; }
-    public void setColorId(int colorId) { this.colorId = colorId; }
+    public void setProductName(String productName) { this.productName = productName; }
     public void setSizeId(int sizeId) { this.sizeId = sizeId; }
+    public void setColorId(int colorId) { this.colorId = colorId; }
+    public void setPrice(double price) { this.price = price; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
-    public void setPrice(BigDecimal price) { this.price = price; }
-    public void setTotalPrice(BigDecimal totalPrice) { this.totalPrice = totalPrice; }
+
+    public double getTotalPrice() {
+        return price * quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", sizeId=" + sizeId +
+                ", colorId=" + colorId +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

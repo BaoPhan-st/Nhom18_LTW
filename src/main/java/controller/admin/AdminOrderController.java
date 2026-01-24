@@ -1,21 +1,17 @@
 package controller.admin;
 
 import dao.admin.order.OrderDao;
-import dao.admin.user.CartDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.order.Order;
-import model.user.CartItem;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 @WebServlet({"/admin/orders", "/admin/carts"})
 public class AdminOrderController extends HttpServlet {
     private final OrderDao orderDao = new OrderDao();
-    private final CartDao cartDao = new CartDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -34,15 +30,6 @@ public class AdminOrderController extends HttpServlet {
             }
             catch (NumberFormatException ignored) {}
 
-            List<CartItem> cartItems = cartDao.findAll();
-
-            if (userId != null)
-            {
-                cartItems = cartDao.findByUserId(userId);
-
-            }
-
-            request.setAttribute("cartItems", cartItems);
             request.setAttribute("contentPage", "/admin-carts.jsp");
             request.setAttribute("active", "admin/carts");
 
