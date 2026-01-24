@@ -11,7 +11,7 @@
  Target Server Version : 100432 (10.4.32-MariaDB)
  File Encoding         : 65001
 
- Date: 23/01/2026 23:03:35
+ Date: 24/01/2026 20:10:00
 */
 
 SET NAMES utf8mb4;
@@ -36,17 +36,20 @@ CREATE TABLE `banner`  (
   `slogan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `unique_link_position`(`link_url` ASC, `position` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES (1, 'BlackFriday', 'https://cdn.shopify.com/s/files/1/0456/5070/6581/files/HP_BACKFRI_KV_DESK_VN.jpg?v=1763548181&width=1440', '/promotion/black-friday', 'PROMOTION', 1, 'product_slide_top', 1, 1, NULL, NULL, '');
+INSERT INTO `banner` VALUES (1, 'BlackFriday', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1769259626/HP_BACKFRI_KV_DESK_VN_ntdoyx.jpg', '/promotion/black-friday', 'PROMOTION', 1, 'product_slide_top', 1, 1, NULL, NULL, '');
 INSERT INTO `banner` VALUES (2, 'Bộ sưu tập Mùa Hè', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1768888482/hero-banner_jhov6k.png', '/collection/summer-collection', 'COLLECTION', 2, 'menu_top', NULL, 1, NULL, NULL, 'Không chỉ là đôi giày, đó là phong cách khẳng định cá tính qua từng bước đi, chạm tới đỉnh cao của sự tự tin.');
 INSERT INTO `banner` VALUES (3, 'Bộ sưu tập Nike', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1768888479/collection-2_kg2fwz.jpg', '/collection/nike-collection', 'COLLECTION', 1, 'menu_collection', 1, 1, NULL, NULL, 'Bộ sưu tập Nike');
 INSERT INTO `banner` VALUES (4, 'Bộ sưu tập Puma', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1768888482/collection-puma_nm5wde.png', '/collection/puma-collection', 'COLLECTION', 4, 'menu_collection', 2, 1, NULL, NULL, NULL);
 INSERT INTO `banner` VALUES (5, 'Bộ sưu tập Adidas', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1768888480/collection-3_thrnee.jpg', '/collection/adidas-collection', 'COLLECTION', 3, 'menu_collection', 3, 1, NULL, NULL, NULL);
 INSERT INTO `banner` VALUES (6, 'Ưu đãi đặt biệt', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1768888482/special-banner_fgoitp.jpg', '/promotion/special-products', 'PROMOTION', 3, 'menu_special-product', NULL, 1, NULL, NULL, 'Giày Đẹp - Giá Hời');
+INSERT INTO `banner` VALUES (7, 'Bóng Đá', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1769259646/LP_NIKE_FOOTBALL_KV_jzbwhn.jpg', '/collection/football', 'COLLECTION', 6, 'products_slide', 1, 1, NULL, NULL, NULL);
+INSERT INTO `banner` VALUES (8, 'Chạy Bộ', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1769259668/LP_NIKE_RUNNING_KV_ayolne.jpg', '/collectio/running', 'COLLECTION', 7, 'products_slide', 2, 1, NULL, NULL, NULL);
+INSERT INTO `banner` VALUES (9, 'Luyện Tập', 'https://res.cloudinary.com/dnmowplwi/image/upload/v1769259672/LP_NIKE_TRAIN_KV_wax8ir.jpg', '/collectio/training', 'COLLECTION', 8, 'products_slide', 3, 1, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for brand
@@ -94,7 +97,7 @@ INSERT INTO `collection` VALUES (3, 'Adidas', 'adidas-collection', 'AUTO', 1);
 INSERT INTO `collection` VALUES (4, 'Puma', 'puma-collection', 'AUTO', 1);
 INSERT INTO `collection` VALUES (6, 'Bóng đá', 'football', 'MANUAL', 1);
 INSERT INTO `collection` VALUES (7, 'Chạy bộ', 'running', 'MANUAL', 1);
-INSERT INTO `collection` VALUES (8, 'Luyện tập', 'trainning', 'MANUAL', 1);
+INSERT INTO `collection` VALUES (8, 'Luyện tập', 'training', 'MANUAL', 1);
 INSERT INTO `collection` VALUES (9, 'Bóng rổ', 'basketball', 'MANUAL', 1);
 INSERT INTO `collection` VALUES (10, 'Tenis', 'tenis', 'MANUAL', 1);
 
@@ -380,7 +383,7 @@ CREATE TABLE `order_detail`  (
   CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `order_detail_ibfk_3` FOREIGN KEY (`color_id`) REFERENCES `color` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `order_detail_ibfk_4` FOREIGN KEY (`size_id`) REFERENCES `size` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of order_detail
@@ -394,6 +397,9 @@ INSERT INTO `order_detail` VALUES (6, 4, 87, 3, 1, 1, 1200000.00, 1200000.00);
 INSERT INTO `order_detail` VALUES (7, 5, 100, 9, 2, 1, 3000000.00, 3000000.00);
 INSERT INTO `order_detail` VALUES (8, 6, 101, 2, 1, 1, 2800000.00, 2800000.00);
 INSERT INTO `order_detail` VALUES (9, 7, 1, 1, 7, 1, 2091000.00, 2091000.00);
+INSERT INTO `order_detail` VALUES (10, 8, 91, 3, 4, 1, 2100000.00, 2100000.00);
+INSERT INTO `order_detail` VALUES (11, 9, 101, 2, 1, 1, 2800000.00, 2800000.00);
+INSERT INTO `order_detail` VALUES (12, 9, 96, 10, 2, 1, 3800000.00, 3800000.00);
 
 -- ----------------------------
 -- Table structure for orders
@@ -415,7 +421,7 @@ CREATE TABLE `orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders
@@ -427,6 +433,8 @@ INSERT INTO `orders` VALUES (4, 3, '2026-01-23 19:22:00', 0.00, 20400000.00, 204
 INSERT INTO `orders` VALUES (5, 3, '2026-01-23 19:24:15', 0.00, 3000000.00, 3000000.00, NULL, NULL, 'NEW', NULL, 'UNPAID', NULL);
 INSERT INTO `orders` VALUES (6, 3, '2026-01-23 20:10:34', 0.00, 2800000.00, 2800000.00, NULL, NULL, 'NEW', NULL, 'UNPAID', NULL);
 INSERT INTO `orders` VALUES (7, 3, '2026-01-23 20:55:36', 0.00, 2091000.00, 2091000.00, NULL, NULL, 'NEW', NULL, 'UNPAID', NULL);
+INSERT INTO `orders` VALUES (8, 3, '2026-01-24 19:06:42', 0.00, 2100000.00, 2100000.00, NULL, NULL, 'NEW', NULL, 'UNPAID', NULL);
+INSERT INTO `orders` VALUES (9, 3, '2026-01-24 19:07:24', 0.00, 6600000.00, 6600000.00, NULL, NULL, 'NEW', NULL, 'UNPAID', NULL);
 
 -- ----------------------------
 -- Table structure for product
@@ -445,7 +453,7 @@ CREATE TABLE `product`  (
   UNIQUE INDEX `unique_product_name`(`name` ASC) USING BTREE,
   INDEX `brand_id`(`brand_id` ASC) USING BTREE,
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 103 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product
@@ -3075,7 +3083,7 @@ INSERT INTO `product_variant` VALUES (2118, 90, 10, 6, 100, 0);
 INSERT INTO `product_variant` VALUES (2124, 91, 1, 3, 100, 0);
 INSERT INTO `product_variant` VALUES (2125, 91, 2, 3, 100, 0);
 INSERT INTO `product_variant` VALUES (2126, 91, 3, 3, 100, 0);
-INSERT INTO `product_variant` VALUES (2127, 91, 4, 3, 100, 0);
+INSERT INTO `product_variant` VALUES (2127, 91, 4, 3, 99, 0);
 INSERT INTO `product_variant` VALUES (2128, 91, 5, 3, 100, 0);
 INSERT INTO `product_variant` VALUES (2129, 91, 6, 3, 100, 0);
 INSERT INTO `product_variant` VALUES (2130, 91, 7, 3, 100, 0);
@@ -3153,7 +3161,7 @@ INSERT INTO `product_variant` VALUES (2236, 95, 8, 1, 100, 0);
 INSERT INTO `product_variant` VALUES (2237, 95, 9, 1, 100, 0);
 INSERT INTO `product_variant` VALUES (2238, 95, 10, 1, 100, 0);
 INSERT INTO `product_variant` VALUES (2244, 96, 1, 10, 90, 0);
-INSERT INTO `product_variant` VALUES (2245, 96, 2, 10, 100, 0);
+INSERT INTO `product_variant` VALUES (2245, 96, 2, 10, 99, 0);
 INSERT INTO `product_variant` VALUES (2246, 96, 3, 10, 100, 0);
 INSERT INTO `product_variant` VALUES (2247, 96, 4, 10, 100, 0);
 INSERT INTO `product_variant` VALUES (2248, 96, 5, 10, 100, 0);
@@ -3202,7 +3210,7 @@ INSERT INTO `product_variant` VALUES (2310, 100, 7, 9, 100, 0);
 INSERT INTO `product_variant` VALUES (2311, 100, 8, 9, 100, 0);
 INSERT INTO `product_variant` VALUES (2312, 100, 9, 9, 100, 0);
 INSERT INTO `product_variant` VALUES (2313, 100, 10, 9, 100, 0);
-INSERT INTO `product_variant` VALUES (2319, 101, 1, 2, 88, 0);
+INSERT INTO `product_variant` VALUES (2319, 101, 1, 2, 87, 0);
 INSERT INTO `product_variant` VALUES (2320, 101, 2, 2, 100, 0);
 INSERT INTO `product_variant` VALUES (2321, 101, 3, 2, 100, 0);
 INSERT INTO `product_variant` VALUES (2322, 101, 4, 2, 100, 0);
