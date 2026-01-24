@@ -136,7 +136,7 @@
               </ul>
 
               <ul class="product-list" id="productList">
-                  <c:forEach items="${menu.bestSeller}" var="p">
+                  <c:forEach items="${menu.newestProduct}" var="p">
                       <li class="product-item">
                           <div class="product-card" tabindex="0">
 
