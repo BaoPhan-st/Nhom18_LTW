@@ -51,7 +51,7 @@ public class AdminProductController extends HttpServlet
                             !request.getParameter("colorId").isBlank())
                         productId = Integer.parseInt(request.getParameter("colorId"));
 
-                }
+                } catch (NumberFormatException e) { e.printStackTrace();}
                 request.setAttribute("variant", variantDao.findByProduct(productId));
             }
 

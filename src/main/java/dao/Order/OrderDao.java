@@ -1,14 +1,9 @@
 package dao.Order;
 
-import dao.JDBIConnector;
-import model.Order.Order;
-import model.user.CartItem;
 import org.jdbi.v3.core.Handle;
-import org.jdbi.v3.core.Jdbi;
 import services.PromotionService;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 public class OrderDao {
 

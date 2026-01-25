@@ -1,6 +1,6 @@
 package dao;
 
-import model.user.WishList;
+import model.user.Wishlist;
 import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
@@ -83,7 +83,7 @@ public class WishlistDao {
         }
     }
 
-    public List<WishList> findByUser(int userId) {
+    public List<Wishlist> findByUser(int userId) {
         try {
             String sql = """
                 SELECT id,
@@ -98,7 +98,7 @@ public class WishlistDao {
             return jdbi.withHandle(handle ->
                     handle.createQuery(sql)
                             .bind("userId", userId)
-                            .mapToBean(WishList.class)
+                            .mapToBean(Wishlist.class)
                             .list()
             );
 

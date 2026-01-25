@@ -1,9 +1,7 @@
 package services.admin;
 
 import dao.JDBIConnector;
-
-import static com.nhom18.webshoes.util.Password.checkPassword;
-import static com.nhom18.webshoes.util.Password.hashPassword;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class AdminService
 {
@@ -43,9 +41,10 @@ public class AdminService
             SET password_hash = :hash_password
             WHERE id = :adminId AND LOWER(role) = 'admin';
             """;
+        String hashed = BCrypt.hashpw(rawPassword, BCrypt.gensalt());
         JDBIConnector.getJdbi().useHandle(handle ->
                 handle.createUpdate(sql)
-                        .bind("hash_password", hashPassword(rawPassword))
+                        .bind("hash_password", hashed)
                         .bind("adminId", adminId)
                         .execute()
         );
@@ -62,7 +61,7 @@ public class AdminService
                         .bind("adminId",adminId)
                         .mapTo(String.class)
                         .findOne()
-                        .map(hash -> checkPassword(rawPassord,hash))
+                        .map(hash -> BCrypt.checkpw(rawPassord,hash))
                         .orElse(false));
     }
 }

@@ -2,6 +2,7 @@ package dao.Product;
 
 import dao.JDBIConnector;
 import model.product.Product;
+import org.apache.taglibs.standard.lang.jstl.Literal;
 import org.jdbi.v3.core.Jdbi;
 
 import java.math.BigDecimal;
@@ -432,5 +433,21 @@ public class ProductDao {
 
             return query.mapTo(int.class).one();
         });
+    }
+
+    public List<Product> getNewestProducts(int limit)
+    {
+        String sql = """
+                SELECT *
+                FROM product
+                ORDER BY added_at
+                LIMIT :limit
+                """;
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("limit", limit)
+                        .mapToBean(Product.class)
+                        .list()
+        );
     }
 }

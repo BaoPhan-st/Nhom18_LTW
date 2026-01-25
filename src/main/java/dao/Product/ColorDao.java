@@ -13,7 +13,7 @@ public class ColorDao {
 
 
     // COLORS
-    public List<Size> findAll()
+    public List<Color> findAll()
     {
         String sql = """
                 SELECT *
