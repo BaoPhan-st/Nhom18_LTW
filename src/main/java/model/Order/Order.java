@@ -1,123 +1,92 @@
-package model.Order;
+package model.order;
 
-import java.io.Serializable;
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
+
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-public class Order implements Serializable {
-
+public class Order
+{
     private int id;
-    private int user_id;
-    private LocalDateTime created_at;
 
-    private BigDecimal shipping_fee;
-    private BigDecimal sub_total;
-    private BigDecimal grand_total;
+    @ColumnName("user_id")
+    private int userId;
 
-    private String shipping_address;
-    private String phone_number;
+    @ColumnName("created_at")
+    private LocalDateTime createdAt;
 
-    private String order_status;
-    private String payment_method;
-    private String payment_status;
+    @ColumnName("shipping_fee")
+    private BigDecimal shippingFee;
 
-    private String order_note;
+    @ColumnName("sub_total")
+    private BigDecimal subTotal;
 
+    @ColumnName("grand_total")
+    private BigDecimal grandTotal;
 
+    @ColumnName("shipping_address")
+    private String shippingAddress;
 
-    public int getId() {
-        return id;
-    }
+    @ColumnName("phone_number")
+    private String phoneNumber;
 
-    public void setId(int id) {
+    @ColumnName("order_status")
+    private String orderStatus;
+
+    @ColumnName("payment_method")
+    private String paymentMethod;
+
+    @ColumnName("payment_status")
+    private String paymentStatus;
+
+    @ColumnName("order_note")
+    private String orderNote;
+
+    public Order() {}
+    public Order(int id, int userId, LocalDateTime createdAt, BigDecimal shippingFee, BigDecimal subTotal, BigDecimal grandTotal, String shippingAddress, String phoneNumber, String orderStatus, String paymentMethod, String paymentStatus, String orderNote)
+    {
         this.id = id;
+        this.userId = userId;
+        this.createdAt = createdAt;
+        this.shippingFee = shippingFee;
+        this.subTotal = subTotal;
+        this.grandTotal = grandTotal;
+        this.shippingAddress = shippingAddress;
+        this.phoneNumber = phoneNumber;
+        this.orderStatus = orderStatus;
+        this.paymentMethod = paymentMethod;
+        this.paymentStatus = paymentStatus;
+        this.orderNote = orderNote;
     }
+    public int getId() { return id; }
+    public int getUserId() { return userId; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public BigDecimal getShippingFee() { return shippingFee; }
+    public BigDecimal getSubTotal() { return subTotal; }
+    public BigDecimal getGrandTotal() { return grandTotal; }
+    public String getShippingAddress() { return shippingAddress; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public String getOrderStatus() { return orderStatus; }
+    public String getPaymentMethod() { return paymentMethod; }
+    public String getPaymentStatus() { return paymentStatus; }
+    public String getOrderNote() { return orderNote; }
 
-    public int getUserId() {
-        return user_id;
-    }
+    public void setId(int id) { this.id = id; }
+    public void setUserId(int userId) { this.userId = userId; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public void setShippingFee(BigDecimal shippingFee) { this.shippingFee = shippingFee; }
+    public void setSubTotal(BigDecimal subTotal) { this.subTotal = subTotal; }
+    public void setGrandTotal(BigDecimal grandTotal) { this.grandTotal = grandTotal; }
+    public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public void setOrderStatus(String orderStatus) { this.orderStatus = orderStatus; }
+    public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
+    public void setPaymentStatus(String paymentStatus) { this.paymentStatus = paymentStatus; }
+    public void setOrderNote(String orderNote) { this.orderNote = orderNote; }
 
-    public void setUserId(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return created_at;
-    }
-
-    public void setCreatedAt(LocalDateTime created_at) {
-        this.created_at = created_at;
-    }
-
-    public BigDecimal getShippingFee() {
-        return shipping_fee;
-    }
-
-    public void setShippingFee(BigDecimal shipping_fee) {
-        this.shipping_fee = shipping_fee;
-    }
-
-    public BigDecimal getSubTotal() {
-        return sub_total;
-    }
-
-    public void setSubTotal(BigDecimal sub_total) {
-        this.sub_total = sub_total;
-    }
-
-    public BigDecimal getGrandTotal() {
-        return grand_total;
-    }
-
-    public void setGrandTotal(BigDecimal grand_total) {
-        this.grand_total = grand_total;
-    }
-
-    public String getShippingAddress() {
-        return shipping_address;
-    }
-
-    public void setShippingAddress(String shipping_address) {
-        this.shipping_address = shipping_address;
-    }
-
-    public String getPhoneNumber() {
-        return phone_number;
-    }
-
-    public void setPhoneNumber(String phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    public String getOrderStatus() {
-        return order_status;
-    }
-
-    public void setOrderStatus(String order_status) {
-        this.order_status = order_status;
-    }
-
-    public String getPaymentMethod() {
-        return payment_method;
-    }
-
-    public void setPaymentMethod(String payment_method) {
-        this.payment_method = payment_method;
-    }
-
-    public String getPaymentStatus() {
-        return payment_status;
-    }
-
-    public void setPaymentStatus(String payment_status) {
-        this.payment_status = payment_status;
-    }
-
-    public String getOrderNote() {
-        return order_note;
-    }
-
-    public void setOrderNote(String order_note) {
-        this.order_note = order_note;
+    public Timestamp getCreatedAtTimestamp()
+    {
+        return createdAt == null ? null : Timestamp.valueOf(createdAt);
     }
 }
