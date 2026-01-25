@@ -9,7 +9,7 @@ import java.util.List;
 public class MenuDTO implements Serializable {
     private Banner bannerMenu;
     private List<Banner> bannerCollection;
-    private List<ProductDTO> bestSeller;
+    private List<ProductDTO> newestProduct;
     private List<Brand> brandList;
     private List<ProductDTO> specialProduct;
     private Banner bannerSpecialP;
@@ -30,12 +30,12 @@ public class MenuDTO implements Serializable {
         this.bannerCollection = bannerCollection;
     }
 
-    public List<ProductDTO> getBestSeller() {
-        return bestSeller;
+    public List<ProductDTO> getnewestProduct() {
+        return newestProduct;
     }
 
-    public void setBestSeller(List<ProductDTO> bestSeller) {
-        this.bestSeller = bestSeller;
+    public void setnewestProduct(List<ProductDTO> bestSeller) {
+        this.newestProduct = bestSeller;
     }
 
     public List<Brand> getBrandList() {
@@ -65,7 +65,7 @@ public class MenuDTO implements Serializable {
     public MenuDTO(Banner bannerMenu, List<Banner> bannerCollection, List<ProductDTO> bestSeller, List<ProductDTO> specialProduct, Banner bannerSpecialP, List<Brand> brandList) {
         this.bannerMenu = bannerMenu;
         this.bannerCollection = bannerCollection;
-        this.bestSeller = bestSeller;
+        this.newestProduct = bestSeller;
         this.specialProduct = specialProduct;
         this.bannerSpecialP = bannerSpecialP;
         this.brandList = brandList;

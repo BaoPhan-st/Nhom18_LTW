@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: quy23
-  Date: 06/01/2026
-  Time: 5:46 CH
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer class="footer">
     <div class="footer-top section">
@@ -12,7 +6,7 @@
             <div class="footer-brand">
                 <a href="#" class="logo">
                     <img
-                            src="./assets/images/BHD%20LOGO.png"
+                            src="${pageContext.request.contextPath}/assets/images/BHD%20LOGO.png"
                             width="110"
                             height="50"
                             alt="BHD"
@@ -124,33 +118,37 @@
 
                 <ul class="footer-list">
                     <li><p class="footer-list-title">Chính sách</p></li>
+
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/ChinhSachBaoMat"
+                                href="${pageContext.request.contextPath}/chinh-sach-bao-mat"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                             <span class="footer-link-text">Chính sách bảo mật</span>
                         </a>
                     </li>
+
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/ChinhSachBaoHanh"
+                                href="${pageContext.request.contextPath}/chinh-sach-bao-hanh"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                             <span class="footer-link-text">Chính sách bảo hành</span>
                         </a>
                     </li>
+
                     <li>
                         <a
-                                href="${pageContext.request.contextPath}/huongdanmuahang"
+                                href="${pageContext.request.contextPath}/huong-dan-mua-hang"
                                 class="footer-link"
                         >
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                             <span class="footer-link-text">Hướng dẫn mua hàng</span>
                         </a>
                     </li>
+
                     <li>
                         <a
                                 href="${pageContext.request.contextPath}/faq"
@@ -161,6 +159,7 @@
                         </a>
                     </li>
                 </ul>
+
 
                 <div class="footer-list">
                     <p class="footer-list-title">Đăng kí nhận tin</p>

@@ -10,16 +10,21 @@ public class MenuService {
     ProductService productService = new ProductService();
     BrandDao brandDao = new BrandDao();
 
-    public MenuDTO buildMenuPage(){
+    public MenuDTO buildMenuPage(String brandId) {
         MenuDTO dto = new MenuDTO();
         dto.setBannerMenu(bannerDao.findByPosition("menu_top"));
         dto.setBannerSpecialP(bannerDao.findByPosition("menu_special-product"));
-        dto.setSpecialProduct(productService.findTop3CheapestProductsInPromotion());
+        dto.setSpecialProduct(productService.findTopCheapestProductsInPromotion(9));
         dto.setBannerCollection(bannerDao.findByPositions("menu_collection"));
-        dto.setBestSeller(productService.getProductsByBrand(1));
         dto.setBrandList(brandDao.findAllActive());
-        return dto;
 
+        if ("all".equalsIgnoreCase(brandId)) {
+            dto.setnewestProduct(productService.getNewestProducts(16));
+        } else {
+            int id = Integer.parseInt(brandId);
+            dto.setnewestProduct(productService.getNewestByBrandLimit(id,16));
+        }
+        return dto;
     }
     }
 

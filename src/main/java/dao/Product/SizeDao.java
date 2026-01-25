@@ -7,8 +7,8 @@ import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
 
-public class SizeDao {
-
+public class SizeDao
+{
     private final Jdbi jdbi = JDBIConnector.getJdbi();
 
     // SIZES
@@ -25,7 +25,8 @@ public class SizeDao {
         );
     }
 
-    public Color findById(int id) {
+    public Color findById(int id)
+    {
         String sql = "SELECT * FROM size WHERE id = :id";
         return jdbi.withHandle(h ->
                 h.createQuery(sql)
@@ -35,7 +36,8 @@ public class SizeDao {
         );
     }
 
-    public void insert(Color c) {
+    public void insert(Color c)
+    {
         String sql = """
             INSERT INTO color(name, sort_order)
             VALUES(:name, :sort_order)
@@ -43,11 +45,20 @@ public class SizeDao {
         jdbi.useHandle(h -> h.createUpdate(sql).bindBean(c).execute());
     }
 
-    public void delete(int id) {
+    public void delete(int id)
+    {
         jdbi.useHandle(h ->
                 h.createUpdate("UPDATE size SET is_active = 0 WHERE id = :id")
                         .bind("id", id).execute()
         );
     }
+    public List<Size> findAllActive()
+    {
+        String sql = "SELECT * FROM size ORDER BY sort_order";
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .mapToBean(Size.class)
+                .list());
+    }
+
 }
 

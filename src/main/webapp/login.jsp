@@ -24,7 +24,7 @@
       <!--
           - favicon
         -->
-      <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+      <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -122,10 +122,10 @@
                             />
                             <small>
                                 Quên mật khẩu ?
-                                <a class="as" href="${pageContext.request.contextPath}/forgotpass"> Nhấn vào đây</a>
+                                <a class="as" href="${pageContext.request.contextPath}/forgot-password"> Nhấn vào đây</a>
                             </small>
                         </fieldset>
-
+                        <input type="hidden" name="redirect" value="${param.redirect}" />
                         <div>
                             <button type="submit" id="btn-primary" class="btn-primary">
                                 Đăng nhập

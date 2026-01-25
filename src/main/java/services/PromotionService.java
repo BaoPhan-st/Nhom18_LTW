@@ -14,16 +14,20 @@ import java.util.Locale;
 
 public class PromotionService {
     ProductDao productDao = new ProductDao();
-    PromotionDao promotionDao= new PromotionDao();
+    PromotionDao promotionDao = new PromotionDao();
 
     public PromotionResult calculateBestPromotion(int productId) {
         Product product = productDao.findById(productId);
         if (product == null) {
             return new PromotionResult(BigDecimal.ZERO, null);
         }
+        if (product == null) {
+            return new PromotionResult(BigDecimal.ZERO, null);
+        }
         BigDecimal originalPrice = product.getPrice();
-        List<Promotion> promotions =
-                promotionDao.findPromotionForProduct(productId);
+        if (originalPrice == null)
+            originalPrice = BigDecimal.ZERO;
+        List<Promotion> promotions = promotionDao.findPromotionForProduct(productId);
         if (promotions == null || promotions.isEmpty()) {
             return new PromotionResult(originalPrice, null);
         }
@@ -60,21 +64,28 @@ public class PromotionService {
         BigDecimal value = promo.getDiscountValue();
 
         if ("PERCENT".equalsIgnoreCase(promo.getDiscountType())) {
-            // Ví dụ: 20%
             return value.stripTrailingZeros().toPlainString() + "%";
         }
         if ("FIXED".equalsIgnoreCase(promo.getDiscountType())) {
-            // Ví dụ: 500.000₫
             return formatVND(value);
         }
         return "";
     }
+
     public String formatVND(BigDecimal value) {
+        if (value == null)
+            return "0₫";
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
         symbols.setGroupingSeparator('.');
 
         DecimalFormat formatter = new DecimalFormat("#,###", symbols);
         return formatter.format(value) + "₫";
+    }
+
+    public BigDecimal parsePrice(String price) {
+        if (price == null)
+            return BigDecimal.ZERO;
+        return new BigDecimal(price.replaceAll("[^0-9]", ""));
     }
 
 }

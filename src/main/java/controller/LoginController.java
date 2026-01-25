@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.user.CartItem;
+
 import model.user.User;
 import services.UserServices;
 
@@ -66,16 +66,13 @@ public class LoginController extends HttpServlet {
         session.setMaxInactiveInterval(30 * 60);
 
 
-        if (session.getAttribute("cart") == null) {
-            session.setAttribute("cart", new ArrayList<CartItem>());
-            session.setAttribute("cartCount", 0);
-        }
+
 
 
         if ("ADMIN".equalsIgnoreCase(user.getRole())) {
             resp.sendRedirect(req.getContextPath() + "/admin/overview");
         } else {
-            resp.sendRedirect(req.getContextPath() + "/menu.jsp");
+            resp.sendRedirect(req.getContextPath() + "/menu");
 
         }
     }

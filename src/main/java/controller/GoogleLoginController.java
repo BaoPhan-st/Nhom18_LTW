@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.user.CartItem;
+
 import model.user.User;
 import services.UserServices;
 
@@ -58,10 +58,7 @@ public class GoogleLoginController extends HttpServlet {
                 session.setMaxInactiveInterval(30 * 60);
 
                 // Khởi tạo giỏ hàng nếu chưa có
-                if (session.getAttribute("cart") == null) {
-                    session.setAttribute("cart", new ArrayList<CartItem>());
-                    session.setAttribute("cartCount", 0);
-                }
+
 
                 // 5. Trả về JSON thành công
                 JsonObject jsonResponse = new JsonObject();
@@ -71,7 +68,7 @@ public class GoogleLoginController extends HttpServlet {
                 if ("ADMIN".equalsIgnoreCase(user.getRole())) {
                     jsonResponse.addProperty("redirect", req.getContextPath() + "/admin/overview");
                 } else {
-                    jsonResponse.addProperty("redirect", req.getContextPath() + "/menu.jsp");
+                    jsonResponse.addProperty("redirect", req.getContextPath() + "/menu");
                 }
 
                 resp.getWriter().write(gson.toJson(jsonResponse));

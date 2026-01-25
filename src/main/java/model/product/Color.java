@@ -32,11 +32,11 @@ public class Color implements Serializable {
         this.name = name;
     }
 
-    public String getHexcode() {
+    public String getHexCode() {
         return hexcode;
     }
 
-    public void setHexcode(String hexcode) {
+    public void setHexCode(String hexcode) {
         this.hexcode = hexcode;
     }
 }
