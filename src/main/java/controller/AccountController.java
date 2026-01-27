@@ -1,32 +1,39 @@
 package controller;
 
-import dao.UserDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.user.User;
-import org.mindrot.jbcrypt.BCrypt; // Import rõ ràng
+import services.AccountServices;
 
 import java.io.IOException;
 
 @WebServlet("/account")
 public class AccountController extends HttpServlet {
 
-    private UserDao userDao;
+    private AccountServices accountServices;
 
     @Override
     public void init() {
-        userDao = new UserDao();
+        accountServices = new AccountServices();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User currentUser = requireLogin(req, resp);
+        if (currentUser == null) return;
+
+        // Flash message: lấy ra xong xóa để refresh không bị lặp
         HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("currentUser") == null) {
-            resp.sendRedirect(req.getContextPath() + "/login.jsp");
-            return;
+        Object flashMsg = session.getAttribute("flashMsg");
+        Object flashType = session.getAttribute("flashType");
+        if (flashMsg != null) {
+            req.setAttribute("msg", flashMsg);
+            req.setAttribute("msgType", flashType);
+            session.removeAttribute("flashMsg");
+            session.removeAttribute("flashType");
         }
-        // Forward sang trang giao diện
+
         req.getRequestDispatcher("/account.jsp").forward(req, resp);
     }
 
@@ -36,76 +43,105 @@ public class AccountController extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
 
-        String action = req.getParameter("action");
-        if (action == null) action = "";
+        User currentUser = requireLogin(req, resp);
+        if (currentUser == null) return;
 
-        if ("change-password".equals(action)) {
-            handlePasswordChange(req, resp);
-        } else {
+        String action = safe(req.getParameter("action"));
 
-            doGet(req, resp);
+        switch (action) {
+            case "change-password" -> handlePasswordChange(req, resp, currentUser);
+            case "update-profile" -> handleProfileUpdate(req, resp, currentUser);
+            default -> resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");
         }
     }
 
-    private void handlePasswordChange(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
+    // ================== Handlers ==================
 
-        if (session == null || session.getAttribute("currentUser") == null) {
-            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+    private void handleProfileUpdate(HttpServletRequest req, HttpServletResponse resp, User currentUser)
+            throws IOException {
+
+        String fullName = safe(req.getParameter("fullName"));
+        String phoneNumber = safe(req.getParameter("phoneNumber"));
+        String address = safe(req.getParameter("address"));
+
+        // Validate tối thiểu
+        if (fullName.isBlank()) {
+            setFlash(req, "Họ tên không được để trống.", "danger");
+            resp.sendRedirect(req.getContextPath() + "/account");
             return;
         }
 
-        User currentUser = (User) session.getAttribute("currentUser");
+        boolean success = accountServices.updateUserProfile(
+                currentUser.getId(), fullName, phoneNumber, address
+        );
 
-        String currentPassword = req.getParameter("currentPassword");
-        String newPassword = req.getParameter("newPassword");
-        String confirmPassword = req.getParameter("confirmPassword");
+        if (success) {
+            // Update session user sau khi DB thành công
+            currentUser.setFullName(fullName);
+            currentUser.setPhoneNumber(phoneNumber);
+            currentUser.setAddress(address);
 
-
-        if (newPassword == null || !newPassword.equals(confirmPassword)) {
-            req.setAttribute("passMsg", "Mật khẩu xác nhận không khớp!");
-            req.setAttribute("msgType", "danger"); // Thêm class CSS cho đẹp (ví dụ bootstrap text-danger)
-            req.getRequestDispatcher("/account.jsp").forward(req, resp);
-            return;
-        }
-
-
-        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9])\\S{8,}$";
-        if (!newPassword.matches(passwordRegex)) {
-            req.setAttribute("passMsg", "Mật khẩu yếu: Cần 8 ký tự, hoa, thường, số và ký tự đặc biệt.");
-            req.setAttribute("msgType", "danger");
-            req.getRequestDispatcher("/account.jsp").forward(req, resp);
-            return;
-        }
-
-        User u = userDao.findByEmail(currentUser.getEmail());
-        if (u == null || !BCrypt.checkpw(currentPassword, u.getPasswordHash())) {
-            req.setAttribute("passMsg", "Mật khẩu hiện tại không đúng!");
-            req.setAttribute("msgType", "danger");
-            req.getRequestDispatcher("/account.jsp").forward(req, resp);
-            return;
-        }
-
-        String hashed = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
-        boolean ok = userDao.updatePassword(currentUser.getEmail(), hashed);
-
-        if (ok) {
-            // LỰA CHỌN A: Bắt đăng nhập lại (An toàn nhất)
-            // session.invalidate();
-            // resp.sendRedirect(req.getContextPath() + "/login.jsp?message=PasswordChanged");
-
-            // LỰA CHỌN B: Giữ đăng nhập và thông báo (Thân thiện hơn)
-            req.setAttribute("passMsg", "Đổi mật khẩu thành công!");
-            req.setAttribute("msgType", "success"); // CSS text-success
-
-            // Cập nhật lại hash trong object session để đồng bộ (nếu User object có lưu hash)
-            currentUser.setPasswordHash(hashed);
-
-            req.getRequestDispatcher("/account.jsp").forward(req, resp);
+            setFlash(req, "Cập nhật thông tin thành công!", "success");
         } else {
-            req.setAttribute("passMsg", "Lỗi hệ thống, vui lòng thử lại sau.");
-            req.setAttribute("msgType", "danger");
-            req.getRequestDispatcher("/account.jsp").forward(req, resp);
+            setFlash(req, "Cập nhật thất bại. Vui lòng thử lại.", "danger");
         }
+
+        resp.sendRedirect(req.getContextPath() + "/account");
+    }
+
+    private void handlePasswordChange(HttpServletRequest req, HttpServletResponse resp, User currentUser)
+            throws IOException {
+
+        String currentPassword = safe(req.getParameter("currentPassword"));
+        String newPassword = safe(req.getParameter("newPassword"));
+        String confirmPassword = safe(req.getParameter("confirmPassword"));
+
+
+        if (currentPassword.isBlank() || newPassword.isBlank() || confirmPassword.isBlank()) {
+            setFlash(req, "Vui lòng nhập đầy đủ thông tin mật khẩu.", "danger");
+            resp.sendRedirect(req.getContextPath() + "/account");
+            return;
+        }
+
+        String result = accountServices.changePassword(
+                currentUser.getEmail(), currentPassword, newPassword, confirmPassword
+        );
+
+        if ("SUCCESS".equals(result)) {
+            setFlash(req, "Đổi mật khẩu thành công!", "success");
+
+
+
+        } else {
+            setFlash(req, result, "danger");
+        }
+
+        resp.sendRedirect(req.getContextPath() + "/account");
+    }
+
+    // ================== Helpers ==================
+
+    private User requireLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession(false);
+        if (session == null) {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            return null;
+        }
+        Object u = session.getAttribute("currentUser");
+        if (!(u instanceof User)) {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            return null;
+        }
+        return (User) u;
+    }
+
+    private void setFlash(HttpServletRequest req, String msg, String type) {
+        HttpSession session = req.getSession();
+        session.setAttribute("flashMsg", msg);
+        session.setAttribute("flashType", type); // success | danger | warning | info
+    }
+
+    private String safe(String s) {
+        return s == null ? "" : s.trim();
     }
 }

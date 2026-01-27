@@ -9,6 +9,7 @@ import java.util.List;
 public class MenuDTO implements Serializable {
     private Banner bannerMenu;
     private List<Banner> bannerCollection;
+    private List<Banner> bannerSlider; // Banner slider cho hero section
     private List<ProductDTO> newestProduct;
     private List<Brand> brandList;
     private List<ProductDTO> specialProduct;
@@ -62,7 +63,16 @@ public class MenuDTO implements Serializable {
         this.bannerSpecialP = bannerSpecialP;
     }
 
-    public MenuDTO(Banner bannerMenu, List<Banner> bannerCollection, List<ProductDTO> bestSeller, List<ProductDTO> specialProduct, Banner bannerSpecialP, List<Brand> brandList) {
+    public List<Banner> getBannerSlider() {
+        return bannerSlider;
+    }
+
+    public void setBannerSlider(List<Banner> bannerSlider) {
+        this.bannerSlider = bannerSlider;
+    }
+
+    public MenuDTO(Banner bannerMenu, List<Banner> bannerCollection, List<ProductDTO> bestSeller,
+            List<ProductDTO> specialProduct, Banner bannerSpecialP, List<Brand> brandList) {
         this.bannerMenu = bannerMenu;
         this.bannerCollection = bannerCollection;
         this.newestProduct = bestSeller;
