@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8"/>
     <title>Admin</title>
-    <base href="${pageContext.request.contextPath}/" />
-    <link rel="stylesheet" href="assets/css/admin.css"/>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 
 <body>
@@ -19,38 +20,76 @@
     </div>
 
     <ul class="menu">
-        <li class="${active == 'dashboard' ? 'active' : ''}">
-            <a href="dashboard">Dashboard</a>
+        <li class="${active == 'admin/dashboard' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/dashboard">
+                Dashboard
+            </a>
         </li>
-        <li class="${active == 'accounts' ? 'active' : ''}">
-            <a href="accounts">Tài khoản</a>
+
+        <li class="${active == 'admin/accounts' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/accounts">
+                Tài khoản
+            </a>
         </li>
-        <li class="${active == 'products' ? 'active' : ''}">
-            <a href="products">Sản phẩm</a>
+
+        <li class="${active == 'admin/products' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/products">
+                Sản phẩm
+            </a>
         </li>
-        <li class="${active == 'variants' ? 'active' : ''}">
-            <a href="variants">Biến thể</a>
+
+        <li class="${active == 'admin/variants' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/variants">
+                Biến thể
+            </a>
         </li>
-        <li class="${active == 'collections' ? 'active' : ''}">
-            <a href="collections">Bộ sưu tập</a>
+
+        <li class="${active == 'admin/collections' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/collections">
+                Bộ sưu tập
+            </a>
         </li>
-        <li class="${active == 'banners' ? 'active' : ''}">
-            <a href="banners">Banner</a>
+
+        <li class="${active == 'admin/banners' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/banners">
+                Banner
+            </a>
         </li>
-        <li class="${active == 'orders' ? 'active' : ''}">
-            <a href="orders">Đơn hàng</a>
+
+        <li class="${active == 'admin/orders' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/orders">
+                Đơn hàng
+            </a>
         </li>
-        <li class="${active == 'wishlist' ? 'active' : ''}">
-            <a href="wishlist">Yêu thích</a>
+
+        <li class="${active == 'admin/newsletter' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/newsletter">
+                Đăng ký nhận tin
+            </a>
         </li>
-        <li class="${active == 'statistics' ? 'active' : ''}">
-            <a href="statistics">Thống kê</a>
+
+        <li class="${active == 'admin/wishlist' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/wishlist">
+                Yêu thích
+            </a>
         </li>
-        <li class="${active == 'setting' ? 'active' : ''}">
-            <a href="setting">Cài đặt</a>
+
+        <li class="${active == 'admin/statistics' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/statistics">
+                Thống kê
+            </a>
         </li>
+
+        <li class="${active == 'admin/setting' ? 'active' : ''}">
+            <a href="${pageContext.request.contextPath}/admin/setting">
+                Cài đặt
+            </a>
+        </li>
+
         <li>
-            <a href="${pageContext.request.contextPath}/admin/logout">Đăng xuất</a>
+            <a href="${pageContext.request.contextPath}/admin/logout">
+                Đăng xuất
+            </a>
         </li>
     </ul>
 </div>

@@ -2,6 +2,7 @@ package dao.Product;
 
 import dao.JDBIConnector;
 import model.product.Color;
+import model.product.ProductVariant;
 import model.product.Size;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
@@ -9,12 +10,12 @@ import org.jdbi.v3.core.Jdbi;
 import java.util.Collections;
 import java.util.List;
 
-    public class ProductVariantDao {
+public class ProductVariantDao {
 
-        private final Jdbi jdbi = JDBIConnector.getJdbi();
+    private final Jdbi jdbi = JDBIConnector.getJdbi();
 
-        public List<Color> findColorsByProduct(int productId) {
-            String sql = """
+    public List<Color> findColorsByProduct(int productId) {
+        String sql = """
             SELECT DISTINCT c.*
             FROM product_variant v
             JOIN color c ON v.color_id = c.id
@@ -25,22 +26,22 @@ import java.util.List;
             ORDER BY c.id
         """;
 
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("productId", productId)
-                                .mapToBean(Color.class)
-                                .list()
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return Collections.emptyList();
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("productId", productId)
+                            .mapToBean(Color.class)
+                            .list()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
         }
+    }
 
-        public List<Size> findSizesByProductAndColor(int productId, int colorId) {
+    public List<Size> findSizesByProductAndColor(int productId, int colorId) {
 
-            String sql = """
+        String sql = """
             SELECT DISTINCT s.*
             FROM product_variant v
             JOIN size s ON v.size_id = s.id
@@ -50,23 +51,23 @@ import java.util.List;
             ORDER BY s.id
         """;
 
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("productId", productId)
-                                .bind("colorId", colorId)
-                                .mapToBean(Size.class)
-                                .list()
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return Collections.emptyList();
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("productId", productId)
+                            .bind("colorId", colorId)
+                            .mapToBean(Size.class)
+                            .list()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
         }
+    }
 
-        public int getStock(int productId, int colorId, int sizeId) {
+    public int getStock(int productId, int colorId, int sizeId) {
 
-            String sql = """
+        String sql = """
             SELECT stock
             FROM product_variant
             WHERE product_id = :productId
@@ -75,24 +76,24 @@ import java.util.List;
               AND is_discontinue_variant = 0
         """;
 
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("productId", productId)
-                                .bind("colorId", colorId)
-                                .bind("sizeId", sizeId)
-                                .mapTo(Integer.class)
-                                .findOne()
-                                .orElse(0)
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return 0;
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("productId", productId)
+                            .bind("colorId", colorId)
+                            .bind("sizeId", sizeId)
+                            .mapTo(Integer.class)
+                            .findOne()
+                            .orElse(0)
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
         }
+    }
 
-        public int getTotalStockByColor(int productId, int colorId) {
-            String sql = """
+    public int getTotalStockByColor(int productId, int colorId) {
+        String sql = """
         SELECT COALESCE(SUM(stock), 0)
         FROM product_variant
         WHERE product_id = :productId
@@ -100,23 +101,23 @@ import java.util.List;
           AND is_discontinue_variant = 0
     """;
 
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("productId", productId)
-                                .bind("colorId", colorId)
-                                .mapTo(Integer.class)
-                                .one()
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return 0;
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("productId", productId)
+                            .bind("colorId", colorId)
+                            .mapTo(Integer.class)
+                            .one()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
         }
+    }
 
-        public Integer findDefaultColorId(int productId) {
+    public Integer findDefaultColorId(int productId) {
 
-            String sql = """
+        String sql = """
         SELECT v.color_id
         FROM product_variant v
         WHERE v.product_id = :productId
@@ -127,25 +128,25 @@ import java.util.List;
         LIMIT 1
     """;
 
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("productId", productId)
-                                .mapTo(Integer.class)
-                                .findOne()
-                                .orElse(null)
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("productId", productId)
+                            .mapTo(Integer.class)
+                            .findOne()
+                            .orElse(null)
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
+    }
 
-        public boolean existsProductVariant(int productId, Integer colorId, Integer sizeId) {
-            if (colorId == null || sizeId == null) {
-                return false;
-            }
-            String sql = """
+    public boolean existsProductVariant(int productId, Integer colorId, Integer sizeId) {
+        if (colorId == null || sizeId == null) {
+            return false;
+        }
+        String sql = """
         SELECT COUNT(*)
         FROM product_variant v
         WHERE v.product_id = :productId
@@ -153,65 +154,65 @@ import java.util.List;
           AND v.size_id = :sizeId
           AND v.is_discontinue_variant = 0
     """;
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("productId", productId)
-                                .bind("colorId", colorId)
-                                .bind("sizeId", sizeId)
-                                .mapTo(Integer.class)
-                                .one() > 0
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return false;
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("productId", productId)
+                            .bind("colorId", colorId)
+                            .bind("sizeId", sizeId)
+                            .mapTo(Integer.class)
+                            .one() > 0
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
+    }
 
-        public String getColorName(int colorId) {
+    public String getColorName(int colorId) {
 
-            String sql = """
+        String sql = """
         SELECT name
         FROM color
         WHERE id = :colorId
     """;
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("colorId", colorId)
-                                .mapTo(String.class)
-                                .findOne()
-                                .orElse("")
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "";
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("colorId", colorId)
+                            .mapTo(String.class)
+                            .findOne()
+                            .orElse("")
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
         }
+    }
 
-        public String getSizeName(int sizeId) {
+    public String getSizeName(int sizeId) {
 
-            String sql = """
+        String sql = """
         SELECT name
         FROM size
         WHERE id = :sizeId
     """;
-            try {
-                return jdbi.withHandle(h ->
-                        h.createQuery(sql)
-                                .bind("sizeId", sizeId)
-                                .mapTo(String.class)
-                                .findOne()
-                                .orElse("")
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "";
-            }
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .bind("sizeId", sizeId)
+                            .mapTo(String.class)
+                            .findOne()
+                            .orElse("")
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
         }
+    }
 
-        public int lockAndGetStock(Handle handle, int productId, int colorId, int sizeId) {
-            String sql = """
+    public int lockAndGetStock(Handle handle, int productId, int colorId, int sizeId) {
+        String sql = """
         SELECT stock
         FROM product_variant
         WHERE product_id = :productId
@@ -220,16 +221,16 @@ import java.util.List;
         FOR UPDATE
     """;
 
-            return handle.createQuery(sql)
-                    .bind("productId", productId)
-                    .bind("colorId", colorId)
-                    .bind("sizeId", sizeId)
-                    .mapTo(int.class)
-                    .one();
-        }
+        return handle.createQuery(sql)
+                .bind("productId", productId)
+                .bind("colorId", colorId)
+                .bind("sizeId", sizeId)
+                .mapTo(int.class)
+                .one();
+    }
 
-        public void updateStock(Handle handle, int productId, int colorId, int sizeId, int newStock) {
-            String sql = """
+    public void updateStock(Handle handle, int productId, int colorId, int sizeId, int newStock) {
+        String sql = """
         UPDATE product_variant
         SET stock = :stock
         WHERE product_id = :productId
@@ -237,13 +238,71 @@ import java.util.List;
           AND size_id = :sizeId
     """;
 
-            handle.createUpdate(sql)
-                    .bind("stock", newStock)
-                    .bind("productId", productId)
-                    .bind("colorId", colorId)
-                    .bind("sizeId", sizeId)
-                    .execute();
-        }
-
+        handle.createUpdate(sql)
+                .bind("stock", newStock)
+                .bind("productId", productId)
+                .bind("colorId", colorId)
+                .bind("sizeId", sizeId)
+                .execute();
     }
 
+    // ===== ADMIN: FIND ALL ACTIVE VARIANTS =====
+    public List<ProductVariant> findAllActive() {
+        String sql = """
+        SELECT
+            id,
+            product_id AS productId,
+            size_id    AS sizeId,
+            color_id   AS colorId,
+            stock,
+            is_discontinue_variant AS discontinueVariant
+        FROM product_variant
+        WHERE is_discontinue_variant = 0
+        ORDER BY id ASC
+    """;
+
+        return jdbi.withHandle(h ->
+                h.createQuery(sql)
+                        .mapToBean(ProductVariant.class)
+                        .list()
+        );
+    }
+    // ===== ADMIN: SEARCH / FILTER VARIANTS =====
+    public List<ProductVariant> findWithFilter(
+            Integer productId,
+            Integer sizeId,
+            Integer colorId
+    ) {
+        StringBuilder sql = new StringBuilder("""
+        SELECT
+            id,
+            product_id AS productId,
+            size_id    AS sizeId,
+            color_id   AS colorId,
+            stock,
+            is_discontinue_variant AS discontinueVariant
+        FROM product_variant
+        WHERE is_discontinue_variant = 0
+    """);
+
+        if (productId != null) {
+            sql.append(" AND product_id = :productId");
+        }
+        if (sizeId != null) {
+            sql.append(" AND size_id = :sizeId");
+        }
+        if (colorId != null) {
+            sql.append(" AND color_id = :colorId");
+        }
+
+        return jdbi.withHandle(h -> {
+            var query = h.createQuery(sql.toString());
+            if (productId != null) query.bind("productId", productId);
+            if (sizeId != null) query.bind("sizeId", sizeId);
+            if (colorId != null) query.bind("colorId", colorId);
+
+            return query.mapToBean(ProductVariant.class).list();
+        });
+    }
+
+}

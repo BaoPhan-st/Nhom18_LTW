@@ -7,7 +7,7 @@
 
 <section class="setting-section">
     <h3>Thông tin trang web</h3>
-    <form action="${pageContext.request.contextPath}/setting" method="post">
+    <form action="${pageContext.request.contextPath}/admin/setting" method="post">
         <input type="hidden" name="action" value="site">
 
         <label for="siteName">Tên trang web:</label>
@@ -28,7 +28,7 @@
 
 <section class="setting-section">
     <h3>Thông báo & Email</h3>
-    <form action="${pageContext.request.contextPath}/setting" method="post">
+    <form action="${pageContext.request.contextPath}/admin/setting" method="post">
         <input type="hidden" name="action" value="notification">
 
         <label>
@@ -49,7 +49,7 @@
 
 <section class="setting-section">
     <h3>Tài khoản quản trị</h3>
-    <form action="${pageContext.request.contextPath}/setting" method="post">
+    <form action="${pageContext.request.contextPath}/admin/setting" method="post">
         <input type="hidden" name="action" value="account">
 
         <label for="adminUserName">Tên đăng nhập:</label>

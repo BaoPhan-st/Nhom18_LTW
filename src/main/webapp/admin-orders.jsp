@@ -1,51 +1,80 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="admin-header">
     <h2>Quản lý đơn hàng</h2>
 </div>
 
-<!-- TABLE -->
+<%--    TABLE    --%>
 <div class="section">
-    <table class="data-table">
-        <thead>
-        <tr>
-            <th>Mã đơn</th>
-            <th>Khách hàng</th>
-            <th>Tổng tiền</th>
-            <th>Trạng thái</th>
-            <th>Ngày tạo</th>
-            <th>Hành động</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="order" items="${orders}">
-            <tr>
-                <td>#${order.id}</td>
-                <td>${order.customerName}</td>
-                <td>${order.grand_total} ₫</td>
-                <td>
-                        <span class="status ${order.order_status}">
-                                ${order.order_status}
-                        </span>
-                </td>
-                <td><fmt:formatDate value="${order.created_at}" pattern="dd/MM/yyyy HH:mm"/></td>
-                <td class="actions">
-                    <a href="order?view=${order.id}" class="btn edit">Xem</a>
-                    <form method="post" action="order" style="display:inline;"
-                          onsubmit="return confirm('Xóa đơn hàng này?');">
-                        <input type="hidden" name="deleteId" value="${order.id}"/>
-                        <button type="submit" class="btn delete">Xóa</button>
-                    </form>
-                </td>
-            </tr>
-        </c:forEach>
 
-        <c:if test="${empty orders}">
+    <%--    FILTER & SEARCH    --%>
+    <div class="filter-bar">
+        <form method="get" action="${pageContext.request.contextPath}/admin/orders">
+
+            <input type="text"
+                   name="orderId"
+                   placeholder="Mã đơn..."
+                   value="${param.orderId}"/>
+
+            <input type="text"
+                   name="userId"
+                   placeholder="User ID..."
+                   value="${param.userId}"/>
+
+            <select name="status">
+                <option value="">-- Trạng thái --</option>
+                <option value="pending" ${param.status == 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="completed" ${param.status == 'completed' ? 'selected' : ''}>Completed</option>
+                <option value="cancelled" ${param.status == 'cancelled' ? 'selected' : ''}>Cancelled</option>
+            </select>
+
+            <button type="submit" class="btn-submit">
+                <i class="fa fa-search"></i> Tìm kiếm
+            </button>
+        </form>
+    </div>
+
+    <%--    SCROLL    --%>
+    <div class="table-scroll-top">
+        <div></div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
             <tr>
-                <td colspan="6" class="empty">Chưa có đơn hàng nào</td>
+                <th>Mã đơn</th>
+                <th>User ID</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
             </tr>
-        </c:if>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <c:forEach var="order" items="${orders}">
+                <tr>
+                    <td>#${order.id}</td>
+                    <td>${order.userId}</td>
+                    <td>${order.grandTotal} ₫</td>
+                    <td>
+                        <span class="status ${order.orderStatus}">
+                                ${order.orderStatus}
+                        </span>
+                    </td>
+                    <td>
+                        <fmt:formatDate value="${order.createdAtTimestamp}" pattern="dd/MM/yyyy HH:mm"/>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <c:if test="${empty orders}">
+                <tr>
+                    <td colspan="5" class="empty">Không tìm thấy đơn hàng</td>
+                </tr>
+            </c:if>
+            </tbody>
+        </table>
+    </div>
 </div>

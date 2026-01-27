@@ -24,7 +24,12 @@
 
 <!-- Recent Orders -->
 <div class="section">
-    <h3>Đơn hàng gần đây</h3>
+    <div class="dashboard-section-header">
+        <h3>Đơn hàng gần đây</h3>
+        <a href="${pageContext.request.contextPath}/admin/orders" class="view-all">
+            Xem tất cả →
+        </a>
+    </div>
 
     <table class="data-table">
         <thead>
@@ -39,15 +44,15 @@
         <tbody>
         <c:forEach var="o" items="${recentOrders}">
             <tr>
-                <td><c:out value="${o.id}"/></td>
-                <td><c:out value="${o.full_name}"/></td>
-                <td><c:out value="${o.grand_total}"/> ₫</td>
+                <td>${o.id}</td>
+                <td>${o.full_name}</td>
+                <td>${o.grand_total} ₫</td>
                 <td>
-                    <span class="status <c:out value='${o.order_status}'/>">
-                        <c:out value="${o.order_status}"/>
+                    <span class="status ${o.order_status}">
+                            ${o.order_status}
                     </span>
                 </td>
-                <td><c:out value="${o.created_at}"/></td>
+                <td>${o.created_at}</td>
             </tr>
         </c:forEach>
 

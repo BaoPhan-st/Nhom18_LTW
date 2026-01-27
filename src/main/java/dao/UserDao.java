@@ -52,27 +52,29 @@ public class UserDao {
 
     // ===== INSERT USER =====
     public int insertUser(User user) {
-        String sql = """
-                    INSERT INTO users (
-                        email, password_hash, phone_number, address, full_name, role, is_active, created_at, firebase_uid
-                    )
-                    VALUES (
-                        :email, :passwordHash, :phoneNumber, :address, :fullName, :role, :isActive, :createdAt, :firebaseUID
-                    )
-                """;
+        String sql = """ 
+        INSERT INTO users (
+            email, password_hash, phone_number, address, full_name, role, is_active, created_at, firebase_uid
+        )
+        VALUES (
+            :email, :passwordHash, :phoneNumber, :address, :fullName, :role, :isActive, :createdAt, :firebaseUID
+        )
+    """;
 
         try {
-            int rows = jdbi.withHandle(handle -> handle.createUpdate(sql)
-                    .bind("email", user.getEmail())
-                    .bind("passwordHash", user.getPasswordHash())
-                    .bind("phoneNumber", user.getPhoneNumber())
-                    .bind("address", user.getAddress())
-                    .bind("fullName", user.getFullName())
-                    .bind("role", user.getRole())
-                    .bind("isActive", user.isActive())
-                    .bind("createdAt", user.getCreatedAt())
-                    .bind("firebaseUID", user.getFirebaseUID())
-                    .execute());
+            int rows = jdbi.withHandle(handle ->
+                    handle.createUpdate(sql)
+                            .bind("email", user.getEmail())
+                            .bind("passwordHash", user.getPasswordHash())
+                            .bind("phoneNumber", user.getPhoneNumber())
+                            .bind("address", user.getAddress())
+                            .bind("fullName", user.getFullName())
+                            .bind("role", user.getRole())
+                            .bind("isActive", user.isActive())
+                            .bind("createdAt", user.getCreatedAt())
+                            .bind("firebaseUID", user.getFirebaseUID())
+                            .execute()
+            );
 
             System.out.println("insertUser rows = " + rows);
             return rows;
@@ -86,51 +88,83 @@ public class UserDao {
     // ===== UPDATE PASSWORD (cho quên mật khẩu) =====
     public boolean updatePassword(String email, String newPasswordHash) {
         String sql = "UPDATE users SET password_hash = :password WHERE email = :email";
-
-        return jdbi.withHandle(handle -> handle.createUpdate(sql)
+        
+        return jdbi.withHandle(handle ->
+            handle.createUpdate(sql)
                 .bind("email", email)
                 .bind("password", newPasswordHash)
-                .execute()) > 0;
+                .execute()
+        ) > 0;
     }
-
     public boolean activateByEmail(String email) {
         String sql = "UPDATE users SET is_active = 1 WHERE email = :email";
-        return jdbi.withHandle(handle -> handle.createUpdate(sql)
-                .bind("email", email)
-                .execute()) > 0;
+        return jdbi.withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("email", email)
+                        .execute()
+        ) > 0;
     }
 
-    public int update(User user) {
-        String sql = """
-                    UPDATE users set
-                        email = :email,
-                        password_hash = :passwordHash,
-                        phone_number = :phoneNumber,
-                        address = :address,
-                        full_name = :fullName,
-                        role = :role,
-                        is_active = :isActive,
-                        firebase_uid = :firebaseUID
-                    WHERE id = :id
-                """;
-        try {
-            return jdbi.withHandle(handle -> handle.createUpdate(sql)
+    public int update(User user)
+    {
+        boolean hasPassword = user.getPasswordHash() != null;
+
+        String sql = hasPassword
+                ? """
+                UPDATE users SET
+                    email = :email,
+                    password_hash = :passwordHash,
+                    phone_number = :phoneNumber,
+                    address = :address,
+                    full_name = :fullName,
+                    role = :role,
+                    is_active = :isActive,
+                    firebase_uid = :firebaseUID
+                WHERE id = :id
+              """
+                : """
+                UPDATE users SET
+                    email = :email,
+                    phone_number = :phoneNumber,
+                    address = :address,
+                    full_name = :fullName,
+                    role = :role,
+                    is_active = :isActive,
+                    firebase_uid = :firebaseUID
+                WHERE id = :id
+              """;
+
+        return jdbi.withHandle(h -> {
+            var q = h.createUpdate(sql)
+                    .bind("id", user.getId())
                     .bind("email", user.getEmail())
-                    .bind("passwordHash", user.getPasswordHash())
                     .bind("phoneNumber", user.getPhoneNumber())
                     .bind("address", user.getAddress())
                     .bind("fullName", user.getFullName())
                     .bind("role", user.getRole())
                     .bind("isActive", user.isActive())
-                    .bind("firebaseUID", user.getFirebaseUID())
-                    .bind("id", user.getId())
-                    .execute());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        }
+                    .bind("firebaseUID", user.getFirebaseUID());
+
+            if (hasPassword) {
+                q.bind("passwordHash", user.getPasswordHash());
+            }
+
+            return q.execute();
+        });
     }
 
+    public void delete (Integer id) {
+        String sql = """
+                UPDATE users
+                SET is_active = 0
+                WHERE id = :id
+                """;
+        jdbi.useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", id)
+                        .execute()
+        );
+    }
     public boolean deleteById(Integer id) {
         String sql = "DELETE FROM users WHERE id = :id";
         return jdbi.withHandle(h -> h.createUpdate(sql)
@@ -146,9 +180,10 @@ public class UserDao {
                 WHERE u.created_at >= CURDATE()
                 AND u.created_at < CURDATE() + INTERVAL 1 DAY;
                 """;
-        return jdbi.withHandle(handle -> handle.createQuery(sql)
-                .mapTo(Integer.class)
-                .one());
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one());
     }
 
     public boolean updateProfile(int userId, String fullName, String phone, String address) {

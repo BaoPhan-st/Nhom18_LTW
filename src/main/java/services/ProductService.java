@@ -1,7 +1,7 @@
 package services;
 
-import DTO.ProductDTO;
 import dao.Product.ProductDao;
+import DTO.ProductDTO;
 import model.product.Product;
 
 import java.util.ArrayList;

@@ -55,4 +55,19 @@ public class BrandDao {
         }
     }
 
+    public List<Brand> findAll()
+    {
+        String sql = "SELECT * FROM brand";
+
+        try {
+            return jdbi.withHandle(h ->
+                    h.createQuery(sql)
+                            .mapToBean(Brand.class)
+                            .list()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
 }

@@ -107,4 +107,23 @@ public class WishlistDao {
             return List.of();
         }
     }
+
+    public List<WishList> findAll()
+    {
+        String sql = """
+        SELECT id,
+               product_id,
+               user_id,
+               added_at
+        FROM wishlist
+        ORDER BY added_at DESC
+    """;
+
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(WishList.class)
+                        .list()
+        );
+    }
+
 }

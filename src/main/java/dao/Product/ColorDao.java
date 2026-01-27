@@ -5,9 +5,26 @@ import dao.JDBIConnector;
 import model.product.Color;
 import org.jdbi.v3.core.Jdbi;
 
+import java.util.List;
+
 public class ColorDao {
 
     private final Jdbi jdbi = JDBIConnector.getJdbi();
+
+
+    // COLORS
+    public List<Color> findAll()
+    {
+        String sql = """
+                SELECT *
+                FROM color
+                """;
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(Color.class)
+                        .list()
+        );
+    }
 
     public Color findById(int id) {
         String sql = "SELECT * FROM color WHERE id = :id";
