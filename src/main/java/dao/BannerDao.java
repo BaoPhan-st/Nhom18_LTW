@@ -1,6 +1,5 @@
 package dao;
 
-
 import model.Banner;
 import org.jdbi.v3.core.Jdbi;
 
@@ -16,69 +15,48 @@ public class BannerDao {
 
     public List<Banner> findByPositions(String position) {
         String sql = """
-            SELECT * FROM banner
-            WHERE position = :position
-              AND is_active = 1
-            ORDER BY sort_order
-        """;
+                    SELECT * FROM banner
+                    WHERE position = :position
+                      AND is_active = 1
+                    ORDER BY sort_order
+                """;
 
-        return jdbi.withHandle(h ->
-                h.createQuery(sql)
-                        .bind("position", position)
-                        .mapToBean(Banner.class)
-                        .list()
-        );
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("position", position)
+                .mapToBean(Banner.class)
+                .list());
     }
+
     public Banner findByPosition(String position) {
         String sql = """
-        SELECT *
-        FROM banner
-        WHERE position = :position
-          AND is_active = 1
-        ORDER BY sort_order
-        LIMIT 1
-    """;
+                    SELECT *
+                    FROM banner
+                    WHERE position = :position
+                      AND is_active = 1
+                    ORDER BY sort_order
+                    LIMIT 1
+                """;
 
-        return jdbi.withHandle(h ->
-                h.createQuery(sql)
-                        .bind("position", position)
-                        .mapToBean(Banner.class)
-                        .findFirst()
-                        .orElse(null)
-        );
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("position", position)
+                .mapToBean(Banner.class)
+                .findFirst()
+                .orElse(null));
     }
 
     public void insert(Banner banner) {
         String sql = """
-        INSERT INTO banner(
-            title, img_url, link_url,
-            target_type, target_entity_id,
-            position, sort_order, slogan,
-            is_active, start_date, end_date
-        )
-        VALUES (
-            :title, :img_url, :link_url,
-            :target_type, :target_entity_id,
-            :position, :sort_order, :slogan,
-            :is_active, :start_date, :end_date
-        )
-    """;
+                    INSERT INTO banner(title, img_url, link_url,
+                                       target_type, target_entity_id,
+                                       position, sort_order, is_active, slogan)
+                    VALUES(:title, :imgUrl, :linkUrl,
+                           :targetType, :targetEntityId,
+                           :position, :sortOrder, 1)
+                """;
 
-        jdbi.useHandle(h ->
-                h.createUpdate(sql)
-                        .bind("title", banner.getTitle())
-                        .bind("img_url", banner.getImgUrl())
-                        .bind("link_url", banner.getLinkUrl())
-                        .bind("target_type", banner.getTargetType())
-                        .bind("target_entity_id", banner.getTargetEntityId())
-                        .bind("position", banner.getPosition())
-                        .bind("sort_order", banner.getSortOrder())
-                        .bind("slogan", banner.getSlogan())
-                        .bind("is_active", banner.isActive()) // ⭐ QUAN TRỌNG
-                        .bind("start_date", banner.getStartDate())
-                        .bind("end_date", banner.getEndDate())
-                        .execute()
-        );
+        jdbi.useHandle(h -> h.createUpdate(sql)
+                .bindBean(banner)
+                .execute());
     }
 
     public void delete(int id) {
@@ -151,5 +129,25 @@ public class BannerDao {
     }
 
 
+    /**
+     * Tìm banner theo collection ID
+     * Dùng để hiển thị banner trên trang collection
+     */
+    public Banner findByCollectionId(int collectionId) {
+        String sql = """
+                    SELECT * FROM banner
+                    WHERE target_type = 'COLLECTION'
+                      AND target_entity_id = :collectionId
+                      AND is_active = 1
+                    LIMIT 1
+                """;
+
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("collectionId", collectionId)
+                .mapToBean(Banner.class)
+                .findFirst()
+                .orElse(null));
+    }
 }
+
 

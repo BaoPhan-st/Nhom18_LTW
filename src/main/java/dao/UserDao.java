@@ -16,47 +16,38 @@ public class UserDao {
     // ===== FIND BY EMAIL =====
     public User findByEmail(String email) {
         String sql = "SELECT * FROM users WHERE email = :email";
-        return jdbi.withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("email", email)
-                        .mapToBean(User.class)
-                        .findOne()
-                        .orElse(null)
-        );
+        return jdbi.withHandle(handle -> handle.createQuery(sql)
+                .bind("email", email)
+                .mapToBean(User.class)
+                .findOne()
+                .orElse(null));
     }
 
     // ===== FIND BY PHONE =====
     public User findByPhone(String phone) {
         String sql = "SELECT * FROM users WHERE phone_number = :phone";
-        return jdbi.withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("phone", phone)
-                        .mapToBean(User.class)
-                        .findOne()
-                        .orElse(null)
-        );
-    }
-    // ===== FIND BY ID =====
-    public User findById(Integer id)
-    {
-        String sql = "SELECT * FROM users WHERE id = :id";
-        return jdbi.withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("id", id)
-                        .mapToBean(User.class)
-                        .findOne()
-                        .orElse(null)
-        );
+        return jdbi.withHandle(handle -> handle.createQuery(sql)
+                .bind("phone", phone)
+                .mapToBean(User.class)
+                .findOne()
+                .orElse(null));
     }
 
-    public List<User> findAll()
-    {
+    // ===== FIND BY ID =====
+    public User findById(Integer id) {
+        String sql = "SELECT * FROM users WHERE id = :id";
+        return jdbi.withHandle(handle -> handle.createQuery(sql)
+                .bind("id", id)
+                .mapToBean(User.class)
+                .findOne()
+                .orElse(null));
+    }
+
+    public List<User> findAll() {
         String sql = "SELECT * FROM users ORDER BY created_at DESC";
-        return jdbi.withHandle(handle ->
-                handle.createQuery(sql)
-                        .mapToBean(User.class)
-                        .list()
-        );
+        return jdbi.withHandle(handle -> handle.createQuery(sql)
+                .mapToBean(User.class)
+                .list());
     }
 
     // ===== INSERT USER =====
@@ -162,8 +153,7 @@ public class UserDao {
         });
     }
 
-    public void delete (Integer id)
-    {
+    public void delete (Integer id) {
         String sql = """
                 UPDATE users
                 SET is_active = 0
@@ -175,11 +165,18 @@ public class UserDao {
                         .execute()
         );
     }
-    public Integer todayCustomers()
-    {
+    public boolean deleteById(Integer id) {
+        String sql = "DELETE FROM users WHERE id = :id";
+        return jdbi.withHandle(h -> h.createUpdate(sql)
+                .bind("id", id)
+                .execute()) > 0;
+    }
+
+
+    public Integer todayCustomers() {
         String sql = """
                 SELECT COUNT(*) AS total
-                FROM users u 
+                FROM users u
                 WHERE u.created_at >= CURDATE()
                 AND u.created_at < CURDATE() + INTERVAL 1 DAY;
                 """;
@@ -188,4 +185,22 @@ public class UserDao {
                         .mapTo(Integer.class)
                         .one());
     }
+
+    public boolean updateProfile(int userId, String fullName, String phone, String address) {
+        String sql = "UPDATE users SET full_name = :fullName, phone_number = :phone, address = :address WHERE id = :id";
+        return jdbi.withHandle(handle -> handle.createUpdate(sql)
+                .bind("fullName", fullName)
+                .bind("phone", phone)
+                .bind("address", address)
+                .bind("id", userId)
+                .execute()) > 0;
+    }
+    public boolean updatePassword(int userId, String newPasswordHash) {
+        String sql = "UPDATE users SET password_hash = :password WHERE id = :id";
+        return jdbi.withHandle(h -> h.createUpdate(sql)
+                .bind("id", userId)
+                .bind("password", newPasswordHash)
+                .execute()) > 0;
+    }
+
 }

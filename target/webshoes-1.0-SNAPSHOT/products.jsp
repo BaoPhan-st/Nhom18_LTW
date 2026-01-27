@@ -11,7 +11,7 @@
                 <title>Sản phẩm - BHD SPORT SHOES</title>
                 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 
-                <link rel="icon" href="/Nhom18_LTW/assets/favicon_io/favicon.ico" />
+                <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon_io/favicon.ico" />
 
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css" />
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/dangnhapvadangki.css" />
