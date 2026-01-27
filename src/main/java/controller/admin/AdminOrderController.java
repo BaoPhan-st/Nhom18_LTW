@@ -1,10 +1,10 @@
 package controller.admin;
 
-import dao.admin.order.OrderDao;
+import dao.Order.OrderDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import model.order.Order;
+import model.Order.Order;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,7 +38,12 @@ public class AdminOrderController extends HttpServlet {
             // ====== ORDERS ======
             String orderIdParam = request.getParameter("orderId");
             String userIdParam = request.getParameter("userId");
+
             String status = request.getParameter("status");
+            if (status != null && !status.isEmpty())
+            {
+                status = status.toUpperCase();
+            } else { status = null; }
 
             Integer orderId = null;
             Integer userId = null;

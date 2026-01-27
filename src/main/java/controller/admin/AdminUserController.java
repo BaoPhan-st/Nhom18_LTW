@@ -1,7 +1,7 @@
 package controller.admin;
 
 import dao.UserDao;
-import dao.admin.user.WishlistDao;
+import dao.WishlistDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -16,6 +16,7 @@ public class AdminUserController extends HttpServlet
 {
     private final UserDao userDao = new UserDao();
     private final WishlistDao wishlistDao = new WishlistDao();
+
     @Override
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -33,9 +34,9 @@ public class AdminUserController extends HttpServlet
             String deleteId = request.getParameter("delete");
             if (deleteId != null)
             {
-                wishlistDao.deleteByUserId(Integer.parseInt(deleteId));
-                userDao.delete(Integer.parseInt(deleteId));
-
+                try {
+                    userDao.delete(Integer.parseInt(deleteId));
+                } catch (NumberFormatException ignored) {}
                 response.sendRedirect(request.getContextPath() + "/admin/accounts");
                 return;
             }
@@ -46,7 +47,18 @@ public class AdminUserController extends HttpServlet
 
             if (editId != null)
             {
-                user = userDao.findById(Integer.parseInt(editId));
+                try {
+                    user = userDao.findById(Integer.parseInt(editId));
+                    if (user == null)
+                    {
+                        response.sendRedirect(request.getContextPath() + "/admin/accounts");
+                        return;
+                    }
+                } catch (NumberFormatException ignored)
+                {
+                    response.sendRedirect(request.getContextPath() + "/admin/accounts");
+                    return;
+                }
             } else
             {
                 user = new User();
@@ -69,9 +81,6 @@ public class AdminUserController extends HttpServlet
 
         if (uri.endsWith("/admin/wishlist"))
         {
-            // Handle wishlist CRUD
-
-
             response.sendRedirect(request.getContextPath() + "/admin/wishlist");
             return;
         }
@@ -80,28 +89,53 @@ public class AdminUserController extends HttpServlet
         String id = request.getParameter("id");
         boolean isCreate = (id == null || id.isEmpty());
 
-        User u = new User();
+        User u;
+        if (isCreate)
+        {
+            u = new User();
+            u.setCreatedAt(LocalDateTime.now());
+            u.setIsActive(true);
+        } else
+        {
+            try {
+                u = userDao.findById(Integer.parseInt(id));
+                if (u == null)
+                {
+                    response.sendRedirect(request.getContextPath() + "/admin/accounts");
+                    return;
+                }
+            } catch (NumberFormatException ignored)
+            {
+                response.sendRedirect(request.getContextPath() + "/admin/accounts");
+                return;
+            }
+        }
+
         u.setFullName(request.getParameter("full_name"));
         u.setPhoneNumber(request.getParameter("phone_number"));
         u.setAddress(request.getParameter("address"));
-        u.setRole(request.getParameter("role"));
         u.setEmail(request.getParameter("email"));
+
         u.setIsActive(Boolean.parseBoolean(request.getParameter("is_active")));
 
-        u.setCreatedAt(LocalDateTime.now());
+        String role = request.getParameter("role");
+        if (!"ADMIN".equals(role) && !"USER".equals(role))
+        {
+            role = "USER";
+        }
+        u.setRole(role);
 
         String rawPassword = request.getParameter("password");
         if (rawPassword != null && !rawPassword.isBlank())
         {
             u.setPasswordHash(BCrypt.hashpw(rawPassword, BCrypt.gensalt()));
         }
+
         if (isCreate)
         {
-            u.setCreatedAt(LocalDateTime.now());
             userDao.insertUser(u);
         } else
         {
-            u.setId(Integer.parseInt(id));
             userDao.update(u);
         }
 

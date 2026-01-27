@@ -50,17 +50,33 @@ public class BannerDao {
 
     public void insert(Banner banner) {
         String sql = """
-            INSERT INTO banner(title, img_url, link_url,
-                               target_type, target_entity_id,
-                               position, sort_order, is_active, slogan)
-            VALUES(:title, :imgUrl, :linkUrl,
-                   :targetType, :targetEntityId,
-                   :position, :sortOrder, 1)
-        """;
+        INSERT INTO banner(
+            title, img_url, link_url,
+            target_type, target_entity_id,
+            position, sort_order, slogan,
+            is_active, start_date, end_date
+        )
+        VALUES (
+            :title, :img_url, :link_url,
+            :target_type, :target_entity_id,
+            :position, :sort_order, :slogan,
+            :is_active, :start_date, :end_date
+        )
+    """;
 
         jdbi.useHandle(h ->
                 h.createUpdate(sql)
-                        .bindBean(banner)
+                        .bind("title", banner.getTitle())
+                        .bind("img_url", banner.getImgUrl())
+                        .bind("link_url", banner.getLinkUrl())
+                        .bind("target_type", banner.getTargetType())
+                        .bind("target_entity_id", banner.getTargetEntityId())
+                        .bind("position", banner.getPosition())
+                        .bind("sort_order", banner.getSortOrder())
+                        .bind("slogan", banner.getSlogan())
+                        .bind("is_active", banner.isActive()) // ⭐ QUAN TRỌNG
+                        .bind("start_date", banner.getStartDate())
+                        .bind("end_date", banner.getEndDate())
                         .execute()
         );
     }
@@ -73,5 +89,67 @@ public class BannerDao {
                         .execute()
         );
     }
+    public List<Banner> findAll()
+    {
+        String sql = """
+            SELECT *
+            FROM banner
+            ORDER BY sort_order ASC
+        """;
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(Banner.class)
+                        .list()
+        );
+    }
+
+    public void update(Banner banner) {
+        String sql = """
+        UPDATE banner SET
+            title = :title,
+            img_url = :img_url,
+            link_url = :link_url,
+            target_type = :target_type,
+            target_entity_id = :target_entity_id,
+            position = :position,
+            sort_order = :sort_order,
+            slogan = :slogan,
+            is_active = :is_active,
+            start_date = :start_date,
+            end_date = :end_date
+        WHERE id = :id
+    """;
+
+        jdbi.useHandle(h ->
+                h.createUpdate(sql)
+                        .bind("id", banner.getId())
+                        .bind("title", banner.getTitle())
+                        .bind("img_url", banner.getImgUrl())
+                        .bind("link_url", banner.getLinkUrl())
+                        .bind("target_type", banner.getTargetType())
+                        .bind("target_entity_id", banner.getTargetEntityId())
+                        .bind("position", banner.getPosition())
+                        .bind("sort_order", banner.getSortOrder())
+                        .bind("slogan", banner.getSlogan())
+                        .bind("is_active", banner.isActive()) // ⭐ QUAN TRỌNG
+                        .bind("start_date", banner.getStartDate())
+                        .bind("end_date", banner.getEndDate())
+                        .execute()
+        );
+    }
+
+    public Banner findById(int id)
+    {
+        String sql = "SELECT * FROM banner WHERE id = :id";
+        return jdbi.withHandle(h ->
+                h.createQuery(sql)
+                        .bind("id", id)
+                        .mapToBean(Banner.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+
+
 }
 

@@ -1,7 +1,7 @@
 package controller.admin;
 
 import dao.UserDao;
-import dao.admin.order.OrderDao;
+import dao.Order.OrderDao;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -53,7 +53,7 @@ public class AdminDashboardController extends HttpServlet
             request.setAttribute("active", "admin/setting");
         } else
         {
-            request.setAttribute("todayOrders", orderDao.todayOrders().size());
+            request.setAttribute("todayOrders", orderDao.todayOrders());
             request.setAttribute("todayRevenue", orderDao.todayRevenue());
             request.setAttribute("newCustomers", userDao.todayCustomers());
 

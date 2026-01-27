@@ -1,6 +1,6 @@
 package dao;
 
-import model.user.Wishlist;
+import model.user.WishList;
 import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
@@ -83,7 +83,7 @@ public class WishlistDao {
         }
     }
 
-    public List<Wishlist> findByUser(int userId) {
+    public List<WishList> findByUser(int userId) {
         try {
             String sql = """
                 SELECT id,
@@ -98,7 +98,7 @@ public class WishlistDao {
             return jdbi.withHandle(handle ->
                     handle.createQuery(sql)
                             .bind("userId", userId)
-                            .mapToBean(Wishlist.class)
+                            .mapToBean(WishList.class)
                             .list()
             );
 
@@ -107,4 +107,23 @@ public class WishlistDao {
             return List.of();
         }
     }
+
+    public List<WishList> findAll()
+    {
+        String sql = """
+        SELECT id,
+               product_id,
+               user_id,
+               added_at
+        FROM wishlist
+        ORDER BY added_at DESC
+    """;
+
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(WishList.class)
+                        .list()
+        );
+    }
+
 }

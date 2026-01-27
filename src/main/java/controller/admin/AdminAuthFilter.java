@@ -24,33 +24,18 @@ public class AdminAuthFilter implements Filter
 
         String uri = request.getRequestURI();
 
-        // Login & logout
+        // Cho phép login & logout
         if (uri.endsWith("/admin/login") || uri.endsWith("/admin/logout"))
         {
             chain.doFilter(req, res);
             return;
         }
 
-        // test
-        boolean test = Boolean.parseBoolean(request.getServletContext().getInitParameter("test"));
-
-        if (test)
+        // ===== DEV MODE =====
+        HttpSession session = request.getSession(true);
+        if (session.getAttribute("adminId") == null)
         {
-            HttpSession session = request.getSession(true);
-            if (session.getAttribute("adminId") == null)
-            {
-                session.setAttribute("adminId", 1);
-            }
-            chain.doFilter(req, res);
-            return;
-        }
-
-        // product test
-        HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("adminId") == null)
-        {
-            response.sendRedirect(request.getContextPath() + "/admin/login");
-            return;
+            session.setAttribute("adminId", 1);
         }
 
         chain.doFilter(req, res);

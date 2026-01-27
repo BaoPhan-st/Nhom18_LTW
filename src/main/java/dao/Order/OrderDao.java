@@ -1,13 +1,19 @@
 package dao.Order;
 
+import dao.JDBIConnector;
+import model.Order.Order;
 import org.jdbi.v3.core.Handle;
-import services.PromotionService;
+import org.jdbi.v3.core.Jdbi;
 
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.List;
 
 public class OrderDao {
 
-    private final PromotionService promotionService = new PromotionService();
+    private final Jdbi jdbi;
+
+    public OrderDao () {jdbi = JDBIConnector.getJdbi();}
 
     public int insertOrder(
             Handle handle,
@@ -33,4 +39,120 @@ public class OrderDao {
                 .one();
     }
 
+    public List<Order> findWithFilter(Integer orderId, Integer userId, String status)
+    {
+        StringBuilder sql = new StringBuilder("""
+            SELECT
+                o.id,
+                o.user_id,
+                o.sub_total,
+                o.shipping_fee,
+                o.grand_total,
+                o.order_status,
+                o.payment_status,
+                o.created_at
+            FROM orders o
+            WHERE 1 = 1
+            """);
+
+        if (orderId != null)
+        {
+            sql.append(" AND o.id = :orderId");
+        }
+
+        if (userId != null)
+        {
+            sql.append(" AND o.user_id = :userId");
+        }
+
+        if (status != null && !status.isEmpty())
+        {
+            sql.append(" AND o.order_status = :status");
+        }
+
+        sql.append(" ORDER BY o.created_at DESC");
+
+        return jdbi.withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+
+            if (orderId != null)
+            {
+                query.bind("orderId", orderId);
+            }
+
+            if (userId != null)
+            {
+                query.bind("userId", userId);
+            }
+
+            if (status != null && !status.isEmpty())
+            {
+                query.bind("status", status.toUpperCase());
+            }
+
+            return query
+                    .mapToBean(Order.class)
+                    .list();
+        });
+    }
+    public List<Order> findAll()
+    {
+        String sql = """
+                SELECT *
+                FROM orders
+                """;
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
+
+    public BigDecimal totalRevenue()
+    {
+        String sql = """
+            SELECT COALESCE(SUM(grand_total), 0)
+            FROM orders
+            WHERE order_status = 'COMPLETED'
+            """;
+        
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(BigDecimal.class)
+                        .one()
+        );
+    }
+
+    public int todayOrders()
+    {
+        String sql = """
+            SELECT COUNT(*)
+            FROM orders
+            WHERE created_at >= CURRENT_DATE
+              AND created_at < CURRENT_DATE + INTERVAL 1 DAY
+            """;
+
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+
+    public BigDecimal todayRevenue()
+    {
+        String sql = """
+        SELECT COALESCE(SUM(grand_total), 0)
+        FROM orders
+        WHERE order_status = 'COMPLETED'
+          AND DATE(created_at) = CURRENT_DATE
+    """;
+
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(BigDecimal.class)
+                        .one()
+        );
+    }
 }

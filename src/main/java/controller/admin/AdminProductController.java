@@ -1,15 +1,10 @@
 package controller.admin;
 
-import dao.Product.ColorDao;
-import dao.Product.ProductVariantDao;
-import dao.Product.SizeDao;
-import dao.admin.product.BrandDao;
-import dao.admin.product.ProductDao;
+import dao.Product.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.product.Product;
-import model.product.ProductVariant;
 
 import java.io.IOException;
 import java.math.BigDecimal;

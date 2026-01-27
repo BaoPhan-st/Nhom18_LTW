@@ -2,7 +2,6 @@ package dao.Product;
 
 import dao.JDBIConnector;
 import model.product.Product;
-import org.apache.taglibs.standard.lang.jstl.Literal;
 import org.jdbi.v3.core.Jdbi;
 
 import java.math.BigDecimal;
@@ -19,7 +18,7 @@ public class ProductDao {
 
     // ===== FIND =====
     public Product findById (int id) {
-        String sql = "SELECT * FROM products WHERE id = :id AND is_available = 1";
+        String sql = "SELECT * FROM product WHERE id = :id AND is_available = 1";
         return jdbi.withHandle(h ->
                 h.createQuery(sql)
                         .bind("id", id)
@@ -31,7 +30,7 @@ public class ProductDao {
 
     public List<Product> findAllActive () {
         String sql = """
-                    SELECT * FROM products
+                    SELECT * FROM product
                     WHERE is_available = 1 AND is_discontinue = 0
                     ORDER BY added_at DESC
                 """;
@@ -46,7 +45,7 @@ public class ProductDao {
     // ===== INSERT =====
     public void insert (Product product) {
         String sql = """
-                    INSERT INTO products(name, description, price, brand_id,
+                    INSERT INTO product(name, description, price, brand_id,
                                         added_at, is_discontinue, is_available)
                     VALUES(:name, :description, :price, :brandId,
                            NOW(), 0, 1)
@@ -62,7 +61,7 @@ public class ProductDao {
     // ===== UPDATE =====
     public void update (Product product) {
         String sql = """
-                    UPDATE products
+                    UPDATE product
                     SET name = :name,
                         description = :description,
                         price = :price,
@@ -79,7 +78,7 @@ public class ProductDao {
 
     // ===== DELETE =====
     public void delete (int id) {
-        String sql = "UPDATE products SET is_discontinue = 1 WHERE id = :id";
+        String sql = "UPDATE product SET is_discontinue = 1 WHERE id = :id";
         jdbi.useHandle(h ->
                 h.createUpdate(sql)
                         .bind("id", id)
@@ -90,7 +89,7 @@ public class ProductDao {
     public List<Product> findByBrandLimit (int brandId, int limit) {
         String sql = """
                 
-                            SELECT p.* FROM products p
+                            SELECT p.* FROM product p
                             JOIN brand b ON p.brand_id = b.id
                             WHERE (:brandId IS NULL OR p.brand_id = :brandId)
                               AND b.is_active = 1
@@ -449,5 +448,68 @@ public class ProductDao {
                         .mapToBean(Product.class)
                         .list()
         );
+    }
+
+    public List<Product> findAll ()
+    {
+        String sql = """
+                SELECT *
+                FROM product
+                """;
+        return jdbi.withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
+    public List<Product> findWithFilter(Integer id, String nameParam, Integer brandId)
+    {
+        StringBuilder sql = new StringBuilder("""
+                SELECT *
+            FROM product
+            WHERE is_available = 1
+              AND is_discontinue = 0
+        """);
+
+        if (id != null)
+        {
+            sql.append(" AND id = :id");
+        }
+
+        if (nameParam != null && !nameParam.isBlank())
+        {
+            sql.append(" AND name LIKE :name");
+        }
+
+        if (brandId != null)
+        {
+            sql.append(" AND brand_id = :brandId");
+        }
+
+        sql.append(" ORDER BY added_at DESC");
+
+        return jdbi.withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+
+            if (id != null)
+            {
+                query.bind("id", id);
+            }
+
+            if (nameParam != null && !nameParam.isBlank())
+            {
+                query.bind("name", "%" + nameParam + "%");
+            }
+
+            if (brandId != null)
+            {
+                query.bind("brandId", brandId);
+            }
+
+            return query
+                    .mapToBean(Product.class)
+                    .list();
+        });
     }
 }

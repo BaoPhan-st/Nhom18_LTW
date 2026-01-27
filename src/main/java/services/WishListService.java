@@ -2,6 +2,7 @@ package services;
 
 import DTO.ProductDTO;
 import dao.WishlistDao;
+import model.user.WishList;
 
 import java.util.ArrayList;
 import java.util.List;

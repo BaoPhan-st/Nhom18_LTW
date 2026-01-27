@@ -9,7 +9,7 @@ public class NewsletterDao
 {
     public List<Newsletter> findAll()
     {
-        String sql = "SELECT * FROM newsletters";
+        String sql = "SELECT * FROM newsletter";
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .mapToBean(Newsletter.class)
@@ -19,7 +19,7 @@ public class NewsletterDao
 
     public Newsletter findById(int id)
     {
-        String sql = "SELECT * FROM newsletters WHERE id = :id";
+        String sql = "SELECT * FROM newsletter WHERE id = :id";
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("id", id)
@@ -31,7 +31,7 @@ public class NewsletterDao
 
     public Newsletter findByEmail(String email)
     {
-        String sql = "SELECT * FROM newsletters WHERE email = :email";
+        String sql = "SELECT * FROM newsletter WHERE email = :email";
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("email", email)
@@ -44,7 +44,7 @@ public class NewsletterDao
     public boolean insert(Newsletter newsletter)
     {
         String sql = """
-            INSERT INTO newsletters
+            INSERT INTO newsletter
             (email, is_active, subscribed_at)
             VALUES (:email, :active, :subscribedAt)
         """;
@@ -59,7 +59,7 @@ public class NewsletterDao
     public boolean update(Newsletter newsletter)
     {
         String sql = """
-            UPDATE newsletters SET
+            UPDATE newsletter SET
                 email = :email,
                 is_active = :active,
                 subscribed_at = :subscribedAt
@@ -75,11 +75,41 @@ public class NewsletterDao
 
     public boolean delete(int id)
     {
-        String sql = "DELETE FROM newsletters WHERE id = :id";
+        String sql = "DELETE FROM newsletter WHERE id = :id";
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
                         .bind("id", id)
                         .execute() > 0
         );
+    }
+
+    public List<Newsletter> filter(String email, String status) {
+
+        StringBuilder sql = new StringBuilder("""
+        SELECT * FROM newsletter
+        WHERE 1=1
+    """);
+
+        if (email != null && !email.isBlank()) {
+            sql.append(" AND email LIKE :email");
+        }
+
+        if ("active".equals(status)) {
+            sql.append(" AND is_active = 1");
+        } else if ("inactive".equals(status)) {
+            sql.append(" AND is_active = 0");
+        }
+
+        sql.append(" ORDER BY subscribed_at DESC");
+
+        return JDBIConnector.getJdbi().withHandle(h -> {
+            var q = h.createQuery(sql.toString());
+
+            if (email != null && !email.isBlank()) {
+                q.bind("email", "%" + email + "%");
+            }
+
+            return q.mapToBean(Newsletter.class).list();
+        });
     }
 }

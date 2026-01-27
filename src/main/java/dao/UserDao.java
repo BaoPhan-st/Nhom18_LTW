@@ -116,50 +116,64 @@ public class UserDao {
 
     public int update(User user)
     {
-        String sql = """
-            UPDATE users set
-                email = :email,
-                password_hash = :passwordHash,
-                phone_number = :phoneNumber,
-                address = :address,
-                full_name = :fullName,
-                role = :role,
-                is_active = :isActive,
-                firebase_uid = :firebaseUID
-            WHERE id = :id
-        """;
-        try {
-            return jdbi.withHandle(handle ->
-                    handle.createUpdate(sql)
-                            .bind("email", user.getEmail())
-                            .bind("passwordHash", user.getPasswordHash())
-                            .bind("phoneNumber", user.getPhoneNumber())
-                            .bind("address", user.getAddress())
-                            .bind("fullName", user.getFullName())
-                            .bind("role", user.getRole())
-                            .bind("isActive", user.isActive())
-                            .bind("firebaseUID", user.getFirebaseUID())
-                            .bind("id", user.getId())
-                            .execute()
-            );
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-            return 0;
-        }
+        boolean hasPassword = user.getPasswordHash() != null;
+
+        String sql = hasPassword
+                ? """
+                UPDATE users SET
+                    email = :email,
+                    password_hash = :passwordHash,
+                    phone_number = :phoneNumber,
+                    address = :address,
+                    full_name = :fullName,
+                    role = :role,
+                    is_active = :isActive,
+                    firebase_uid = :firebaseUID
+                WHERE id = :id
+              """
+                : """
+                UPDATE users SET
+                    email = :email,
+                    phone_number = :phoneNumber,
+                    address = :address,
+                    full_name = :fullName,
+                    role = :role,
+                    is_active = :isActive,
+                    firebase_uid = :firebaseUID
+                WHERE id = :id
+              """;
+
+        return jdbi.withHandle(h -> {
+            var q = h.createUpdate(sql)
+                    .bind("id", user.getId())
+                    .bind("email", user.getEmail())
+                    .bind("phoneNumber", user.getPhoneNumber())
+                    .bind("address", user.getAddress())
+                    .bind("fullName", user.getFullName())
+                    .bind("role", user.getRole())
+                    .bind("isActive", user.isActive())
+                    .bind("firebaseUID", user.getFirebaseUID());
+
+            if (hasPassword) {
+                q.bind("passwordHash", user.getPasswordHash());
+            }
+
+            return q.execute();
+        });
     }
 
     public void delete (Integer id)
     {
-        jdbi.useHandle(handle -> {
-            handle.createUpdate("DELETE FROM wishlist WHERE user_id = :id")
-                    .bind("id", id)
-                    .execute();
-
-            handle.createUpdate("DELETE FROM users WHERE id = :id")
-                    .bind("id", id)
-                    .execute();
-        });
+        String sql = """
+                UPDATE users
+                SET is_active = 0
+                WHERE id = :id
+                """;
+        jdbi.useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", id)
+                        .execute()
+        );
     }
     public Integer todayCustomers()
     {

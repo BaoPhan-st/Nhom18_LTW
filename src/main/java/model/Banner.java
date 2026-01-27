@@ -2,8 +2,10 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Banner implements Serializable {
+    private int id;
     private String title;
     private String img_url;
     private String link_url;
@@ -19,7 +21,8 @@ public class Banner implements Serializable {
     public Banner() {
     }
 
-    public Banner(String title, String img_url, String link_url, String target_type, int target_entity_id, String position, int sort_order, String slogan, boolean is_active, LocalDateTime start_date, LocalDateTime end_date) {
+    public Banner(int id, String title, String img_url, String link_url, String target_type, int target_entity_id, String position, int sort_order, String slogan, boolean is_active, LocalDateTime start_date, LocalDateTime end_date) {
+        this.id = id;
         this.title = title;
         this.img_url = img_url;
         this.link_url = link_url;
@@ -32,6 +35,9 @@ public class Banner implements Serializable {
         this.start_date = start_date;
         this.end_date = end_date;
     }
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getTitle() {
         return title;
@@ -119,5 +125,16 @@ public class Banner implements Serializable {
 
     public void setSlogan(String slogan) {
         this.slogan = slogan;
+    }
+
+    public String getStartDateInput()
+    {
+        return start_date == null ? "" :
+                start_date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
+    }
+    public String getEndDateInput()
+    {
+        return end_date == null ? "" :
+                end_date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
     }
 }
