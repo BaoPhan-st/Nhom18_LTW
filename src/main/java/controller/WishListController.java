@@ -39,14 +39,10 @@ public class WishListController extends HttpServlet {
 
         req.setAttribute(
                 "wishlistProducts",
-                wishlistService.getWishlistProducts(userId)
-        );
+                wishlistService.getWishlistProducts(userId));
 
         req.getRequestDispatcher("/wishlist.jsp").forward(req, resp);
     }
-
-
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -74,4 +70,3 @@ public class WishListController extends HttpServlet {
     }
 
 }
-

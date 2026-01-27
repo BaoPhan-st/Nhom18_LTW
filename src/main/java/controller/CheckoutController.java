@@ -1,5 +1,6 @@
 package controller;
 
+import DTO.SessionOrderDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,15 +9,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.user.CartItem;
 import model.user.User;
-import services.OrderService;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/checkout")
 public class CheckoutController extends HttpServlet {
-
-    private final OrderService orderService = new OrderService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -45,7 +45,26 @@ public class CheckoutController extends HttpServlet {
         }
 
         try {
-            orderService.placeOrder(user.getId(), cart);
+            // Lưu đơn hàng vào database (nếu có)
+            // orderService.placeOrder(user.getId(), cart);
+
+            // Tạo đơn hàng từ giỏ hàng và lưu vào session
+            SessionOrderDTO newOrder = SessionOrderDTO.fromCart(cart);
+
+            // Lấy danh sách đơn hàng từ session (nếu có)
+            List<SessionOrderDTO> orderHistory = (List<SessionOrderDTO>) session.getAttribute("orderHistory");
+            if (orderHistory == null) {
+                orderHistory = new ArrayList<>();
+            }
+
+            // Thêm đơn hàng mới vào đầu danh sách
+            orderHistory.add(0, newOrder);
+
+            // Lưu lại vào session
+            session.setAttribute("orderHistory", orderHistory);
+
+            // Lưu đơn hàng vừa đặt để hiển thị trên trang thành công
+            session.setAttribute("lastOrder", newOrder);
 
             if ("BUY_NOW".equals(mode)) {
                 session.removeAttribute("checkoutCart");
@@ -59,7 +78,6 @@ public class CheckoutController extends HttpServlet {
 
         } catch (RuntimeException e) {
             req.setAttribute("errorMessage", e.getMessage());
-
             req.getRequestDispatcher("/checkout.jsp").forward(req, resp);
         }
     }

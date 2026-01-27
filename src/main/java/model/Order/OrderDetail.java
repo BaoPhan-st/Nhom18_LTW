@@ -1,4 +1,4 @@
-package model.order;
+package model.Order;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

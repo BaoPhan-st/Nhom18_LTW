@@ -1,6 +1,5 @@
 package controller;
 
-
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,14 +21,13 @@ public class CartController extends HttpServlet {
         HttpSession session = req.getSession();
 
         int productId = Integer.parseInt(req.getParameter("productId"));
-        int colorId   = Integer.parseInt(req.getParameter("colorId"));
-        int qty       = Integer.parseInt(req.getParameter("quantity"));
+        int colorId = Integer.parseInt(req.getParameter("colorId"));
+        int qty = Integer.parseInt(req.getParameter("quantity"));
 
         String sizeRaw = req.getParameter("sizeId");
         if (sizeRaw == null || sizeRaw.isEmpty()) {
             resp.sendRedirect(
-                    req.getContextPath() + "/product?id=" + productId
-            );
+                    req.getContextPath() + "/product?id=" + productId);
             return;
         }
 
@@ -40,10 +38,11 @@ public class CartController extends HttpServlet {
                 productId,
                 colorId,
                 sizeId,
-                qty
-        );
+                qty);
 
-        resp.sendRedirect(req.getContextPath() + "/cart");
+        // Redirect về trang sản phẩm với thông báo thành công
+        resp.sendRedirect(req.getContextPath() + "/product?id=" + productId + "&colorId=" + colorId + "&sizeId="
+                + sizeId + "&msg=cart_added");
     }
 
     @Override
@@ -52,4 +51,3 @@ public class CartController extends HttpServlet {
         resp.sendRedirect(req.getContextPath() + "/menu");
     }
 }
-

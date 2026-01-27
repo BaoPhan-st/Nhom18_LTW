@@ -21,7 +21,8 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User currentUser = requireLogin(req, resp);
-        if (currentUser == null) return;
+        if (currentUser == null)
+            return;
 
         // Flash message: lấy ra xong xóa để refresh không bị lặp
         HttpSession session = req.getSession(false);
@@ -44,7 +45,8 @@ public class AccountController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         User currentUser = requireLogin(req, resp);
-        if (currentUser == null) return;
+        if (currentUser == null)
+            return;
 
         String action = safe(req.getParameter("action"));
 
@@ -72,8 +74,7 @@ public class AccountController extends HttpServlet {
         }
 
         boolean success = accountServices.updateUserProfile(
-                currentUser.getId(), fullName, phoneNumber, address
-        );
+                currentUser.getId(), fullName, phoneNumber, address);
 
         if (success) {
             // Update session user sau khi DB thành công
@@ -96,7 +97,6 @@ public class AccountController extends HttpServlet {
         String newPassword = safe(req.getParameter("newPassword"));
         String confirmPassword = safe(req.getParameter("confirmPassword"));
 
-
         if (currentPassword.isBlank() || newPassword.isBlank() || confirmPassword.isBlank()) {
             setFlash(req, "Vui lòng nhập đầy đủ thông tin mật khẩu.", "danger");
             resp.sendRedirect(req.getContextPath() + "/account");
@@ -104,13 +104,10 @@ public class AccountController extends HttpServlet {
         }
 
         String result = accountServices.changePassword(
-                currentUser.getEmail(), currentPassword, newPassword, confirmPassword
-        );
+                currentUser.getEmail(), currentPassword, newPassword, confirmPassword);
 
         if ("SUCCESS".equals(result)) {
             setFlash(req, "Đổi mật khẩu thành công!", "success");
-
-
 
         } else {
             setFlash(req, result, "danger");
