@@ -61,7 +61,7 @@ public class AdminUserController extends HttpServlet
                 }
             } else
             {
-                user = new User();
+                user = null;
             }
 
             // load list
@@ -119,9 +119,13 @@ public class AdminUserController extends HttpServlet
         u.setIsActive(Boolean.parseBoolean(request.getParameter("is_active")));
 
         String role = request.getParameter("role");
-        if (!"ADMIN".equals(role) && !"USER".equals(role))
+        if (role != null)
         {
-            role = "USER";
+            role = role.trim().toLowerCase();
+        }
+        if (!"admin".equals(role) && !"user".equals(role))
+        {
+            role = "user";
         }
         u.setRole(role);
 
@@ -141,5 +145,4 @@ public class AdminUserController extends HttpServlet
 
         response.sendRedirect(request.getContextPath() + "/admin/accounts");
     }
-
 }

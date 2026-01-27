@@ -45,7 +45,7 @@ public class AdminDashboardController extends HttpServlet
             request.setAttribute("siteAddress", settingService.settingGet("site_address"));
 
             request.setAttribute("newOrders", "true".equalsIgnoreCase(settingService.settingGet("notify_new_orders")));
-            request.setAttribute("newNewsletterSignup", Boolean.parseBoolean(settingService.settingGet("notify_newsletter")));
+            request.setAttribute("newSletterSignup", Boolean.parseBoolean(settingService.settingGet("notify_newsletter")));
 
             request.setAttribute("adminUsername", adminService.adminGetUserName(adminId));
 
@@ -77,15 +77,15 @@ public class AdminDashboardController extends HttpServlet
 
             if ("site".equals(action))
             {
-                settingService.settingUpdate("site_name", request.getParameter("siteName"));
-                settingService.settingUpdate("site_email", request.getParameter("siteEmail"));
-                settingService.settingUpdate("site_phone", request.getParameter("sitePhone"));
-                settingService.settingUpdate("site_address", request.getParameter("siteAddress"));
+                settingService.settingSave("site_name", request.getParameter("siteName"));
+                settingService.settingSave("site_email", request.getParameter("siteEmail"));
+                settingService.settingSave("site_phone", request.getParameter("sitePhone"));
+                settingService.settingSave("site_address", request.getParameter("siteAddress"));
 
             } else if ("notification".equals(action))
             {
-                settingService.settingUpdate("notify_new_orders", String.valueOf(request.getParameter("newOrders") != null));
-                settingService.settingUpdate("notify_newsletter", String.valueOf(request.getParameter("newSletterSignup") != null));
+                settingService.settingSave("notify_new_orders", String.valueOf(request.getParameter("newOrders") != null));
+                settingService.settingSave("notify_newsletter", String.valueOf(request.getParameter("newSletterSignup") != null));
 
             } else if ("account".equals(action))
             {
