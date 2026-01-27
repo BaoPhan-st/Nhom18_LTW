@@ -2,7 +2,7 @@
 <%@ page import="model.user.User" %>
 <%
     User currentUser = (User) session.getAttribute("currentUser");
-    if (currentUser != null) {
+    if (currentUser != null ) {
         response.sendRedirect(request.getContextPath() + "/menu.jsp");
         return;
     }
