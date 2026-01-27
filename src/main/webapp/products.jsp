@@ -67,8 +67,6 @@
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
-                <div class="shop-layout"></div>
-
                 <div class="shop-layout">
                     <aside class="filter-sidebar">
                         <form id="filter-form" action="${pageContext.request.contextPath}/products" method="get">
@@ -95,7 +93,7 @@
                                                     test="${selectedBrands != null && selectedBrands.contains(brand.id)}">checked
                                                 </c:if> />
                                                 <label for="brand-${brand.id}" class="brand-label">
-                                                    <img src="${brand.logoUrl}" alt="${brand.name}" class="brand-icon"
+                                                    <img src="${brand.logoURL}" alt="${brand.name}" class="brand-icon"
                                                         onerror="this.style.display='none'" />
                                                     <span>${brand.name}</span>
                                                 </label>
