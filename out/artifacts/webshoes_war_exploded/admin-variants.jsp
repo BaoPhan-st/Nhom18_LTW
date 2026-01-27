@@ -120,8 +120,8 @@
                 <tr>
                     <td>${pv.id}</td>
                     <td>${pv.productId}</td>
-                    <td>${pv.sizeName}</td>
-                    <td>${pv.colorName}</td>
+                    <td>${pv.sizeId}</td>
+                    <td>${pv.colorId}</td>
                     <td>${pv.stock}</td>
                     <td>
                         <c:choose>

@@ -25,35 +25,52 @@ public class AdminProductController extends HttpServlet
     {
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/admin/variants"))
-        {
-            request.setAttribute("variants", variantDao.findAllActive());
+        if (uri.endsWith("/admin/variants")) {
+
+            Integer productId = null;
+            Integer sizeId = null;
+            Integer colorId = null;
+
+            try {
+                if (request.getParameter("productId") != null &&
+                        !request.getParameter("productId").isBlank())
+                    productId = Integer.parseInt(request.getParameter("productId"));
+
+                if (request.getParameter("sizeId") != null &&
+                        !request.getParameter("sizeId").isBlank())
+                    sizeId = Integer.parseInt(request.getParameter("sizeId"));
+
+                if (request.getParameter("colorId") != null &&
+                        !request.getParameter("colorId").isBlank())
+                    colorId = Integer.parseInt(request.getParameter("colorId"));
+
+            } catch (NumberFormatException ignored) {}
+
+            // ===== LIST (TABLE) =====
+            List<?> variants;
+            if (productId != null || sizeId != null || colorId != null) {
+                variants = variantDao.findWithFilter(productId, sizeId, colorId);
+            } else {
+                variants = variantDao.findAllActive();
+            }
+            request.setAttribute("variants", variants);
+
+            // ===== EDIT (FORM) =====
+            if ("true".equals(request.getParameter("edit"))
+                    && productId != null && sizeId != null && colorId != null) {
+
+                var list = variantDao.findWithFilter(productId, sizeId, colorId);
+                if (!list.isEmpty()) {
+                    request.setAttribute("variant", list.get(0));
+                }
+            }
+
             request.setAttribute("sizes", sizeDao.findAll());
             request.setAttribute("colors", colorDao.findAll());
-            if ("true".equals(request.getParameter("edit")))
-            {
-                Integer productId = null;
-                Integer sizeId = null;
-                Integer colorId = null;
-                try {
-                    if (request.getParameter("productId") != null &&
-                        !request.getParameter("productId").isBlank())
-                        productId = Integer.parseInt(request.getParameter("productId"));
-                    if (request.getParameter("sizeId") != null &&
-                            !request.getParameter("sizeId").isBlank())
-                        productId = Integer.parseInt(request.getParameter("sizeId"));
-                    if (request.getParameter("colorId") != null &&
-                            !request.getParameter("colorId").isBlank())
-                        productId = Integer.parseInt(request.getParameter("colorId"));
-
-                } catch (NumberFormatException e) { e.printStackTrace();}
-                request.setAttribute("variant", variantDao.findByProduct(productId));
-            }
 
             request.setAttribute("contentPage", "/admin-variants.jsp");
             request.setAttribute("active", "admin/variants");
-        }
-        else
+        } else
         {
             List<Product> products = productDao.findAll();
 

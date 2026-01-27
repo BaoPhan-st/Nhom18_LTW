@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/dao/BannerDao.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/dao/Order/OrderDao.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/dao/Product/ProductDao.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/dao/Product/ProductVariantDao.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/dao/Product/SizeDao.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/dao/UserDao.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/dao/admin/user/CollectionDao.java" dialect="GenericSQL" />

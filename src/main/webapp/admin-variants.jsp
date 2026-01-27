@@ -101,7 +101,6 @@
         </form>
     </div>
 
-
     <div class="table-wrapper">
         <table class="data-table">
             <thead>
@@ -116,16 +115,18 @@
             </tr>
             </thead>
             <tbody>
+
             <c:forEach var="pv" items="${variants}">
                 <tr>
                     <td>${pv.id}</td>
                     <td>${pv.productId}</td>
-                    <td>${pv.sizeName}</td>
-                    <td>${pv.colorName}</td>
+                    <td>${pv.sizeId}</td>
+                    <td>${pv.colorId}</td>
                     <td>${pv.stock}</td>
+
                     <td>
                         <c:choose>
-                            <c:when test="${pv.isDiscontinueVariant == 1}">
+                            <c:when test="${pv.discontinueVariant}">
                                 <span class="status off">Ngừng bán</span>
                             </c:when>
                             <c:otherwise>
@@ -133,6 +134,7 @@
                             </c:otherwise>
                         </c:choose>
                     </td>
+
                     <td class="actions">
                         <a href="${pageContext.request.contextPath}/admin/variants
                         ?edit=true
@@ -142,7 +144,7 @@
                            class="btn edit">Sửa</a>
 
                         <c:choose>
-                            <c:when test="${pv.isDiscontinueVariant == 0}">
+                            <c:when test="${!pv.discontinueVariant}">
                                 <a href="${pageContext.request.contextPath}/admin/variants
                                 ?disable=true
                                 &productId=${pv.productId}
@@ -170,12 +172,11 @@
 
             <c:if test="${empty variants}">
                 <tr>
-                    <td colspan="5" class="empty">Chưa có biến thể</td>
+                    <td colspan="7" class="empty">Chưa có biến thể</td>
                 </tr>
             </c:if>
+
             </tbody>
         </table>
-
     </div>
-
 </div>
