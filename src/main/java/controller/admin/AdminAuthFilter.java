@@ -34,7 +34,8 @@ public class AdminAuthFilter implements Filter
         // test
         boolean test = Boolean.parseBoolean(request.getServletContext().getInitParameter("test"));
 
-        if (test)
+        if (test && !uri.endsWith("/admin/login") && !uri.endsWith("/admin/logout"))
+
         {
             HttpSession session = request.getSession(true);
             if (session.getAttribute("adminId") == null)
