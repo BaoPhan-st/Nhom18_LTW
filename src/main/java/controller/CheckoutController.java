@@ -1,6 +1,5 @@
 package controller;
 
-import DTO.SessionOrderDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,14 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.user.CartItem;
 import model.user.User;
+import services.CheckoutService;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 import java.util.Map;
 
 @WebServlet("/checkout")
 public class CheckoutController extends HttpServlet {
+
+    private final CheckoutService checkoutService = new CheckoutService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -44,27 +45,19 @@ public class CheckoutController extends HttpServlet {
             return;
         }
 
+        BigDecimal shippingFee =
+                (BigDecimal) session.getAttribute("shippingFeeRaw");
+
+        if (shippingFee == null) {
+            shippingFee = BigDecimal.ZERO;
+        }
+
         try {
-            // Lưu đơn hàng vào database (nếu có)
-            // orderService.placeOrder(user.getId(), cart);
-
-            // Tạo đơn hàng từ giỏ hàng và lưu vào session
-            SessionOrderDTO newOrder = SessionOrderDTO.fromCart(cart);
-
-            // Lấy danh sách đơn hàng từ session (nếu có)
-            List<SessionOrderDTO> orderHistory = (List<SessionOrderDTO>) session.getAttribute("orderHistory");
-            if (orderHistory == null) {
-                orderHistory = new ArrayList<>();
-            }
-
-            // Thêm đơn hàng mới vào đầu danh sách
-            orderHistory.add(0, newOrder);
-
-            // Lưu lại vào session
-            session.setAttribute("orderHistory", orderHistory);
-
-            // Lưu đơn hàng vừa đặt để hiển thị trên trang thành công
-            session.setAttribute("lastOrder", newOrder);
+            checkoutService.placeOrder(
+                    user.getId(),
+                    cart,
+                    shippingFee
+            );
 
             if ("BUY_NOW".equals(mode)) {
                 session.removeAttribute("checkoutCart");
@@ -73,7 +66,9 @@ public class CheckoutController extends HttpServlet {
                 session.removeAttribute("cart");
             }
 
-            req.setAttribute("successMessage", " Đặt hàng thành công!");
+            session.removeAttribute("shippingFeeRaw");
+
+            req.setAttribute("successMessage", "Đặt hàng thành công!");
             req.getRequestDispatcher("/order-success.jsp").forward(req, resp);
 
         } catch (RuntimeException e) {

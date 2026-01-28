@@ -16,7 +16,6 @@ public class ProductDao {
         this.jdbi = JDBIConnector.getJdbi();
     }
 
-    // ===== FIND =====
     public Product findById (int id) {
         String sql = "SELECT * FROM product WHERE id = :id AND is_available = 1";
         return jdbi.withHandle(h ->
@@ -42,7 +41,6 @@ public class ProductDao {
         );
     }
 
-    // ===== INSERT =====
     public void insert (Product product) {
         String sql = """
                     INSERT INTO product(name, description, price, brand_id,
@@ -58,7 +56,6 @@ public class ProductDao {
         );
     }
 
-    // ===== UPDATE =====
     public void update (Product product) {
         String sql = """
                     UPDATE product
@@ -76,7 +73,6 @@ public class ProductDao {
         );
     }
 
-    // ===== DELETE =====
     public void delete (int id) {
         String sql = "UPDATE product SET is_discontinue = 1 WHERE id = :id";
         jdbi.useHandle(h ->
@@ -159,7 +155,6 @@ public class ProductDao {
         }
     }
 
-
     public boolean isNew (int id) {
         String sql = """
                     SELECT COUNT(*)
@@ -205,11 +200,7 @@ public class ProductDao {
         }
     }
 
-    public List<Product> getRelatedProduct (
-            int productId,
-            int brandId,
-            BigDecimal price,
-            int limit) {
+    public List<Product> getRelatedProduct (int productId, int brandId, BigDecimal price, int limit) {
         String sql = """
                     SELECT *
                     FROM product
@@ -434,14 +425,14 @@ public class ProductDao {
         });
     }
 
-    public List<Product> getNewestProducts(int limit)
-    {
+    public List<Product> getNewestProducts(int limit) {
         String sql = """
-                SELECT *
-                FROM product
-                ORDER BY added_at
-                LIMIT :limit
-                """;
+        SELECT *
+        FROM product
+        ORDER BY added_at DESC
+        LIMIT :limit
+    """;
+
         return JDBIConnector.getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("limit", limit)
@@ -449,6 +440,7 @@ public class ProductDao {
                         .list()
         );
     }
+
 
     public List<Product> findAll ()
     {

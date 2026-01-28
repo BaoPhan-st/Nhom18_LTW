@@ -211,40 +211,29 @@ public class ProductVariantDao {
         }
     }
 
-    public int lockAndGetStock(Handle handle, int productId, int colorId, int sizeId) {
-        String sql = """
-        SELECT stock
-        FROM product_variant
-        WHERE product_id = :productId
-          AND color_id = :colorId
-          AND size_id = :sizeId
-        FOR UPDATE
-    """;
 
-        return handle.createQuery(sql)
-                .bind("productId", productId)
-                .bind("colorId", colorId)
-                .bind("sizeId", sizeId)
-                .mapTo(int.class)
-                .one();
-    }
-
-    public void updateStock(Handle handle, int productId, int colorId, int sizeId, int newStock) {
+    public void updateStock(Handle handle, int productId, int colorId, int sizeId, int quantity) {
         String sql = """
         UPDATE product_variant
-        SET stock = :stock
+        SET stock = stock - :quantity
         WHERE product_id = :productId
           AND color_id = :colorId
           AND size_id = :sizeId
+          AND stock >= :quantity
     """;
 
-        handle.createUpdate(sql)
-                .bind("stock", newStock)
+        int affected = handle.createUpdate(sql)
+                .bind("quantity", quantity)
                 .bind("productId", productId)
                 .bind("colorId", colorId)
                 .bind("sizeId", sizeId)
                 .execute();
+
+        if (affected == 0) {
+            throw new RuntimeException("Không đủ tồn kho");
+        }
     }
+
 
     // ===== ADMIN: FIND ALL ACTIVE VARIANTS =====
     public List<ProductVariant> findAllActive() {

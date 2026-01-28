@@ -40,7 +40,7 @@
       <jsp:include page="header.jsp" />
       <main>
         <article>
-          <!-- HERO SLIDER - Hiển thị nhiều banner chủ đề, click vào chuyển đến collection tương ứng -->
+          <!-- HERO SLIDER  -->
           <section class="banner-slide hero-slider">
             <div class="swiper-container hero-swiper">
               <div class="swiper-wrapper">

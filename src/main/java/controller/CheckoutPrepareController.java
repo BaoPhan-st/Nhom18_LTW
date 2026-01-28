@@ -55,6 +55,8 @@ public class CheckoutPrepareController extends HttpServlet {
 
         BigDecimal shippingFeeR =
                 BigDecimal.valueOf(50000);
+        session.setAttribute("shippingFeeRaw", shippingFeeR);
+
 
         BigDecimal grandTotalR =
                 subTotalR.add(shippingFeeR);

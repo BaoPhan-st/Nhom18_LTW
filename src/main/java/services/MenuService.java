@@ -11,11 +11,10 @@ public class MenuService {
 
     public MenuDTO buildMenuPage(String brandId) {
         MenuDTO dto = new MenuDTO();
-        dto.setBannerMenu(bannerDao.findByPosition("menu_top"));
         dto.setBannerSpecialP(bannerDao.findByPosition("menu_special-product"));
         dto.setSpecialProduct(productService.findTopCheapestProductsInPromotion(9));
         dto.setBannerCollection(bannerDao.findByPositions("menu_collection"));
-        dto.setBannerSlider(bannerDao.findByPositions("products_slide")); // Slider banners
+        dto.setBannerSlider(bannerDao.findByPositions("products_slide"));
         dto.setBrandList(brandDao.findAllActive());
 
         if ("all".equalsIgnoreCase(brandId)) {

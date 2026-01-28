@@ -16,13 +16,7 @@ public class OrderDao {
 
     public OrderDao () {jdbi = JDBIConnector.getJdbi();}
 
-    public int insertOrder(
-            Handle handle,
-            int userId,
-            BigDecimal subTotal,
-            BigDecimal shippingFee,
-            BigDecimal grandTotal
-    ) {
+    public int insertOrder(Handle handle, int userId, BigDecimal subTotal, BigDecimal shippingFee, BigDecimal grandTotal) {
         return handle.createUpdate("""
         INSERT INTO orders
         (user_id, sub_total, shipping_fee, grand_total,
