@@ -69,7 +69,7 @@ public class CheckoutController extends HttpServlet {
             session.removeAttribute("shippingFeeRaw");
 
             req.setAttribute("successMessage", "Đặt hàng thành công!");
-            req.getRequestDispatcher("/order-success.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/order-success");
 
         } catch (RuntimeException e) {
             req.setAttribute("errorMessage", e.getMessage());
