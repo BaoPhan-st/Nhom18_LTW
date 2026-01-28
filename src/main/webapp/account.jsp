@@ -149,7 +149,7 @@
                                                     <p>Theo dõi trạng thái và lịch sử các đơn hàng của bạn.</p>
 
                                                     <c:choose>
-                                                        <c:when test="${empty sessionScope.orderHistory}">
+                                                        <c:when test="${empty orderHistory}">
                                                             <div class="empty-orders">
                                                                 <ion-icon name="cart-outline"
                                                                     style="font-size: 64px; color: #ccc;"></ion-icon>
@@ -164,8 +164,7 @@
                                                         </c:when>
                                                         <c:otherwise>
                                                             <div class="order-list">
-                                                                <c:forEach var="order"
-                                                                    items="${sessionScope.orderHistory}">
+                                                                <c:forEach var="order" items="${orderHistory}">
                                                                     <div class="order-card">
                                                                         <div class="order-header">
                                                                             <div class="order-info">

@@ -27,7 +27,8 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(int id, String name, String description, BigDecimal price, int brandId, LocalDateTime addedAt, boolean discontinue, boolean available) {
+    public Product(int id, String name, String description, BigDecimal price, int brandId, LocalDateTime addedAt,
+            boolean discontinue, boolean available) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -98,8 +99,8 @@ public class Product implements Serializable {
         return available;
     }
 
-    public Object setAvailable(boolean available) {
+    @ColumnName("is_available")
+    public void setAvailable(boolean available) {
         this.available = available;
-        return null;
     }
 }

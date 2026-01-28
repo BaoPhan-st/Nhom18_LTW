@@ -9,22 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * DAO cho CollectionRule - Quản lý rules của AUTO Collection
- * 
- * AUTO Collection (ruleSet_type = 'AUTO') tự động lọc sản phẩm dựa trên rules:
- * - fieldName: Trường để lọc (brand_id, price, name...)
- * - operator: Toán tử (=, !=, <, >, <=, >=, contains...)
- * - value: Giá trị so sánh
- * 
- * VD: Collection Nike có rule: fieldName="brand_id", operator="=", value="1"
- * => Tự động lấy tất cả sản phẩm có brand_id = 1
- */
 public class CollectionRuleDao {
 
     private final Jdbi jdbi;
 
-    // Các operator được hỗ trợ
     public static final String OP_EQUALS = "=";
     public static final String OP_NOT_EQUALS = "!=";
     public static final String OP_LESS_THAN = "<";
@@ -35,7 +23,7 @@ public class CollectionRuleDao {
     public static final String OP_STARTS_WITH = "starts_with";
     public static final String OP_ENDS_WITH = "ends_with";
 
-    // Các field được phép lọc
+
     public static final String FIELD_PRICE = "price";
     public static final String FIELD_BRAND_ID = "brand_id";
     public static final String FIELD_NAME = "name";
@@ -45,9 +33,7 @@ public class CollectionRuleDao {
         this.jdbi = JDBIConnector.getJdbi();
     }
 
-    /**
-     * Lấy tất cả rules của một collection
-     */
+
     public List<CollectionRule> findByCollectionId(int collectionId) {
         String sql = """
                     SELECT * FROM collection_rule
@@ -66,11 +52,8 @@ public class CollectionRuleDao {
         }
     }
 
-    /**
-     * Thêm rule mới cho collection
-     * 
-     * @return ID của rule vừa tạo, -1 nếu lỗi
-     */
+
+
     public int insert(CollectionRule rule) {
         String sql = """
                     INSERT INTO collection_rule (collection_id, fieldName, operator, value)
@@ -92,9 +75,7 @@ public class CollectionRuleDao {
         }
     }
 
-    /**
-     * Cập nhật rule
-     */
+
     public boolean update(CollectionRule rule) {
         String sql = """
                     UPDATE collection_rule
@@ -116,9 +97,6 @@ public class CollectionRuleDao {
         }
     }
 
-    /**
-     * Xóa rule
-     */
     public boolean delete(int ruleId) {
         String sql = "DELETE FROM collection_rule WHERE id = :id";
 
@@ -133,9 +111,6 @@ public class CollectionRuleDao {
         }
     }
 
-    /**
-     * Xóa tất cả rules của collection
-     */
     public boolean deleteByCollectionId(int collectionId) {
         String sql = "DELETE FROM collection_rule WHERE collection_id = :collectionId";
 
@@ -150,13 +125,6 @@ public class CollectionRuleDao {
         }
     }
 
-    /**
-     * ⭐ CORE LOGIC: Lấy sản phẩm thỏa mãn rules của Smart Collection
-     * 
-     * @param collectionId ID của collection
-     * @param ruleSetType  "AND" hoặc "OR"
-     * @return Danh sách sản phẩm thỏa mãn
-     */
     public List<Product> getProductsByRules(int collectionId, String ruleSetType) {
         List<CollectionRule> rules = findByCollectionId(collectionId);
 
@@ -243,9 +211,7 @@ public class CollectionRuleDao {
         }
     }
 
-    /**
-     * Đếm số sản phẩm thỏa mãn rules
-     */
+
     public int countProductsByRules(int collectionId, String ruleSetType) {
         List<CollectionRule> rules = findByCollectionId(collectionId);
 
@@ -284,11 +250,6 @@ public class CollectionRuleDao {
         }
     }
 
-    /**
-     * Build SQL condition từ rule
-     * VD: rule(fieldName="price", operator="<", value="2000000")
-     * => "price < :param0"
-     */
     private String buildRuleCondition(CollectionRule rule, List<Object> params, int paramIndex) {
         String field = rule.getFieldName();
         String operator = rule.getOperator();

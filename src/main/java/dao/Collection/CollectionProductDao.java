@@ -7,13 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * DAO cho CollectionProduct - Quản lý sản phẩm trong MANUAL Collection
- * 
- * MANUAL Collection (ruleSet_type = 'MANUAL'):
- * - Admin thêm sản phẩm thủ công vào collection qua bảng này
- * - sort_order: Thứ tự hiển thị sản phẩm trong collection
- */
+
 public class CollectionProductDao {
 
     private final Jdbi jdbi;
@@ -22,10 +16,6 @@ public class CollectionProductDao {
         this.jdbi = JDBIConnector.getJdbi();
     }
 
-    /**
-     * Lấy danh sách sản phẩm trong một collection (Manual Collection)
-     * Sắp xếp theo sort_order
-     */
     public List<Product> getProductsInCollection(int collectionId) {
         String sql = """
                     SELECT p.*
@@ -47,9 +37,6 @@ public class CollectionProductDao {
         }
     }
 
-    /**
-     * Lấy danh sách sản phẩm với phân trang
-     */
     public List<Product> getProductsInCollectionPaged(int collectionId, int limit, int offset) {
         String sql = """
                     SELECT p.*
@@ -74,9 +61,7 @@ public class CollectionProductDao {
         }
     }
 
-    /**
-     * Đếm số sản phẩm trong collection
-     */
+
     public int countProductsInCollection(int collectionId) {
         String sql = """
                     SELECT COUNT(*)
@@ -97,10 +82,7 @@ public class CollectionProductDao {
         }
     }
 
-    /**
-     * Thêm sản phẩm vào collection
-     * sort_order tự động = MAX + 1 (thêm vào cuối)
-     */
+
     public boolean addProductToCollection(int collectionId, int productId) {
         String sql = """
                     INSERT INTO collection_product (collection_id, product_id, sort_order)
@@ -121,9 +103,7 @@ public class CollectionProductDao {
         }
     }
 
-    /**
-     * Xóa sản phẩm khỏi collection
-     */
+
     public boolean removeProductFromCollection(int collectionId, int productId) {
         String sql = """
                     DELETE FROM collection_product
@@ -142,9 +122,7 @@ public class CollectionProductDao {
         }
     }
 
-    /**
-     * Cập nhật thứ tự sản phẩm trong collection
-     */
+
     public boolean updateSortOrder(int collectionId, int productId, int newSortOrder) {
         String sql = """
                     UPDATE collection_product
@@ -165,9 +143,7 @@ public class CollectionProductDao {
         }
     }
 
-    /**
-     * Kiểm tra sản phẩm đã có trong collection chưa
-     */
+
     public boolean isProductInCollection(int collectionId, int productId) {
         String sql = """
                     SELECT COUNT(*) FROM collection_product
@@ -186,9 +162,7 @@ public class CollectionProductDao {
         }
     }
 
-    /**
-     * Xóa tất cả sản phẩm khỏi collection
-     */
+
     public boolean clearCollection(int collectionId) {
         String sql = "DELETE FROM collection_product WHERE collection_id = :collectionId";
 

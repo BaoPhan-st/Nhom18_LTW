@@ -13,19 +13,16 @@ import services.UserServices;
 import java.io.IOException;
 
 @WebServlet("/admin/login")
-public class AdminLoginController extends HttpServlet
-{
+public class AdminLoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException
-    {
+            throws IOException {
         response.sendRedirect(request.getContextPath() + "/admin/dashboard");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException
-    {
+            throws IOException {
         response.sendRedirect(request.getContextPath() + "/admin/dashboard");
     }
 }

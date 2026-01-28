@@ -8,8 +8,26 @@ public class AccountServices {
 
     private final UserDao userDao;
 
+    private final dao.Order.OrderDao orderDao;
+    private final dao.Order.OrderDetailDao orderDetailDao;
+
     public AccountServices() {
         this.userDao = new UserDao();
+        this.orderDao = new dao.Order.OrderDao();
+        this.orderDetailDao = new dao.Order.OrderDetailDao();
+    }
+
+    public java.util.List<model.Order.Order> getOrderHistory(int userId) {
+        // 1. Lấy danh sách đơn hàng
+        java.util.List<model.Order.Order> orders = orderDao.findWithFilter(null, userId, null);
+
+        // 2. Lấy chi tiết cho từng đơn hàng
+        for (model.Order.Order order : orders) {
+            java.util.List<model.Order.OrderDetailDTO> items = orderDetailDao.findByOrderId(order.getId());
+            order.setItems(items);
+        }
+
+        return orders;
     }
 
     public boolean updateUserProfile(int userId, String fullName, String phone, String address) {

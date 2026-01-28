@@ -11,32 +11,29 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-@WebServlet({"/admin/accounts", "/admin/wishlist"})
-public class AdminUserController extends HttpServlet
-{
+@WebServlet({ "/admin/accounts", "/admin/wishlist" })
+public class AdminUserController extends HttpServlet {
     private final UserDao userDao = new UserDao();
     private final WishlistDao wishlistDao = new WishlistDao();
 
     @Override
-    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/admin/wishlist"))
-        {
+        if (uri.endsWith("/admin/wishlist")) {
             // Load wishlist data
             request.setAttribute("wishlists", wishlistDao.findAll());
             request.setAttribute("contentPage", "/admin-wishlist.jsp");
             request.setAttribute("active", "admin/wishlist");
-        } else
-        {
+        } else {
             // DELETE BUTTON
             String deleteId = request.getParameter("delete");
-            if (deleteId != null)
-            {
+            if (deleteId != null) {
                 try {
                     userDao.delete(Integer.parseInt(deleteId));
-                } catch (NumberFormatException ignored) {}
+                } catch (NumberFormatException ignored) {
+                }
                 response.sendRedirect(request.getContextPath() + "/admin/accounts");
                 return;
             }
@@ -45,42 +42,37 @@ public class AdminUserController extends HttpServlet
             User user;
             String editId = request.getParameter("user");
 
-            if (editId != null)
-            {
+            if (editId != null) {
                 try {
                     user = userDao.findById(Integer.parseInt(editId));
-                    if (user == null)
-                    {
+                    if (user == null) {
                         response.sendRedirect(request.getContextPath() + "/admin/accounts");
                         return;
                     }
-                } catch (NumberFormatException ignored)
-                {
+                } catch (NumberFormatException ignored) {
                     response.sendRedirect(request.getContextPath() + "/admin/accounts");
                     return;
                 }
-            } else
-            {
+            } else {
                 user = null;
             }
 
             // load list
             request.setAttribute("user", user);
             request.setAttribute("users", userDao.findAll());
-            request.setAttribute("contentPage", "/admin-accounts.jsp");
+            request.setAttribute("contentPage", "/admin-views/admin-accounts.jsp");
             request.setAttribute("active", "admin/accounts");
         }
         request.getRequestDispatcher("/Admin.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/admin/wishlist"))
-        {
+        if (uri.endsWith("/admin/wishlist")) {
             response.sendRedirect(request.getContextPath() + "/admin/wishlist");
             return;
         }
@@ -90,22 +82,18 @@ public class AdminUserController extends HttpServlet
         boolean isCreate = (id == null || id.isEmpty());
 
         User u;
-        if (isCreate)
-        {
+        if (isCreate) {
             u = new User();
             u.setCreatedAt(LocalDateTime.now());
             u.setIsActive(true);
-        } else
-        {
+        } else {
             try {
                 u = userDao.findById(Integer.parseInt(id));
-                if (u == null)
-                {
+                if (u == null) {
                     response.sendRedirect(request.getContextPath() + "/admin/accounts");
                     return;
                 }
-            } catch (NumberFormatException ignored)
-            {
+            } catch (NumberFormatException ignored) {
                 response.sendRedirect(request.getContextPath() + "/admin/accounts");
                 return;
             }
@@ -119,27 +107,22 @@ public class AdminUserController extends HttpServlet
         u.setIsActive(Boolean.parseBoolean(request.getParameter("is_active")));
 
         String role = request.getParameter("role");
-        if (role != null)
-        {
+        if (role != null) {
             role = role.trim().toLowerCase();
         }
-        if (!"admin".equals(role) && !"user".equals(role))
-        {
+        if (!"admin".equals(role) && !"user".equals(role)) {
             role = "user";
         }
         u.setRole(role);
 
         String rawPassword = request.getParameter("password");
-        if (rawPassword != null && !rawPassword.isBlank())
-        {
+        if (rawPassword != null && !rawPassword.isBlank()) {
             u.setPasswordHash(BCrypt.hashpw(rawPassword, BCrypt.gensalt()));
         }
 
-        if (isCreate)
-        {
+        if (isCreate) {
             userDao.insertUser(u);
-        } else
-        {
+        } else {
             userDao.update(u);
         }
 

@@ -1,23 +1,27 @@
 package model.Collection;
 
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
 import java.io.Serializable;
 
-public class Collection  implements Serializable {
+public class Collection implements Serializable {
     private int id;
     private String name;
     private String slug;
-    private String ruleSet_type;
-    private boolean is_active;
+    @ColumnName("rule_set_type")
+    private String ruleSetType;
+
+    @ColumnName("is_active")
+    private boolean active;
 
     public Collection() {
     }
 
-    public Collection(int id, String name, String slug, String ruleSet_type, boolean is_active) {
+    public Collection(int id, String name, String slug, String ruleSetType, boolean active) {
         this.id = id;
         this.name = name;
         this.slug = slug;
-        this.ruleSet_type = ruleSet_type;
-        this.is_active = is_active;
+        this.ruleSetType = ruleSetType;
+        this.active = active;
     }
 
     public int getId() {
@@ -45,18 +49,18 @@ public class Collection  implements Serializable {
     }
 
     public String getRuleSetType() {
-        return ruleSet_type;
+        return ruleSetType;
     }
 
-    public void setRuleSetType(String ruleSet_type) {
-        this.ruleSet_type = ruleSet_type;
+    public void setRuleSetType(String ruleSetType) {
+        this.ruleSetType = ruleSetType;
     }
 
     public boolean isActive() {
-        return is_active;
+        return active;
     }
 
-    public void setActive(boolean is_active) {
-        this.is_active = is_active;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

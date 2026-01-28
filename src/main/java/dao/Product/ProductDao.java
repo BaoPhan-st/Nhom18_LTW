@@ -12,79 +12,70 @@ public class ProductDao {
 
     private final Jdbi jdbi;
 
-    public ProductDao () {
+    public ProductDao() {
         this.jdbi = JDBIConnector.getJdbi();
     }
 
-    public Product findById (int id) {
-        String sql = "SELECT * FROM product WHERE id = :id AND is_available = 1";
-        return jdbi.withHandle(h ->
-                h.createQuery(sql)
-                        .bind("id", id)
-                        .mapToBean(Product.class)
-                        .findOne()
-                        .orElse(null)
-        );
+    public Product findById(int id) {
+        String sql = "SELECT * FROM product WHERE id = :id";
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .bind("id", id)
+                .mapToBean(Product.class)
+                .findOne()
+                .orElse(null));
     }
 
-    public List<Product> findAllActive () {
+    public List<Product> findAllActive() {
         String sql = """
                     SELECT * FROM product
                     WHERE is_available = 1 AND is_discontinue = 0
                     ORDER BY added_at DESC
                 """;
 
-        return jdbi.withHandle(h ->
-                h.createQuery(sql)
-                        .mapToBean(Product.class)
-                        .list()
-        );
+        return jdbi.withHandle(h -> h.createQuery(sql)
+                .mapToBean(Product.class)
+                .list());
     }
 
-    public void insert (Product product) {
+    public void insert(Product product) {
         String sql = """
                     INSERT INTO product(name, description, price, brand_id,
                                         added_at, is_discontinue, is_available)
                     VALUES(:name, :description, :price, :brandId,
-                           NOW(), 0, 1)
+                           NOW(), 0, :available)
                 """;
 
-        jdbi.useHandle(h ->
-                h.createUpdate(sql)
-                        .bindBean(product)
-                        .execute()
-        );
+        jdbi.useHandle(h -> h.createUpdate(sql)
+                .bindBean(product)
+                .execute());
     }
 
-    public void update (Product product) {
+    public void update(Product product) {
         String sql = """
                     UPDATE product
                     SET name = :name,
                         description = :description,
                         price = :price,
-                        brand_id = :brandId
+                        brand_id = :brandId,
+                        is_available = :available
                     WHERE id = :id
                 """;
 
-        jdbi.useHandle(h ->
-                h.createUpdate(sql)
-                        .bindBean(product)
-                        .execute()
-        );
+        jdbi.useHandle(h -> h.createUpdate(sql)
+                .bindBean(product)
+                .execute());
     }
 
-    public void delete (int id) {
+    public void delete(int id) {
         String sql = "UPDATE product SET is_discontinue = 1 WHERE id = :id";
-        jdbi.useHandle(h ->
-                h.createUpdate(sql)
-                        .bind("id", id)
-                        .execute()
-        );
+        jdbi.useHandle(h -> h.createUpdate(sql)
+                .bind("id", id)
+                .execute());
     }
 
-    public List<Product> findByBrandLimit (int brandId, int limit) {
+    public List<Product> findByBrandLimit(int brandId, int limit) {
         String sql = """
-                
+
                             SELECT p.* FROM product p
                             JOIN brand b ON p.brand_id = b.id
                             WHERE (:brandId IS NULL OR p.brand_id = :brandId)
@@ -94,16 +85,14 @@ public class ProductDao {
                             LIMIT :limit
                 """;
 
-        return jdbi.withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("brandId", brandId)
-                        .bind("limit", limit)
-                        .mapToBean(Product.class)
-                        .list()
-        );
+        return jdbi.withHandle(handle -> handle.createQuery(sql)
+                .bind("brandId", brandId)
+                .bind("limit", limit)
+                .mapToBean(Product.class)
+                .list());
     }
 
-    public List<Product> findProductsInPromotion () {
+    public List<Product> findProductsInPromotion() {
         String sql = """
                     SELECT DISTINCT p.*
                     FROM product p
@@ -116,18 +105,16 @@ public class ProductDao {
                 """;
 
         try {
-            return jdbi.withHandle(h ->
-                    h.createQuery(sql)
-                            .mapToBean(Product.class)
-                            .list()
-            );
+            return jdbi.withHandle(h -> h.createQuery(sql)
+                    .mapToBean(Product.class)
+                    .list());
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyList();
         }
     }
 
-    public List<Product> findNewestByBrandLimit (int brandId, int limit) {
+    public List<Product> findNewestByBrandLimit(int brandId, int limit) {
         String sql = """
                     SELECT p.*
                     FROM product p
@@ -142,20 +129,18 @@ public class ProductDao {
                 """;
 
         try {
-            return jdbi.withHandle(handle ->
-                    handle.createQuery(sql)
-                            .bind("brandId", brandId)
-                            .bind("limit", limit)
-                            .mapToBean(Product.class)
-                            .list()
-            );
+            return jdbi.withHandle(handle -> handle.createQuery(sql)
+                    .bind("brandId", brandId)
+                    .bind("limit", limit)
+                    .mapToBean(Product.class)
+                    .list());
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyList();
         }
     }
 
-    public boolean isNew (int id) {
+    public boolean isNew(int id) {
         String sql = """
                     SELECT COUNT(*)
                     FROM product
@@ -165,20 +150,18 @@ public class ProductDao {
                 """;
 
         try {
-            return jdbi.withHandle(h ->
-                    h.createQuery(sql)
-                            .bind("id", id)
-                            .mapTo(int.class)
-                            .findOne()
-                            .orElse(0) > 0
-            );
+            return jdbi.withHandle(h -> h.createQuery(sql)
+                    .bind("id", id)
+                    .mapTo(int.class)
+                    .findOne()
+                    .orElse(0) > 0);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    public String getDes (int productId) {
+    public String getDes(int productId) {
         String sql = """
                     SELECT description
                     FROM product
@@ -187,20 +170,18 @@ public class ProductDao {
                 """;
 
         try {
-            return jdbi.withHandle(h ->
-                    h.createQuery(sql)
-                            .bind("productId", productId)
-                            .mapTo(String.class)
-                            .findOne()
-                            .orElse("")
-            );
+            return jdbi.withHandle(h -> h.createQuery(sql)
+                    .bind("productId", productId)
+                    .mapTo(String.class)
+                    .findOne()
+                    .orElse(""));
         } catch (Exception e) {
             e.printStackTrace();
             return "";
         }
     }
 
-    public List<Product> getRelatedProduct (int productId, int brandId, BigDecimal price, int limit) {
+    public List<Product> getRelatedProduct(int productId, int brandId, BigDecimal price, int limit) {
         String sql = """
                     SELECT *
                     FROM product
@@ -217,50 +198,48 @@ public class ProductDao {
         BigDecimal maxPrice = price.multiply(new BigDecimal("1.2")); // +20%
 
         try {
-            return jdbi.withHandle(h ->
-                    h.createQuery(sql)
-                            .bind("productId", productId)
-                            .bind("brandId", brandId)
-                            .bind("price", price)
-                            .bind("minPrice", minPrice)
-                            .bind("maxPrice", maxPrice)
-                            .bind("limit", limit)
-                            .mapToBean(Product.class)
-                            .list()
-            );
+            return jdbi.withHandle(h -> h.createQuery(sql)
+                    .bind("productId", productId)
+                    .bind("brandId", brandId)
+                    .bind("price", price)
+                    .bind("minPrice", minPrice)
+                    .bind("maxPrice", maxPrice)
+                    .bind("limit", limit)
+                    .mapToBean(Product.class)
+                    .list());
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyList();
         }
     }
 
-    public List<Product> findActivePage (int limit, int offset) {
+    public List<Product> findActivePage(int limit, int offset) {
         return JDBIConnector.getJdbi().withHandle(h -> h.createQuery("""
-                            SELECT *
-                            FROM product
-                            WHERE is_available = 1
-                              AND is_discontinue = 0
-                            ORDER BY added_at DESC
-                            LIMIT :limit OFFSET :offset
-                        """)
+                    SELECT *
+                    FROM product
+                    WHERE is_available = 1
+                      AND is_discontinue = 0
+                    ORDER BY added_at DESC
+                    LIMIT :limit OFFSET :offset
+                """)
                 .bind("limit", limit)
                 .bind("offset", offset)
                 .mapToBean(Product.class)
                 .list());
     }
 
-    public int countActive () {
+    public int countActive() {
         return JDBIConnector.getJdbi().withHandle(h -> h.createQuery("""
-                            SELECT COUNT(*)
-                            FROM product
-                            WHERE is_available = 1
-                              AND is_discontinue = 0
-                        """)
+                    SELECT COUNT(*)
+                    FROM product
+                    WHERE is_available = 1
+                      AND is_discontinue = 0
+                """)
                 .mapTo(int.class)
                 .one());
     }
 
-    public List<Product> searchByName (String keyword, int limit, int offset) {
+    public List<Product> searchByName(String keyword, int limit, int offset) {
         String sql = """
                     SELECT * FROM product
                     WHERE is_available = 1 AND is_discontinue = 0
@@ -277,7 +256,7 @@ public class ProductDao {
     }
 
     // Đếm kết quả tìm kiếm
-    public int countSearchResults (String keyword) {
+    public int countSearchResults(String keyword) {
         String sql = """
                     SELECT COUNT(*) FROM product
                     WHERE is_available = 1 AND is_discontinue = 0
@@ -290,10 +269,10 @@ public class ProductDao {
     }
 
     // Lọc sản phẩm theo nhiều tiêu chí
-    public List<Product> filterProducts (String keyword, List<Integer> brandIds,
-                                         List<Integer> sizeIds, List<Integer> colorIds,
-                                         java.math.BigDecimal minPrice, java.math.BigDecimal maxPrice,
-                                         String sortBy, int limit, int offset) {
+    public List<Product> filterProducts(String keyword, List<Integer> brandIds,
+            List<Integer> sizeIds, List<Integer> colorIds,
+            java.math.BigDecimal minPrice, java.math.BigDecimal maxPrice,
+            String sortBy, int limit, int offset) {
         StringBuilder sql = new StringBuilder("""
                     SELECT DISTINCT p.* FROM product p
                     LEFT JOIN product_variant pv ON p.id = pv.product_id
@@ -369,9 +348,9 @@ public class ProductDao {
     }
 
     // Đếm số sản phẩm sau khi lọc
-    public int countFilteredProducts (String keyword, List<Integer> brandIds,
-                                      List<Integer> sizeIds, List<Integer> colorIds,
-                                      java.math.BigDecimal minPrice, java.math.BigDecimal maxPrice) {
+    public int countFilteredProducts(String keyword, List<Integer> brandIds,
+            List<Integer> sizeIds, List<Integer> colorIds,
+            java.math.BigDecimal minPrice, java.math.BigDecimal maxPrice) {
         StringBuilder sql = new StringBuilder("""
                     SELECT COUNT(DISTINCT p.id) FROM product p
                     LEFT JOIN product_variant pv ON p.id = pv.product_id
@@ -427,55 +406,44 @@ public class ProductDao {
 
     public List<Product> getNewestProducts(int limit) {
         String sql = """
-        SELECT *
-        FROM product
-        ORDER BY added_at DESC
-        LIMIT :limit
-    """;
+                    SELECT *
+                    FROM product
+                    ORDER BY added_at DESC
+                    LIMIT :limit
+                """;
 
-        return JDBIConnector.getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("limit", limit)
-                        .mapToBean(Product.class)
-                        .list()
-        );
+        return JDBIConnector.getJdbi().withHandle(handle -> handle.createQuery(sql)
+                .bind("limit", limit)
+                .mapToBean(Product.class)
+                .list());
     }
 
-
-    public List<Product> findAll ()
-    {
+    public List<Product> findAll() {
         String sql = """
                 SELECT *
                 FROM product
                 """;
-        return jdbi.withHandle(handle ->
-                handle.createQuery(sql)
-                        .mapToBean(Product.class)
-                        .list()
-        );
+        return jdbi.withHandle(handle -> handle.createQuery(sql)
+                .mapToBean(Product.class)
+                .list());
     }
 
-    public List<Product> findWithFilter(Integer id, String nameParam, Integer brandId)
-    {
+    public List<Product> findWithFilter(Integer id, String nameParam, Integer brandId) {
         StringBuilder sql = new StringBuilder("""
-                SELECT *
-            FROM product
-            WHERE is_available = 1
-              AND is_discontinue = 0
-        """);
+                        SELECT *
+                    FROM product
+                    WHERE 1=1
+                """);
 
-        if (id != null)
-        {
+        if (id != null) {
             sql.append(" AND id = :id");
         }
 
-        if (nameParam != null && !nameParam.isBlank())
-        {
+        if (nameParam != null && !nameParam.isBlank()) {
             sql.append(" AND name LIKE :name");
         }
 
-        if (brandId != null)
-        {
+        if (brandId != null) {
             sql.append(" AND brand_id = :brandId");
         }
 
@@ -484,18 +452,15 @@ public class ProductDao {
         return jdbi.withHandle(handle -> {
             var query = handle.createQuery(sql.toString());
 
-            if (id != null)
-            {
+            if (id != null) {
                 query.bind("id", id);
             }
 
-            if (nameParam != null && !nameParam.isBlank())
-            {
+            if (nameParam != null && !nameParam.isBlank()) {
                 query.bind("name", "%" + nameParam + "%");
             }
 
-            if (brandId != null)
-            {
+            if (brandId != null) {
                 query.bind("brandId", brandId);
             }
 

@@ -7,13 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * DAO cho Collection - Quản lý các bộ sưu tập sản phẩm
- * 
- * Collection có 2 loại dựa vào ruleSet_type:
- * 1. MANUAL: Admin thêm sản phẩm thủ công qua bảng collection_product
- * 2. AUTO: Sản phẩm tự động dựa trên rules trong bảng collection_rule
- */
+
 public class CollectionDao {
 
     private final Jdbi jdbi;
@@ -22,9 +16,7 @@ public class CollectionDao {
         this.jdbi = JDBIConnector.getJdbi();
     }
 
-    /**
-     * Tìm collection theo ID
-     */
+
     public Collection findById(int id) {
         String sql = """
                     SELECT * FROM collection
@@ -43,10 +35,7 @@ public class CollectionDao {
         }
     }
 
-    /**
-     * Tìm collection theo slug (dùng cho URL)
-     * VD: /collection/giay-nike-gia-re
-     */
+
     public Collection findBySlug(String slug) {
         String sql = """
                     SELECT * FROM collection
@@ -65,9 +54,6 @@ public class CollectionDao {
         }
     }
 
-    /**
-     * Lấy tất cả collection đang active
-     */
     public List<Collection> findAllActive() {
         String sql = "SELECT * FROM collection WHERE is_active = 1 ORDER BY name";
 
@@ -81,11 +67,7 @@ public class CollectionDao {
         }
     }
 
-    /**
-     * Tạo collection mới
-     * 
-     * @return ID của collection vừa tạo, -1 nếu lỗi
-     */
+
     public int insert(Collection collection) {
         String sql = """
                     INSERT INTO collection (name, slug, ruleSet_type, is_active)
@@ -107,9 +89,7 @@ public class CollectionDao {
         }
     }
 
-    /**
-     * Cập nhật collection
-     */
+
     public boolean update(Collection collection) {
         String sql = """
                     UPDATE collection
@@ -132,9 +112,7 @@ public class CollectionDao {
         }
     }
 
-    /**
-     * Xóa mềm collection (set is_active = 0)
-     */
+
     public boolean delete(int id) {
         String sql = "UPDATE collection SET is_active = 0 WHERE id = :id";
 
@@ -149,10 +127,7 @@ public class CollectionDao {
         }
     }
 
-    /**
-     * Kiểm tra collection có phải Smart Collection không
-     * (Smart Collection là collection có ít nhất 1 rule)
-     */
+
     public boolean isSmartCollection(int collectionId) {
         String sql = """
                     SELECT COUNT(*) FROM collection_rule

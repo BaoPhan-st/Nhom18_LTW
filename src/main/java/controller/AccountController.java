@@ -24,7 +24,7 @@ public class AccountController extends HttpServlet {
         if (currentUser == null)
             return;
 
-        // Flash message: lấy ra xong xóa để refresh không bị lặp
+
         HttpSession session = req.getSession(false);
         Object flashMsg = session.getAttribute("flashMsg");
         Object flashType = session.getAttribute("flashType");
@@ -34,6 +34,9 @@ public class AccountController extends HttpServlet {
             session.removeAttribute("flashMsg");
             session.removeAttribute("flashType");
         }
+
+        java.util.List<model.Order.Order> orderHistory = accountServices.getOrderHistory(currentUser.getId());
+        req.setAttribute("orderHistory", orderHistory);
 
         req.getRequestDispatcher("/account.jsp").forward(req, resp);
     }
@@ -57,8 +60,6 @@ public class AccountController extends HttpServlet {
         }
     }
 
-    // ================== Handlers ==================
-
     private void handleProfileUpdate(HttpServletRequest req, HttpServletResponse resp, User currentUser)
             throws IOException {
 
@@ -66,7 +67,6 @@ public class AccountController extends HttpServlet {
         String phoneNumber = safe(req.getParameter("phoneNumber"));
         String address = safe(req.getParameter("address"));
 
-        // Validate tối thiểu
         if (fullName.isBlank()) {
             setFlash(req, "Họ tên không được để trống.", "danger");
             resp.sendRedirect(req.getContextPath() + "/account");
@@ -77,7 +77,7 @@ public class AccountController extends HttpServlet {
                 currentUser.getId(), fullName, phoneNumber, address);
 
         if (success) {
-            // Update session user sau khi DB thành công
+
             currentUser.setFullName(fullName);
             currentUser.setPhoneNumber(phoneNumber);
             currentUser.setAddress(address);
@@ -115,8 +115,6 @@ public class AccountController extends HttpServlet {
 
         resp.sendRedirect(req.getContextPath() + "/account");
     }
-
-    // ================== Helpers ==================
 
     private User requireLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession(false);

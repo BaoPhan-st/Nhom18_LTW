@@ -23,8 +23,6 @@ public class Order implements Serializable {
 
     private String order_note;
 
-
-
     public int getId() {
         return id;
     }
@@ -47,6 +45,11 @@ public class Order implements Serializable {
 
     public void setCreatedAt(LocalDateTime created_at) {
         this.created_at = created_at;
+    }
+
+    // Helper for JSP fmt:formatDate
+    public java.util.Date getCreatedAtTimestamp() {
+        return created_at == null ? null : java.sql.Timestamp.valueOf(created_at);
     }
 
     public BigDecimal getShippingFee() {
@@ -119,5 +122,16 @@ public class Order implements Serializable {
 
     public void setOrderNote(String order_note) {
         this.order_note = order_note;
+    }
+
+    // List items for display
+    private java.util.List<OrderDetailDTO> items;
+
+    public java.util.List<OrderDetailDTO> getItems() {
+        return items;
+    }
+
+    public void setItems(java.util.List<OrderDetailDTO> items) {
+        this.items = items;
     }
 }

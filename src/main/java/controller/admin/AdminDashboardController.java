@@ -2,19 +2,15 @@ package controller.admin;
 
 import dao.UserDao;
 import dao.Order.OrderDao;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-
 import services.admin.AdminService;
 import services.admin.SettingService;
-
 import java.io.IOException;
 
-@WebServlet({"/admin/dashboard", "/admin/statistics", "/admin/setting"})
-public class AdminDashboardController extends HttpServlet
-{
+@WebServlet({ "/admin/dashboard", "/admin/statistics", "/admin/setting" })
+public class AdminDashboardController extends HttpServlet {
     private final UserDao userDao = new UserDao();
     private final OrderDao orderDao = new OrderDao();
     private final SettingService settingService = new SettingService();
@@ -22,21 +18,18 @@ public class AdminDashboardController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/admin/statistics"))
-        {
+        if (uri.endsWith("/admin/statistics")) {
             request.setAttribute("totalUsers", userDao.findAll().size());
             request.setAttribute("totalOrders", orderDao.findAll().size());
             request.setAttribute("totalRevenue", orderDao.totalRevenue());
 
-            request.setAttribute("contentPage", "/admin-statistics.jsp");
+            request.setAttribute("contentPage", "/admin-views/admin-statistics.jsp");
             request.setAttribute("active", "admin/statistics");
 
-        } else if (uri.endsWith("/admin/setting"))
-        {
+        } else if (uri.endsWith("/admin/setting")) {
             Integer adminId = (Integer) request.getSession().getAttribute("adminId");
 
             request.setAttribute("siteName", settingService.settingGet("site_name"));
@@ -45,19 +38,19 @@ public class AdminDashboardController extends HttpServlet
             request.setAttribute("siteAddress", settingService.settingGet("site_address"));
 
             request.setAttribute("newOrders", "true".equalsIgnoreCase(settingService.settingGet("notify_new_orders")));
-            request.setAttribute("newSletterSignup", Boolean.parseBoolean(settingService.settingGet("notify_newsletter")));
+            request.setAttribute("newSletterSignup",
+                    Boolean.parseBoolean(settingService.settingGet("notify_newsletter")));
 
             request.setAttribute("adminUsername", adminService.adminGetUserName(adminId));
 
             request.setAttribute("contentPage", "/admin-setting.jsp");
             request.setAttribute("active", "admin/setting");
-        } else
-        {
+        } else {
             request.setAttribute("todayOrders", orderDao.todayOrders());
             request.setAttribute("todayRevenue", orderDao.todayRevenue());
             request.setAttribute("newCustomers", userDao.todayCustomers());
 
-            request.setAttribute("contentPage", "/admin-dashboard.jsp");
+            request.setAttribute("contentPage", "/admin-views/admin-dashboard.jsp");
             request.setAttribute("active", "admin/dashboard");
         }
 
@@ -66,35 +59,31 @@ public class AdminDashboardController extends HttpServlet
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String uri = request.getRequestURI();
 
-        if (uri.endsWith("/admin/setting"))
-        {
+        if (uri.endsWith("/admin/setting")) {
             String action = request.getParameter("action");
 
-            if ("site".equals(action))
-            {
+            if ("site".equals(action)) {
                 settingService.settingSave("site_name", request.getParameter("siteName"));
                 settingService.settingSave("site_email", request.getParameter("siteEmail"));
                 settingService.settingSave("site_phone", request.getParameter("sitePhone"));
                 settingService.settingSave("site_address", request.getParameter("siteAddress"));
 
-            } else if ("notification".equals(action))
-            {
-                settingService.settingSave("notify_new_orders", String.valueOf(request.getParameter("newOrders") != null));
-                settingService.settingSave("notify_newsletter", String.valueOf(request.getParameter("newSletterSignup") != null));
+            } else if ("notification".equals(action)) {
+                settingService.settingSave("notify_new_orders",
+                        String.valueOf(request.getParameter("newOrders") != null));
+                settingService.settingSave("notify_newsletter",
+                        String.valueOf(request.getParameter("newSletterSignup") != null));
 
-            } else if ("account".equals(action))
-            {
+            } else if ("account".equals(action)) {
                 int adminId = (int) request.getSession().getAttribute("adminId");
                 adminService.adminUpdateUserName(adminId, request.getParameter("adminUserName"));
 
                 String adminPassword = request.getParameter("adminPassword");
-                if (adminPassword != null && !adminPassword.isBlank())
-                {
+                if (adminPassword != null && !adminPassword.isBlank()) {
                     adminService.adminUpdatePassword(adminId, adminPassword);
                 }
             }
